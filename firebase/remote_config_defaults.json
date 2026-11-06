@@ -1,0 +1,74 @@
+{
+  "parameters": {
+    "atlas_cloud_model_name": {
+      "defaultValue": {
+        "value": "gemini-3.5-flash-lite"
+      },
+      "description": "Default Firebase AI Logic Cloud fallback model for ATLAS Hybrid AI (InferenceMode.PREFER_ON_DEVICE / PREFER_IN_CLOUD).",
+      "valueType": "STRING"
+    },
+    "atlas_chat_model_name": {
+      "defaultValue": {
+        "value": "gemini-3.8-flash"
+      },
+      "description": "Default cloud model for multi-turn ATLAS biomechanical coaching and workout planning.",
+      "valueType": "STRING"
+    },
+    "atlas_live_model_name": {
+      "defaultValue": {
+        "value": "gemini-3.8-live"
+      },
+      "description": "Default Gemini Live API bidirectional audio/voice model (BidiGenerateContent).",
+      "valueType": "STRING"
+    },
+    "atlas_default_hybrid_mode": {
+      "defaultValue": {
+        "value": "preferOnDevice"
+      },
+      "description": "Default HybridInferenceMode across Android AICore, iOS FoundationModels, and Web Chrome Prompt API.",
+      "valueType": "STRING"
+    },
+    "atlas_use_server_templates": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "When true, Cloud inference executes Dotprompt Server Prompt Templates via templateGenerativeModel() with transparent fallback.",
+      "valueType": "BOOLEAN"
+    },
+    "atlas_set_autoregulation_template_id": {
+      "defaultValue": {
+        "value": "atlas-set-autoregulation-v1-0-0"
+      },
+      "description": "Versioned Firebase AI Logic Server Prompt Template ID for structured workout set autoregulation.",
+      "valueType": "STRING"
+    },
+    "atlas_equipment_vision_template_id": {
+      "defaultValue": {
+        "value": "atlas-equipment-vision-v1-0-0"
+      },
+      "description": "Versioned Firebase AI Logic Server Prompt Template ID for multimodal gym equipment scanning.",
+      "valueType": "STRING"
+    },
+    "atlas_coach_chat_template_id": {
+      "defaultValue": {
+        "value": "atlas-coach-chat-v1-0-0"
+      },
+      "description": "Versioned Firebase AI Logic Server Prompt Template ID for multi-turn coaching chat.",
+      "valueType": "STRING"
+    },
+    "atlas_coach_system_prompt": {
+      "defaultValue": {
+        "value": "You are ATLAS, an elite strength, hypertrophy, and biomechanics AI coach. Prioritize joint safety, eccentric control, RPE-based autoregulation, and progressive overload."
+      },
+      "description": "Over-the-air (OTA) system instruction shared across On-Device NPU, Gemini Live API, and Cloud Chat.",
+      "valueType": "STRING"
+    },
+    "atlas_hybrid_set_prompt_template": {
+      "defaultValue": {
+        "value": "Analyze this strength training set log and return JSON matching the schema:\nRaw set log: \"{{rawSetText}}\"\nActive exercise context: \"{{activeExerciseName}}\" (id: \"{{activeExerciseId}}\")\nAvailable exercise catalog: [{{catalogContext}}]"
+      },
+      "description": "OTA prompt template with Handlebars-style placeholders rendered locally for On-Device Gemini Nano / Apple Intelligence / Chrome Prompt API.",
+      "valueType": "STRING"
+    }
+  }
+}
