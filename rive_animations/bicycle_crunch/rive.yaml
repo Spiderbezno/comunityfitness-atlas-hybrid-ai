@@ -1,0 +1,4 @@
+name: bicycle_crunch
+logs:
+  file: build/rive.log
+  problems: build/problems.log

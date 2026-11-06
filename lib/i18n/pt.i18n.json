@@ -1,0 +1,126 @@
+{
+  "common": {
+    "appName": "COMMUNITY FITNESS",
+    "language": "Idioma",
+    "selectLanguage": "Selecionar Idioma",
+    "cancel": "Cancelar",
+    "close": "Fechar",
+    "languages": {
+      "es": "Español",
+      "en": "English",
+      "ca": "Català",
+      "fr": "Français",
+      "pt": "Português"
+    }
+  },
+  "dashboard": {
+    "aiCoachTooltip": "ATLAS • Personal Trainer IA",
+    "dataManagementTooltip": "Gestão de Dados",
+    "muscleAnalyticsTooltip": "Análise Muscular",
+    "languageTooltip": "Mudar Idioma",
+    "readyToTrain": "PRONTO PARA TREINAR",
+    "workoutsThisWeek": "$count treinos esta semana",
+    "freestyleTraining": "Treino Livre",
+    "exercisesPlanned": "$count exercícios planeados",
+    "buildOnTheFly": "Crie a sua sessão na hora",
+    "totalSets": "SÉRIES TOTAIS",
+    "movements": "MOVIMENTOS",
+    "targetIntensity": "INTENSIDADE ALVO",
+    "startRoutine": "Iniciar Rotina",
+    "startFreestyle": "Treino Livre",
+    "exploreAndManage": "EXPLORAR E GERIR",
+    "routinesTitle": "Rotinas",
+    "routinesSubtitle": "$count divisões guardadas",
+    "muscleRecoveryTitle": "Recuperação Muscular",
+    "muscleRecoverySubtitle": "$count músculos prontos",
+    "exerciseCatalogTitle": "Catálogo de Exercícios",
+    "exerciseCatalogSubtitle": "$count movimentos",
+    "dataMigrationTitle": "Migração de Dados",
+    "dataMigrationSubtitle": "Hevy / Strong / JSON",
+    "targetMusclesReady": "MÚSCULOS PRONTOS HOJE",
+    "recentWorkouts": "TREINOS RECENTES",
+    "noWorkoutsYet": "Ainda não há treinos registados. Comece a sua primeira sessão acima!",
+    "workoutSession": "Sessão de Treino",
+    "exercisesCount": "$count exercícios"
+  },
+  "aiCoach": {
+    "headerTitle": "PERSONAL TRAINER IA",
+    "modelBadge": "ATLAS • Treinador Biomecânico IA",
+    "liveActive": "ATLAS Ao Vivo Ativo",
+    "liveVoiceToggle": "ATLAS Ao Vivo",
+    "analyzingMovements": "O ATLAS está a analisar movimentos do catálogo...",
+    "youLabel": "VOCÊ",
+    "liveCoachBadge": "ATLAS • AO VIVO",
+    "flashCoachBadge": "ATLAS • COACH IA",
+    "startAiWorkoutNow": "Iniciar Este Treino IA Agora",
+    "setsRepsRest": "$sets séries × $reps reps • ${rest}s descanso",
+    "form3dBadge": "Forma 3D",
+    "welcomeMessage": "Olá! Sou o ATLAS, o seu Personal Trainer IA da CommunityFitness. Selecione os músculos que quer treinar ou peça uma alternativa em casa sem pesos para qualquer exercício do catálogo!",
+    "liveBanner": {
+      "listeningMic": "A OUVIR O SEU MICROFONE — FALE COM O ATLAS",
+      "connecting": "A LIGAR AO ATLAS AO VIVO...",
+      "listening": "A OUVIR • FALE OU TOQUE NUM COMANDO DE VOZ",
+      "thinking": "A PENSAR • RACIOCÍNIO BIOMECÂNICO EM TEMPO REAL",
+      "speaking": "ATLAS ESTÁ A FALAR • AO VIVO",
+      "disconnected": "DESLIGADO",
+      "defaultHint": "Peça ao seu Personal Trainer Ao Vivo dicas de voz em tempo real ou trocas de exercícios em casa.",
+      "endSessionTooltip": "Terminar Sessão de Voz Ao Vivo",
+      "quickChipChestAbs": "Peito e Abdómen em Casa (Sem Pesos)",
+      "quickPromptChestAbs": "Dá-me um treino de peito e abdominais em casa sem pesos",
+      "quickChipBackBiceps": "Costas e Bíceps em Casa",
+      "quickPromptBackBiceps": "Planeia um treino de costas e bíceps em casa",
+      "quickChipLegsGlutes": "Pernas e Glúteos Peso Corporal",
+      "quickPromptLegsGlutes": "Cria uma rotina de pernas e glúteos com peso corporal"
+    },
+    "contextCard": {
+      "targetExercise": "EXERCÍCIO ALVO: $name",
+      "subtitle": "Precisa de uma alternativa porque treina em casa ou sem equipamento? Toque numa opção:"
+    },
+    "plannerCard": {
+      "title": "QUE MÚSCULOS QUER TREINAR HOJE?",
+      "availableEquipment": "EQUIPAMENTO DISPONÍVEL",
+      "buildPlanButton": "Criar Plano de $muscles ($equipment)"
+    },
+    "alternativesSheet": {
+      "title": "Alternativas IA para $name",
+      "customHint": "Nota personalizada (ex. em casa com cadeira, dor no pulso)..."
+    },
+    "chatInput": {
+      "listeningHint": "A ouvir o seu microfone... Toque no botão vermelho para enviar",
+      "liveHint": "Fale diretamente ou escreva para o ATLAS...",
+      "defaultHint": "Peça alternativas em casa ou toque no mic para falar...",
+      "sendTooltip": "Enviar Mensagem",
+      "stopMicTooltip": "Parar Gravação e Enviar Voz",
+      "startMicTooltip": "Gravar Voz (16kHz PCM)"
+    },
+    "muscles": {
+      "Chest": "Peito",
+      "Back": "Costas",
+      "Shoulders": "Ombros",
+      "Biceps": "Bíceps",
+      "Triceps": "Tríceps",
+      "Quadriceps": "Quadríceps",
+      "Hamstrings": "Isquiotibiais",
+      "Glutes": "Glúteos",
+      "Calves": "Gémeos",
+      "Abs / Core": "Abdómen / Core",
+      "Full Body": "Corpo Inteiro"
+    },
+    "equipment": {
+      "All": "Tudo",
+      "Home / Bodyweight": "Em Casa / Peso Corporal",
+      "Dumbbells Only": "Apenas Halteres"
+    },
+    "constraints": {
+      "At Home / No Weights": "Em Casa / Sem Pesos",
+      "Bodyweight Only": "Apenas Peso Corporal",
+      "Dumbbells Only": "Apenas Halteres",
+      "Joint Friendly": "Proteção Articular"
+    },
+    "errors": {
+      "loadAlternatives": "Não foi possível carregar as alternativas neste momento.",
+      "buildPlan": "Não foi possível criar o plano de treino neste momento.",
+      "coachReply": "O treinador não conseguiu responder neste momento."
+    }
+  }
+}

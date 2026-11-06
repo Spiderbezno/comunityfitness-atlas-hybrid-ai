@@ -1,0 +1,334 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:100" viewModelInstanceId="0:102" styleId="0:5" width="300" height="300" name="RestTimerArtboard" id="0:2">
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+
+        <!-- Shared trim so the glow and the crisp arc drain together -->
+        <GroupEffect name="ProgressReveal" id="0:90">
+            <TrimPath start="0" end="1" offset="0" name="ProgressTrim" id="0:91"/>
+        </GroupEffect>
+
+        <!-- Hourglass: caps, glass outline, draining sand (first declared paints on top) -->
+        <Node x="150" y="150" name="HourglassRig" id="0:40">
+            <Shape y="-25" name="TopCap">
+                <Rectangle originX="0.5" originY="0.5" width="40" height="5" cornerRadiusTL="2.5" name="TopCapRect"/>
+                <Fill name="TopCapFill">
+                    <SolidColor colorValue="FFE2E8F0" name="TopCapColor"/>
+                </Fill>
+            </Shape>
+            <Shape y="25" name="BottomCap">
+                <Rectangle originX="0.5" originY="0.5" width="40" height="5" cornerRadiusTL="2.5" name="BottomCapRect"/>
+                <Fill name="BottomCapFill">
+                    <SolidColor colorValue="FFE2E8F0" name="BottomCapColor"/>
+                </Fill>
+            </Shape>
+            <Shape name="Glass">
+                <PointsPath isClosed="true" name="GlassPath">
+                    <StraightVertex x="-15" y="-22" radius="3"/>
+                    <StraightVertex x="15" y="-22" radius="3"/>
+                    <StraightVertex x="3" y="0" radius="3"/>
+                    <StraightVertex x="15" y="22" radius="3"/>
+                    <StraightVertex x="-15" y="22" radius="3"/>
+                    <StraightVertex x="-3" y="0" radius="3"/>
+                </PointsPath>
+                <Stroke thickness="3" cap="round" join="round" name="GlassStroke">
+                    <SolidColor colorValue="CCE2E8F0" name="GlassColor"/>
+                </Stroke>
+            </Shape>
+            <Shape y="-2" name="SandTop" id="0:41">
+                <PointsPath isClosed="true" name="SandTopPath">
+                    <StraightVertex x="-10" y="-17" radius="1"/>
+                    <StraightVertex x="10" y="-17" radius="1"/>
+                    <StraightVertex x="0" y="0" radius="1"/>
+                </PointsPath>
+                <Fill name="SandTopFill">
+                    <SolidColor colorValue="FF22D3EE" name="SandTopColor" id="0:43"/>
+                </Fill>
+            </Shape>
+            <Shape y="20" name="SandBottom" id="0:42">
+                <PointsPath isClosed="true" name="SandBottomPath">
+                    <StraightVertex x="-12" y="0" radius="1"/>
+                    <StraightVertex x="12" y="0" radius="1"/>
+                    <StraightVertex x="0" y="-14" radius="1"/>
+                </PointsPath>
+                <Fill name="SandBottomFill">
+                    <SolidColor colorValue="FF22D3EE" name="SandBottomColor" id="0:44"/>
+                </Fill>
+            </Shape>
+        </Node>
+
+        <!-- Center disc -->
+        <Shape x="150" y="150" name="CenterDisc" id="0:30">
+            <Ellipse originX="0.5" originY="0.5" width="124" height="124" name="DiscEllipse"/>
+            <Fill name="DiscFill">
+                <RadialGradient startX="0" startY="-30" endX="0" endY="80" name="DiscGradient">
+                    <GradientStop colorValue="FF1E293B" position="0"/>
+                    <GradientStop colorValue="FF0B1220" position="1"/>
+                </RadialGradient>
+            </Fill>
+            <Stroke thickness="1.5" name="DiscBorder">
+                <SolidColor colorValue="2EFFFFFF" name="DiscBorderColor"/>
+            </Stroke>
+        </Shape>
+
+        <!-- Progress arc: feathered glow first, crisp arc last (later paint draws on top) -->
+        <Shape x="150" y="150" name="ProgressRing" id="0:20">
+            <Ellipse originX="0.5" originY="0.5" width="216" height="216" name="ProgressEllipse"/>
+            <Stroke thickness="18" cap="round" name="ProgressGlow">
+                <LinearGradient startX="-108" startY="-108" endX="108" endY="108" name="GlowGradient">
+                    <GradientStop colorValue="AA22D3EE" position="0" id="0:33"/>
+                    <GradientStop colorValue="AA818CF8" position="1" id="0:34"/>
+                </LinearGradient>
+                <TargetEffect targetId="0:90" name="UseRevealGlow"/>
+                <Feather strength="10" name="GlowFeather" id="0:35"/>
+            </Stroke>
+            <Stroke thickness="14" cap="round" name="ProgressCrisp">
+                <LinearGradient startX="-108" startY="-108" endX="108" endY="108" name="CrispGradient">
+                    <GradientStop colorValue="FF22D3EE" position="0" id="0:31"/>
+                    <GradientStop colorValue="FF818CF8" position="1" id="0:32"/>
+                </LinearGradient>
+                <TargetEffect targetId="0:90" name="UseRevealCrisp"/>
+            </Stroke>
+        </Shape>
+
+        <!-- Track -->
+        <Shape x="150" y="150" name="TrackRing">
+            <Ellipse originX="0.5" originY="0.5" width="216" height="216" name="TrackEllipse"/>
+            <Stroke thickness="14" cap="round" name="TrackStroke">
+                <SolidColor colorValue="FF1E293B" name="TrackColor"/>
+            </Stroke>
+        </Shape>
+
+        <!-- Minute ticks -->
+        <Shape x="150" y="150" name="Ticks">
+            <Ellipse originX="0.5" originY="0.5" width="262" height="262" name="TicksEllipse"/>
+            <Stroke thickness="7" name="TicksStroke">
+                <SolidColor colorValue="FF334155" name="TicksColor"/>
+                <DashPath name="TickDashes">
+                    <Dash length="0.004" lengthIsPercentage="true" name="On"/>
+                    <Dash length="0.0126667" lengthIsPercentage="true" name="Off"/>
+                </DashPath>
+            </Stroke>
+        </Shape>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <!-- Countdown pose follows RestTimerVM.progress (0..1 mapped to the 0..100 blend axis) -->
+            <StateMachineLayer name="CountdownLayer" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:12"/>
+                </EntryState>
+                <BlendState1DViewModel x="200" id="0:12">
+                    <BindablePropertyNumber>
+                        <DataBindContext sourcePathIds="0:100-0:101" propertyKey="636" converterId="0:110"/>
+                    </BindablePropertyNumber>
+                    <BlendAnimation1D animationId="0:61" value="0"/>
+                    <BlendAnimation1D animationId="0:62" value="30"/>
+                    <BlendAnimation1D animationId="0:63" value="100"/>
+                </BlendState1DViewModel>
+            </StateMachineLayer>
+            <StateMachineLayer name="AmbientLayer" id="0:9">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:13"/>
+                </EntryState>
+                <AnimationState x="200" animationId="0:70" id="0:13"/>
+            </StateMachineLayer>
+        </StateMachine>
+
+        <!-- Pose at progress 0 -->
+        <LinearAnimation duration="1" loopValue="oneShot" name="PoseDone" id="0:61">
+            <KeyedObject objectId="0:91">
+                <KeyedProperty propertyKey="115">
+                    <KeyFrameDouble value="0.0" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:31">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="FFF43F5E" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:32">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="FFFB923C" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:33">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="AAF43F5E" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:34">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="AAFB923C" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:43">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FFF43F5E" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:44">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FFF43F5E" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:41">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="0.05" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="0.05" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:42">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="1.0" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="1.0" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+
+        <!-- Pose at progress 0.3 -->
+        <LinearAnimation duration="1" loopValue="oneShot" name="PoseLate" id="0:62">
+            <KeyedObject objectId="0:91">
+                <KeyedProperty propertyKey="115">
+                    <KeyFrameDouble value="0.3" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:31">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="FF818CF8" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:32">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="FFC084FC" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:33">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="AA818CF8" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:34">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="AAC084FC" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:43">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF818CF8" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:44">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF818CF8" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:41">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="0.335" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="0.335" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:42">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="0.715" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="0.715" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+
+        <!-- Pose at progress 1 -->
+        <LinearAnimation duration="1" loopValue="oneShot" name="PoseFull" id="0:63">
+            <KeyedObject objectId="0:91">
+                <KeyedProperty propertyKey="115">
+                    <KeyFrameDouble value="1.0" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:31">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="FF22D3EE" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:32">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="FF818CF8" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:33">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="AA22D3EE" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:34">
+                <KeyedProperty propertyKey="38">
+                    <KeyFrameColor value="AA818CF8" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:43">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF22D3EE" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:44">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF22D3EE" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:41">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="1.0" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="1.0" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:42">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="0.05" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="0.05" interpolationType="linear" frame="0"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+
+        <LinearAnimation duration="90" loopValue="pingPong" name="Ambient" id="0:70">
+            <KeyedObject objectId="0:30">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="0.97" interpolationType="cubic" frame="0"/>
+                    <KeyFrameDouble value="1.03" interpolationType="cubic" frame="90"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="0.97" interpolationType="cubic" frame="0"/>
+                    <KeyFrameDouble value="1.03" interpolationType="cubic" frame="90"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:35">
+                <KeyedProperty propertyKey="749">
+                    <KeyFrameDouble value="8" interpolationType="cubic" frame="0"/>
+                    <KeyFrameDouble value="16" interpolationType="cubic" frame="90"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
+
+    <!-- progress: 1 = full rest left, 0 = rest finished -->
+    <DataConverterRangeMapper minInput="0" maxInput="1" minOutput="0" maxOutput="100" clampLower="true" clampUpper="true" name="ProgressToBlendAxis" id="0:110"/>
+
+    <ViewModel defaultInstanceId="0:102" name="RestTimerVM" id="0:100">
+        <ViewModelPropertyNumber name="progress" id="0:101"/>
+        <ViewModelInstance exports="true" name="Default" id="0:102">
+            <ViewModelInstanceNumber propertyValue="1" viewModelPropertyId="0:101"/>
+        </ViewModelInstance>
+    </ViewModel>
+</Rive>

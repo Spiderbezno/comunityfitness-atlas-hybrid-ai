@@ -1,0 +1,2868 @@
+<Rive version="7.3">
+    <Artboard width="640" height="360" clip="true" styleId="0:5" name="LegExtension" id="0:6">
+        <LayoutComponentStyle name="ArtboardStyle" id="0:5"/>
+
+        <!-- 1. Foreground: Bare Feet, Cylindrical Shin Roller Pad & Extending Lower Legs -->
+        <Node name="LegsAndRollerGroup">
+            <Node x="261.4852" y="251.0151" rotation="1.7279" name="NearBareFootNode" id="o3">
+                <Shape name="NearToeLine1">
+                    <PointsPath isClosed="false" name="NearToeLine1Path">
+                        <CubicMirroredVertex x="1.5" y="22" rotation="-0.4266" distance="1.2083"/>
+                        <CubicMirroredVertex x="4.8" y="20.5" rotation="-0.4266" distance="1.2083"/>
+                    </PointsPath>
+                    <Stroke thickness="0.95" cap="round" join="round" name="NearToeLine1Stroke"><SolidColor colorValue="4D0F172A" name="NearToeLine1Color"/></Stroke>
+                </Shape>
+                <Shape name="NearToeLine2">
+                    <PointsPath isClosed="false" name="NearToeLine2Path">
+                        <CubicMirroredVertex x="0.5" y="19.5" rotation="-0.3852" distance="1.3308"/>
+                        <CubicMirroredVertex x="4.2" y="18" rotation="-0.3852" distance="1.3308"/>
+                    </PointsPath>
+                    <Stroke thickness="0.95" cap="round" join="round" name="NearToeLine2Stroke"><SolidColor colorValue="4D0F172A" name="NearToeLine2Color"/></Stroke>
+                </Shape>
+                <Shape name="NearFootArch">
+                    <PointsPath isClosed="false" name="NearFootArchPath">
+                        <CubicMirroredVertex x="0" y="-2" rotation="1.3473" distance="3.7602"/>
+                        <CubicMirroredVertex x="2.5" y="9" rotation="1.455" distance="3.6075"/>
+                        <CubicMirroredVertex x="2.5" y="19.5" rotation="1.5708" distance="3.5"/>
+                    </PointsPath>
+                    <Stroke thickness="1.15" cap="round" join="round" name="NearFootArchStroke"><SolidColor colorValue="4D0F172A" name="NearFootArchColor"/><Feather strength="0.8" name="NearFootArchFeather"/></Stroke>
+                </Shape>
+                <Shape name="NearFootHi">
+                    <PointsPath isClosed="false" name="NearFootHiPath">
+                        <CubicMirroredVertex x="-1.5" y="4" rotation="1.4121" distance="4.2197"/>
+                        <CubicMirroredVertex x="0.5" y="16.5" rotation="1.4121" distance="4.2197"/>
+                    </PointsPath>
+                    <Stroke thickness="2.2" cap="round" join="round" name="NearFootHiStroke"><SolidColor colorValue="D9FFFFFF" name="NearFootHiColor"/><Feather strength="2" name="NearFootHiFeather"/></Stroke>
+                </Shape>
+                <Shape name="NearBareFoot">
+                    <PointsPath isClosed="true" name="NearBareFootPath">
+                        <CubicMirroredVertex x="-4.5" y="-5.5" rotation="-0.8584" distance="2.4224"/>
+                        <CubicMirroredVertex x="4.5" y="-5" rotation="0.7124" distance="2.4224"/>
+                        <CubicMirroredVertex x="6.5" y="4" rotation="1.5143" distance="4.4237"/>
+                        <CubicMirroredVertex x="6" y="21.5" rotation="1.8329" distance="3.5375"/>
+                        <CubicMirroredVertex x="1" y="24.5" rotation="-2.9927" distance="1.6853"/>
+                        <CubicMirroredVertex x="-4" y="20" rotation="-1.8844" distance="3.2414"/>
+                        <CubicMirroredVertex x="-5" y="6" rotation="-1.5904" distance="4.2508"/>
+                    </PointsPath>
+                    <Fill name="NearFootFill"><LinearGradient startX="0" startY="-6" endX="0" endY="24" name="NearFootGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+                </Shape>
+            </Node>
+            <Node x="233.4985" y="236.6037" rotation="1.7628" name="FarBareFootNode" id="o4">
+                <Shape name="FarToeLine1">
+                    <PointsPath isClosed="false" name="FarToeLine1Path">
+                        <CubicMirroredVertex x="1.5" y="21.5" rotation="-0.4636" distance="1.118"/>
+                        <CubicMirroredVertex x="4.5" y="20" rotation="-0.4636" distance="1.118"/>
+                    </PointsPath>
+                    <Stroke thickness="0.95" cap="round" join="round" name="FarToeLine1Stroke"><SolidColor colorValue="4D0F172A" name="FarToeLine1Color"/></Stroke>
+                </Shape>
+                <Shape name="FarFootArch">
+                    <PointsPath isClosed="false" name="FarFootArchPath">
+                        <CubicMirroredVertex x="0" y="-2" rotation="1.3643" distance="3.576"/>
+                        <CubicMirroredVertex x="2.2" y="8.5" rotation="1.4664" distance="3.5192"/>
+                        <CubicMirroredVertex x="2.2" y="19" rotation="1.5708" distance="3.5"/>
+                    </PointsPath>
+                    <Stroke thickness="1.1" cap="round" join="round" name="FarFootArchStroke"><SolidColor colorValue="4D0F172A" name="FarFootArchColor"/><Feather strength="0.8" name="FarFootArchFeather"/></Stroke>
+                </Shape>
+                <Shape name="FarBareFoot">
+                    <PointsPath isClosed="true" name="FarBareFootPath">
+                        <CubicMirroredVertex x="-4.5" y="-5.5" rotation="-0.8584" distance="2.4224"/>
+                        <CubicMirroredVertex x="4.5" y="-5" rotation="0.7124" distance="2.4224"/>
+                        <CubicMirroredVertex x="6.5" y="4" rotation="1.5143" distance="4.4237"/>
+                        <CubicMirroredVertex x="6" y="21.5" rotation="1.8329" distance="3.5375"/>
+                        <CubicMirroredVertex x="1" y="24.5" rotation="-2.9927" distance="1.6853"/>
+                        <CubicMirroredVertex x="-4" y="20" rotation="-1.8844" distance="3.2414"/>
+                        <CubicMirroredVertex x="-5" y="6" rotation="-1.5904" distance="4.2508"/>
+                    </PointsPath>
+                    <Fill name="FarFootFill"><LinearGradient startX="0" startY="-6" endX="0" endY="24" name="FarFootGrad"><GradientStop colorValue="FFCBD5E1" position="0"/><GradientStop colorValue="FF94A3B8" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill>
+                </Shape>
+            </Node>
+            <Node x="253.3046" y="235.5449" name="ShinRollerPad" id="o5">
+                <Shape x="0" y="0" rotation="-0.2094" name="RollerCenterBolt">
+                    <Ellipse width="6.5" height="8.5" name="RollerCenterBoltEllipse"/>
+                    <Fill name="RollerCapFill"><LinearGradient startX="-6" startY="-8" endX="6" endY="8" name="RollerCapGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill><Stroke thickness="1.3" name="RollerCapStroke"><SolidColor colorValue="FF0F172A" name="RollerCapStrokeCol"/></Stroke>
+                </Shape>
+                <Shape x="0" y="0" rotation="-0.2094" name="RollerEndFace">
+                    <Ellipse width="16.5" height="21.5" name="RollerEndFaceEllipse"/>
+                    <Fill name="RollerEndFill"><SolidColor colorValue="FF090D16" name="RollerEndColor"/></Fill>
+                </Shape>
+                <Shape name="RollerCylinderBody">
+                    <PointsPath isClosed="true" name="RollerCylinderBodyPath">
+                        <CubicMirroredVertex x="3" y="-10.5" rotation="-2.5749" distance="7.6057"/>
+                        <CubicMirroredVertex x="-32" y="-24.5" rotation="-3.0488" distance="7.1976"/>
+                        <CubicMirroredVertex x="-40" y="-14.5" rotation="1.6575" distance="3.8478"/>
+                        <CubicMirroredVertex x="-34" y="-1.5" rotation="0.591" distance="7.6272"/>
+                        <CubicMirroredVertex x="-2" y="11" rotation="0.037" distance="6.7546"/>
+                        <CubicMirroredVertex x="6.5" y="0" rotation="-1.3423" distance="3.679"/>
+                    </PointsPath>
+                    <Fill name="RollerBodyFill"><LinearGradient startX="-34" startY="-18" endX="8" endY="14" name="RollerBodyGrad"><GradientStop colorValue="FF334155" position="0"/><GradientStop colorValue="FF090D16" position="1"/></LinearGradient></Fill><Stroke thickness="1.2" join="round" name="RollerBodyStroke"><SolidColor colorValue="FF1E293B" name="RollerBodyStrokeCol"/></Stroke>
+                </Shape>
+            </Node>
+            <Node x="274" y="172" rotation="1.7279" name="NearShinNode" id="o1">
+                <Shape name="NearTibialisLine">
+                    <PointsPath isClosed="false" name="NearTibialisLinePath">
+                        <CubicMirroredVertex x="10" y="3.8" rotation="-0.0107" distance="9.3339"/>
+                        <CubicMirroredVertex x="38" y="3.5" rotation="-0.0296" distance="9.0039"/>
+                        <CubicMirroredVertex x="64" y="2.2" rotation="-0.05" distance="8.6775"/>
+                    </PointsPath>
+                    <Stroke thickness="1.25" cap="round" join="round" name="NearTibialisLineStroke"><SolidColor colorValue="4D0F172A" name="NearTibialisLineColor"/><Feather strength="0.8" name="NearTibialisLineFeather"/></Stroke>
+                </Shape>
+                <Shape name="NearGastrocLine">
+                    <PointsPath isClosed="false" name="NearGastrocLinePath">
+                        <CubicMirroredVertex x="14" y="-6.5" rotation="-0.0997" distance="6.6999"/>
+                        <CubicMirroredVertex x="34" y="-8.5" rotation="0.0526" distance="6.3421"/>
+                        <CubicMirroredVertex x="52" y="-4.5" rotation="0.2187" distance="6.1464"/>
+                    </PointsPath>
+                    <Stroke thickness="1.15" cap="round" join="round" name="NearGastrocLineStroke"><SolidColor colorValue="4D0F172A" name="NearGastrocLineColor"/><Feather strength="0.8" name="NearGastrocLineFeather"/></Stroke>
+                </Shape>
+                <Shape name="NearShinHi">
+                    <PointsPath isClosed="false" name="NearShinHiPath">
+                        <CubicMirroredVertex x="10" y="6.5" rotation="-0.025" distance="9.3362"/>
+                        <CubicMirroredVertex x="38" y="5.8" rotation="-0.0555" distance="9.0139"/>
+                        <CubicMirroredVertex x="64" y="3.5" rotation="-0.0882" distance="8.7005"/>
+                    </PointsPath>
+                    <Stroke thickness="2.6" cap="round" join="round" name="NearShinHiStroke"><SolidColor colorValue="D9FFFFFF" name="NearShinHiColor"/><Feather strength="2.8" name="NearShinHiFeather"/></Stroke>
+                </Shape>
+                <Shape name="NearShinSh">
+                    <PointsPath isClosed="false" name="NearShinShPath">
+                        <CubicMirroredVertex x="12" y="-9.5" rotation="-0.0907" distance="7.3636"/>
+                        <CubicMirroredVertex x="34" y="-11.5" rotation="0.1019" distance="7.3716"/>
+                        <CubicMirroredVertex x="56" y="-5" rotation="0.2873" distance="7.6467"/>
+                    </PointsPath>
+                    <Stroke thickness="3.2" cap="round" join="round" name="NearShinShStroke"><SolidColor colorValue="8C0F172A" name="NearShinShColor"/><Feather strength="3.2" name="NearShinShFeather"/></Stroke>
+                </Shape>
+                <Shape name="NearShinShape">
+                    <PointsPath isClosed="true" name="NearShinShapePath">
+                        <CubicMirroredVertex x="-8" y="0" rotation="0.9182" distance="3.2935"/>
+                        <CubicMirroredVertex x="6" y="9.2" rotation="0.2125" distance="6.4791"/>
+                        <CubicMirroredVertex x="30" y="8.2" rotation="-0.0639" distance="8.3504"/>
+                        <CubicMirroredVertex x="56" y="6" rotation="-0.0738" distance="7.6876"/>
+                        <CubicMirroredVertex x="76" y="4.8" rotation="-0.2268" distance="4.4472"/>
+                        <CubicMirroredVertex x="82" y="0" rotation="-1.5708" distance="1.6333"/>
+                        <CubicMirroredVertex x="76" y="-5" rotation="-2.9033" distance="4.8023"/>
+                        <CubicMirroredVertex x="54" y="-6.8" rotation="-2.9724" distance="8.1159"/>
+                        <CubicMirroredVertex x="28" y="-13.2" rotation="-3.0464" distance="7.3667"/>
+                        <CubicMirroredVertex x="10" y="-11" rotation="2.947" distance="5.7756"/>
+                        <CubicMirroredVertex x="-6" y="-6.5" rotation="2.593" distance="3.5158"/>
+                    </PointsPath>
+                    <Fill name="NearShinFill"><LinearGradient startX="0" startY="-13" endX="0" endY="10" name="NearShinGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+                </Shape>
+            </Node>
+            <Node x="248" y="162" rotation="1.7628" name="FarShinNode" id="o2">
+                <Shape name="FarTibialisLine">
+                    <PointsPath isClosed="false" name="FarTibialisLinePath">
+                        <CubicMirroredVertex x="10" y="3.5" rotation="-0.0115" distance="8.6672"/>
+                        <CubicMirroredVertex x="36" y="3.2" rotation="-0.03" distance="8.3371"/>
+                        <CubicMirroredVertex x="60" y="2" rotation="-0.05" distance="8.01"/>
+                    </PointsPath>
+                    <Stroke thickness="1.15" cap="round" join="round" name="FarTibialisLineStroke"><SolidColor colorValue="4D0F172A" name="FarTibialisLineColor"/><Feather strength="0.8" name="FarTibialisLineFeather"/></Stroke>
+                </Shape>
+                <Shape name="FarShinHi">
+                    <PointsPath isClosed="false" name="FarShinHiPath">
+                        <CubicMirroredVertex x="10" y="6.2" rotation="-0.0269" distance="8.6698"/>
+                        <CubicMirroredVertex x="36" y="5.5" rotation="-0.0599" distance="8.3483"/>
+                        <CubicMirroredVertex x="60" y="3.2" rotation="-0.0955" distance="8.0367"/>
+                    </PointsPath>
+                    <Stroke thickness="2.2" cap="round" join="round" name="FarShinHiStroke"><SolidColor colorValue="D9FFFFFF" name="FarShinHiColor"/><Feather strength="2.5" name="FarShinHiFeather"/></Stroke>
+                </Shape>
+                <Shape name="FarShinShape">
+                    <PointsPath isClosed="true" name="FarShinShapePath">
+                        <CubicMirroredVertex x="-8" y="0" rotation="0.9182" distance="3.2935"/>
+                        <CubicMirroredVertex x="6" y="9.2" rotation="0.2125" distance="6.4791"/>
+                        <CubicMirroredVertex x="30" y="8.2" rotation="-0.0639" distance="8.3504"/>
+                        <CubicMirroredVertex x="56" y="6" rotation="-0.0808" distance="7.0229"/>
+                        <CubicMirroredVertex x="72" y="4.8" rotation="-0.2663" distance="3.8006"/>
+                        <CubicMirroredVertex x="78" y="0" rotation="-1.5708" distance="1.6333"/>
+                        <CubicMirroredVertex x="72" y="-5" rotation="-2.8655" distance="4.1575"/>
+                        <CubicMirroredVertex x="54" y="-6.8" rotation="-2.9573" distance="7.4596"/>
+                        <CubicMirroredVertex x="28" y="-13.2" rotation="-3.0464" distance="7.3667"/>
+                        <CubicMirroredVertex x="10" y="-11" rotation="2.947" distance="5.7756"/>
+                        <CubicMirroredVertex x="-6" y="-6.5" rotation="2.593" distance="3.5158"/>
+                    </PointsPath>
+                    <Fill name="FarShinFill"><LinearGradient startX="0" startY="-13" endX="0" endY="10" name="FarShinGrad"><GradientStop colorValue="FFCBD5E1" position="0"/><GradientStop colorValue="FF94A3B8" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill>
+                </Shape>
+            </Node>
+            <Node x="224" y="166" rotation="1.7628" name="SwingLeverArm" id="o6">
+                <Shape name="SwingBeam">
+                    <PointsPath isClosed="true" name="SwingBeamPath">
+                        <StraightVertex x="-6" y="-4.5" radius="2"/>
+                        <StraightVertex x="64" y="-4" radius="2"/>
+                        <StraightVertex x="64" y="4" radius="2"/>
+                        <StraightVertex x="-6" y="4.5" radius="2"/>
+                    </PointsPath>
+                    <Fill name="LeverFill"><LinearGradient startX="0" startY="-5" endX="0" endY="5" name="LeverGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.1" join="round" name="LeverStroke"><SolidColor colorValue="FF475569" name="LeverStrokeCol"/></Stroke>
+                </Shape>
+                <Shape x="0" y="0" name="SwingHub">
+                    <Ellipse width="14" height="14" name="SwingHubEllipse"/>
+                    <Fill name="LeverFill"><LinearGradient startX="0" startY="-5" endX="0" endY="5" name="LeverGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.1" join="round" name="LeverStroke"><SolidColor colorValue="FF475569" name="LeverStrokeCol"/></Stroke>
+                </Shape>
+            </Node>
+        </Node>
+
+        <!-- 2. Seated Athlete Upper Body (Head, Torso, Pectorals, 6-Pack Abs & Near Arm Gripping Side Handle) -->
+        <Node name="SeatedUpperBody">
+            <Shape name="NearKnuckle">
+                <PointsPath isClosed="false" name="NearKnucklePath">
+                    <CubicMirroredVertex x="326" y="196" rotation="0.0997" distance="3.35"/>
+                    <CubicMirroredVertex x="336" y="197" rotation="0.0997" distance="3.35"/>
+                </PointsPath>
+                <Stroke thickness="1" cap="round" join="round" name="NearKnuckleStroke"><SolidColor colorValue="4D0F172A" name="NearKnuckleColor"/></Stroke>
+            </Shape>
+            <Shape name="NearHand">
+                <PointsPath isClosed="true" name="NearHandPath">
+                    <CubicMirroredVertex x="324" y="190" rotation="-0.5071" distance="3.4319"/>
+                    <CubicMirroredVertex x="340" y="192" rotation="0.7854" distance="3.2998"/>
+                    <CubicMirroredVertex x="338" y="204" rotation="2.6345" distance="3.4319"/>
+                    <CubicMirroredVertex x="322" y="202" rotation="-2.3562" distance="3.2998"/>
+                </PointsPath>
+                <Fill name="NearHandFill"><LinearGradient startX="0" startY="190" endX="0" endY="204" name="NearHandGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="NearForearmHi">
+                <PointsPath isClosed="false" name="NearForearmHiPath">
+                    <CubicMirroredVertex x="354" y="152" rotation="1.9513" distance="7.1802"/>
+                    <CubicMirroredVertex x="346" y="172" rotation="1.9693" distance="6.8718"/>
+                    <CubicMirroredVertex x="338" y="190" rotation="1.989" distance="6.5659"/>
+                </PointsPath>
+                <Stroke thickness="2.2" cap="round" join="round" name="NearForearmHiStroke"><SolidColor colorValue="D9FFFFFF" name="NearForearmHiColor"/><Feather strength="2.4" name="NearForearmHiFeather"/></Stroke>
+            </Shape>
+            <Shape name="NearForearm">
+                <PointsPath isClosed="true" name="NearForearmPath">
+                    <CubicMirroredVertex x="350" y="144" rotation="-0.7328" distance="4.4845"/>
+                    <CubicMirroredVertex x="362" y="148" rotation="1.7234" distance="8.7686"/>
+                    <CubicMirroredVertex x="342" y="196" rotation="2.1692" distance="8.8757"/>
+                    <CubicMirroredVertex x="332" y="192" rotation="-1.5708" distance="5"/>
+                    <CubicMirroredVertex x="342" y="166" rotation="-1.212" distance="8.544"/>
+                </PointsPath>
+                <Fill name="NearFAFill"><LinearGradient startX="0" startY="144" endX="0" endY="196" name="NearFAGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="NearBicepsHi">
+                <PointsPath isClosed="false" name="NearBicepsHiPath">
+                    <CubicMirroredVertex x="364" y="114" rotation="1.8925" distance="6.3246"/>
+                    <CubicMirroredVertex x="358" y="132" rotation="1.8737" distance="5.5877"/>
+                    <CubicMirroredVertex x="354" y="146" rotation="1.8491" distance="4.8534"/>
+                </PointsPath>
+                <Stroke thickness="2.4" cap="round" join="round" name="NearBicepsHiStroke"><SolidColor colorValue="D9FFFFFF" name="NearBicepsHiColor"/><Feather strength="2.5" name="NearBicepsHiFeather"/></Stroke>
+            </Shape>
+            <Shape name="NearUpperArm">
+                <PointsPath isClosed="true" name="NearUpperArmPath">
+                    <CubicMirroredVertex x="360" y="106" rotation="-0.5667" distance="4.3461"/>
+                    <CubicMirroredVertex x="374" y="110" rotation="1.5273" distance="7.6739"/>
+                    <CubicMirroredVertex x="362" y="152" rotation="2.1708" distance="7.6739"/>
+                    <CubicMirroredVertex x="348" y="148" rotation="-1.9138" distance="4.9554"/>
+                    <CubicMirroredVertex x="352" y="124" rotation="-1.2925" distance="7.2801"/>
+                </PointsPath>
+                <Fill name="NearUAFill"><LinearGradient startX="0" startY="106" endX="0" endY="152" name="NearUAGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="NearDeltHi">
+                <PointsPath isClosed="false" name="NearDeltHiPath">
+                    <CubicMirroredVertex x="360" y="94" rotation="0.5404" distance="3.8873"/>
+                    <CubicMirroredVertex x="370" y="100" rotation="1.249" distance="3.1623"/>
+                    <CubicMirroredVertex x="366" y="112" rotation="1.8925" distance="4.2164"/>
+                </PointsPath>
+                <Stroke thickness="2.4" cap="round" join="round" name="NearDeltHiStroke"><SolidColor colorValue="D9FFFFFF" name="NearDeltHiColor"/><Feather strength="2.5" name="NearDeltHiFeather"/></Stroke>
+            </Shape>
+            <Shape name="NearDeltoid">
+                <PointsPath isClosed="true" name="NearDeltoidPath">
+                    <CubicMirroredVertex x="354" y="90" rotation="-0.8442" distance="4.0139"/>
+                    <CubicMirroredVertex x="368" y="88" rotation="0.3218" distance="4.2164"/>
+                    <CubicMirroredVertex x="378" y="98" rotation="1.344" distance="4.4472"/>
+                    <CubicMirroredVertex x="374" y="114" rotation="2.3036" distance="4.4845"/>
+                    <CubicMirroredVertex x="360" y="118" rotation="-2.7928" distance="3.9016"/>
+                    <CubicMirroredVertex x="352" y="106" rotation="-1.7819" distance="4.7726"/>
+                </PointsPath>
+                <Fill name="NearDeltFill"><LinearGradient startX="0" startY="88" endX="0" endY="118" name="NearDeltGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="Hair">
+                <PointsPath isClosed="true" name="HairPath">
+                    <CubicMirroredVertex x="331.5" y="50" rotation="-1.7976" distance="1.1118"/>
+                    <CubicMirroredVertex x="337" y="42.5" rotation="-0.4193" distance="3.1933"/>
+                    <CubicMirroredVertex x="349" y="42.2" rotation="0.2915" distance="3.4801"/>
+                    <CubicMirroredVertex x="357" y="48.5" rotation="1.1141" distance="3.2126"/>
+                    <CubicMirroredVertex x="357.5" y="59.5" rotation="1.8314" distance="2.5874"/>
+                    <CubicMirroredVertex x="353" y="63.5" rotation="-2.5536" distance="1.2019"/>
+                    <CubicMirroredVertex x="351.5" y="55.5" rotation="-2.0647" distance="2.4608"/>
+                    <CubicMirroredVertex x="346" y="50.5" rotation="-2.6779" distance="2.4224"/>
+                    <CubicMirroredVertex x="338.5" y="49" rotation="-3.1071" distance="2.4181"/>
+                </PointsPath>
+                <Fill name="HairFill"><LinearGradient startX="332" startY="42" endX="357" endY="63" name="HairGrad"><GradientStop colorValue="FF475569" position="0"/><GradientStop colorValue="FF1E293B" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape x="350" y="62.5" rotation="0.2094" name="Ear">
+                <Ellipse width="5.5" height="8.5" name="EarEllipse"/>
+                <Fill name="EarFill"><SolidColor colorValue="FFA3B1C4" name="EarColor"/></Fill>
+            </Shape>
+            <Shape name="BrowShade">
+                <PointsPath isClosed="false" name="BrowShadePath">
+                    <CubicMirroredVertex x="329" y="54.8" rotation="0.0887" distance="1.5059"/>
+                    <CubicMirroredVertex x="333.5" y="55.2" rotation="0.0887" distance="1.5059"/>
+                </PointsPath>
+                <Stroke thickness="1.4" cap="round" join="round" name="BrowShadeStroke"><SolidColor colorValue="590F172A" name="BrowShadeColor"/><Feather strength="0.8" name="BrowShadeFeather"/></Stroke>
+            </Shape>
+            <Shape name="EyeLine">
+                <PointsPath isClosed="false" name="EyeLinePath">
+                    <CubicMirroredVertex x="330.8" y="56.6" rotation="0.0666" distance="1.0022"/>
+                    <CubicMirroredVertex x="333.8" y="56.8" rotation="0.0666" distance="1.0022"/>
+                </PointsPath>
+                <Stroke thickness="1.1" cap="round" join="round" name="EyeLineStroke"><SolidColor colorValue="730F172A" name="EyeLineColor"/><Feather strength="0.4" name="EyeLineFeather"/></Stroke>
+            </Shape>
+            <Shape name="MouthLine">
+                <PointsPath isClosed="false" name="MouthLinePath">
+                    <CubicMirroredVertex x="329" y="66.5" rotation="0.0855" distance="1.1709"/>
+                    <CubicMirroredVertex x="332.5" y="66.8" rotation="0.0855" distance="1.1709"/>
+                </PointsPath>
+                <Stroke thickness="1" cap="round" join="round" name="MouthLineStroke"><SolidColor colorValue="590F172A" name="MouthLineColor"/><Feather strength="0.4" name="MouthLineFeather"/></Stroke>
+            </Shape>
+            <Shape name="HeadHi">
+                <PointsPath isClosed="false" name="HeadHiPath">
+                    <CubicMirroredVertex x="332.5" y="52" rotation="-0.8961" distance="2.1344"/>
+                    <CubicMirroredVertex x="336.5" y="47" rotation="-0.4475" distance="2.3109"/>
+                    <CubicMirroredVertex x="345" y="46" rotation="-0.1171" distance="2.8529"/>
+                </PointsPath>
+                <Stroke thickness="3" cap="round" join="round" name="HeadHiStroke"><SolidColor colorValue="D9FFFFFF" name="HeadHiColor"/><Feather strength="3.5" name="HeadHiFeather"/></Stroke>
+            </Shape>
+            <Shape name="JawShadow">
+                <PointsPath isClosed="false" name="JawShadowPath">
+                    <CubicMirroredVertex x="332" y="73.5" rotation="0.0776" distance="3.0091"/>
+                    <CubicMirroredVertex x="341" y="74.2" rotation="-0.1799" distance="2.7951"/>
+                    <CubicMirroredVertex x="348.5" y="70.5" rotation="-0.4583" distance="2.7877"/>
+                </PointsPath>
+                <Stroke thickness="2.6" cap="round" join="round" name="JawShadowStroke"><SolidColor colorValue="8C0F172A" name="JawShadowColor"/><Feather strength="2.5" name="JawShadowFeather"/></Stroke>
+            </Shape>
+            <Shape name="Head">
+                <PointsPath isClosed="true" name="HeadPath">
+                    <CubicMirroredVertex x="332" y="48" rotation="2.2865" distance="2.54"/>
+                    <CubicMirroredVertex x="329" y="54.5" rotation="1.9164" distance="2.2142"/>
+                    <CubicMirroredVertex x="327.5" y="60.5" rotation="1.589" distance="1.8336"/>
+                    <CubicMirroredVertex x="328.8" y="65.5" rotation="1.3909" distance="1.8634"/>
+                    <CubicMirroredVertex x="329.5" y="71.5" rotation="0.9309" distance="1.87"/>
+                    <CubicMirroredVertex x="335.5" y="74.5" rotation="0.0965" distance="2.5954"/>
+                    <CubicMirroredVertex x="345" y="73" rotation="-0.3218" distance="2.8988"/>
+                    <CubicMirroredVertex x="352" y="69" rotation="-0.7854" distance="2.8284"/>
+                    <CubicMirroredVertex x="357" y="61" rotation="-1.3382" distance="3.2543"/>
+                    <CubicMirroredVertex x="356.5" y="50" rotation="-1.9656" distance="3.25"/>
+                    <CubicMirroredVertex x="349.5" y="43" rotation="-2.7611" distance="3.1413"/>
+                    <CubicMirroredVertex x="339" y="43" rotation="2.8633" distance="3.0334"/>
+                </PointsPath>
+                <Fill name="HeadFill"><LinearGradient startX="328" startY="43" endX="357" endY="75" name="HeadGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="UnderChinShadow">
+                <PointsPath isClosed="false" name="UnderChinShadowPath">
+                    <CubicMirroredVertex x="334.5" y="74.5" rotation="0.1419" distance="2.357"/>
+                    <CubicMirroredVertex x="341.5" y="75.5" rotation="-0.1471" distance="2.2746"/>
+                    <CubicMirroredVertex x="348" y="72.5" rotation="-0.4324" distance="2.3863"/>
+                </PointsPath>
+                <Stroke thickness="3.2" cap="round" join="round" name="UnderChinShadowStroke"><SolidColor colorValue="8C0F172A" name="UnderChinShadowColor"/><Feather strength="2.5" name="UnderChinShadowFeather"/></Stroke>
+            </Shape>
+            <Shape name="SCMLine">
+                <PointsPath isClosed="false" name="SCMLinePath">
+                    <CubicMirroredVertex x="348" y="70.5" rotation="2.0956" distance="3.6591"/>
+                    <CubicMirroredVertex x="342.5" y="80" rotation="2.0804" distance="3.2457"/>
+                    <CubicMirroredVertex x="338.5" y="87.5" rotation="2.0608" distance="2.8333"/>
+                </PointsPath>
+                <Stroke thickness="1.5" cap="round" join="round" name="SCMLineStroke"><SolidColor colorValue="4D0F172A" name="SCMLineColor"/><Feather strength="1.5" name="SCMLineFeather"/></Stroke>
+            </Shape>
+            <Shape name="Neck">
+                <PointsPath isClosed="true" name="NeckPath">
+                    <CubicMirroredVertex x="334.5" y="71" rotation="-0.5404" distance="3.8873"/>
+                    <CubicMirroredVertex x="351" y="68" rotation="0.4715" distance="4.7704"/>
+                    <CubicMirroredVertex x="360" y="84" rotation="1.141" distance="4.4001"/>
+                    <CubicMirroredVertex x="362" y="92" rotation="3.0367" distance="6.3683"/>
+                    <CubicMirroredVertex x="322" y="88" rotation="-2.7723" distance="5.5403"/>
+                    <CubicMirroredVertex x="331" y="80" rotation="-0.9368" distance="3.5168"/>
+                </PointsPath>
+                <Fill name="NeckFill"><LinearGradient startX="0" startY="68" endX="0" endY="92" name="NeckGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="AbBlock1">
+                <PointsPath isClosed="true" name="AbBlock1Path">
+                    <CubicMirroredVertex x="332" y="117" rotation="-0.5071" distance="2.5739"/>
+                    <CubicMirroredVertex x="344" y="118" rotation="0.7354" distance="2.36"/>
+                    <CubicMirroredVertex x="342.5" y="126.5" rotation="2.6345" distance="2.5739"/>
+                    <CubicMirroredVertex x="330.5" y="125.5" rotation="-2.4062" distance="2.36"/>
+                </PointsPath>
+                <Fill name="AbsFill"><SolidColor colorValue="1A0F172A" name="AbsColor"/></Fill><Stroke thickness="0.9" join="round" name="AbsEdge"><SolidColor colorValue="400F172A" name="AbsEdgeColor"/></Stroke>
+            </Shape>
+            <Shape name="AbBlock2">
+                <PointsPath isClosed="true" name="AbBlock2Path">
+                    <CubicMirroredVertex x="330" y="128" rotation="-0.5071" distance="2.5739"/>
+                    <CubicMirroredVertex x="342" y="129" rotation="0.7598" distance="2.2989"/>
+                    <CubicMirroredVertex x="340" y="137.5" rotation="2.6345" distance="2.5739"/>
+                    <CubicMirroredVertex x="328.5" y="136.5" rotation="-2.3818" distance="2.2989"/>
+                </PointsPath>
+                <Fill name="AbsFill"><SolidColor colorValue="1A0F172A" name="AbsColor"/></Fill><Stroke thickness="0.9" join="round" name="AbsEdge"><SolidColor colorValue="400F172A" name="AbsEdgeColor"/></Stroke>
+            </Shape>
+            <Shape name="AbBlock3">
+                <PointsPath isClosed="true" name="AbBlock3Path">
+                    <CubicMirroredVertex x="328" y="139" rotation="-0.5233" distance="2.5014"/>
+                    <CubicMirroredVertex x="339.5" y="140" rotation="0.7854" distance="2.2392"/>
+                    <CubicMirroredVertex x="337.5" y="148.5" rotation="2.6183" distance="2.5014"/>
+                    <CubicMirroredVertex x="326.5" y="147.5" rotation="-2.3562" distance="2.2392"/>
+                </PointsPath>
+                <Fill name="AbsFill"><SolidColor colorValue="1A0F172A" name="AbsColor"/></Fill><Stroke thickness="0.9" join="round" name="AbsEdge"><SolidColor colorValue="400F172A" name="AbsEdgeColor"/></Stroke>
+            </Shape>
+            <Shape name="AbBlock4">
+                <PointsPath isClosed="true" name="AbBlock4Path">
+                    <CubicMirroredVertex x="320" y="116" rotation="-0.5594" distance="2.2613"/>
+                    <CubicMirroredVertex x="330" y="116.8" rotation="0.814" distance="2.0632"/>
+                    <CubicMirroredVertex x="328.5" y="125" rotation="2.5822" distance="2.2613"/>
+                    <CubicMirroredVertex x="318.5" y="124" rotation="-2.3276" distance="2.0632"/>
+                </PointsPath>
+                <Fill name="AbsFill"><SolidColor colorValue="1A0F172A" name="AbsColor"/></Fill><Stroke thickness="0.9" join="round" name="AbsEdge"><SolidColor colorValue="400F172A" name="AbsEdgeColor"/></Stroke>
+            </Shape>
+            <Shape name="AbBlock5">
+                <PointsPath isClosed="true" name="AbBlock5Path">
+                    <CubicMirroredVertex x="318" y="127" rotation="-0.5594" distance="2.2613"/>
+                    <CubicMirroredVertex x="328" y="127.8" rotation="0.814" distance="2.0632"/>
+                    <CubicMirroredVertex x="326.5" y="136" rotation="2.5822" distance="2.2613"/>
+                    <CubicMirroredVertex x="316.5" y="135" rotation="-2.3276" distance="2.0632"/>
+                </PointsPath>
+                <Fill name="AbsFill"><SolidColor colorValue="1A0F172A" name="AbsColor"/></Fill><Stroke thickness="0.9" join="round" name="AbsEdge"><SolidColor colorValue="400F172A" name="AbsEdgeColor"/></Stroke>
+            </Shape>
+            <Shape name="AbBlock6">
+                <PointsPath isClosed="true" name="AbBlock6Path">
+                    <CubicMirroredVertex x="316" y="138" rotation="-0.5594" distance="2.2613"/>
+                    <CubicMirroredVertex x="326" y="138.8" rotation="0.814" distance="2.0632"/>
+                    <CubicMirroredVertex x="324.5" y="147" rotation="2.5822" distance="2.2613"/>
+                    <CubicMirroredVertex x="314.5" y="146" rotation="-2.3276" distance="2.0632"/>
+                </PointsPath>
+                <Fill name="AbsFill"><SolidColor colorValue="1A0F172A" name="AbsColor"/></Fill><Stroke thickness="0.9" join="round" name="AbsEdge"><SolidColor colorValue="400F172A" name="AbsEdgeColor"/></Stroke>
+            </Shape>
+            <Shape name="LineaAlba">
+                <PointsPath isClosed="false" name="LineaAlbaPath">
+                    <CubicMirroredVertex x="333.5" y="114" rotation="1.7738" distance="5.7855"/>
+                    <CubicMirroredVertex x="330" y="131" rotation="1.7738" distance="5.7855"/>
+                    <CubicMirroredVertex x="326.5" y="148" rotation="1.7738" distance="5.7855"/>
+                </PointsPath>
+                <Stroke thickness="1.3" cap="round" join="round" name="LineaAlbaStroke"><SolidColor colorValue="470F172A" name="LineaAlbaColor"/><Feather strength="0.8" name="LineaAlbaFeather"/></Stroke>
+            </Shape>
+            <Shape name="PecHiNear">
+                <PointsPath isClosed="false" name="PecHiNearPath">
+                    <CubicMirroredVertex x="338" y="93" rotation="0.138" distance="6.0576"/>
+                    <CubicMirroredVertex x="356" y="95.5" rotation="0.138" distance="6.0576"/>
+                </PointsPath>
+                <Stroke thickness="2.4" cap="round" join="round" name="PecHiNearStroke"><SolidColor colorValue="D9FFFFFF" name="PecHiNearColor"/><Feather strength="2.8" name="PecHiNearFeather"/></Stroke>
+            </Shape>
+            <Shape name="PectoralNear">
+                <PointsPath isClosed="true" name="PectoralNearPath">
+                    <CubicMirroredVertex x="336" y="89" rotation="-0.649" distance="6.0668"/>
+                    <CubicMirroredVertex x="362" y="92" rotation="0.5646" distance="5.9184"/>
+                    <CubicMirroredVertex x="366" y="108" rotation="1.7179" distance="4.5491"/>
+                    <CubicMirroredVertex x="358" y="119" rotation="2.6422" distance="4.1767"/>
+                    <CubicMirroredVertex x="344" y="120" rotation="-2.9442" distance="4.2492"/>
+                    <CubicMirroredVertex x="333" y="114" rotation="-1.8234" distance="5.3359"/>
+                </PointsPath>
+                <Fill name="PecFill"><SolidColor colorValue="120F172A" name="PecCol"/></Fill><Stroke thickness="1.0" join="round" name="PecStroke"><SolidColor colorValue="380F172A" name="PecStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="PectoralFar">
+                <PointsPath isClosed="true" name="PectoralFarPath">
+                    <CubicMirroredVertex x="318" y="88" rotation="-0.3142" distance="3.505"/>
+                    <CubicMirroredVertex x="335" y="88.5" rotation="1.0687" distance="4.8484"/>
+                    <CubicMirroredVertex x="332" y="113.5" rotation="2.0647" distance="4.9216"/>
+                    <CubicMirroredVertex x="321" y="114.5" rotation="-2.7468" distance="3.25"/>
+                    <CubicMirroredVertex x="314" y="106" rotation="-1.8693" distance="3.4004"/>
+                    <CubicMirroredVertex x="315" y="95" rotation="-1.3521" distance="3.0732"/>
+                </PointsPath>
+                <Fill name="PecFill"><SolidColor colorValue="120F172A" name="PecCol"/></Fill><Stroke thickness="1.0" join="round" name="PecStroke"><SolidColor colorValue="380F172A" name="PecStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="TorsoHi">
+                <PointsPath isClosed="false" name="TorsoHiPath">
+                    <CubicMirroredVertex x="322" y="96" rotation="1.6539" distance="8.0277"/>
+                    <CubicMirroredVertex x="320" y="120" rotation="1.7005" distance="7.7316"/>
+                    <CubicMirroredVertex x="316" y="142" rotation="1.7506" distance="7.4536"/>
+                </PointsPath>
+                <Stroke thickness="4" cap="round" join="round" name="TorsoHiStroke"><SolidColor colorValue="D9FFFFFF" name="TorsoHiColor"/><Feather strength="4.5" name="TorsoHiFeather"/></Stroke>
+            </Shape>
+            <Shape name="Torso">
+                <PointsPath isClosed="true" name="TorsoPath">
+                    <CubicMirroredVertex x="318" y="86" rotation="-0.6557" distance="5.4671"/>
+                    <CubicMirroredVertex x="340" y="84" rotation="0.0768" distance="8.6923"/>
+                    <CubicMirroredVertex x="370" y="90" rotation="0.7854" distance="7.0711"/>
+                    <CubicMirroredVertex x="370" y="114" rotation="1.7762" distance="8.1718"/>
+                    <CubicMirroredVertex x="360" y="138" rotation="1.9809" distance="8.36"/>
+                    <CubicMirroredVertex x="350" y="160" rotation="2.4593" distance="6.8718"/>
+                    <CubicMirroredVertex x="328" y="164" rotation="-2.9181" distance="7.5203"/>
+                    <CubicMirroredVertex x="306" y="150" rotation="-1.9693" distance="6.8718"/>
+                    <CubicMirroredVertex x="312" y="126" rotation="-1.3986" distance="7.7817"/>
+                    <CubicMirroredVertex x="314" y="104" rotation="-1.4219" distance="6.7412"/>
+                </PointsPath>
+                <Fill name="TorsoFill"><LinearGradient startX="306" startY="84" endX="370" endY="164" name="TorsoGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+        </Node>
+
+        <!-- 3. Seated Athlete Thighs, Glowing 3-Head Quadriceps Femoris & Far Arm -->
+        <Node name="SeatedThighsAndQuadriceps">
+            <Shape name="NearQuadBipennate1">
+                <PointsPath isClosed="false" name="NearQuadBipennate1Path">
+                    <CubicMirroredVertex x="282" y="156" rotation="-0.05" distance="6.675"/>
+                    <CubicMirroredVertex x="302" y="155" rotation="0.1049" distance="6.3683"/>
+                    <CubicMirroredVertex x="320" y="160" rotation="0.2709" distance="6.2272"/>
+                </PointsPath>
+                <Stroke thickness="1.05" cap="round" join="round" name="NearQuadBipennate1Stroke"><SolidColor colorValue="807F1D1D" name="NearQuadBipennate1Color"/><Feather strength="0.3" name="NearQuadBipennate1Feather"/></Stroke>
+            </Shape>
+            <Shape name="NearQuadBipennate2">
+                <PointsPath isClosed="false" name="NearQuadBipennate2Path">
+                    <CubicMirroredVertex x="284" y="166" rotation="-0.05" distance="6.675"/>
+                    <CubicMirroredVertex x="304" y="165" rotation="0.088" distance="5.6887"/>
+                    <CubicMirroredVertex x="318" y="169" rotation="0.2783" distance="4.8534"/>
+                </PointsPath>
+                <Stroke thickness="1.05" cap="round" join="round" name="NearQuadBipennate2Stroke"><SolidColor colorValue="807F1D1D" name="NearQuadBipennate2Color"/><Feather strength="0.3" name="NearQuadBipennate2Feather"/></Stroke>
+            </Shape>
+            <Shape name="NearQuadHi">
+                <PointsPath isClosed="false" name="NearQuadHiPath">
+                    <CubicMirroredVertex x="282" y="153.5" rotation="-0.0454" distance="7.3409"/>
+                    <CubicMirroredVertex x="304" y="152.5" rotation="0.1049" distance="6.3683"/>
+                    <CubicMirroredVertex x="320" y="157.5" rotation="0.3029" distance="5.5877"/>
+                </PointsPath>
+                <Stroke thickness="2.4" cap="round" join="round" name="NearQuadHiStroke"><SolidColor colorValue="D9FFFFFF" name="NearQuadHiColor"/><Feather strength="2.5" name="NearQuadHiFeather"/></Stroke>
+            </Shape>
+            <Shape name="NearVastusLateralis">
+                <PointsPath isClosed="true" name="NearVastusLateralisPath">
+                    <CubicMirroredVertex x="278" y="162" rotation="-0.4636" distance="5.2175"/>
+                    <CubicMirroredVertex x="304" y="156" rotation="0.0208" distance="8.0017"/>
+                    <CubicMirroredVertex x="326" y="163" rotation="0.9197" distance="4.4001"/>
+                    <CubicMirroredVertex x="320" y="177" rotation="2.7557" distance="5.7566"/>
+                    <CubicMirroredVertex x="294" y="176" rotation="-2.9838" distance="7.4256"/>
+                    <CubicMirroredVertex x="276" y="170" rotation="-2.4228" distance="3.5434"/>
+                </PointsPath>
+                <Fill name="NearVLFill"><SolidColor colorValue="F0F75E33" name="NearVLColor" id="o7"/></Fill><Stroke thickness="1.05" join="round" name="NearVLEdge"><SolidColor colorValue="A9932721" name="NearVLEdgeColor" id="o8"/></Stroke>
+            </Shape>
+            <Shape name="NearRectusFemoris">
+                <PointsPath isClosed="true" name="NearRectusFemorisPath">
+                    <CubicMirroredVertex x="274" y="156" rotation="-0.5124" distance="4.5894"/>
+                    <CubicMirroredVertex x="298" y="148.5" rotation="-0.03" distance="8.3371"/>
+                    <CubicMirroredVertex x="324" y="154.5" rotation="0.6023" distance="4.8541"/>
+                    <CubicMirroredVertex x="322" y="165" rotation="2.8145" distance="4.928"/>
+                    <CubicMirroredVertex x="296" y="164" rotation="-3.0792" distance="8.0156"/>
+                    <CubicMirroredVertex x="274" y="162" rotation="-2.7928" distance="3.9016"/>
+                </PointsPath>
+                <Fill name="NearRFFill"><SolidColor colorValue="F1F75C36" name="NearRFColor" id="o9"/></Fill><Stroke thickness="1.1" join="round" name="NearRFEdge"><SolidColor colorValue="AD922522" name="NearRFEdgeColor" id="o10"/></Stroke>
+            </Shape>
+            <Shape name="NearVastusMedialis">
+                <PointsPath isClosed="true" name="NearVastusMedialisPath">
+                    <CubicMirroredVertex x="268" y="156" rotation="-0.7289" distance="3.1281"/>
+                    <CubicMirroredVertex x="284" y="149.5" rotation="-0.0713" distance="4.6786"/>
+                    <CubicMirroredVertex x="296" y="154" rotation="1.4237" distance="2.2746"/>
+                    <CubicMirroredVertex x="286" y="163" rotation="2.8431" distance="4.5338"/>
+                    <CubicMirroredVertex x="270" y="162" rotation="-2.7707" distance="3.2189"/>
+                </PointsPath>
+                <Fill name="NearVMFill"><SolidColor colorValue="F0F75E33" name="NearVMColor" id="o11"/></Fill><Stroke thickness="1" join="round" name="NearVMEdge"><SolidColor colorValue="A9932721" name="NearVMEdgeColor" id="o12"/></Stroke>
+            </Shape>
+            <Shape name="NearHamUnder">
+                <PointsPath isClosed="false" name="NearHamUnderPath">
+                    <CubicMirroredVertex x="278" y="180" rotation="0.19" distance="8.8255"/>
+                    <CubicMirroredVertex x="304" y="185" rotation="0.1297" distance="7.7316"/>
+                    <CubicMirroredVertex x="324" y="186" rotation="0.05" distance="6.675"/>
+                </PointsPath>
+                <Stroke thickness="2.8" cap="round" join="round" name="NearHamUnderStroke"><SolidColor colorValue="8C0F172A" name="NearHamUnderColor"/><Feather strength="2.8" name="NearHamUnderFeather"/></Stroke>
+            </Shape>
+            <Shape name="NearThighBase">
+                <PointsPath isClosed="true" name="NearThighBasePath">
+                    <CubicMirroredVertex x="264" y="166" rotation="-1.4464" distance="5.3748"/>
+                    <CubicMirroredVertex x="278" y="150" rotation="-0.3883" distance="7.9232"/>
+                    <CubicMirroredVertex x="308" y="148" rotation="0.1471" distance="9.0982"/>
+                    <CubicMirroredVertex x="332" y="158" rotation="0.9098" distance="7.6012"/>
+                    <CubicMirroredVertex x="336" y="184" rotation="2.1294" distance="6.2893"/>
+                    <CubicMirroredVertex x="312" y="190" rotation="-3.1093" distance="10.3387"/>
+                    <CubicMirroredVertex x="274" y="182" rotation="-2.6779" distance="8.9443"/>
+                </PointsPath>
+                <Fill name="NearThighFill"><LinearGradient startX="0" startY="148" endX="0" endY="190" name="NearThighGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FFD3DCE7" position="0.5"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="FarQuadBipennate">
+                <PointsPath isClosed="false" name="FarQuadBipennatePath">
+                    <CubicMirroredVertex x="256" y="147" rotation="-0.05" distance="6.675"/>
+                    <CubicMirroredVertex x="276" y="146" rotation="0.1107" distance="6.0369"/>
+                    <CubicMirroredVertex x="292" y="151" rotation="0.3029" distance="5.5877"/>
+                </PointsPath>
+                <Stroke thickness="1" cap="round" join="round" name="FarQuadBipennateStroke"><SolidColor colorValue="807F1D1D" name="FarQuadBipennateColor"/><Feather strength="0.3" name="FarQuadBipennateFeather"/></Stroke>
+            </Shape>
+            <Shape name="FarQuadHi">
+                <PointsPath isClosed="false" name="FarQuadHiPath">
+                    <CubicMirroredVertex x="256" y="144" rotation="-0.05" distance="6.675"/>
+                    <CubicMirroredVertex x="276" y="143" rotation="0.1107" distance="6.0369"/>
+                    <CubicMirroredVertex x="292" y="148" rotation="0.3029" distance="5.5877"/>
+                </PointsPath>
+                <Stroke thickness="2" cap="round" join="round" name="FarQuadHiStroke"><SolidColor colorValue="D9FFFFFF" name="FarQuadHiColor"/><Feather strength="2.2" name="FarQuadHiFeather"/></Stroke>
+            </Shape>
+            <Shape name="FarVastusMedialis">
+                <PointsPath isClosed="true" name="FarVastusMedialisPath">
+                    <CubicMirroredVertex x="246" y="152" rotation="-0.6255" distance="3.7006"/>
+                    <CubicMirroredVertex x="266" y="148" rotation="0.0555" distance="6.0093"/>
+                    <CubicMirroredVertex x="282" y="154" rotation="1.212" distance="2.848"/>
+                    <CubicMirroredVertex x="272" y="164" rotation="2.9385" distance="5.7855"/>
+                    <CubicMirroredVertex x="248" y="161" rotation="-2.7092" distance="4.7726"/>
+                </PointsPath>
+                <Fill name="FarVMFill"><SolidColor colorValue="F0F75E33" name="FarVMColor" id="o13"/></Fill><Stroke thickness="1" join="round" name="FarVMEdge"><SolidColor colorValue="A9932721" name="FarVMEdgeColor" id="o14"/></Stroke>
+            </Shape>
+            <Shape name="FarRectusFemoris">
+                <PointsPath isClosed="true" name="FarRectusFemorisPath">
+                    <CubicMirroredVertex x="248" y="148" rotation="-0.5517" distance="5.0881"/>
+                    <CubicMirroredVertex x="274" y="139" rotation="-0.0599" distance="8.3483"/>
+                    <CubicMirroredVertex x="298" y="145" rotation="0.7598" distance="4.5977"/>
+                    <CubicMirroredVertex x="294" y="158" rotation="2.705" distance="5.5176"/>
+                    <CubicMirroredVertex x="268" y="159" rotation="-3.0765" distance="7.683"/>
+                    <CubicMirroredVertex x="248" y="155" rotation="-2.6387" distance="3.8042"/>
+                </PointsPath>
+                <Fill name="FarRFFill"><SolidColor colorValue="F1F75C36" name="FarRFColor" id="o15"/></Fill><Stroke thickness="1.05" join="round" name="FarRFEdge"><SolidColor colorValue="AD922522" name="FarRFEdgeColor" id="o16"/></Stroke>
+            </Shape>
+            <Shape name="FarThighBase">
+                <PointsPath isClosed="true" name="FarThighBasePath">
+                    <CubicMirroredVertex x="238" y="156" rotation="-1.3734" distance="5.099"/>
+                    <CubicMirroredVertex x="254" y="140" rotation="-0.373" distance="8.2327"/>
+                    <CubicMirroredVertex x="284" y="138" rotation="0.1471" distance="9.0982"/>
+                    <CubicMirroredVertex x="308" y="148" rotation="0.9179" distance="7.1336"/>
+                    <CubicMirroredVertex x="310" y="172" rotation="2.2035" distance="6.2004"/>
+                    <CubicMirroredVertex x="286" y="178" rotation="-3.1093" distance="10.3387"/>
+                    <CubicMirroredVertex x="248" y="170" rotation="-2.7118" distance="8.8003"/>
+                </PointsPath>
+                <Fill name="FarThighFill"><LinearGradient startX="0" startY="138" endX="0" endY="178" name="FarThighGrad"><GradientStop colorValue="FFCBD5E1" position="0"/><GradientStop colorValue="FF94A3B8" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="ShortsLegHem">
+                <PointsPath isClosed="false" name="ShortsLegHemPath">
+                    <CubicMirroredVertex x="314" y="156" rotation="1.249" distance="6.3246"/>
+                    <CubicMirroredVertex x="320" y="174" rotation="1.6296" distance="5.6765"/>
+                    <CubicMirroredVertex x="312" y="190" rotation="2.0344" distance="5.9628"/>
+                </PointsPath>
+                <Stroke thickness="1.6" cap="round" join="round" name="ShortsLegHemStroke"><SolidColor colorValue="660F172A" name="ShortsLegHemColor"/><Feather strength="0.8" name="ShortsLegHemFeather"/></Stroke>
+            </Shape>
+            <Shape name="PelvisShorts">
+                <PointsPath isClosed="true" name="PelvisShortsPath">
+                    <CubicMirroredVertex x="302" y="146" rotation="-0.6147" distance="6.9362"/>
+                    <CubicMirroredVertex x="332" y="152" rotation="0.2985" distance="9.0676"/>
+                    <CubicMirroredVertex x="354" y="162" rotation="1.1903" distance="7.1802"/>
+                    <CubicMirroredVertex x="348" y="192" rotation="2.415" distance="8.0277"/>
+                    <CubicMirroredVertex x="318" y="194" rotation="-2.8319" distance="8.7496"/>
+                    <CubicMirroredVertex x="298" y="176" rotation="-1.8925" distance="8.4327"/>
+                </PointsPath>
+                <Fill name="ShortsFill"><LinearGradient startX="298" startY="146" endX="354" endY="194" name="ShortsGrad"><GradientStop colorValue="FF475569" position="0"/><GradientStop colorValue="FF2B3649" position="0.5"/><GradientStop colorValue="FF172033" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="FarForearm">
+                <PointsPath isClosed="true" name="FarForearmPath">
+                    <CubicMirroredVertex x="292" y="132" rotation="-0.6747" distance="4.2687"/>
+                    <CubicMirroredVertex x="302" y="136" rotation="1.5708" distance="4"/>
+                    <CubicMirroredVertex x="292" y="156" rotation="2.4669" distance="4.2687"/>
+                    <CubicMirroredVertex x="282" y="152" rotation="-1.5708" distance="4"/>
+                </PointsPath>
+                <Fill name="FarFAFill"><LinearGradient startX="0" startY="132" endX="0" endY="156" name="FarFAGrad"><GradientStop colorValue="FFCBD5E1" position="0"/><GradientStop colorValue="FF94A3B8" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="FarUpperArm">
+                <PointsPath isClosed="true" name="FarUpperArmPath">
+                    <CubicMirroredVertex x="306" y="98" rotation="-0.8885" distance="6.8718"/>
+                    <CubicMirroredVertex x="318" y="102" rotation="1.6208" distance="6.675"/>
+                    <CubicMirroredVertex x="304" y="138" rotation="2.2531" distance="6.8718"/>
+                    <CubicMirroredVertex x="292" y="134" rotation="-1.5208" distance="6.675"/>
+                </PointsPath>
+                <Fill name="FarUAFill"><LinearGradient startX="0" startY="98" endX="0" endY="138" name="FarUAGrad"><GradientStop colorValue="FFCBD5E1" position="0"/><GradientStop colorValue="FF94A3B8" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill>
+            </Shape>
+            <Shape name="FarDeltoid">
+                <PointsPath isClosed="true" name="FarDeltoidPath">
+                    <CubicMirroredVertex x="308" y="86" rotation="-1.0427" distance="4.6308"/>
+                    <CubicMirroredVertex x="320" y="84" rotation="0.9098" distance="3.8006"/>
+                    <CubicMirroredVertex x="322" y="104" rotation="2.0989" distance="4.6308"/>
+                    <CubicMirroredVertex x="306" y="108" rotation="-2.2318" distance="3.8006"/>
+                </PointsPath>
+                <Fill name="FarDeltFill"><LinearGradient startX="0" startY="84" endX="0" endY="108" name="FarDeltGrad"><GradientStop colorValue="FFCBD5E1" position="0"/><GradientStop colorValue="FF94A3B8" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill>
+            </Shape>
+        </Node>
+
+        <!-- 4. Commercial Leg Extension Machine Frame, Cam Wheel & Animated Weight Stack -->
+        <Node name="MachineBackgroundFrame">
+            <Shape name="NearSideGrip">
+                <PointsPath isClosed="true" name="NearSideGripPath">
+                    <StraightVertex x="312" y="196" radius="2"/>
+                    <StraightVertex x="332" y="198" radius="2"/>
+                    <StraightVertex x="332" y="205" radius="2"/>
+                    <StraightVertex x="312" y="203" radius="2"/>
+                </PointsPath>
+                <Fill name="GripFill"><SolidColor colorValue="FF090D16" name="GripCol"/></Fill><Stroke thickness="1.0" join="round" name="GripStroke"><SolidColor colorValue="FF334155" name="GripStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="SeatPad">
+                <PointsPath isClosed="true" name="SeatPadPath">
+                    <StraightVertex x="248" y="182" radius="4"/>
+                    <StraightVertex x="356" y="192" radius="4"/>
+                    <StraightVertex x="362" y="212" radius="4"/>
+                    <StraightVertex x="244" y="200" radius="4"/>
+                </PointsPath>
+                <Fill name="SeatFill"><LinearGradient startX="248" startY="178" endX="362" endY="214" name="SeatGrad"><GradientStop colorValue="FF334155" position="0"/><GradientStop colorValue="FF182232" position="0.5"/><GradientStop colorValue="FF090D16" position="1"/></LinearGradient></Fill><Stroke thickness="1.2" join="round" name="SeatStroke"><SolidColor colorValue="FF475569" name="SeatStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="BackrestAdjustGrip">
+                <PointsPath isClosed="true" name="BackrestAdjustGripPath">
+                    <StraightVertex x="402" y="107" radius="1.5"/>
+                    <StraightVertex x="418" y="113" radius="1.5"/>
+                    <StraightVertex x="416" y="118" radius="1.5"/>
+                    <StraightVertex x="400" y="112" radius="1.5"/>
+                </PointsPath>
+                <Fill name="GripFill"><SolidColor colorValue="FF090D16" name="GripCol"/></Fill><Stroke thickness="1.0" join="round" name="GripStroke"><SolidColor colorValue="FF334155" name="GripStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="BackrestAdjustBar">
+                <PointsPath isClosed="true" name="BackrestAdjustBarPath">
+                    <StraightVertex x="388" y="102" radius="1"/>
+                    <StraightVertex x="404" y="108" radius="1"/>
+                    <StraightVertex x="402" y="112" radius="1"/>
+                    <StraightVertex x="386" y="106" radius="1"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="BackrestPad">
+                <PointsPath isClosed="true" name="BackrestPadPath">
+                    <StraightVertex x="348" y="82" radius="4.5"/>
+                    <StraightVertex x="396" y="94" radius="4.5"/>
+                    <StraightVertex x="364" y="194" radius="4.5"/>
+                    <StraightVertex x="324" y="184" radius="4.5"/>
+                </PointsPath>
+                <Fill name="BackrestFill"><LinearGradient startX="330" startY="82" endX="402" endY="192" name="BackrestGrad"><GradientStop colorValue="FF334155" position="0"/><GradientStop colorValue="FF182232" position="0.5"/><GradientStop colorValue="FF090D16" position="1"/></LinearGradient></Fill><Stroke thickness="1.2" join="round" name="BackrestStroke"><SolidColor colorValue="FF475569" name="BackrestStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="FootCapFrontRight">
+                <PointsPath isClosed="true" name="FootCapFrontRightPath">
+                    <StraightVertex x="262" y="286" radius="2"/>
+                    <StraightVertex x="276" y="290" radius="2"/>
+                    <StraightVertex x="274" y="300" radius="2"/>
+                    <StraightVertex x="258" y="296" radius="2"/>
+                </PointsPath>
+                <Fill name="GripFill"><SolidColor colorValue="FF090D16" name="GripCol"/></Fill><Stroke thickness="1.0" join="round" name="GripStroke"><SolidColor colorValue="FF334155" name="GripStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="FootCapFrontLeft">
+                <PointsPath isClosed="true" name="FootCapFrontLeftPath">
+                    <StraightVertex x="178" y="250" radius="2"/>
+                    <StraightVertex x="192" y="254" radius="2"/>
+                    <StraightVertex x="190" y="264" radius="2"/>
+                    <StraightVertex x="174" y="260" radius="2"/>
+                </PointsPath>
+                <Fill name="GripFill"><SolidColor colorValue="FF090D16" name="GripCol"/></Fill><Stroke thickness="1.0" join="round" name="GripStroke"><SolidColor colorValue="FF334155" name="GripStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="FootCapRearRight">
+                <PointsPath isClosed="true" name="FootCapRearRightPath">
+                    <StraightVertex x="372" y="252" radius="2"/>
+                    <StraightVertex x="386" y="256" radius="2"/>
+                    <StraightVertex x="384" y="266" radius="2"/>
+                    <StraightVertex x="368" y="262" radius="2"/>
+                </PointsPath>
+                <Fill name="GripFill"><SolidColor colorValue="FF090D16" name="GripCol"/></Fill><Stroke thickness="1.0" join="round" name="GripStroke"><SolidColor colorValue="FF334155" name="GripStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="FrontRightBaseLeg">
+                <PointsPath isClosed="true" name="FrontRightBaseLegPath">
+                    <StraightVertex x="266" y="288" radius="2"/>
+                    <StraightVertex x="376" y="252" radius="2"/>
+                    <StraightVertex x="380" y="260" radius="2"/>
+                    <StraightVertex x="270" y="296" radius="2"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="FrontSeatPost">
+                <PointsPath isClosed="true" name="FrontSeatPostPath">
+                    <StraightVertex x="292" y="202" radius="2"/>
+                    <StraightVertex x="308" y="204" radius="2"/>
+                    <StraightVertex x="308" y="280" radius="2"/>
+                    <StraightVertex x="292" y="280" radius="2"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="RearSeatPost">
+                <PointsPath isClosed="true" name="RearSeatPostPath">
+                    <StraightVertex x="346" y="198" radius="2"/>
+                    <StraightVertex x="360" y="200" radius="2"/>
+                    <StraightVertex x="368" y="258" radius="2"/>
+                    <StraightVertex x="354" y="258" radius="2"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="CrossBraceRunner">
+                <PointsPath isClosed="true" name="CrossBraceRunnerPath">
+                    <StraightVertex x="196" y="246" radius="2"/>
+                    <StraightVertex x="296" y="274" radius="2"/>
+                    <StraightVertex x="292" y="282" radius="2"/>
+                    <StraightVertex x="192" y="254" radius="2"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="LeftCamPost">
+                <PointsPath isClosed="true" name="LeftCamPostPath">
+                    <StraightVertex x="184" y="174" radius="2"/>
+                    <StraightVertex x="198" y="176" radius="2"/>
+                    <StraightVertex x="198" y="256" radius="2"/>
+                    <StraightVertex x="184" y="254" radius="2"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape x="204" y="142" name="CounterweightBall">
+                <Ellipse width="15" height="15" name="CounterweightBallEllipse"/>
+                <Fill name="CamFill"><LinearGradient startX="-20" startY="-20" endX="20" endY="20" name="CamGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill><Stroke thickness="1.2" join="round" name="CamStroke"><SolidColor colorValue="FF475569" name="CamStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="CounterweightArm">
+                <PointsPath isClosed="true" name="CounterweightArmPath">
+                    <StraightVertex x="184" y="168" radius="1.5"/>
+                    <StraightVertex x="202" y="144" radius="1.5"/>
+                    <StraightVertex x="206" y="148" radius="1.5"/>
+                    <StraightVertex x="188" y="172" radius="1.5"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape x="184" y="172" rotation="-0.1745" name="SideCamWheel">
+                <Ellipse width="28" height="36" name="SideCamWheelEllipse"/>
+                <Fill name="CamFill"><LinearGradient startX="-20" startY="-20" endX="20" endY="20" name="CamGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill><Stroke thickness="1.2" join="round" name="CamStroke"><SolidColor colorValue="FF475569" name="CamStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="TowerPostLeft">
+                <PointsPath isClosed="true" name="TowerPostLeftPath">
+                    <StraightVertex x="212" y="54" radius="2"/>
+                    <StraightVertex x="222" y="54" radius="2"/>
+                    <StraightVertex x="222" y="252" radius="2"/>
+                    <StraightVertex x="212" y="252" radius="2"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="TowerPostRight">
+                <PointsPath isClosed="true" name="TowerPostRightPath">
+                    <StraightVertex x="266" y="42" radius="2"/>
+                    <StraightVertex x="276" y="42" radius="2"/>
+                    <StraightVertex x="276" y="240" radius="2"/>
+                    <StraightVertex x="266" y="240" radius="2"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="TowerTopHeader">
+                <PointsPath isClosed="true" name="TowerTopHeaderPath">
+                    <StraightVertex x="210" y="50" radius="2.5"/>
+                    <StraightVertex x="278" y="36" radius="2.5"/>
+                    <StraightVertex x="278" y="48" radius="2.5"/>
+                    <StraightVertex x="210" y="62" radius="2.5"/>
+                </PointsPath>
+                <Fill name="FrameFill"><LinearGradient startX="165" startY="45" endX="395" endY="296" name="FrameGrad"><GradientStop colorValue="FFF1F5F9" position="0"/><GradientStop colorValue="FFCBD5E1" position="0.5"/><GradientStop colorValue="FF64748B" position="1"/></LinearGradient></Fill><Stroke thickness="1.15" join="round" name="FrameStroke"><SolidColor colorValue="FF475569" name="FrameStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="TowerTopShield">
+                <PointsPath isClosed="true" name="TowerTopShieldPath">
+                    <StraightVertex x="220" y="56" radius="2"/>
+                    <StraightVertex x="268" y="46" radius="2"/>
+                    <StraightVertex x="268" y="76" radius="2"/>
+                    <StraightVertex x="220" y="86" radius="2"/>
+                </PointsPath>
+                <Fill name="CamFill"><LinearGradient startX="-20" startY="-20" endX="20" endY="20" name="CamGrad"><GradientStop colorValue="FFF8FAFC" position="0"/><GradientStop colorValue="FF94A3B8" position="1"/></LinearGradient></Fill><Stroke thickness="1.2" join="round" name="CamStroke"><SolidColor colorValue="FF475569" name="CamStrokeCol"/></Stroke>
+            </Shape>
+            <Node y="0" name="ActiveWeightStack" id="o17">
+                <Shape x="246" y="186" name="SelectorPin">
+                    <Ellipse width="4.2" height="4.2" name="SelectorPinEllipse"/>
+                    <Fill name="PinFill"><SolidColor colorValue="FFF97316" name="PinColor"/></Fill>
+                </Shape>
+                <Shape name="ActivePlate1">
+                    <PointsPath isClosed="true" name="ActivePlate1Path">
+                        <StraightVertex x="224" y="154" radius="1"/>
+                        <StraightVertex x="264" y="146" radius="1"/>
+                        <StraightVertex x="264" y="151" radius="1"/>
+                        <StraightVertex x="224" y="159" radius="1"/>
+                    </PointsPath>
+                    <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+                </Shape>
+                <Shape name="ActivePlate2">
+                    <PointsPath isClosed="true" name="ActivePlate2Path">
+                        <StraightVertex x="224" y="160.5" radius="1"/>
+                        <StraightVertex x="264" y="152.5" radius="1"/>
+                        <StraightVertex x="264" y="157.5" radius="1"/>
+                        <StraightVertex x="224" y="165.5" radius="1"/>
+                    </PointsPath>
+                    <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+                </Shape>
+                <Shape name="ActivePlate3">
+                    <PointsPath isClosed="true" name="ActivePlate3Path">
+                        <StraightVertex x="224" y="167" radius="1"/>
+                        <StraightVertex x="264" y="159" radius="1"/>
+                        <StraightVertex x="264" y="164" radius="1"/>
+                        <StraightVertex x="224" y="172" radius="1"/>
+                    </PointsPath>
+                    <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+                </Shape>
+                <Shape name="ActivePlate4">
+                    <PointsPath isClosed="true" name="ActivePlate4Path">
+                        <StraightVertex x="224" y="173.5" radius="1"/>
+                        <StraightVertex x="264" y="165.5" radius="1"/>
+                        <StraightVertex x="264" y="170.5" radius="1"/>
+                        <StraightVertex x="224" y="178.5" radius="1"/>
+                    </PointsPath>
+                    <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+                </Shape>
+                <Shape name="ActivePlate5">
+                    <PointsPath isClosed="true" name="ActivePlate5Path">
+                        <StraightVertex x="224" y="180" radius="1"/>
+                        <StraightVertex x="264" y="172" radius="1"/>
+                        <StraightVertex x="264" y="177" radius="1"/>
+                        <StraightVertex x="224" y="185" radius="1"/>
+                    </PointsPath>
+                    <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+                </Shape>
+                <Shape name="ActivePlate6">
+                    <PointsPath isClosed="true" name="ActivePlate6Path">
+                        <StraightVertex x="224" y="186.5" radius="1"/>
+                        <StraightVertex x="264" y="178.5" radius="1"/>
+                        <StraightVertex x="264" y="183.5" radius="1"/>
+                        <StraightVertex x="224" y="191.5" radius="1"/>
+                    </PointsPath>
+                    <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+                </Shape>
+            </Node>
+            <Shape name="RestPlate1">
+                <PointsPath isClosed="true" name="RestPlate1Path">
+                    <StraightVertex x="224" y="196" radius="1"/>
+                    <StraightVertex x="264" y="188" radius="1"/>
+                    <StraightVertex x="264" y="193" radius="1"/>
+                    <StraightVertex x="224" y="201" radius="1"/>
+                </PointsPath>
+                <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="RestPlate2">
+                <PointsPath isClosed="true" name="RestPlate2Path">
+                    <StraightVertex x="224" y="202.5" radius="1"/>
+                    <StraightVertex x="264" y="194.5" radius="1"/>
+                    <StraightVertex x="264" y="199.5" radius="1"/>
+                    <StraightVertex x="224" y="207.5" radius="1"/>
+                </PointsPath>
+                <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="RestPlate3">
+                <PointsPath isClosed="true" name="RestPlate3Path">
+                    <StraightVertex x="224" y="209" radius="1"/>
+                    <StraightVertex x="264" y="201" radius="1"/>
+                    <StraightVertex x="264" y="206" radius="1"/>
+                    <StraightVertex x="224" y="214" radius="1"/>
+                </PointsPath>
+                <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="RestPlate4">
+                <PointsPath isClosed="true" name="RestPlate4Path">
+                    <StraightVertex x="224" y="215.5" radius="1"/>
+                    <StraightVertex x="264" y="207.5" radius="1"/>
+                    <StraightVertex x="264" y="212.5" radius="1"/>
+                    <StraightVertex x="224" y="220.5" radius="1"/>
+                </PointsPath>
+                <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="RestPlate5">
+                <PointsPath isClosed="true" name="RestPlate5Path">
+                    <StraightVertex x="224" y="222" radius="1"/>
+                    <StraightVertex x="264" y="214" radius="1"/>
+                    <StraightVertex x="264" y="219" radius="1"/>
+                    <StraightVertex x="224" y="227" radius="1"/>
+                </PointsPath>
+                <Fill name="StackFill"><SolidColor colorValue="FF1E293B" name="StackCol"/></Fill><Stroke thickness="0.95" join="round" name="StackStroke"><SolidColor colorValue="FF475569" name="StackStrokeCol"/></Stroke>
+            </Shape>
+            <Shape name="LiftCable">
+                <PointsPath isClosed="false" name="LiftCablePath">
+                    <StraightVertex x="244" y="52" radius="0.5"/>
+                    <StraightVertex x="244" y="190" radius="0.5"/>
+                </PointsPath>
+                <Stroke thickness="1.6" cap="round" join="round" name="LiftCableStroke"><SolidColor colorValue="FF94A3B8" name="LiftCableColor"/></Stroke>
+            </Shape>
+            <Shape name="GuideRod1">
+                <PointsPath isClosed="false" name="GuideRod1Path">
+                    <StraightVertex x="234" y="56" radius="0.5"/>
+                    <StraightVertex x="234" y="232" radius="0.5"/>
+                </PointsPath>
+                <Stroke thickness="1.8" cap="round" join="round" name="GuideRod1Stroke"><SolidColor colorValue="FFCBD5E1" name="GuideRod1Color"/></Stroke>
+            </Shape>
+            <Shape name="GuideRod2">
+                <PointsPath isClosed="false" name="GuideRod2Path">
+                    <StraightVertex x="254" y="52" radius="0.5"/>
+                    <StraightVertex x="254" y="226" radius="0.5"/>
+                </PointsPath>
+                <Stroke thickness="1.8" cap="round" join="round" name="GuideRod2Stroke"><SolidColor colorValue="FFCBD5E1" name="GuideRod2Color"/></Stroke>
+            </Shape>
+        </Node>
+
+        <!-- 5. Studio Floor Shadow & Ambient Backdrop -->
+        <Shape x="292" y="298" scaleX="1.18" scaleY="0.10" name="MachineShadow">
+            <Ellipse width="220" height="220" name="MachineShadowEllipse"/>
+            <Fill name="MachineShadowFill"><RadialGradient startX="0" startY="0" endX="110" endY="0" name="MachineShadowGrad">
+                <GradientStop colorValue="BF000000" position="0"/>
+                <GradientStop colorValue="59000000" position="0.6"/>
+                <GradientStop colorValue="00000000" position="1"/>
+            </RadialGradient></Fill>
+        </Shape>
+        <Shape x="320.0" y="301" name="FloorLine">
+            <Rectangle width="600" height="2" cornerRadiusTL="1" name="FloorRect"/>
+            <Fill name="FloorFill"><LinearGradient startX="-300.0" startY="0" endX="300.0" endY="0" name="FloorGrad">
+                <GradientStop colorValue="00475569" position="0"/>
+                <GradientStop colorValue="FF475569" position="0.2"/>
+                <GradientStop colorValue="FF475569" position="0.8"/>
+                <GradientStop colorValue="00475569" position="1"/>
+            </LinearGradient></Fill>
+        </Shape>
+        <Shape x="320.0" y="331" name="FloorBand">
+            <Rectangle width="640" height="60" name="FloorBandRect"/>
+            <Fill name="FloorBandFill"><LinearGradient startX="0" startY="-30" endX="0" endY="30" name="FloorBandGrad"><GradientStop colorValue="FF172033" position="0"/><GradientStop colorValue="FF0B1120" position="1"/></LinearGradient></Fill>
+        </Shape>
+        <Shape x="320.0" y="180.0" name="Backdrop">
+            <Rectangle width="640" height="360" name="BackdropRect"/>
+            <Fill name="BackdropFill"><RadialGradient startX="0" startY="-40" endX="0" endY="270.0" name="BackdropGrad">
+                <GradientStop colorValue="FF1E293B" position="0"/>
+                <GradientStop colorValue="FF0F172A" position="1"/>
+            </RadialGradient></Fill>
+        </Shape>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Motion" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:12"/>
+                </EntryState>
+                <AnimationState x="200" animationId="0:60" id="0:12"/>
+            </StateMachineLayer>
+        </StateMachine>
+
+        <LinearAnimation fps="60" duration="160" loopValue="loop" name="LegExtension" id="0:60">
+        <KeyedObject objectId="o1">
+            <KeyedProperty propertyKey="15">
+                <KeyFrameDouble frame="0" value="1.7279"/>
+                <KeyFrameDouble frame="2" value="1.7279"/>
+                <KeyFrameDouble frame="4" value="1.7279"/>
+                <KeyFrameDouble frame="6" value="1.7279"/>
+                <KeyFrameDouble frame="8" value="1.7279"/>
+                <KeyFrameDouble frame="10" value="1.7279"/>
+                <KeyFrameDouble frame="12" value="1.7279"/>
+                <KeyFrameDouble frame="14" value="1.7325"/>
+                <KeyFrameDouble frame="16" value="1.7481"/>
+                <KeyFrameDouble frame="18" value="1.7776"/>
+                <KeyFrameDouble frame="20" value="1.8246"/>
+                <KeyFrameDouble frame="22" value="1.8923"/>
+                <KeyFrameDouble frame="24" value="1.9817"/>
+                <KeyFrameDouble frame="26" value="2.0876"/>
+                <KeyFrameDouble frame="28" value="2.199"/>
+                <KeyFrameDouble frame="30" value="2.3047"/>
+                <KeyFrameDouble frame="32" value="2.3986"/>
+                <KeyFrameDouble frame="34" value="2.4795"/>
+                <KeyFrameDouble frame="36" value="2.5482"/>
+                <KeyFrameDouble frame="38" value="2.6063"/>
+                <KeyFrameDouble frame="40" value="2.6554"/>
+                <KeyFrameDouble frame="42" value="2.6969"/>
+                <KeyFrameDouble frame="44" value="2.7318"/>
+                <KeyFrameDouble frame="46" value="2.7611"/>
+                <KeyFrameDouble frame="48" value="2.7856"/>
+                <KeyFrameDouble frame="50" value="2.8058"/>
+                <KeyFrameDouble frame="52" value="2.8223"/>
+                <KeyFrameDouble frame="54" value="2.8355"/>
+                <KeyFrameDouble frame="56" value="2.8457"/>
+                <KeyFrameDouble frame="58" value="2.8533"/>
+                <KeyFrameDouble frame="60" value="2.8584"/>
+                <KeyFrameDouble frame="62" value="2.8614"/>
+                <KeyFrameDouble frame="64" value="2.8623"/>
+                <KeyFrameDouble frame="66" value="2.8623"/>
+                <KeyFrameDouble frame="68" value="2.8623"/>
+                <KeyFrameDouble frame="70" value="2.8623"/>
+                <KeyFrameDouble frame="72" value="2.8623"/>
+                <KeyFrameDouble frame="74" value="2.8623"/>
+                <KeyFrameDouble frame="76" value="2.8623"/>
+                <KeyFrameDouble frame="78" value="2.8623"/>
+                <KeyFrameDouble frame="80" value="2.8623"/>
+                <KeyFrameDouble frame="82" value="2.8623"/>
+                <KeyFrameDouble frame="84" value="2.8623"/>
+                <KeyFrameDouble frame="86" value="2.8602"/>
+                <KeyFrameDouble frame="88" value="2.8533"/>
+                <KeyFrameDouble frame="90" value="2.8411"/>
+                <KeyFrameDouble frame="92" value="2.8231"/>
+                <KeyFrameDouble frame="94" value="2.7985"/>
+                <KeyFrameDouble frame="96" value="2.7666"/>
+                <KeyFrameDouble frame="98" value="2.7269"/>
+                <KeyFrameDouble frame="100" value="2.6789"/>
+                <KeyFrameDouble frame="102" value="2.6227"/>
+                <KeyFrameDouble frame="104" value="2.5589"/>
+                <KeyFrameDouble frame="106" value="2.489"/>
+                <KeyFrameDouble frame="108" value="2.4151"/>
+                <KeyFrameDouble frame="110" value="2.3398"/>
+                <KeyFrameDouble frame="112" value="2.2658"/>
+                <KeyFrameDouble frame="114" value="2.1952"/>
+                <KeyFrameDouble frame="116" value="2.1295"/>
+                <KeyFrameDouble frame="118" value="2.0695"/>
+                <KeyFrameDouble frame="120" value="2.0155"/>
+                <KeyFrameDouble frame="122" value="1.9674"/>
+                <KeyFrameDouble frame="124" value="1.925"/>
+                <KeyFrameDouble frame="126" value="1.888"/>
+                <KeyFrameDouble frame="128" value="1.8558"/>
+                <KeyFrameDouble frame="130" value="1.8282"/>
+                <KeyFrameDouble frame="132" value="1.8047"/>
+                <KeyFrameDouble frame="134" value="1.7849"/>
+                <KeyFrameDouble frame="136" value="1.7685"/>
+                <KeyFrameDouble frame="138" value="1.7553"/>
+                <KeyFrameDouble frame="140" value="1.7449"/>
+                <KeyFrameDouble frame="142" value="1.7372"/>
+                <KeyFrameDouble frame="144" value="1.7319"/>
+                <KeyFrameDouble frame="146" value="1.7289"/>
+                <KeyFrameDouble frame="148" value="1.7279"/>
+                <KeyFrameDouble frame="150" value="1.7279"/>
+                <KeyFrameDouble frame="152" value="1.7279"/>
+                <KeyFrameDouble frame="154" value="1.7279"/>
+                <KeyFrameDouble frame="156" value="1.7279"/>
+                <KeyFrameDouble frame="158" value="1.7279"/>
+                <KeyFrameDouble frame="160" value="1.7279"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o2">
+            <KeyedProperty propertyKey="15">
+                <KeyFrameDouble frame="0" value="1.7628"/>
+                <KeyFrameDouble frame="2" value="1.7628"/>
+                <KeyFrameDouble frame="4" value="1.7628"/>
+                <KeyFrameDouble frame="6" value="1.7628"/>
+                <KeyFrameDouble frame="8" value="1.7628"/>
+                <KeyFrameDouble frame="10" value="1.7628"/>
+                <KeyFrameDouble frame="12" value="1.7628"/>
+                <KeyFrameDouble frame="14" value="1.7674"/>
+                <KeyFrameDouble frame="16" value="1.7827"/>
+                <KeyFrameDouble frame="18" value="1.8118"/>
+                <KeyFrameDouble frame="20" value="1.858"/>
+                <KeyFrameDouble frame="22" value="1.9247"/>
+                <KeyFrameDouble frame="24" value="2.0127"/>
+                <KeyFrameDouble frame="26" value="2.117"/>
+                <KeyFrameDouble frame="28" value="2.2267"/>
+                <KeyFrameDouble frame="30" value="2.3307"/>
+                <KeyFrameDouble frame="32" value="2.4232"/>
+                <KeyFrameDouble frame="34" value="2.5028"/>
+                <KeyFrameDouble frame="36" value="2.5705"/>
+                <KeyFrameDouble frame="38" value="2.6277"/>
+                <KeyFrameDouble frame="40" value="2.676"/>
+                <KeyFrameDouble frame="42" value="2.7169"/>
+                <KeyFrameDouble frame="44" value="2.7512"/>
+                <KeyFrameDouble frame="46" value="2.7801"/>
+                <KeyFrameDouble frame="48" value="2.8042"/>
+                <KeyFrameDouble frame="50" value="2.8242"/>
+                <KeyFrameDouble frame="52" value="2.8404"/>
+                <KeyFrameDouble frame="54" value="2.8534"/>
+                <KeyFrameDouble frame="56" value="2.8634"/>
+                <KeyFrameDouble frame="58" value="2.8709"/>
+                <KeyFrameDouble frame="60" value="2.876"/>
+                <KeyFrameDouble frame="62" value="2.8789"/>
+                <KeyFrameDouble frame="64" value="2.8798"/>
+                <KeyFrameDouble frame="66" value="2.8798"/>
+                <KeyFrameDouble frame="68" value="2.8798"/>
+                <KeyFrameDouble frame="70" value="2.8798"/>
+                <KeyFrameDouble frame="72" value="2.8798"/>
+                <KeyFrameDouble frame="74" value="2.8798"/>
+                <KeyFrameDouble frame="76" value="2.8798"/>
+                <KeyFrameDouble frame="78" value="2.8798"/>
+                <KeyFrameDouble frame="80" value="2.8798"/>
+                <KeyFrameDouble frame="82" value="2.8798"/>
+                <KeyFrameDouble frame="84" value="2.8798"/>
+                <KeyFrameDouble frame="86" value="2.8777"/>
+                <KeyFrameDouble frame="88" value="2.8709"/>
+                <KeyFrameDouble frame="90" value="2.8589"/>
+                <KeyFrameDouble frame="92" value="2.8412"/>
+                <KeyFrameDouble frame="94" value="2.8169"/>
+                <KeyFrameDouble frame="96" value="2.7855"/>
+                <KeyFrameDouble frame="98" value="2.7464"/>
+                <KeyFrameDouble frame="100" value="2.6992"/>
+                <KeyFrameDouble frame="102" value="2.6438"/>
+                <KeyFrameDouble frame="104" value="2.5811"/>
+                <KeyFrameDouble frame="106" value="2.5122"/>
+                <KeyFrameDouble frame="108" value="2.4394"/>
+                <KeyFrameDouble frame="110" value="2.3653"/>
+                <KeyFrameDouble frame="112" value="2.2924"/>
+                <KeyFrameDouble frame="114" value="2.2229"/>
+                <KeyFrameDouble frame="116" value="2.1582"/>
+                <KeyFrameDouble frame="118" value="2.0991"/>
+                <KeyFrameDouble frame="120" value="2.0459"/>
+                <KeyFrameDouble frame="122" value="1.9986"/>
+                <KeyFrameDouble frame="124" value="1.9569"/>
+                <KeyFrameDouble frame="126" value="1.9204"/>
+                <KeyFrameDouble frame="128" value="1.8888"/>
+                <KeyFrameDouble frame="130" value="1.8616"/>
+                <KeyFrameDouble frame="132" value="1.8384"/>
+                <KeyFrameDouble frame="134" value="1.8189"/>
+                <KeyFrameDouble frame="136" value="1.8028"/>
+                <KeyFrameDouble frame="138" value="1.7898"/>
+                <KeyFrameDouble frame="140" value="1.7796"/>
+                <KeyFrameDouble frame="142" value="1.772"/>
+                <KeyFrameDouble frame="144" value="1.7668"/>
+                <KeyFrameDouble frame="146" value="1.7638"/>
+                <KeyFrameDouble frame="148" value="1.7628"/>
+                <KeyFrameDouble frame="150" value="1.7628"/>
+                <KeyFrameDouble frame="152" value="1.7628"/>
+                <KeyFrameDouble frame="154" value="1.7628"/>
+                <KeyFrameDouble frame="156" value="1.7628"/>
+                <KeyFrameDouble frame="158" value="1.7628"/>
+                <KeyFrameDouble frame="160" value="1.7628"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o3">
+            <KeyedProperty propertyKey="13">
+                <KeyFrameDouble frame="0" value="261.4852"/>
+                <KeyFrameDouble frame="2" value="261.4852"/>
+                <KeyFrameDouble frame="4" value="261.4852"/>
+                <KeyFrameDouble frame="6" value="261.4852"/>
+                <KeyFrameDouble frame="8" value="261.4852"/>
+                <KeyFrameDouble frame="10" value="261.4852"/>
+                <KeyFrameDouble frame="12" value="261.4852"/>
+                <KeyFrameDouble frame="14" value="261.1167"/>
+                <KeyFrameDouble frame="16" value="259.8861"/>
+                <KeyFrameDouble frame="18" value="257.5702"/>
+                <KeyFrameDouble frame="20" value="253.9157"/>
+                <KeyFrameDouble frame="22" value="248.7209"/>
+                <KeyFrameDouble frame="24" value="242.0456"/>
+                <KeyFrameDouble frame="26" value="234.4683"/>
+                <KeyFrameDouble frame="28" value="226.9828"/>
+                <KeyFrameDouble frame="30" value="220.4185"/>
+                <KeyFrameDouble frame="32" value="215.0825"/>
+                <KeyFrameDouble frame="34" value="210.9036"/>
+                <KeyFrameDouble frame="36" value="207.6763"/>
+                <KeyFrameDouble frame="38" value="205.1901"/>
+                <KeyFrameDouble frame="40" value="203.2702"/>
+                <KeyFrameDouble frame="42" value="201.782"/>
+                <KeyFrameDouble frame="44" value="200.6241"/>
+                <KeyFrameDouble frame="46" value="199.721"/>
+                <KeyFrameDouble frame="48" value="199.0161"/>
+                <KeyFrameDouble frame="50" value="198.4673"/>
+                <KeyFrameDouble frame="52" value="198.0426"/>
+                <KeyFrameDouble frame="54" value="197.7181"/>
+                <KeyFrameDouble frame="56" value="197.4757"/>
+                <KeyFrameDouble frame="58" value="197.3016"/>
+                <KeyFrameDouble frame="60" value="197.1856"/>
+                <KeyFrameDouble frame="62" value="197.12"/>
+                <KeyFrameDouble frame="64" value="197.0991"/>
+                <KeyFrameDouble frame="66" value="197.0991"/>
+                <KeyFrameDouble frame="68" value="197.0991"/>
+                <KeyFrameDouble frame="70" value="197.0991"/>
+                <KeyFrameDouble frame="72" value="197.0991"/>
+                <KeyFrameDouble frame="74" value="197.0991"/>
+                <KeyFrameDouble frame="76" value="197.0991"/>
+                <KeyFrameDouble frame="78" value="197.0991"/>
+                <KeyFrameDouble frame="80" value="197.0991"/>
+                <KeyFrameDouble frame="82" value="197.0991"/>
+                <KeyFrameDouble frame="84" value="197.0991"/>
+                <KeyFrameDouble frame="86" value="197.1472"/>
+                <KeyFrameDouble frame="88" value="197.3018"/>
+                <KeyFrameDouble frame="90" value="197.5837"/>
+                <KeyFrameDouble frame="92" value="198.0234"/>
+                <KeyFrameDouble frame="94" value="198.6633"/>
+                <KeyFrameDouble frame="96" value="199.5595"/>
+                <KeyFrameDouble frame="98" value="200.7823"/>
+                <KeyFrameDouble frame="100" value="202.4123"/>
+                <KeyFrameDouble frame="102" value="204.5307"/>
+                <KeyFrameDouble frame="104" value="207.2"/>
+                <KeyFrameDouble frame="106" value="210.4387"/>
+                <KeyFrameDouble frame="108" value="214.1995"/>
+                <KeyFrameDouble frame="110" value="218.365"/>
+                <KeyFrameDouble frame="112" value="222.7689"/>
+                <KeyFrameDouble frame="114" value="227.232"/>
+                <KeyFrameDouble frame="116" value="231.5957"/>
+                <KeyFrameDouble frame="118" value="235.7405"/>
+                <KeyFrameDouble frame="120" value="239.5883"/>
+                <KeyFrameDouble frame="122" value="243.0968"/>
+                <KeyFrameDouble frame="124" value="246.2496"/>
+                <KeyFrameDouble frame="126" value="249.0478"/>
+                <KeyFrameDouble frame="128" value="251.5034"/>
+                <KeyFrameDouble frame="130" value="253.6341"/>
+                <KeyFrameDouble frame="132" value="255.4603"/>
+                <KeyFrameDouble frame="134" value="257.0035"/>
+                <KeyFrameDouble frame="136" value="258.2847"/>
+                <KeyFrameDouble frame="138" value="259.3236"/>
+                <KeyFrameDouble frame="140" value="260.139"/>
+                <KeyFrameDouble frame="142" value="260.7479"/>
+                <KeyFrameDouble frame="144" value="261.1659"/>
+                <KeyFrameDouble frame="146" value="261.4074"/>
+                <KeyFrameDouble frame="148" value="261.4852"/>
+                <KeyFrameDouble frame="150" value="261.4852"/>
+                <KeyFrameDouble frame="152" value="261.4852"/>
+                <KeyFrameDouble frame="154" value="261.4852"/>
+                <KeyFrameDouble frame="156" value="261.4852"/>
+                <KeyFrameDouble frame="158" value="261.4852"/>
+                <KeyFrameDouble frame="160" value="261.4852"/>
+            </KeyedProperty>
+            <KeyedProperty propertyKey="14">
+                <KeyFrameDouble frame="0" value="251.0151"/>
+                <KeyFrameDouble frame="2" value="251.0151"/>
+                <KeyFrameDouble frame="4" value="251.0151"/>
+                <KeyFrameDouble frame="6" value="251.0151"/>
+                <KeyFrameDouble frame="8" value="251.0151"/>
+                <KeyFrameDouble frame="10" value="251.0151"/>
+                <KeyFrameDouble frame="12" value="251.0151"/>
+                <KeyFrameDouble frame="14" value="250.9558"/>
+                <KeyFrameDouble frame="16" value="250.7451"/>
+                <KeyFrameDouble frame="18" value="250.2947"/>
+                <KeyFrameDouble frame="20" value="249.4378"/>
+                <KeyFrameDouble frame="22" value="247.901"/>
+                <KeyFrameDouble frame="24" value="245.3411"/>
+                <KeyFrameDouble frame="26" value="241.5503"/>
+                <KeyFrameDouble frame="28" value="236.7255"/>
+                <KeyFrameDouble frame="30" value="231.4056"/>
+                <KeyFrameDouble frame="32" value="226.1177"/>
+                <KeyFrameDouble frame="34" value="221.1818"/>
+                <KeyFrameDouble frame="36" value="216.7344"/>
+                <KeyFrameDouble frame="38" value="212.8068"/>
+                <KeyFrameDouble frame="40" value="209.3805"/>
+                <KeyFrameDouble frame="42" value="206.4174"/>
+                <KeyFrameDouble frame="44" value="203.8744"/>
+                <KeyFrameDouble frame="46" value="201.709"/>
+                <KeyFrameDouble frame="48" value="199.8822"/>
+                <KeyFrameDouble frame="50" value="198.3592"/>
+                <KeyFrameDouble frame="52" value="197.1092"/>
+                <KeyFrameDouble frame="54" value="196.1054"/>
+                <KeyFrameDouble frame="56" value="195.3244"/>
+                <KeyFrameDouble frame="58" value="194.7454"/>
+                <KeyFrameDouble frame="60" value="194.3505"/>
+                <KeyFrameDouble frame="62" value="194.1237"/>
+                <KeyFrameDouble frame="64" value="194.051"/>
+                <KeyFrameDouble frame="66" value="194.051"/>
+                <KeyFrameDouble frame="68" value="194.051"/>
+                <KeyFrameDouble frame="70" value="194.051"/>
+                <KeyFrameDouble frame="72" value="194.051"/>
+                <KeyFrameDouble frame="74" value="194.051"/>
+                <KeyFrameDouble frame="76" value="194.051"/>
+                <KeyFrameDouble frame="78" value="194.051"/>
+                <KeyFrameDouble frame="80" value="194.051"/>
+                <KeyFrameDouble frame="82" value="194.051"/>
+                <KeyFrameDouble frame="84" value="194.051"/>
+                <KeyFrameDouble frame="86" value="194.2182"/>
+                <KeyFrameDouble frame="88" value="194.746"/>
+                <KeyFrameDouble frame="90" value="195.6758"/>
+                <KeyFrameDouble frame="92" value="197.0511"/>
+                <KeyFrameDouble frame="94" value="198.9144"/>
+                <KeyFrameDouble frame="96" value="201.3022"/>
+                <KeyFrameDouble frame="98" value="204.236"/>
+                <KeyFrameDouble frame="100" value="207.7099"/>
+                <KeyFrameDouble frame="102" value="211.6738"/>
+                <KeyFrameDouble frame="104" value="216.02"/>
+                <KeyFrameDouble frame="106" value="220.5795"/>
+                <KeyFrameDouble frame="108" value="225.1404"/>
+                <KeyFrameDouble frame="110" value="229.487"/>
+                <KeyFrameDouble frame="112" value="233.4441"/>
+                <KeyFrameDouble frame="114" value="236.9057"/>
+                <KeyFrameDouble frame="116" value="239.8371"/>
+                <KeyFrameDouble frame="118" value="242.2582"/>
+                <KeyFrameDouble frame="120" value="244.2207"/>
+                <KeyFrameDouble frame="122" value="245.7902"/>
+                <KeyFrameDouble frame="124" value="247.0328"/>
+                <KeyFrameDouble frame="126" value="248.0091"/>
+                <KeyFrameDouble frame="128" value="248.7718"/>
+                <KeyFrameDouble frame="130" value="249.3643"/>
+                <KeyFrameDouble frame="132" value="249.8221"/>
+                <KeyFrameDouble frame="134" value="250.1737"/>
+                <KeyFrameDouble frame="136" value="250.4412"/>
+                <KeyFrameDouble frame="138" value="250.6422"/>
+                <KeyFrameDouble frame="140" value="250.79"/>
+                <KeyFrameDouble frame="142" value="250.8947"/>
+                <KeyFrameDouble frame="144" value="250.9638"/>
+                <KeyFrameDouble frame="146" value="251.0027"/>
+                <KeyFrameDouble frame="148" value="251.0151"/>
+                <KeyFrameDouble frame="150" value="251.0151"/>
+                <KeyFrameDouble frame="152" value="251.0151"/>
+                <KeyFrameDouble frame="154" value="251.0151"/>
+                <KeyFrameDouble frame="156" value="251.0151"/>
+                <KeyFrameDouble frame="158" value="251.0151"/>
+                <KeyFrameDouble frame="160" value="251.0151"/>
+            </KeyedProperty>
+            <KeyedProperty propertyKey="15">
+                <KeyFrameDouble frame="0" value="1.7279"/>
+                <KeyFrameDouble frame="2" value="1.7279"/>
+                <KeyFrameDouble frame="4" value="1.7279"/>
+                <KeyFrameDouble frame="6" value="1.7279"/>
+                <KeyFrameDouble frame="8" value="1.7279"/>
+                <KeyFrameDouble frame="10" value="1.7279"/>
+                <KeyFrameDouble frame="12" value="1.7279"/>
+                <KeyFrameDouble frame="14" value="1.7325"/>
+                <KeyFrameDouble frame="16" value="1.7481"/>
+                <KeyFrameDouble frame="18" value="1.7776"/>
+                <KeyFrameDouble frame="20" value="1.8246"/>
+                <KeyFrameDouble frame="22" value="1.8923"/>
+                <KeyFrameDouble frame="24" value="1.9817"/>
+                <KeyFrameDouble frame="26" value="2.0876"/>
+                <KeyFrameDouble frame="28" value="2.199"/>
+                <KeyFrameDouble frame="30" value="2.3047"/>
+                <KeyFrameDouble frame="32" value="2.3986"/>
+                <KeyFrameDouble frame="34" value="2.4795"/>
+                <KeyFrameDouble frame="36" value="2.5482"/>
+                <KeyFrameDouble frame="38" value="2.6063"/>
+                <KeyFrameDouble frame="40" value="2.6554"/>
+                <KeyFrameDouble frame="42" value="2.6969"/>
+                <KeyFrameDouble frame="44" value="2.7318"/>
+                <KeyFrameDouble frame="46" value="2.7611"/>
+                <KeyFrameDouble frame="48" value="2.7856"/>
+                <KeyFrameDouble frame="50" value="2.8058"/>
+                <KeyFrameDouble frame="52" value="2.8223"/>
+                <KeyFrameDouble frame="54" value="2.8355"/>
+                <KeyFrameDouble frame="56" value="2.8457"/>
+                <KeyFrameDouble frame="58" value="2.8533"/>
+                <KeyFrameDouble frame="60" value="2.8584"/>
+                <KeyFrameDouble frame="62" value="2.8614"/>
+                <KeyFrameDouble frame="64" value="2.8623"/>
+                <KeyFrameDouble frame="66" value="2.8623"/>
+                <KeyFrameDouble frame="68" value="2.8623"/>
+                <KeyFrameDouble frame="70" value="2.8623"/>
+                <KeyFrameDouble frame="72" value="2.8623"/>
+                <KeyFrameDouble frame="74" value="2.8623"/>
+                <KeyFrameDouble frame="76" value="2.8623"/>
+                <KeyFrameDouble frame="78" value="2.8623"/>
+                <KeyFrameDouble frame="80" value="2.8623"/>
+                <KeyFrameDouble frame="82" value="2.8623"/>
+                <KeyFrameDouble frame="84" value="2.8623"/>
+                <KeyFrameDouble frame="86" value="2.8602"/>
+                <KeyFrameDouble frame="88" value="2.8533"/>
+                <KeyFrameDouble frame="90" value="2.8411"/>
+                <KeyFrameDouble frame="92" value="2.8231"/>
+                <KeyFrameDouble frame="94" value="2.7985"/>
+                <KeyFrameDouble frame="96" value="2.7666"/>
+                <KeyFrameDouble frame="98" value="2.7269"/>
+                <KeyFrameDouble frame="100" value="2.6789"/>
+                <KeyFrameDouble frame="102" value="2.6227"/>
+                <KeyFrameDouble frame="104" value="2.5589"/>
+                <KeyFrameDouble frame="106" value="2.489"/>
+                <KeyFrameDouble frame="108" value="2.4151"/>
+                <KeyFrameDouble frame="110" value="2.3398"/>
+                <KeyFrameDouble frame="112" value="2.2658"/>
+                <KeyFrameDouble frame="114" value="2.1952"/>
+                <KeyFrameDouble frame="116" value="2.1295"/>
+                <KeyFrameDouble frame="118" value="2.0695"/>
+                <KeyFrameDouble frame="120" value="2.0155"/>
+                <KeyFrameDouble frame="122" value="1.9674"/>
+                <KeyFrameDouble frame="124" value="1.925"/>
+                <KeyFrameDouble frame="126" value="1.888"/>
+                <KeyFrameDouble frame="128" value="1.8558"/>
+                <KeyFrameDouble frame="130" value="1.8282"/>
+                <KeyFrameDouble frame="132" value="1.8047"/>
+                <KeyFrameDouble frame="134" value="1.7849"/>
+                <KeyFrameDouble frame="136" value="1.7685"/>
+                <KeyFrameDouble frame="138" value="1.7553"/>
+                <KeyFrameDouble frame="140" value="1.7449"/>
+                <KeyFrameDouble frame="142" value="1.7372"/>
+                <KeyFrameDouble frame="144" value="1.7319"/>
+                <KeyFrameDouble frame="146" value="1.7289"/>
+                <KeyFrameDouble frame="148" value="1.7279"/>
+                <KeyFrameDouble frame="150" value="1.7279"/>
+                <KeyFrameDouble frame="152" value="1.7279"/>
+                <KeyFrameDouble frame="154" value="1.7279"/>
+                <KeyFrameDouble frame="156" value="1.7279"/>
+                <KeyFrameDouble frame="158" value="1.7279"/>
+                <KeyFrameDouble frame="160" value="1.7279"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o4">
+            <KeyedProperty propertyKey="13">
+                <KeyFrameDouble frame="0" value="233.4985"/>
+                <KeyFrameDouble frame="2" value="233.4985"/>
+                <KeyFrameDouble frame="4" value="233.4985"/>
+                <KeyFrameDouble frame="6" value="233.4985"/>
+                <KeyFrameDouble frame="8" value="233.4985"/>
+                <KeyFrameDouble frame="10" value="233.4985"/>
+                <KeyFrameDouble frame="12" value="233.4985"/>
+                <KeyFrameDouble frame="14" value="233.156"/>
+                <KeyFrameDouble frame="16" value="232.0123"/>
+                <KeyFrameDouble frame="18" value="229.8619"/>
+                <KeyFrameDouble frame="20" value="226.4725"/>
+                <KeyFrameDouble frame="22" value="221.6633"/>
+                <KeyFrameDouble frame="24" value="215.4983"/>
+                <KeyFrameDouble frame="26" value="208.5207"/>
+                <KeyFrameDouble frame="28" value="201.6503"/>
+                <KeyFrameDouble frame="30" value="195.6458"/>
+                <KeyFrameDouble frame="32" value="190.7813"/>
+                <KeyFrameDouble frame="34" value="186.9842"/>
+                <KeyFrameDouble frame="36" value="184.0611"/>
+                <KeyFrameDouble frame="38" value="181.8163"/>
+                <KeyFrameDouble frame="40" value="180.0882"/>
+                <KeyFrameDouble frame="42" value="178.7528"/>
+                <KeyFrameDouble frame="44" value="177.7168"/>
+                <KeyFrameDouble frame="46" value="176.9112"/>
+                <KeyFrameDouble frame="48" value="176.2841"/>
+                <KeyFrameDouble frame="50" value="175.7971"/>
+                <KeyFrameDouble frame="52" value="175.4213"/>
+                <KeyFrameDouble frame="54" value="175.1346"/>
+                <KeyFrameDouble frame="56" value="174.9209"/>
+                <KeyFrameDouble frame="58" value="174.7677"/>
+                <KeyFrameDouble frame="60" value="174.6657"/>
+                <KeyFrameDouble frame="62" value="174.608"/>
+                <KeyFrameDouble frame="64" value="174.5896"/>
+                <KeyFrameDouble frame="66" value="174.5896"/>
+                <KeyFrameDouble frame="68" value="174.5896"/>
+                <KeyFrameDouble frame="70" value="174.5896"/>
+                <KeyFrameDouble frame="72" value="174.5896"/>
+                <KeyFrameDouble frame="74" value="174.5896"/>
+                <KeyFrameDouble frame="76" value="174.5896"/>
+                <KeyFrameDouble frame="78" value="174.5896"/>
+                <KeyFrameDouble frame="80" value="174.5896"/>
+                <KeyFrameDouble frame="82" value="174.5896"/>
+                <KeyFrameDouble frame="84" value="174.5896"/>
+                <KeyFrameDouble frame="86" value="174.6319"/>
+                <KeyFrameDouble frame="88" value="174.7678"/>
+                <KeyFrameDouble frame="90" value="175.0161"/>
+                <KeyFrameDouble frame="92" value="175.4043"/>
+                <KeyFrameDouble frame="94" value="175.971"/>
+                <KeyFrameDouble frame="96" value="176.7674"/>
+                <KeyFrameDouble frame="98" value="177.8581"/>
+                <KeyFrameDouble frame="100" value="179.3178"/>
+                <KeyFrameDouble frame="102" value="181.2222"/>
+                <KeyFrameDouble frame="104" value="183.6305"/>
+                <KeyFrameDouble frame="106" value="186.5626"/>
+                <KeyFrameDouble frame="108" value="189.978"/>
+                <KeyFrameDouble frame="110" value="193.7719"/>
+                <KeyFrameDouble frame="112" value="197.7934"/>
+                <KeyFrameDouble frame="114" value="201.8786"/>
+                <KeyFrameDouble frame="116" value="205.8814"/>
+                <KeyFrameDouble frame="118" value="209.6906"/>
+                <KeyFrameDouble frame="120" value="213.233"/>
+                <KeyFrameDouble frame="122" value="216.468"/>
+                <KeyFrameDouble frame="124" value="219.3789"/>
+                <KeyFrameDouble frame="126" value="221.9657"/>
+                <KeyFrameDouble frame="128" value="224.238"/>
+                <KeyFrameDouble frame="130" value="226.2115"/>
+                <KeyFrameDouble frame="132" value="227.9045"/>
+                <KeyFrameDouble frame="134" value="229.336"/>
+                <KeyFrameDouble frame="136" value="230.5251"/>
+                <KeyFrameDouble frame="138" value="231.4899"/>
+                <KeyFrameDouble frame="140" value="232.2473"/>
+                <KeyFrameDouble frame="142" value="232.8131"/>
+                <KeyFrameDouble frame="144" value="233.2017"/>
+                <KeyFrameDouble frame="146" value="233.4262"/>
+                <KeyFrameDouble frame="148" value="233.4985"/>
+                <KeyFrameDouble frame="150" value="233.4985"/>
+                <KeyFrameDouble frame="152" value="233.4985"/>
+                <KeyFrameDouble frame="154" value="233.4985"/>
+                <KeyFrameDouble frame="156" value="233.4985"/>
+                <KeyFrameDouble frame="158" value="233.4985"/>
+                <KeyFrameDouble frame="160" value="233.4985"/>
+            </KeyedProperty>
+            <KeyedProperty propertyKey="14">
+                <KeyFrameDouble frame="0" value="236.6037"/>
+                <KeyFrameDouble frame="2" value="236.6037"/>
+                <KeyFrameDouble frame="4" value="236.6037"/>
+                <KeyFrameDouble frame="6" value="236.6037"/>
+                <KeyFrameDouble frame="8" value="236.6037"/>
+                <KeyFrameDouble frame="10" value="236.6037"/>
+                <KeyFrameDouble frame="12" value="236.6037"/>
+                <KeyFrameDouble frame="14" value="236.5363"/>
+                <KeyFrameDouble frame="16" value="236.2994"/>
+                <KeyFrameDouble frame="18" value="235.8038"/>
+                <KeyFrameDouble frame="20" value="234.8874"/>
+                <KeyFrameDouble frame="22" value="233.2908"/>
+                <KeyFrameDouble frame="24" value="230.6996"/>
+                <KeyFrameDouble frame="26" value="226.9414"/>
+                <KeyFrameDouble frame="28" value="222.2304"/>
+                <KeyFrameDouble frame="30" value="217.0912"/>
+                <KeyFrameDouble frame="32" value="212.0202"/>
+                <KeyFrameDouble frame="34" value="207.3109"/>
+                <KeyFrameDouble frame="36" value="203.0831"/>
+                <KeyFrameDouble frame="38" value="199.3593"/>
+                <KeyFrameDouble frame="40" value="196.1173"/>
+                <KeyFrameDouble frame="42" value="193.318"/>
+                <KeyFrameDouble frame="44" value="190.9184"/>
+                <KeyFrameDouble frame="46" value="188.8771"/>
+                <KeyFrameDouble frame="48" value="187.1562"/>
+                <KeyFrameDouble frame="50" value="185.7223"/>
+                <KeyFrameDouble frame="52" value="184.5461"/>
+                <KeyFrameDouble frame="54" value="183.6019"/>
+                <KeyFrameDouble frame="56" value="182.8673"/>
+                <KeyFrameDouble frame="58" value="182.323"/>
+                <KeyFrameDouble frame="60" value="181.9518"/>
+                <KeyFrameDouble frame="62" value="181.7386"/>
+                <KeyFrameDouble frame="64" value="181.6702"/>
+                <KeyFrameDouble frame="66" value="181.6702"/>
+                <KeyFrameDouble frame="68" value="181.6702"/>
+                <KeyFrameDouble frame="70" value="181.6702"/>
+                <KeyFrameDouble frame="72" value="181.6702"/>
+                <KeyFrameDouble frame="74" value="181.6702"/>
+                <KeyFrameDouble frame="76" value="181.6702"/>
+                <KeyFrameDouble frame="78" value="181.6702"/>
+                <KeyFrameDouble frame="80" value="181.6702"/>
+                <KeyFrameDouble frame="82" value="181.6702"/>
+                <KeyFrameDouble frame="84" value="181.6702"/>
+                <KeyFrameDouble frame="86" value="181.8274"/>
+                <KeyFrameDouble frame="88" value="182.3236"/>
+                <KeyFrameDouble frame="90" value="183.1979"/>
+                <KeyFrameDouble frame="92" value="184.4915"/>
+                <KeyFrameDouble frame="94" value="186.245"/>
+                <KeyFrameDouble frame="96" value="188.4937"/>
+                <KeyFrameDouble frame="98" value="191.2595"/>
+                <KeyFrameDouble frame="100" value="194.5386"/>
+                <KeyFrameDouble frame="102" value="198.2866"/>
+                <KeyFrameDouble frame="104" value="202.405"/>
+                <KeyFrameDouble frame="106" value="206.7375"/>
+                <KeyFrameDouble frame="108" value="211.0862"/>
+                <KeyFrameDouble frame="110" value="215.2477"/>
+                <KeyFrameDouble frame="112" value="219.0552"/>
+                <KeyFrameDouble frame="114" value="222.4055"/>
+                <KeyFrameDouble frame="116" value="225.2616"/>
+                <KeyFrameDouble frame="118" value="227.6383"/>
+                <KeyFrameDouble frame="120" value="229.5815"/>
+                <KeyFrameDouble frame="122" value="231.1501"/>
+                <KeyFrameDouble frame="124" value="232.4048"/>
+                <KeyFrameDouble frame="126" value="233.4018"/>
+                <KeyFrameDouble frame="128" value="234.1898"/>
+                <KeyFrameDouble frame="130" value="234.8098"/>
+                <KeyFrameDouble frame="132" value="235.2951"/>
+                <KeyFrameDouble frame="134" value="235.6726"/>
+                <KeyFrameDouble frame="136" value="235.9637"/>
+                <KeyFrameDouble frame="138" value="236.185"/>
+                <KeyFrameDouble frame="140" value="236.3495"/>
+                <KeyFrameDouble frame="142" value="236.4672"/>
+                <KeyFrameDouble frame="144" value="236.5454"/>
+                <KeyFrameDouble frame="146" value="236.5896"/>
+                <KeyFrameDouble frame="148" value="236.6037"/>
+                <KeyFrameDouble frame="150" value="236.6037"/>
+                <KeyFrameDouble frame="152" value="236.6037"/>
+                <KeyFrameDouble frame="154" value="236.6037"/>
+                <KeyFrameDouble frame="156" value="236.6037"/>
+                <KeyFrameDouble frame="158" value="236.6037"/>
+                <KeyFrameDouble frame="160" value="236.6037"/>
+            </KeyedProperty>
+            <KeyedProperty propertyKey="15">
+                <KeyFrameDouble frame="0" value="1.7628"/>
+                <KeyFrameDouble frame="2" value="1.7628"/>
+                <KeyFrameDouble frame="4" value="1.7628"/>
+                <KeyFrameDouble frame="6" value="1.7628"/>
+                <KeyFrameDouble frame="8" value="1.7628"/>
+                <KeyFrameDouble frame="10" value="1.7628"/>
+                <KeyFrameDouble frame="12" value="1.7628"/>
+                <KeyFrameDouble frame="14" value="1.7674"/>
+                <KeyFrameDouble frame="16" value="1.7827"/>
+                <KeyFrameDouble frame="18" value="1.8118"/>
+                <KeyFrameDouble frame="20" value="1.858"/>
+                <KeyFrameDouble frame="22" value="1.9247"/>
+                <KeyFrameDouble frame="24" value="2.0127"/>
+                <KeyFrameDouble frame="26" value="2.117"/>
+                <KeyFrameDouble frame="28" value="2.2267"/>
+                <KeyFrameDouble frame="30" value="2.3307"/>
+                <KeyFrameDouble frame="32" value="2.4232"/>
+                <KeyFrameDouble frame="34" value="2.5028"/>
+                <KeyFrameDouble frame="36" value="2.5705"/>
+                <KeyFrameDouble frame="38" value="2.6277"/>
+                <KeyFrameDouble frame="40" value="2.676"/>
+                <KeyFrameDouble frame="42" value="2.7169"/>
+                <KeyFrameDouble frame="44" value="2.7512"/>
+                <KeyFrameDouble frame="46" value="2.7801"/>
+                <KeyFrameDouble frame="48" value="2.8042"/>
+                <KeyFrameDouble frame="50" value="2.8242"/>
+                <KeyFrameDouble frame="52" value="2.8404"/>
+                <KeyFrameDouble frame="54" value="2.8534"/>
+                <KeyFrameDouble frame="56" value="2.8634"/>
+                <KeyFrameDouble frame="58" value="2.8709"/>
+                <KeyFrameDouble frame="60" value="2.876"/>
+                <KeyFrameDouble frame="62" value="2.8789"/>
+                <KeyFrameDouble frame="64" value="2.8798"/>
+                <KeyFrameDouble frame="66" value="2.8798"/>
+                <KeyFrameDouble frame="68" value="2.8798"/>
+                <KeyFrameDouble frame="70" value="2.8798"/>
+                <KeyFrameDouble frame="72" value="2.8798"/>
+                <KeyFrameDouble frame="74" value="2.8798"/>
+                <KeyFrameDouble frame="76" value="2.8798"/>
+                <KeyFrameDouble frame="78" value="2.8798"/>
+                <KeyFrameDouble frame="80" value="2.8798"/>
+                <KeyFrameDouble frame="82" value="2.8798"/>
+                <KeyFrameDouble frame="84" value="2.8798"/>
+                <KeyFrameDouble frame="86" value="2.8777"/>
+                <KeyFrameDouble frame="88" value="2.8709"/>
+                <KeyFrameDouble frame="90" value="2.8589"/>
+                <KeyFrameDouble frame="92" value="2.8412"/>
+                <KeyFrameDouble frame="94" value="2.8169"/>
+                <KeyFrameDouble frame="96" value="2.7855"/>
+                <KeyFrameDouble frame="98" value="2.7464"/>
+                <KeyFrameDouble frame="100" value="2.6992"/>
+                <KeyFrameDouble frame="102" value="2.6438"/>
+                <KeyFrameDouble frame="104" value="2.5811"/>
+                <KeyFrameDouble frame="106" value="2.5122"/>
+                <KeyFrameDouble frame="108" value="2.4394"/>
+                <KeyFrameDouble frame="110" value="2.3653"/>
+                <KeyFrameDouble frame="112" value="2.2924"/>
+                <KeyFrameDouble frame="114" value="2.2229"/>
+                <KeyFrameDouble frame="116" value="2.1582"/>
+                <KeyFrameDouble frame="118" value="2.0991"/>
+                <KeyFrameDouble frame="120" value="2.0459"/>
+                <KeyFrameDouble frame="122" value="1.9986"/>
+                <KeyFrameDouble frame="124" value="1.9569"/>
+                <KeyFrameDouble frame="126" value="1.9204"/>
+                <KeyFrameDouble frame="128" value="1.8888"/>
+                <KeyFrameDouble frame="130" value="1.8616"/>
+                <KeyFrameDouble frame="132" value="1.8384"/>
+                <KeyFrameDouble frame="134" value="1.8189"/>
+                <KeyFrameDouble frame="136" value="1.8028"/>
+                <KeyFrameDouble frame="138" value="1.7898"/>
+                <KeyFrameDouble frame="140" value="1.7796"/>
+                <KeyFrameDouble frame="142" value="1.772"/>
+                <KeyFrameDouble frame="144" value="1.7668"/>
+                <KeyFrameDouble frame="146" value="1.7638"/>
+                <KeyFrameDouble frame="148" value="1.7628"/>
+                <KeyFrameDouble frame="150" value="1.7628"/>
+                <KeyFrameDouble frame="152" value="1.7628"/>
+                <KeyFrameDouble frame="154" value="1.7628"/>
+                <KeyFrameDouble frame="156" value="1.7628"/>
+                <KeyFrameDouble frame="158" value="1.7628"/>
+                <KeyFrameDouble frame="160" value="1.7628"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o5">
+            <KeyedProperty propertyKey="13">
+                <KeyFrameDouble frame="0" value="253.3046"/>
+                <KeyFrameDouble frame="2" value="253.3046"/>
+                <KeyFrameDouble frame="4" value="253.3046"/>
+                <KeyFrameDouble frame="6" value="253.3046"/>
+                <KeyFrameDouble frame="8" value="253.3046"/>
+                <KeyFrameDouble frame="10" value="253.3046"/>
+                <KeyFrameDouble frame="12" value="253.3046"/>
+                <KeyFrameDouble frame="14" value="253.0084"/>
+                <KeyFrameDouble frame="16" value="252.0207"/>
+                <KeyFrameDouble frame="18" value="250.1692"/>
+                <KeyFrameDouble frame="20" value="247.2667"/>
+                <KeyFrameDouble frame="22" value="243.1827"/>
+                <KeyFrameDouble frame="24" value="238.0116"/>
+                <KeyFrameDouble frame="26" value="232.2578"/>
+                <KeyFrameDouble frame="28" value="226.7156"/>
+                <KeyFrameDouble frame="30" value="221.9983"/>
+                <KeyFrameDouble frame="32" value="218.2901"/>
+                <KeyFrameDouble frame="34" value="215.4904"/>
+                <KeyFrameDouble frame="36" value="213.4116"/>
+                <KeyFrameDouble frame="38" value="211.8759"/>
+                <KeyFrameDouble frame="40" value="210.7417"/>
+                <KeyFrameDouble frame="42" value="209.9029"/>
+                <KeyFrameDouble frame="44" value="209.2814"/>
+                <KeyFrameDouble frame="46" value="208.8205"/>
+                <KeyFrameDouble frame="48" value="208.4788"/>
+                <KeyFrameDouble frame="50" value="208.2258"/>
+                <KeyFrameDouble frame="52" value="208.0396"/>
+                <KeyFrameDouble frame="54" value="207.9036"/>
+                <KeyFrameDouble frame="56" value="207.8061"/>
+                <KeyFrameDouble frame="58" value="207.7385"/>
+                <KeyFrameDouble frame="60" value="207.6946"/>
+                <KeyFrameDouble frame="62" value="207.6702"/>
+                <KeyFrameDouble frame="64" value="207.6625"/>
+                <KeyFrameDouble frame="66" value="207.6625"/>
+                <KeyFrameDouble frame="68" value="207.6625"/>
+                <KeyFrameDouble frame="70" value="207.6625"/>
+                <KeyFrameDouble frame="72" value="207.6625"/>
+                <KeyFrameDouble frame="74" value="207.6625"/>
+                <KeyFrameDouble frame="76" value="207.6625"/>
+                <KeyFrameDouble frame="78" value="207.6625"/>
+                <KeyFrameDouble frame="80" value="207.6625"/>
+                <KeyFrameDouble frame="82" value="207.6625"/>
+                <KeyFrameDouble frame="84" value="207.6625"/>
+                <KeyFrameDouble frame="86" value="207.6803"/>
+                <KeyFrameDouble frame="88" value="207.7385"/>
+                <KeyFrameDouble frame="90" value="207.8491"/>
+                <KeyFrameDouble frame="92" value="208.0314"/>
+                <KeyFrameDouble frame="94" value="208.3147"/>
+                <KeyFrameDouble frame="96" value="208.7407"/>
+                <KeyFrameDouble frame="98" value="209.3644"/>
+                <KeyFrameDouble frame="100" value="210.2532"/>
+                <KeyFrameDouble frame="102" value="211.4806"/>
+                <KeyFrameDouble frame="104" value="213.1124"/>
+                <KeyFrameDouble frame="106" value="215.1859"/>
+                <KeyFrameDouble frame="108" value="217.6899"/>
+                <KeyFrameDouble frame="110" value="220.556"/>
+                <KeyFrameDouble frame="112" value="223.6698"/>
+                <KeyFrameDouble frame="114" value="226.8975"/>
+                <KeyFrameDouble frame="116" value="230.1129"/>
+                <KeyFrameDouble frame="118" value="233.2145"/>
+                <KeyFrameDouble frame="120" value="236.1314"/>
+                <KeyFrameDouble frame="122" value="238.8199"/>
+                <KeyFrameDouble frame="124" value="241.2579"/>
+                <KeyFrameDouble frame="126" value="243.4383"/>
+                <KeyFrameDouble frame="128" value="245.364"/>
+                <KeyFrameDouble frame="130" value="247.044"/>
+                <KeyFrameDouble frame="132" value="248.4906"/>
+                <KeyFrameDouble frame="134" value="249.7176"/>
+                <KeyFrameDouble frame="136" value="250.7394"/>
+                <KeyFrameDouble frame="138" value="251.5702"/>
+                <KeyFrameDouble frame="140" value="252.2235"/>
+                <KeyFrameDouble frame="142" value="252.7121"/>
+                <KeyFrameDouble frame="144" value="253.0479"/>
+                <KeyFrameDouble frame="146" value="253.242"/>
+                <KeyFrameDouble frame="148" value="253.3046"/>
+                <KeyFrameDouble frame="150" value="253.3046"/>
+                <KeyFrameDouble frame="152" value="253.3046"/>
+                <KeyFrameDouble frame="154" value="253.3046"/>
+                <KeyFrameDouble frame="156" value="253.3046"/>
+                <KeyFrameDouble frame="158" value="253.3046"/>
+                <KeyFrameDouble frame="160" value="253.3046"/>
+            </KeyedProperty>
+            <KeyedProperty propertyKey="14">
+                <KeyFrameDouble frame="0" value="235.5449"/>
+                <KeyFrameDouble frame="2" value="235.5449"/>
+                <KeyFrameDouble frame="4" value="235.5449"/>
+                <KeyFrameDouble frame="6" value="235.5449"/>
+                <KeyFrameDouble frame="8" value="235.5449"/>
+                <KeyFrameDouble frame="10" value="235.5449"/>
+                <KeyFrameDouble frame="12" value="235.5449"/>
+                <KeyFrameDouble frame="14" value="235.4476"/>
+                <KeyFrameDouble frame="16" value="235.1123"/>
+                <KeyFrameDouble frame="18" value="234.4367"/>
+                <KeyFrameDouble frame="20" value="233.2502"/>
+                <KeyFrameDouble frame="22" value="231.3005"/>
+                <KeyFrameDouble frame="24" value="228.3124"/>
+                <KeyFrameDouble frame="26" value="224.1904"/>
+                <KeyFrameDouble frame="28" value="219.2275"/>
+                <KeyFrameDouble frame="30" value="213.977"/>
+                <KeyFrameDouble frame="32" value="208.9142"/>
+                <KeyFrameDouble frame="34" value="204.2936"/>
+                <KeyFrameDouble frame="36" value="200.2009"/>
+                <KeyFrameDouble frame="38" value="196.6343"/>
+                <KeyFrameDouble frame="40" value="193.5556"/>
+                <KeyFrameDouble frame="42" value="190.9158"/>
+                <KeyFrameDouble frame="44" value="188.6658"/>
+                <KeyFrameDouble frame="46" value="186.7608"/>
+                <KeyFrameDouble frame="48" value="185.1612"/>
+                <KeyFrameDouble frame="50" value="183.8326"/>
+                <KeyFrameDouble frame="52" value="182.7457"/>
+                <KeyFrameDouble frame="54" value="181.875"/>
+                <KeyFrameDouble frame="56" value="181.1988"/>
+                <KeyFrameDouble frame="58" value="180.6983"/>
+                <KeyFrameDouble frame="60" value="180.3573"/>
+                <KeyFrameDouble frame="62" value="180.1616"/>
+                <KeyFrameDouble frame="64" value="180.0988"/>
+                <KeyFrameDouble frame="66" value="180.0988"/>
+                <KeyFrameDouble frame="68" value="180.0988"/>
+                <KeyFrameDouble frame="70" value="180.0988"/>
+                <KeyFrameDouble frame="72" value="180.0988"/>
+                <KeyFrameDouble frame="74" value="180.0988"/>
+                <KeyFrameDouble frame="76" value="180.0988"/>
+                <KeyFrameDouble frame="78" value="180.0988"/>
+                <KeyFrameDouble frame="80" value="180.0988"/>
+                <KeyFrameDouble frame="82" value="180.0988"/>
+                <KeyFrameDouble frame="84" value="180.0988"/>
+                <KeyFrameDouble frame="86" value="180.2431"/>
+                <KeyFrameDouble frame="88" value="180.6988"/>
+                <KeyFrameDouble frame="90" value="181.5029"/>
+                <KeyFrameDouble frame="92" value="182.6953"/>
+                <KeyFrameDouble frame="94" value="184.3165"/>
+                <KeyFrameDouble frame="96" value="186.404"/>
+                <KeyFrameDouble frame="98" value="188.9849"/>
+                <KeyFrameDouble frame="100" value="192.0647"/>
+                <KeyFrameDouble frame="102" value="195.613"/>
+                <KeyFrameDouble frame="104" value="199.549"/>
+                <KeyFrameDouble frame="106" value="203.7356"/>
+                <KeyFrameDouble frame="108" value="207.992"/>
+                <KeyFrameDouble frame="110" value="212.1247"/>
+                <KeyFrameDouble frame="112" value="215.9673"/>
+                <KeyFrameDouble frame="114" value="219.4089"/>
+                <KeyFrameDouble frame="116" value="222.4001"/>
+                <KeyFrameDouble frame="118" value="224.9414"/>
+                <KeyFrameDouble frame="120" value="227.0656"/>
+                <KeyFrameDouble frame="122" value="228.8209"/>
+                <KeyFrameDouble frame="124" value="230.2598"/>
+                <KeyFrameDouble frame="126" value="231.4326"/>
+                <KeyFrameDouble frame="128" value="232.384"/>
+                <KeyFrameDouble frame="130" value="233.1525"/>
+                <KeyFrameDouble frame="132" value="233.7699"/>
+                <KeyFrameDouble frame="134" value="234.2625"/>
+                <KeyFrameDouble frame="136" value="234.6514"/>
+                <KeyFrameDouble frame="138" value="234.9536"/>
+                <KeyFrameDouble frame="140" value="235.1825"/>
+                <KeyFrameDouble frame="142" value="235.3488"/>
+                <KeyFrameDouble frame="144" value="235.4607"/>
+                <KeyFrameDouble frame="146" value="235.5245"/>
+                <KeyFrameDouble frame="148" value="235.5449"/>
+                <KeyFrameDouble frame="150" value="235.5449"/>
+                <KeyFrameDouble frame="152" value="235.5449"/>
+                <KeyFrameDouble frame="154" value="235.5449"/>
+                <KeyFrameDouble frame="156" value="235.5449"/>
+                <KeyFrameDouble frame="158" value="235.5449"/>
+                <KeyFrameDouble frame="160" value="235.5449"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o6">
+            <KeyedProperty propertyKey="15">
+                <KeyFrameDouble frame="0" value="1.7628"/>
+                <KeyFrameDouble frame="2" value="1.7628"/>
+                <KeyFrameDouble frame="4" value="1.7628"/>
+                <KeyFrameDouble frame="6" value="1.7628"/>
+                <KeyFrameDouble frame="8" value="1.7628"/>
+                <KeyFrameDouble frame="10" value="1.7628"/>
+                <KeyFrameDouble frame="12" value="1.7628"/>
+                <KeyFrameDouble frame="14" value="1.7674"/>
+                <KeyFrameDouble frame="16" value="1.7827"/>
+                <KeyFrameDouble frame="18" value="1.8118"/>
+                <KeyFrameDouble frame="20" value="1.858"/>
+                <KeyFrameDouble frame="22" value="1.9247"/>
+                <KeyFrameDouble frame="24" value="2.0127"/>
+                <KeyFrameDouble frame="26" value="2.117"/>
+                <KeyFrameDouble frame="28" value="2.2267"/>
+                <KeyFrameDouble frame="30" value="2.3307"/>
+                <KeyFrameDouble frame="32" value="2.4232"/>
+                <KeyFrameDouble frame="34" value="2.5028"/>
+                <KeyFrameDouble frame="36" value="2.5705"/>
+                <KeyFrameDouble frame="38" value="2.6277"/>
+                <KeyFrameDouble frame="40" value="2.676"/>
+                <KeyFrameDouble frame="42" value="2.7169"/>
+                <KeyFrameDouble frame="44" value="2.7512"/>
+                <KeyFrameDouble frame="46" value="2.7801"/>
+                <KeyFrameDouble frame="48" value="2.8042"/>
+                <KeyFrameDouble frame="50" value="2.8242"/>
+                <KeyFrameDouble frame="52" value="2.8404"/>
+                <KeyFrameDouble frame="54" value="2.8534"/>
+                <KeyFrameDouble frame="56" value="2.8634"/>
+                <KeyFrameDouble frame="58" value="2.8709"/>
+                <KeyFrameDouble frame="60" value="2.876"/>
+                <KeyFrameDouble frame="62" value="2.8789"/>
+                <KeyFrameDouble frame="64" value="2.8798"/>
+                <KeyFrameDouble frame="66" value="2.8798"/>
+                <KeyFrameDouble frame="68" value="2.8798"/>
+                <KeyFrameDouble frame="70" value="2.8798"/>
+                <KeyFrameDouble frame="72" value="2.8798"/>
+                <KeyFrameDouble frame="74" value="2.8798"/>
+                <KeyFrameDouble frame="76" value="2.8798"/>
+                <KeyFrameDouble frame="78" value="2.8798"/>
+                <KeyFrameDouble frame="80" value="2.8798"/>
+                <KeyFrameDouble frame="82" value="2.8798"/>
+                <KeyFrameDouble frame="84" value="2.8798"/>
+                <KeyFrameDouble frame="86" value="2.8777"/>
+                <KeyFrameDouble frame="88" value="2.8709"/>
+                <KeyFrameDouble frame="90" value="2.8589"/>
+                <KeyFrameDouble frame="92" value="2.8412"/>
+                <KeyFrameDouble frame="94" value="2.8169"/>
+                <KeyFrameDouble frame="96" value="2.7855"/>
+                <KeyFrameDouble frame="98" value="2.7464"/>
+                <KeyFrameDouble frame="100" value="2.6992"/>
+                <KeyFrameDouble frame="102" value="2.6438"/>
+                <KeyFrameDouble frame="104" value="2.5811"/>
+                <KeyFrameDouble frame="106" value="2.5122"/>
+                <KeyFrameDouble frame="108" value="2.4394"/>
+                <KeyFrameDouble frame="110" value="2.3653"/>
+                <KeyFrameDouble frame="112" value="2.2924"/>
+                <KeyFrameDouble frame="114" value="2.2229"/>
+                <KeyFrameDouble frame="116" value="2.1582"/>
+                <KeyFrameDouble frame="118" value="2.0991"/>
+                <KeyFrameDouble frame="120" value="2.0459"/>
+                <KeyFrameDouble frame="122" value="1.9986"/>
+                <KeyFrameDouble frame="124" value="1.9569"/>
+                <KeyFrameDouble frame="126" value="1.9204"/>
+                <KeyFrameDouble frame="128" value="1.8888"/>
+                <KeyFrameDouble frame="130" value="1.8616"/>
+                <KeyFrameDouble frame="132" value="1.8384"/>
+                <KeyFrameDouble frame="134" value="1.8189"/>
+                <KeyFrameDouble frame="136" value="1.8028"/>
+                <KeyFrameDouble frame="138" value="1.7898"/>
+                <KeyFrameDouble frame="140" value="1.7796"/>
+                <KeyFrameDouble frame="142" value="1.772"/>
+                <KeyFrameDouble frame="144" value="1.7668"/>
+                <KeyFrameDouble frame="146" value="1.7638"/>
+                <KeyFrameDouble frame="148" value="1.7628"/>
+                <KeyFrameDouble frame="150" value="1.7628"/>
+                <KeyFrameDouble frame="152" value="1.7628"/>
+                <KeyFrameDouble frame="154" value="1.7628"/>
+                <KeyFrameDouble frame="156" value="1.7628"/>
+                <KeyFrameDouble frame="158" value="1.7628"/>
+                <KeyFrameDouble frame="160" value="1.7628"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o7">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="F0F75E33"/>
+                <KeyFrameColor frame="2" value="F0F75E33"/>
+                <KeyFrameColor frame="4" value="F0F75E33"/>
+                <KeyFrameColor frame="6" value="F0F75E33"/>
+                <KeyFrameColor frame="8" value="F0F75E33"/>
+                <KeyFrameColor frame="10" value="F0F75E33"/>
+                <KeyFrameColor frame="12" value="F0F75E33"/>
+                <KeyFrameColor frame="14" value="F0F75E33"/>
+                <KeyFrameColor frame="16" value="F1F75D35"/>
+                <KeyFrameColor frame="18" value="F1F75C36"/>
+                <KeyFrameColor frame="20" value="F2F75A39"/>
+                <KeyFrameColor frame="22" value="F3F6583C"/>
+                <KeyFrameColor frame="24" value="F4F6553F"/>
+                <KeyFrameColor frame="26" value="F6F65243"/>
+                <KeyFrameColor frame="28" value="F7F65047"/>
+                <KeyFrameColor frame="30" value="F8F54D4B"/>
+                <KeyFrameColor frame="32" value="F9F54B4E"/>
+                <KeyFrameColor frame="34" value="FAF54950"/>
+                <KeyFrameColor frame="36" value="FBF54852"/>
+                <KeyFrameColor frame="38" value="FBF54654"/>
+                <KeyFrameColor frame="40" value="FCF54555"/>
+                <KeyFrameColor frame="42" value="FCF54456"/>
+                <KeyFrameColor frame="44" value="FDF44457"/>
+                <KeyFrameColor frame="46" value="FDF44358"/>
+                <KeyFrameColor frame="48" value="FDF44359"/>
+                <KeyFrameColor frame="50" value="FDF4425A"/>
+                <KeyFrameColor frame="52" value="FEF4425A"/>
+                <KeyFrameColor frame="54" value="FEF4425A"/>
+                <KeyFrameColor frame="56" value="FEF4415B"/>
+                <KeyFrameColor frame="58" value="FEF4415B"/>
+                <KeyFrameColor frame="60" value="FEF4415B"/>
+                <KeyFrameColor frame="62" value="FEF4415B"/>
+                <KeyFrameColor frame="64" value="FEF4415B"/>
+                <KeyFrameColor frame="66" value="FEF4415B"/>
+                <KeyFrameColor frame="68" value="FEF4415B"/>
+                <KeyFrameColor frame="70" value="FEF4415B"/>
+                <KeyFrameColor frame="72" value="FEF4415B"/>
+                <KeyFrameColor frame="74" value="FEF4415B"/>
+                <KeyFrameColor frame="76" value="FEF4415B"/>
+                <KeyFrameColor frame="78" value="FEF4415B"/>
+                <KeyFrameColor frame="80" value="FEF4415B"/>
+                <KeyFrameColor frame="82" value="FEF4415B"/>
+                <KeyFrameColor frame="84" value="FEF4415B"/>
+                <KeyFrameColor frame="86" value="FEF4415B"/>
+                <KeyFrameColor frame="88" value="FEF4415B"/>
+                <KeyFrameColor frame="90" value="FEF4425B"/>
+                <KeyFrameColor frame="92" value="FEF4425A"/>
+                <KeyFrameColor frame="94" value="FDF44259"/>
+                <KeyFrameColor frame="96" value="FDF44358"/>
+                <KeyFrameColor frame="98" value="FDF44457"/>
+                <KeyFrameColor frame="100" value="FCF54556"/>
+                <KeyFrameColor frame="102" value="FCF54654"/>
+                <KeyFrameColor frame="104" value="FBF54752"/>
+                <KeyFrameColor frame="106" value="FAF54950"/>
+                <KeyFrameColor frame="108" value="F9F54B4E"/>
+                <KeyFrameColor frame="110" value="F9F54C4C"/>
+                <KeyFrameColor frame="112" value="F8F54E49"/>
+                <KeyFrameColor frame="114" value="F7F65047"/>
+                <KeyFrameColor frame="116" value="F6F65145"/>
+                <KeyFrameColor frame="118" value="F5F65343"/>
+                <KeyFrameColor frame="120" value="F5F65441"/>
+                <KeyFrameColor frame="122" value="F4F6563F"/>
+                <KeyFrameColor frame="124" value="F4F6573D"/>
+                <KeyFrameColor frame="126" value="F3F6583C"/>
+                <KeyFrameColor frame="128" value="F3F6593A"/>
+                <KeyFrameColor frame="130" value="F2F75A39"/>
+                <KeyFrameColor frame="132" value="F2F75B38"/>
+                <KeyFrameColor frame="134" value="F1F75B37"/>
+                <KeyFrameColor frame="136" value="F1F75C36"/>
+                <KeyFrameColor frame="138" value="F1F75D35"/>
+                <KeyFrameColor frame="140" value="F1F75D34"/>
+                <KeyFrameColor frame="142" value="F0F75E34"/>
+                <KeyFrameColor frame="144" value="F0F75E33"/>
+                <KeyFrameColor frame="146" value="F0F75E33"/>
+                <KeyFrameColor frame="148" value="F0F75E33"/>
+                <KeyFrameColor frame="150" value="F0F75E33"/>
+                <KeyFrameColor frame="152" value="F0F75E33"/>
+                <KeyFrameColor frame="154" value="F0F75E33"/>
+                <KeyFrameColor frame="156" value="F0F75E33"/>
+                <KeyFrameColor frame="158" value="F0F75E33"/>
+                <KeyFrameColor frame="160" value="F0F75E33"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o8">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="A9932721"/>
+                <KeyFrameColor frame="2" value="A9932721"/>
+                <KeyFrameColor frame="4" value="A9932721"/>
+                <KeyFrameColor frame="6" value="A9932721"/>
+                <KeyFrameColor frame="8" value="A9932721"/>
+                <KeyFrameColor frame="10" value="A9932721"/>
+                <KeyFrameColor frame="12" value="A9932721"/>
+                <KeyFrameColor frame="14" value="AA932721"/>
+                <KeyFrameColor frame="16" value="AB922622"/>
+                <KeyFrameColor frame="18" value="AE922523"/>
+                <KeyFrameColor frame="20" value="B1912424"/>
+                <KeyFrameColor frame="22" value="B5912325"/>
+                <KeyFrameColor frame="24" value="BB902127"/>
+                <KeyFrameColor frame="26" value="C08F1F29"/>
+                <KeyFrameColor frame="28" value="C68E1D2B"/>
+                <KeyFrameColor frame="30" value="CB8D1C2D"/>
+                <KeyFrameColor frame="32" value="CF8C1B2F"/>
+                <KeyFrameColor frame="34" value="D28B1930"/>
+                <KeyFrameColor frame="36" value="D58B1831"/>
+                <KeyFrameColor frame="38" value="D88B1832"/>
+                <KeyFrameColor frame="40" value="DA8A1733"/>
+                <KeyFrameColor frame="42" value="DB8A1633"/>
+                <KeyFrameColor frame="44" value="DD8A1634"/>
+                <KeyFrameColor frame="46" value="DE891634"/>
+                <KeyFrameColor frame="48" value="DF891534"/>
+                <KeyFrameColor frame="50" value="E0891535"/>
+                <KeyFrameColor frame="52" value="E0891535"/>
+                <KeyFrameColor frame="54" value="E1891535"/>
+                <KeyFrameColor frame="56" value="E1891535"/>
+                <KeyFrameColor frame="58" value="E2891435"/>
+                <KeyFrameColor frame="60" value="E2891435"/>
+                <KeyFrameColor frame="62" value="E2891436"/>
+                <KeyFrameColor frame="64" value="E2891436"/>
+                <KeyFrameColor frame="66" value="E2891436"/>
+                <KeyFrameColor frame="68" value="E2891436"/>
+                <KeyFrameColor frame="70" value="E2891436"/>
+                <KeyFrameColor frame="72" value="E2891436"/>
+                <KeyFrameColor frame="74" value="E2891436"/>
+                <KeyFrameColor frame="76" value="E2891436"/>
+                <KeyFrameColor frame="78" value="E2891436"/>
+                <KeyFrameColor frame="80" value="E2891436"/>
+                <KeyFrameColor frame="82" value="E2891436"/>
+                <KeyFrameColor frame="84" value="E2891436"/>
+                <KeyFrameColor frame="86" value="E2891435"/>
+                <KeyFrameColor frame="88" value="E2891435"/>
+                <KeyFrameColor frame="90" value="E1891535"/>
+                <KeyFrameColor frame="92" value="E0891535"/>
+                <KeyFrameColor frame="94" value="DF891535"/>
+                <KeyFrameColor frame="96" value="DE891634"/>
+                <KeyFrameColor frame="98" value="DD8A1634"/>
+                <KeyFrameColor frame="100" value="DB8A1733"/>
+                <KeyFrameColor frame="102" value="D88A1732"/>
+                <KeyFrameColor frame="104" value="D68B1831"/>
+                <KeyFrameColor frame="106" value="D38B1930"/>
+                <KeyFrameColor frame="108" value="CF8C1A2F"/>
+                <KeyFrameColor frame="110" value="CC8D1B2E"/>
+                <KeyFrameColor frame="112" value="C98D1C2C"/>
+                <KeyFrameColor frame="114" value="C58E1E2B"/>
+                <KeyFrameColor frame="116" value="C28E1F2A"/>
+                <KeyFrameColor frame="118" value="BF8F2029"/>
+                <KeyFrameColor frame="120" value="BC8F2028"/>
+                <KeyFrameColor frame="122" value="BA902127"/>
+                <KeyFrameColor frame="124" value="B7902226"/>
+                <KeyFrameColor frame="126" value="B5912325"/>
+                <KeyFrameColor frame="128" value="B3912325"/>
+                <KeyFrameColor frame="130" value="B1912424"/>
+                <KeyFrameColor frame="132" value="B0922523"/>
+                <KeyFrameColor frame="134" value="AE922523"/>
+                <KeyFrameColor frame="136" value="AD922522"/>
+                <KeyFrameColor frame="138" value="AC922622"/>
+                <KeyFrameColor frame="140" value="AB922622"/>
+                <KeyFrameColor frame="142" value="AA932621"/>
+                <KeyFrameColor frame="144" value="AA932721"/>
+                <KeyFrameColor frame="146" value="A9932721"/>
+                <KeyFrameColor frame="148" value="A9932721"/>
+                <KeyFrameColor frame="150" value="A9932721"/>
+                <KeyFrameColor frame="152" value="A9932721"/>
+                <KeyFrameColor frame="154" value="A9932721"/>
+                <KeyFrameColor frame="156" value="A9932721"/>
+                <KeyFrameColor frame="158" value="A9932721"/>
+                <KeyFrameColor frame="160" value="A9932721"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o9">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="F1F75C36"/>
+                <KeyFrameColor frame="2" value="F1F75C36"/>
+                <KeyFrameColor frame="4" value="F1F75C36"/>
+                <KeyFrameColor frame="6" value="F1F75C36"/>
+                <KeyFrameColor frame="8" value="F1F75C36"/>
+                <KeyFrameColor frame="10" value="F1F75C36"/>
+                <KeyFrameColor frame="12" value="F1F75C36"/>
+                <KeyFrameColor frame="14" value="F1F75C36"/>
+                <KeyFrameColor frame="16" value="F2F75B38"/>
+                <KeyFrameColor frame="18" value="F2F7593A"/>
+                <KeyFrameColor frame="20" value="F3F6583C"/>
+                <KeyFrameColor frame="22" value="F4F6553F"/>
+                <KeyFrameColor frame="24" value="F6F65343"/>
+                <KeyFrameColor frame="26" value="F7F65047"/>
+                <KeyFrameColor frame="28" value="F8F54D4B"/>
+                <KeyFrameColor frame="30" value="F9F54B4E"/>
+                <KeyFrameColor frame="32" value="FAF54851"/>
+                <KeyFrameColor frame="34" value="FBF54753"/>
+                <KeyFrameColor frame="36" value="FCF54555"/>
+                <KeyFrameColor frame="38" value="FDF44457"/>
+                <KeyFrameColor frame="40" value="FDF44358"/>
+                <KeyFrameColor frame="42" value="FDF4425A"/>
+                <KeyFrameColor frame="44" value="FEF4425A"/>
+                <KeyFrameColor frame="46" value="FEF4415B"/>
+                <KeyFrameColor frame="48" value="FEF4405C"/>
+                <KeyFrameColor frame="50" value="FEF4405C"/>
+                <KeyFrameColor frame="52" value="FFF4405D"/>
+                <KeyFrameColor frame="54" value="FFF4405D"/>
+                <KeyFrameColor frame="56" value="FFF43F5E"/>
+                <KeyFrameColor frame="58" value="FFF43F5E"/>
+                <KeyFrameColor frame="60" value="FFF43F5E"/>
+                <KeyFrameColor frame="62" value="FFF43F5E"/>
+                <KeyFrameColor frame="64" value="FFF43F5E"/>
+                <KeyFrameColor frame="66" value="FFF43F5E"/>
+                <KeyFrameColor frame="68" value="FFF43F5E"/>
+                <KeyFrameColor frame="70" value="FFF43F5E"/>
+                <KeyFrameColor frame="72" value="FFF43F5E"/>
+                <KeyFrameColor frame="74" value="FFF43F5E"/>
+                <KeyFrameColor frame="76" value="FFF43F5E"/>
+                <KeyFrameColor frame="78" value="FFF43F5E"/>
+                <KeyFrameColor frame="80" value="FFF43F5E"/>
+                <KeyFrameColor frame="82" value="FFF43F5E"/>
+                <KeyFrameColor frame="84" value="FFF43F5E"/>
+                <KeyFrameColor frame="86" value="FFF43F5E"/>
+                <KeyFrameColor frame="88" value="FFF43F5E"/>
+                <KeyFrameColor frame="90" value="FFF43F5D"/>
+                <KeyFrameColor frame="92" value="FFF4405D"/>
+                <KeyFrameColor frame="94" value="FEF4405C"/>
+                <KeyFrameColor frame="96" value="FEF4415B"/>
+                <KeyFrameColor frame="98" value="FEF4425A"/>
+                <KeyFrameColor frame="100" value="FDF44359"/>
+                <KeyFrameColor frame="102" value="FDF44457"/>
+                <KeyFrameColor frame="104" value="FCF54556"/>
+                <KeyFrameColor frame="106" value="FBF54754"/>
+                <KeyFrameColor frame="108" value="FBF54851"/>
+                <KeyFrameColor frame="110" value="FAF54A4F"/>
+                <KeyFrameColor frame="112" value="F9F54B4D"/>
+                <KeyFrameColor frame="114" value="F8F54D4A"/>
+                <KeyFrameColor frame="116" value="F7F64F48"/>
+                <KeyFrameColor frame="118" value="F7F65046"/>
+                <KeyFrameColor frame="120" value="F6F65244"/>
+                <KeyFrameColor frame="122" value="F5F65342"/>
+                <KeyFrameColor frame="124" value="F5F65441"/>
+                <KeyFrameColor frame="126" value="F4F6553F"/>
+                <KeyFrameColor frame="128" value="F4F6563E"/>
+                <KeyFrameColor frame="130" value="F3F6573C"/>
+                <KeyFrameColor frame="132" value="F3F6583B"/>
+                <KeyFrameColor frame="134" value="F2F7593A"/>
+                <KeyFrameColor frame="136" value="F2F75A39"/>
+                <KeyFrameColor frame="138" value="F2F75A38"/>
+                <KeyFrameColor frame="140" value="F2F75B37"/>
+                <KeyFrameColor frame="142" value="F1F75B37"/>
+                <KeyFrameColor frame="144" value="F1F75C36"/>
+                <KeyFrameColor frame="146" value="F1F75C36"/>
+                <KeyFrameColor frame="148" value="F1F75C36"/>
+                <KeyFrameColor frame="150" value="F1F75C36"/>
+                <KeyFrameColor frame="152" value="F1F75C36"/>
+                <KeyFrameColor frame="154" value="F1F75C36"/>
+                <KeyFrameColor frame="156" value="F1F75C36"/>
+                <KeyFrameColor frame="158" value="F1F75C36"/>
+                <KeyFrameColor frame="160" value="F1F75C36"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o10">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="AD922522"/>
+                <KeyFrameColor frame="2" value="AD922522"/>
+                <KeyFrameColor frame="4" value="AD922522"/>
+                <KeyFrameColor frame="6" value="AD922522"/>
+                <KeyFrameColor frame="8" value="AD922522"/>
+                <KeyFrameColor frame="10" value="AD922522"/>
+                <KeyFrameColor frame="12" value="AD922522"/>
+                <KeyFrameColor frame="14" value="AE922523"/>
+                <KeyFrameColor frame="16" value="B0922523"/>
+                <KeyFrameColor frame="18" value="B2912424"/>
+                <KeyFrameColor frame="20" value="B6902326"/>
+                <KeyFrameColor frame="22" value="BA902127"/>
+                <KeyFrameColor frame="24" value="BF8F1F29"/>
+                <KeyFrameColor frame="26" value="C58E1E2B"/>
+                <KeyFrameColor frame="28" value="CA8D1C2D"/>
+                <KeyFrameColor frame="30" value="CF8C1A2F"/>
+                <KeyFrameColor frame="32" value="D38B1930"/>
+                <KeyFrameColor frame="34" value="D78B1831"/>
+                <KeyFrameColor frame="36" value="DA8A1733"/>
+                <KeyFrameColor frame="38" value="DC8A1633"/>
+                <KeyFrameColor frame="40" value="DE891634"/>
+                <KeyFrameColor frame="42" value="E0891535"/>
+                <KeyFrameColor frame="44" value="E1891535"/>
+                <KeyFrameColor frame="46" value="E2891436"/>
+                <KeyFrameColor frame="48" value="E3891436"/>
+                <KeyFrameColor frame="50" value="E4881436"/>
+                <KeyFrameColor frame="52" value="E4881336"/>
+                <KeyFrameColor frame="54" value="E5881337"/>
+                <KeyFrameColor frame="56" value="E5881337"/>
+                <KeyFrameColor frame="58" value="E6881337"/>
+                <KeyFrameColor frame="60" value="E6881337"/>
+                <KeyFrameColor frame="62" value="E6881337"/>
+                <KeyFrameColor frame="64" value="E6881337"/>
+                <KeyFrameColor frame="66" value="E6881337"/>
+                <KeyFrameColor frame="68" value="E6881337"/>
+                <KeyFrameColor frame="70" value="E6881337"/>
+                <KeyFrameColor frame="72" value="E6881337"/>
+                <KeyFrameColor frame="74" value="E6881337"/>
+                <KeyFrameColor frame="76" value="E6881337"/>
+                <KeyFrameColor frame="78" value="E6881337"/>
+                <KeyFrameColor frame="80" value="E6881337"/>
+                <KeyFrameColor frame="82" value="E6881337"/>
+                <KeyFrameColor frame="84" value="E6881337"/>
+                <KeyFrameColor frame="86" value="E6881337"/>
+                <KeyFrameColor frame="88" value="E6881337"/>
+                <KeyFrameColor frame="90" value="E5881337"/>
+                <KeyFrameColor frame="92" value="E5881336"/>
+                <KeyFrameColor frame="94" value="E4881436"/>
+                <KeyFrameColor frame="96" value="E2891436"/>
+                <KeyFrameColor frame="98" value="E1891535"/>
+                <KeyFrameColor frame="100" value="DF891534"/>
+                <KeyFrameColor frame="102" value="DD8A1634"/>
+                <KeyFrameColor frame="104" value="DA8A1733"/>
+                <KeyFrameColor frame="106" value="D78B1832"/>
+                <KeyFrameColor frame="108" value="D48B1931"/>
+                <KeyFrameColor frame="110" value="D18C1A2F"/>
+                <KeyFrameColor frame="112" value="CE8C1B2E"/>
+                <KeyFrameColor frame="114" value="CA8D1C2D"/>
+                <KeyFrameColor frame="116" value="C78D1D2C"/>
+                <KeyFrameColor frame="118" value="C48E1E2B"/>
+                <KeyFrameColor frame="120" value="C18E1F2A"/>
+                <KeyFrameColor frame="122" value="BF8F2029"/>
+                <KeyFrameColor frame="124" value="BC8F2128"/>
+                <KeyFrameColor frame="126" value="BA902127"/>
+                <KeyFrameColor frame="128" value="B8902226"/>
+                <KeyFrameColor frame="130" value="B6902226"/>
+                <KeyFrameColor frame="132" value="B4912325"/>
+                <KeyFrameColor frame="134" value="B3912424"/>
+                <KeyFrameColor frame="136" value="B2912424"/>
+                <KeyFrameColor frame="138" value="B0912424"/>
+                <KeyFrameColor frame="140" value="AF922523"/>
+                <KeyFrameColor frame="142" value="AE922523"/>
+                <KeyFrameColor frame="144" value="AE922523"/>
+                <KeyFrameColor frame="146" value="AD922522"/>
+                <KeyFrameColor frame="148" value="AD922522"/>
+                <KeyFrameColor frame="150" value="AD922522"/>
+                <KeyFrameColor frame="152" value="AD922522"/>
+                <KeyFrameColor frame="154" value="AD922522"/>
+                <KeyFrameColor frame="156" value="AD922522"/>
+                <KeyFrameColor frame="158" value="AD922522"/>
+                <KeyFrameColor frame="160" value="AD922522"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o11">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="F0F75E33"/>
+                <KeyFrameColor frame="2" value="F0F75E33"/>
+                <KeyFrameColor frame="4" value="F0F75E33"/>
+                <KeyFrameColor frame="6" value="F0F75E33"/>
+                <KeyFrameColor frame="8" value="F0F75E33"/>
+                <KeyFrameColor frame="10" value="F0F75E33"/>
+                <KeyFrameColor frame="12" value="F0F75E33"/>
+                <KeyFrameColor frame="14" value="F0F75E33"/>
+                <KeyFrameColor frame="16" value="F1F75D35"/>
+                <KeyFrameColor frame="18" value="F1F75C36"/>
+                <KeyFrameColor frame="20" value="F2F75A39"/>
+                <KeyFrameColor frame="22" value="F3F6583C"/>
+                <KeyFrameColor frame="24" value="F4F6553F"/>
+                <KeyFrameColor frame="26" value="F6F65243"/>
+                <KeyFrameColor frame="28" value="F7F65047"/>
+                <KeyFrameColor frame="30" value="F8F54D4B"/>
+                <KeyFrameColor frame="32" value="F9F54B4E"/>
+                <KeyFrameColor frame="34" value="FAF54950"/>
+                <KeyFrameColor frame="36" value="FBF54852"/>
+                <KeyFrameColor frame="38" value="FBF54654"/>
+                <KeyFrameColor frame="40" value="FCF54555"/>
+                <KeyFrameColor frame="42" value="FCF54456"/>
+                <KeyFrameColor frame="44" value="FDF44457"/>
+                <KeyFrameColor frame="46" value="FDF44358"/>
+                <KeyFrameColor frame="48" value="FDF44359"/>
+                <KeyFrameColor frame="50" value="FDF4425A"/>
+                <KeyFrameColor frame="52" value="FEF4425A"/>
+                <KeyFrameColor frame="54" value="FEF4425A"/>
+                <KeyFrameColor frame="56" value="FEF4415B"/>
+                <KeyFrameColor frame="58" value="FEF4415B"/>
+                <KeyFrameColor frame="60" value="FEF4415B"/>
+                <KeyFrameColor frame="62" value="FEF4415B"/>
+                <KeyFrameColor frame="64" value="FEF4415B"/>
+                <KeyFrameColor frame="66" value="FEF4415B"/>
+                <KeyFrameColor frame="68" value="FEF4415B"/>
+                <KeyFrameColor frame="70" value="FEF4415B"/>
+                <KeyFrameColor frame="72" value="FEF4415B"/>
+                <KeyFrameColor frame="74" value="FEF4415B"/>
+                <KeyFrameColor frame="76" value="FEF4415B"/>
+                <KeyFrameColor frame="78" value="FEF4415B"/>
+                <KeyFrameColor frame="80" value="FEF4415B"/>
+                <KeyFrameColor frame="82" value="FEF4415B"/>
+                <KeyFrameColor frame="84" value="FEF4415B"/>
+                <KeyFrameColor frame="86" value="FEF4415B"/>
+                <KeyFrameColor frame="88" value="FEF4415B"/>
+                <KeyFrameColor frame="90" value="FEF4425B"/>
+                <KeyFrameColor frame="92" value="FEF4425A"/>
+                <KeyFrameColor frame="94" value="FDF44259"/>
+                <KeyFrameColor frame="96" value="FDF44358"/>
+                <KeyFrameColor frame="98" value="FDF44457"/>
+                <KeyFrameColor frame="100" value="FCF54556"/>
+                <KeyFrameColor frame="102" value="FCF54654"/>
+                <KeyFrameColor frame="104" value="FBF54752"/>
+                <KeyFrameColor frame="106" value="FAF54950"/>
+                <KeyFrameColor frame="108" value="F9F54B4E"/>
+                <KeyFrameColor frame="110" value="F9F54C4C"/>
+                <KeyFrameColor frame="112" value="F8F54E49"/>
+                <KeyFrameColor frame="114" value="F7F65047"/>
+                <KeyFrameColor frame="116" value="F6F65145"/>
+                <KeyFrameColor frame="118" value="F5F65343"/>
+                <KeyFrameColor frame="120" value="F5F65441"/>
+                <KeyFrameColor frame="122" value="F4F6563F"/>
+                <KeyFrameColor frame="124" value="F4F6573D"/>
+                <KeyFrameColor frame="126" value="F3F6583C"/>
+                <KeyFrameColor frame="128" value="F3F6593A"/>
+                <KeyFrameColor frame="130" value="F2F75A39"/>
+                <KeyFrameColor frame="132" value="F2F75B38"/>
+                <KeyFrameColor frame="134" value="F1F75B37"/>
+                <KeyFrameColor frame="136" value="F1F75C36"/>
+                <KeyFrameColor frame="138" value="F1F75D35"/>
+                <KeyFrameColor frame="140" value="F1F75D34"/>
+                <KeyFrameColor frame="142" value="F0F75E34"/>
+                <KeyFrameColor frame="144" value="F0F75E33"/>
+                <KeyFrameColor frame="146" value="F0F75E33"/>
+                <KeyFrameColor frame="148" value="F0F75E33"/>
+                <KeyFrameColor frame="150" value="F0F75E33"/>
+                <KeyFrameColor frame="152" value="F0F75E33"/>
+                <KeyFrameColor frame="154" value="F0F75E33"/>
+                <KeyFrameColor frame="156" value="F0F75E33"/>
+                <KeyFrameColor frame="158" value="F0F75E33"/>
+                <KeyFrameColor frame="160" value="F0F75E33"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o12">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="A9932721"/>
+                <KeyFrameColor frame="2" value="A9932721"/>
+                <KeyFrameColor frame="4" value="A9932721"/>
+                <KeyFrameColor frame="6" value="A9932721"/>
+                <KeyFrameColor frame="8" value="A9932721"/>
+                <KeyFrameColor frame="10" value="A9932721"/>
+                <KeyFrameColor frame="12" value="A9932721"/>
+                <KeyFrameColor frame="14" value="AA932721"/>
+                <KeyFrameColor frame="16" value="AB922622"/>
+                <KeyFrameColor frame="18" value="AE922523"/>
+                <KeyFrameColor frame="20" value="B1912424"/>
+                <KeyFrameColor frame="22" value="B5912325"/>
+                <KeyFrameColor frame="24" value="BB902127"/>
+                <KeyFrameColor frame="26" value="C08F1F29"/>
+                <KeyFrameColor frame="28" value="C68E1D2B"/>
+                <KeyFrameColor frame="30" value="CB8D1C2D"/>
+                <KeyFrameColor frame="32" value="CF8C1B2F"/>
+                <KeyFrameColor frame="34" value="D28B1930"/>
+                <KeyFrameColor frame="36" value="D58B1831"/>
+                <KeyFrameColor frame="38" value="D88B1832"/>
+                <KeyFrameColor frame="40" value="DA8A1733"/>
+                <KeyFrameColor frame="42" value="DB8A1633"/>
+                <KeyFrameColor frame="44" value="DD8A1634"/>
+                <KeyFrameColor frame="46" value="DE891634"/>
+                <KeyFrameColor frame="48" value="DF891534"/>
+                <KeyFrameColor frame="50" value="E0891535"/>
+                <KeyFrameColor frame="52" value="E0891535"/>
+                <KeyFrameColor frame="54" value="E1891535"/>
+                <KeyFrameColor frame="56" value="E1891535"/>
+                <KeyFrameColor frame="58" value="E2891435"/>
+                <KeyFrameColor frame="60" value="E2891435"/>
+                <KeyFrameColor frame="62" value="E2891436"/>
+                <KeyFrameColor frame="64" value="E2891436"/>
+                <KeyFrameColor frame="66" value="E2891436"/>
+                <KeyFrameColor frame="68" value="E2891436"/>
+                <KeyFrameColor frame="70" value="E2891436"/>
+                <KeyFrameColor frame="72" value="E2891436"/>
+                <KeyFrameColor frame="74" value="E2891436"/>
+                <KeyFrameColor frame="76" value="E2891436"/>
+                <KeyFrameColor frame="78" value="E2891436"/>
+                <KeyFrameColor frame="80" value="E2891436"/>
+                <KeyFrameColor frame="82" value="E2891436"/>
+                <KeyFrameColor frame="84" value="E2891436"/>
+                <KeyFrameColor frame="86" value="E2891435"/>
+                <KeyFrameColor frame="88" value="E2891435"/>
+                <KeyFrameColor frame="90" value="E1891535"/>
+                <KeyFrameColor frame="92" value="E0891535"/>
+                <KeyFrameColor frame="94" value="DF891535"/>
+                <KeyFrameColor frame="96" value="DE891634"/>
+                <KeyFrameColor frame="98" value="DD8A1634"/>
+                <KeyFrameColor frame="100" value="DB8A1733"/>
+                <KeyFrameColor frame="102" value="D88A1732"/>
+                <KeyFrameColor frame="104" value="D68B1831"/>
+                <KeyFrameColor frame="106" value="D38B1930"/>
+                <KeyFrameColor frame="108" value="CF8C1A2F"/>
+                <KeyFrameColor frame="110" value="CC8D1B2E"/>
+                <KeyFrameColor frame="112" value="C98D1C2C"/>
+                <KeyFrameColor frame="114" value="C58E1E2B"/>
+                <KeyFrameColor frame="116" value="C28E1F2A"/>
+                <KeyFrameColor frame="118" value="BF8F2029"/>
+                <KeyFrameColor frame="120" value="BC8F2028"/>
+                <KeyFrameColor frame="122" value="BA902127"/>
+                <KeyFrameColor frame="124" value="B7902226"/>
+                <KeyFrameColor frame="126" value="B5912325"/>
+                <KeyFrameColor frame="128" value="B3912325"/>
+                <KeyFrameColor frame="130" value="B1912424"/>
+                <KeyFrameColor frame="132" value="B0922523"/>
+                <KeyFrameColor frame="134" value="AE922523"/>
+                <KeyFrameColor frame="136" value="AD922522"/>
+                <KeyFrameColor frame="138" value="AC922622"/>
+                <KeyFrameColor frame="140" value="AB922622"/>
+                <KeyFrameColor frame="142" value="AA932621"/>
+                <KeyFrameColor frame="144" value="AA932721"/>
+                <KeyFrameColor frame="146" value="A9932721"/>
+                <KeyFrameColor frame="148" value="A9932721"/>
+                <KeyFrameColor frame="150" value="A9932721"/>
+                <KeyFrameColor frame="152" value="A9932721"/>
+                <KeyFrameColor frame="154" value="A9932721"/>
+                <KeyFrameColor frame="156" value="A9932721"/>
+                <KeyFrameColor frame="158" value="A9932721"/>
+                <KeyFrameColor frame="160" value="A9932721"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o13">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="F0F75E33"/>
+                <KeyFrameColor frame="2" value="F0F75E33"/>
+                <KeyFrameColor frame="4" value="F0F75E33"/>
+                <KeyFrameColor frame="6" value="F0F75E33"/>
+                <KeyFrameColor frame="8" value="F0F75E33"/>
+                <KeyFrameColor frame="10" value="F0F75E33"/>
+                <KeyFrameColor frame="12" value="F0F75E33"/>
+                <KeyFrameColor frame="14" value="F0F75E33"/>
+                <KeyFrameColor frame="16" value="F1F75D35"/>
+                <KeyFrameColor frame="18" value="F1F75C36"/>
+                <KeyFrameColor frame="20" value="F2F75A39"/>
+                <KeyFrameColor frame="22" value="F3F6583C"/>
+                <KeyFrameColor frame="24" value="F4F6553F"/>
+                <KeyFrameColor frame="26" value="F6F65243"/>
+                <KeyFrameColor frame="28" value="F7F65047"/>
+                <KeyFrameColor frame="30" value="F8F54D4B"/>
+                <KeyFrameColor frame="32" value="F9F54B4E"/>
+                <KeyFrameColor frame="34" value="FAF54950"/>
+                <KeyFrameColor frame="36" value="FBF54852"/>
+                <KeyFrameColor frame="38" value="FBF54654"/>
+                <KeyFrameColor frame="40" value="FCF54555"/>
+                <KeyFrameColor frame="42" value="FCF54456"/>
+                <KeyFrameColor frame="44" value="FDF44457"/>
+                <KeyFrameColor frame="46" value="FDF44358"/>
+                <KeyFrameColor frame="48" value="FDF44359"/>
+                <KeyFrameColor frame="50" value="FDF4425A"/>
+                <KeyFrameColor frame="52" value="FEF4425A"/>
+                <KeyFrameColor frame="54" value="FEF4425A"/>
+                <KeyFrameColor frame="56" value="FEF4415B"/>
+                <KeyFrameColor frame="58" value="FEF4415B"/>
+                <KeyFrameColor frame="60" value="FEF4415B"/>
+                <KeyFrameColor frame="62" value="FEF4415B"/>
+                <KeyFrameColor frame="64" value="FEF4415B"/>
+                <KeyFrameColor frame="66" value="FEF4415B"/>
+                <KeyFrameColor frame="68" value="FEF4415B"/>
+                <KeyFrameColor frame="70" value="FEF4415B"/>
+                <KeyFrameColor frame="72" value="FEF4415B"/>
+                <KeyFrameColor frame="74" value="FEF4415B"/>
+                <KeyFrameColor frame="76" value="FEF4415B"/>
+                <KeyFrameColor frame="78" value="FEF4415B"/>
+                <KeyFrameColor frame="80" value="FEF4415B"/>
+                <KeyFrameColor frame="82" value="FEF4415B"/>
+                <KeyFrameColor frame="84" value="FEF4415B"/>
+                <KeyFrameColor frame="86" value="FEF4415B"/>
+                <KeyFrameColor frame="88" value="FEF4415B"/>
+                <KeyFrameColor frame="90" value="FEF4425B"/>
+                <KeyFrameColor frame="92" value="FEF4425A"/>
+                <KeyFrameColor frame="94" value="FDF44259"/>
+                <KeyFrameColor frame="96" value="FDF44358"/>
+                <KeyFrameColor frame="98" value="FDF44457"/>
+                <KeyFrameColor frame="100" value="FCF54556"/>
+                <KeyFrameColor frame="102" value="FCF54654"/>
+                <KeyFrameColor frame="104" value="FBF54752"/>
+                <KeyFrameColor frame="106" value="FAF54950"/>
+                <KeyFrameColor frame="108" value="F9F54B4E"/>
+                <KeyFrameColor frame="110" value="F9F54C4C"/>
+                <KeyFrameColor frame="112" value="F8F54E49"/>
+                <KeyFrameColor frame="114" value="F7F65047"/>
+                <KeyFrameColor frame="116" value="F6F65145"/>
+                <KeyFrameColor frame="118" value="F5F65343"/>
+                <KeyFrameColor frame="120" value="F5F65441"/>
+                <KeyFrameColor frame="122" value="F4F6563F"/>
+                <KeyFrameColor frame="124" value="F4F6573D"/>
+                <KeyFrameColor frame="126" value="F3F6583C"/>
+                <KeyFrameColor frame="128" value="F3F6593A"/>
+                <KeyFrameColor frame="130" value="F2F75A39"/>
+                <KeyFrameColor frame="132" value="F2F75B38"/>
+                <KeyFrameColor frame="134" value="F1F75B37"/>
+                <KeyFrameColor frame="136" value="F1F75C36"/>
+                <KeyFrameColor frame="138" value="F1F75D35"/>
+                <KeyFrameColor frame="140" value="F1F75D34"/>
+                <KeyFrameColor frame="142" value="F0F75E34"/>
+                <KeyFrameColor frame="144" value="F0F75E33"/>
+                <KeyFrameColor frame="146" value="F0F75E33"/>
+                <KeyFrameColor frame="148" value="F0F75E33"/>
+                <KeyFrameColor frame="150" value="F0F75E33"/>
+                <KeyFrameColor frame="152" value="F0F75E33"/>
+                <KeyFrameColor frame="154" value="F0F75E33"/>
+                <KeyFrameColor frame="156" value="F0F75E33"/>
+                <KeyFrameColor frame="158" value="F0F75E33"/>
+                <KeyFrameColor frame="160" value="F0F75E33"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o14">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="A9932721"/>
+                <KeyFrameColor frame="2" value="A9932721"/>
+                <KeyFrameColor frame="4" value="A9932721"/>
+                <KeyFrameColor frame="6" value="A9932721"/>
+                <KeyFrameColor frame="8" value="A9932721"/>
+                <KeyFrameColor frame="10" value="A9932721"/>
+                <KeyFrameColor frame="12" value="A9932721"/>
+                <KeyFrameColor frame="14" value="AA932721"/>
+                <KeyFrameColor frame="16" value="AB922622"/>
+                <KeyFrameColor frame="18" value="AE922523"/>
+                <KeyFrameColor frame="20" value="B1912424"/>
+                <KeyFrameColor frame="22" value="B5912325"/>
+                <KeyFrameColor frame="24" value="BB902127"/>
+                <KeyFrameColor frame="26" value="C08F1F29"/>
+                <KeyFrameColor frame="28" value="C68E1D2B"/>
+                <KeyFrameColor frame="30" value="CB8D1C2D"/>
+                <KeyFrameColor frame="32" value="CF8C1B2F"/>
+                <KeyFrameColor frame="34" value="D28B1930"/>
+                <KeyFrameColor frame="36" value="D58B1831"/>
+                <KeyFrameColor frame="38" value="D88B1832"/>
+                <KeyFrameColor frame="40" value="DA8A1733"/>
+                <KeyFrameColor frame="42" value="DB8A1633"/>
+                <KeyFrameColor frame="44" value="DD8A1634"/>
+                <KeyFrameColor frame="46" value="DE891634"/>
+                <KeyFrameColor frame="48" value="DF891534"/>
+                <KeyFrameColor frame="50" value="E0891535"/>
+                <KeyFrameColor frame="52" value="E0891535"/>
+                <KeyFrameColor frame="54" value="E1891535"/>
+                <KeyFrameColor frame="56" value="E1891535"/>
+                <KeyFrameColor frame="58" value="E2891435"/>
+                <KeyFrameColor frame="60" value="E2891435"/>
+                <KeyFrameColor frame="62" value="E2891436"/>
+                <KeyFrameColor frame="64" value="E2891436"/>
+                <KeyFrameColor frame="66" value="E2891436"/>
+                <KeyFrameColor frame="68" value="E2891436"/>
+                <KeyFrameColor frame="70" value="E2891436"/>
+                <KeyFrameColor frame="72" value="E2891436"/>
+                <KeyFrameColor frame="74" value="E2891436"/>
+                <KeyFrameColor frame="76" value="E2891436"/>
+                <KeyFrameColor frame="78" value="E2891436"/>
+                <KeyFrameColor frame="80" value="E2891436"/>
+                <KeyFrameColor frame="82" value="E2891436"/>
+                <KeyFrameColor frame="84" value="E2891436"/>
+                <KeyFrameColor frame="86" value="E2891435"/>
+                <KeyFrameColor frame="88" value="E2891435"/>
+                <KeyFrameColor frame="90" value="E1891535"/>
+                <KeyFrameColor frame="92" value="E0891535"/>
+                <KeyFrameColor frame="94" value="DF891535"/>
+                <KeyFrameColor frame="96" value="DE891634"/>
+                <KeyFrameColor frame="98" value="DD8A1634"/>
+                <KeyFrameColor frame="100" value="DB8A1733"/>
+                <KeyFrameColor frame="102" value="D88A1732"/>
+                <KeyFrameColor frame="104" value="D68B1831"/>
+                <KeyFrameColor frame="106" value="D38B1930"/>
+                <KeyFrameColor frame="108" value="CF8C1A2F"/>
+                <KeyFrameColor frame="110" value="CC8D1B2E"/>
+                <KeyFrameColor frame="112" value="C98D1C2C"/>
+                <KeyFrameColor frame="114" value="C58E1E2B"/>
+                <KeyFrameColor frame="116" value="C28E1F2A"/>
+                <KeyFrameColor frame="118" value="BF8F2029"/>
+                <KeyFrameColor frame="120" value="BC8F2028"/>
+                <KeyFrameColor frame="122" value="BA902127"/>
+                <KeyFrameColor frame="124" value="B7902226"/>
+                <KeyFrameColor frame="126" value="B5912325"/>
+                <KeyFrameColor frame="128" value="B3912325"/>
+                <KeyFrameColor frame="130" value="B1912424"/>
+                <KeyFrameColor frame="132" value="B0922523"/>
+                <KeyFrameColor frame="134" value="AE922523"/>
+                <KeyFrameColor frame="136" value="AD922522"/>
+                <KeyFrameColor frame="138" value="AC922622"/>
+                <KeyFrameColor frame="140" value="AB922622"/>
+                <KeyFrameColor frame="142" value="AA932621"/>
+                <KeyFrameColor frame="144" value="AA932721"/>
+                <KeyFrameColor frame="146" value="A9932721"/>
+                <KeyFrameColor frame="148" value="A9932721"/>
+                <KeyFrameColor frame="150" value="A9932721"/>
+                <KeyFrameColor frame="152" value="A9932721"/>
+                <KeyFrameColor frame="154" value="A9932721"/>
+                <KeyFrameColor frame="156" value="A9932721"/>
+                <KeyFrameColor frame="158" value="A9932721"/>
+                <KeyFrameColor frame="160" value="A9932721"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o15">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="F1F75C36"/>
+                <KeyFrameColor frame="2" value="F1F75C36"/>
+                <KeyFrameColor frame="4" value="F1F75C36"/>
+                <KeyFrameColor frame="6" value="F1F75C36"/>
+                <KeyFrameColor frame="8" value="F1F75C36"/>
+                <KeyFrameColor frame="10" value="F1F75C36"/>
+                <KeyFrameColor frame="12" value="F1F75C36"/>
+                <KeyFrameColor frame="14" value="F1F75C36"/>
+                <KeyFrameColor frame="16" value="F2F75B38"/>
+                <KeyFrameColor frame="18" value="F2F7593A"/>
+                <KeyFrameColor frame="20" value="F3F6583C"/>
+                <KeyFrameColor frame="22" value="F4F6553F"/>
+                <KeyFrameColor frame="24" value="F6F65343"/>
+                <KeyFrameColor frame="26" value="F7F65047"/>
+                <KeyFrameColor frame="28" value="F8F54D4B"/>
+                <KeyFrameColor frame="30" value="F9F54B4E"/>
+                <KeyFrameColor frame="32" value="FAF54851"/>
+                <KeyFrameColor frame="34" value="FBF54753"/>
+                <KeyFrameColor frame="36" value="FCF54555"/>
+                <KeyFrameColor frame="38" value="FDF44457"/>
+                <KeyFrameColor frame="40" value="FDF44358"/>
+                <KeyFrameColor frame="42" value="FDF4425A"/>
+                <KeyFrameColor frame="44" value="FEF4425A"/>
+                <KeyFrameColor frame="46" value="FEF4415B"/>
+                <KeyFrameColor frame="48" value="FEF4405C"/>
+                <KeyFrameColor frame="50" value="FEF4405C"/>
+                <KeyFrameColor frame="52" value="FFF4405D"/>
+                <KeyFrameColor frame="54" value="FFF4405D"/>
+                <KeyFrameColor frame="56" value="FFF43F5E"/>
+                <KeyFrameColor frame="58" value="FFF43F5E"/>
+                <KeyFrameColor frame="60" value="FFF43F5E"/>
+                <KeyFrameColor frame="62" value="FFF43F5E"/>
+                <KeyFrameColor frame="64" value="FFF43F5E"/>
+                <KeyFrameColor frame="66" value="FFF43F5E"/>
+                <KeyFrameColor frame="68" value="FFF43F5E"/>
+                <KeyFrameColor frame="70" value="FFF43F5E"/>
+                <KeyFrameColor frame="72" value="FFF43F5E"/>
+                <KeyFrameColor frame="74" value="FFF43F5E"/>
+                <KeyFrameColor frame="76" value="FFF43F5E"/>
+                <KeyFrameColor frame="78" value="FFF43F5E"/>
+                <KeyFrameColor frame="80" value="FFF43F5E"/>
+                <KeyFrameColor frame="82" value="FFF43F5E"/>
+                <KeyFrameColor frame="84" value="FFF43F5E"/>
+                <KeyFrameColor frame="86" value="FFF43F5E"/>
+                <KeyFrameColor frame="88" value="FFF43F5E"/>
+                <KeyFrameColor frame="90" value="FFF43F5D"/>
+                <KeyFrameColor frame="92" value="FFF4405D"/>
+                <KeyFrameColor frame="94" value="FEF4405C"/>
+                <KeyFrameColor frame="96" value="FEF4415B"/>
+                <KeyFrameColor frame="98" value="FEF4425A"/>
+                <KeyFrameColor frame="100" value="FDF44359"/>
+                <KeyFrameColor frame="102" value="FDF44457"/>
+                <KeyFrameColor frame="104" value="FCF54556"/>
+                <KeyFrameColor frame="106" value="FBF54754"/>
+                <KeyFrameColor frame="108" value="FBF54851"/>
+                <KeyFrameColor frame="110" value="FAF54A4F"/>
+                <KeyFrameColor frame="112" value="F9F54B4D"/>
+                <KeyFrameColor frame="114" value="F8F54D4A"/>
+                <KeyFrameColor frame="116" value="F7F64F48"/>
+                <KeyFrameColor frame="118" value="F7F65046"/>
+                <KeyFrameColor frame="120" value="F6F65244"/>
+                <KeyFrameColor frame="122" value="F5F65342"/>
+                <KeyFrameColor frame="124" value="F5F65441"/>
+                <KeyFrameColor frame="126" value="F4F6553F"/>
+                <KeyFrameColor frame="128" value="F4F6563E"/>
+                <KeyFrameColor frame="130" value="F3F6573C"/>
+                <KeyFrameColor frame="132" value="F3F6583B"/>
+                <KeyFrameColor frame="134" value="F2F7593A"/>
+                <KeyFrameColor frame="136" value="F2F75A39"/>
+                <KeyFrameColor frame="138" value="F2F75A38"/>
+                <KeyFrameColor frame="140" value="F2F75B37"/>
+                <KeyFrameColor frame="142" value="F1F75B37"/>
+                <KeyFrameColor frame="144" value="F1F75C36"/>
+                <KeyFrameColor frame="146" value="F1F75C36"/>
+                <KeyFrameColor frame="148" value="F1F75C36"/>
+                <KeyFrameColor frame="150" value="F1F75C36"/>
+                <KeyFrameColor frame="152" value="F1F75C36"/>
+                <KeyFrameColor frame="154" value="F1F75C36"/>
+                <KeyFrameColor frame="156" value="F1F75C36"/>
+                <KeyFrameColor frame="158" value="F1F75C36"/>
+                <KeyFrameColor frame="160" value="F1F75C36"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o16">
+            <KeyedProperty propertyKey="37">
+                <KeyFrameColor frame="0" value="AD922522"/>
+                <KeyFrameColor frame="2" value="AD922522"/>
+                <KeyFrameColor frame="4" value="AD922522"/>
+                <KeyFrameColor frame="6" value="AD922522"/>
+                <KeyFrameColor frame="8" value="AD922522"/>
+                <KeyFrameColor frame="10" value="AD922522"/>
+                <KeyFrameColor frame="12" value="AD922522"/>
+                <KeyFrameColor frame="14" value="AE922523"/>
+                <KeyFrameColor frame="16" value="B0922523"/>
+                <KeyFrameColor frame="18" value="B2912424"/>
+                <KeyFrameColor frame="20" value="B6902326"/>
+                <KeyFrameColor frame="22" value="BA902127"/>
+                <KeyFrameColor frame="24" value="BF8F1F29"/>
+                <KeyFrameColor frame="26" value="C58E1E2B"/>
+                <KeyFrameColor frame="28" value="CA8D1C2D"/>
+                <KeyFrameColor frame="30" value="CF8C1A2F"/>
+                <KeyFrameColor frame="32" value="D38B1930"/>
+                <KeyFrameColor frame="34" value="D78B1831"/>
+                <KeyFrameColor frame="36" value="DA8A1733"/>
+                <KeyFrameColor frame="38" value="DC8A1633"/>
+                <KeyFrameColor frame="40" value="DE891634"/>
+                <KeyFrameColor frame="42" value="E0891535"/>
+                <KeyFrameColor frame="44" value="E1891535"/>
+                <KeyFrameColor frame="46" value="E2891436"/>
+                <KeyFrameColor frame="48" value="E3891436"/>
+                <KeyFrameColor frame="50" value="E4881436"/>
+                <KeyFrameColor frame="52" value="E4881336"/>
+                <KeyFrameColor frame="54" value="E5881337"/>
+                <KeyFrameColor frame="56" value="E5881337"/>
+                <KeyFrameColor frame="58" value="E6881337"/>
+                <KeyFrameColor frame="60" value="E6881337"/>
+                <KeyFrameColor frame="62" value="E6881337"/>
+                <KeyFrameColor frame="64" value="E6881337"/>
+                <KeyFrameColor frame="66" value="E6881337"/>
+                <KeyFrameColor frame="68" value="E6881337"/>
+                <KeyFrameColor frame="70" value="E6881337"/>
+                <KeyFrameColor frame="72" value="E6881337"/>
+                <KeyFrameColor frame="74" value="E6881337"/>
+                <KeyFrameColor frame="76" value="E6881337"/>
+                <KeyFrameColor frame="78" value="E6881337"/>
+                <KeyFrameColor frame="80" value="E6881337"/>
+                <KeyFrameColor frame="82" value="E6881337"/>
+                <KeyFrameColor frame="84" value="E6881337"/>
+                <KeyFrameColor frame="86" value="E6881337"/>
+                <KeyFrameColor frame="88" value="E6881337"/>
+                <KeyFrameColor frame="90" value="E5881337"/>
+                <KeyFrameColor frame="92" value="E5881336"/>
+                <KeyFrameColor frame="94" value="E4881436"/>
+                <KeyFrameColor frame="96" value="E2891436"/>
+                <KeyFrameColor frame="98" value="E1891535"/>
+                <KeyFrameColor frame="100" value="DF891534"/>
+                <KeyFrameColor frame="102" value="DD8A1634"/>
+                <KeyFrameColor frame="104" value="DA8A1733"/>
+                <KeyFrameColor frame="106" value="D78B1832"/>
+                <KeyFrameColor frame="108" value="D48B1931"/>
+                <KeyFrameColor frame="110" value="D18C1A2F"/>
+                <KeyFrameColor frame="112" value="CE8C1B2E"/>
+                <KeyFrameColor frame="114" value="CA8D1C2D"/>
+                <KeyFrameColor frame="116" value="C78D1D2C"/>
+                <KeyFrameColor frame="118" value="C48E1E2B"/>
+                <KeyFrameColor frame="120" value="C18E1F2A"/>
+                <KeyFrameColor frame="122" value="BF8F2029"/>
+                <KeyFrameColor frame="124" value="BC8F2128"/>
+                <KeyFrameColor frame="126" value="BA902127"/>
+                <KeyFrameColor frame="128" value="B8902226"/>
+                <KeyFrameColor frame="130" value="B6902226"/>
+                <KeyFrameColor frame="132" value="B4912325"/>
+                <KeyFrameColor frame="134" value="B3912424"/>
+                <KeyFrameColor frame="136" value="B2912424"/>
+                <KeyFrameColor frame="138" value="B0912424"/>
+                <KeyFrameColor frame="140" value="AF922523"/>
+                <KeyFrameColor frame="142" value="AE922523"/>
+                <KeyFrameColor frame="144" value="AE922523"/>
+                <KeyFrameColor frame="146" value="AD922522"/>
+                <KeyFrameColor frame="148" value="AD922522"/>
+                <KeyFrameColor frame="150" value="AD922522"/>
+                <KeyFrameColor frame="152" value="AD922522"/>
+                <KeyFrameColor frame="154" value="AD922522"/>
+                <KeyFrameColor frame="156" value="AD922522"/>
+                <KeyFrameColor frame="158" value="AD922522"/>
+                <KeyFrameColor frame="160" value="AD922522"/>
+            </KeyedProperty>
+        </KeyedObject>
+        <KeyedObject objectId="o17">
+            <KeyedProperty propertyKey="14">
+                <KeyFrameDouble frame="0" value="0"/>
+                <KeyFrameDouble frame="2" value="0"/>
+                <KeyFrameDouble frame="4" value="0"/>
+                <KeyFrameDouble frame="6" value="0"/>
+                <KeyFrameDouble frame="8" value="0"/>
+                <KeyFrameDouble frame="10" value="0"/>
+                <KeyFrameDouble frame="12" value="0"/>
+                <KeyFrameDouble frame="14" value="-0.1398"/>
+                <KeyFrameDouble frame="16" value="-0.6076"/>
+                <KeyFrameDouble frame="18" value="-1.4915"/>
+                <KeyFrameDouble frame="20" value="-2.8978"/>
+                <KeyFrameDouble frame="22" value="-4.9276"/>
+                <KeyFrameDouble frame="24" value="-7.6069"/>
+                <KeyFrameDouble frame="26" value="-10.7825"/>
+                <KeyFrameDouble frame="28" value="-14.1205"/>
+                <KeyFrameDouble frame="30" value="-17.2873"/>
+                <KeyFrameDouble frame="32" value="-20.1026"/>
+                <KeyFrameDouble frame="34" value="-22.5261"/>
+                <KeyFrameDouble frame="36" value="-24.5851"/>
+                <KeyFrameDouble frame="38" value="-26.3267"/>
+                <KeyFrameDouble frame="40" value="-27.7982"/>
+                <KeyFrameDouble frame="42" value="-29.0405"/>
+                <KeyFrameDouble frame="44" value="-30.0873"/>
+                <KeyFrameDouble frame="46" value="-30.9663"/>
+                <KeyFrameDouble frame="48" value="-31.6999"/>
+                <KeyFrameDouble frame="50" value="-32.3064"/>
+                <KeyFrameDouble frame="52" value="-32.801"/>
+                <KeyFrameDouble frame="54" value="-33.1962"/>
+                <KeyFrameDouble frame="56" value="-33.5025"/>
+                <KeyFrameDouble frame="58" value="-33.729"/>
+                <KeyFrameDouble frame="60" value="-33.8832"/>
+                <KeyFrameDouble frame="62" value="-33.9717"/>
+                <KeyFrameDouble frame="64" value="-34"/>
+                <KeyFrameDouble frame="66" value="-34"/>
+                <KeyFrameDouble frame="68" value="-34"/>
+                <KeyFrameDouble frame="70" value="-34"/>
+                <KeyFrameDouble frame="72" value="-34"/>
+                <KeyFrameDouble frame="74" value="-34"/>
+                <KeyFrameDouble frame="76" value="-34"/>
+                <KeyFrameDouble frame="78" value="-34"/>
+                <KeyFrameDouble frame="80" value="-34"/>
+                <KeyFrameDouble frame="82" value="-34"/>
+                <KeyFrameDouble frame="84" value="-34"/>
+                <KeyFrameDouble frame="86" value="-33.9348"/>
+                <KeyFrameDouble frame="88" value="-33.7288"/>
+                <KeyFrameDouble frame="90" value="-33.3648"/>
+                <KeyFrameDouble frame="92" value="-32.8239"/>
+                <KeyFrameDouble frame="94" value="-32.0858"/>
+                <KeyFrameDouble frame="96" value="-31.1303"/>
+                <KeyFrameDouble frame="98" value="-29.9395"/>
+                <KeyFrameDouble frame="100" value="-28.5018"/>
+                <KeyFrameDouble frame="102" value="-26.8178"/>
+                <KeyFrameDouble frame="104" value="-24.9068"/>
+                <KeyFrameDouble frame="106" value="-22.8111"/>
+                <KeyFrameDouble frame="108" value="-20.596"/>
+                <KeyFrameDouble frame="110" value="-18.3401"/>
+                <KeyFrameDouble frame="112" value="-16.1216"/>
+                <KeyFrameDouble frame="114" value="-14.0052"/>
+                <KeyFrameDouble frame="116" value="-12.0355"/>
+                <KeyFrameDouble frame="118" value="-10.237"/>
+                <KeyFrameDouble frame="120" value="-8.6186"/>
+                <KeyFrameDouble frame="122" value="-7.1786"/>
+                <KeyFrameDouble frame="124" value="-5.909"/>
+                <KeyFrameDouble frame="126" value="-4.7986"/>
+                <KeyFrameDouble frame="128" value="-3.8353"/>
+                <KeyFrameDouble frame="130" value="-3.0068"/>
+                <KeyFrameDouble frame="132" value="-2.3015"/>
+                <KeyFrameDouble frame="134" value="-1.7085"/>
+                <KeyFrameDouble frame="136" value="-1.2182"/>
+                <KeyFrameDouble frame="138" value="-0.8218"/>
+                <KeyFrameDouble frame="140" value="-0.5114"/>
+                <KeyFrameDouble frame="142" value="-0.2799"/>
+                <KeyFrameDouble frame="144" value="-0.1211"/>
+                <KeyFrameDouble frame="146" value="-0.0295"/>
+                <KeyFrameDouble frame="148" value="0"/>
+                <KeyFrameDouble frame="150" value="0"/>
+                <KeyFrameDouble frame="152" value="0"/>
+                <KeyFrameDouble frame="154" value="0"/>
+                <KeyFrameDouble frame="156" value="0"/>
+                <KeyFrameDouble frame="158" value="0"/>
+                <KeyFrameDouble frame="160" value="0"/>
+            </KeyedProperty>
+        </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
+</Rive>

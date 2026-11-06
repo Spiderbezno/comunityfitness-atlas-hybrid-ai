@@ -1,0 +1,4 @@
+name: plank
+version: 1.0.0
+rml: scene.rml
+output: build/plank.riv

@@ -1,0 +1,264 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" styleId="0:5" width="120" height="120" name="SetCheckButtonArtboard" id="0:2">
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+
+        <!-- Checkmark drawn on top of everything -->
+        <Shape x="60" y="60" name="Checkmark" id="0:30">
+            <PointsPath isClosed="false" name="CheckPath">
+                <StraightVertex x="-16" y="1"/>
+                <StraightVertex x="-5" y="12" radius="2"/>
+                <StraightVertex x="17" y="-11"/>
+            </PointsPath>
+            <Stroke thickness="7" cap="round" join="round" name="CheckStroke">
+                <SolidColor colorValue="FFFFFFFF" name="CheckColor"/>
+                <TrimPath start="0" end="0" name="CheckTrim" id="0:36"/>
+            </Stroke>
+        </Shape>
+
+        <!-- Spark burst: authored invisible, they fly out radially and fade -->
+        <Shape x="60" y="22" opacity="0" name="Spark0" id="0:50">
+            <Ellipse originX="0.5" originY="0.5" width="6" height="6" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FF22D3EE" name="C"/></Fill>
+        </Shape>
+        <Shape x="86.9" y="33.1" opacity="0" name="Spark1" id="0:51">
+            <Ellipse originX="0.5" originY="0.5" width="4" height="4" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FFFFFFFF" name="C"/></Fill>
+        </Shape>
+        <Shape x="98" y="60" opacity="0" name="Spark2" id="0:52">
+            <Ellipse originX="0.5" originY="0.5" width="6" height="6" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FFA78BFA" name="C"/></Fill>
+        </Shape>
+        <Shape x="86.9" y="86.9" opacity="0" name="Spark3" id="0:53">
+            <Ellipse originX="0.5" originY="0.5" width="4" height="4" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FFFFFFFF" name="C"/></Fill>
+        </Shape>
+        <Shape x="60" y="98" opacity="0" name="Spark4" id="0:54">
+            <Ellipse originX="0.5" originY="0.5" width="6" height="6" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FF22D3EE" name="C"/></Fill>
+        </Shape>
+        <Shape x="33.1" y="86.9" opacity="0" name="Spark5" id="0:55">
+            <Ellipse originX="0.5" originY="0.5" width="4" height="4" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FFFFFFFF" name="C"/></Fill>
+        </Shape>
+        <Shape x="22" y="60" opacity="0" name="Spark6" id="0:56">
+            <Ellipse originX="0.5" originY="0.5" width="6" height="6" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FFA78BFA" name="C"/></Fill>
+        </Shape>
+        <Shape x="33.1" y="33.1" opacity="0" name="Spark7" id="0:57">
+            <Ellipse originX="0.5" originY="0.5" width="4" height="4" name="P"/>
+            <Fill name="F"><SolidColor colorValue="FFFFFFFF" name="C"/></Fill>
+        </Shape>
+
+        <!-- Button disc with a soft top highlight -->
+        <Shape x="60" y="60" name="ButtonDisc" id="0:20">
+            <Ellipse originX="0.5" originY="0.5" width="84" height="84" name="DiscEllipse"/>
+            <Fill name="DiscFill">
+                <LinearGradient startX="-42" startY="-42" endX="42" endY="42" name="DiscGradient">
+                    <GradientStop colorValue="FF22D3EE" position="0"/>
+                    <GradientStop colorValue="FF6366F1" position="1"/>
+                </LinearGradient>
+            </Fill>
+            <Fill name="DiscHighlight">
+                <LinearGradient startX="0" startY="-42" endX="0" endY="10" name="HighlightGradient">
+                    <GradientStop colorValue="40FFFFFF" position="0"/>
+                    <GradientStop colorValue="00FFFFFF" position="1"/>
+                </LinearGradient>
+            </Fill>
+        </Shape>
+
+        <!-- Expanding shockwave ring -->
+        <Shape x="60" y="60" opacity="0" name="BurstRing" id="0:40">
+            <Ellipse originX="0.5" originY="0.5" width="84" height="84" name="RingEllipse"/>
+            <Stroke thickness="3" name="RingStroke">
+                <SolidColor colorValue="FF67E8F9" name="RingColor"/>
+            </Stroke>
+        </Shape>
+
+        <!-- Soft colored glow underneath -->
+        <Shape x="60" y="60" opacity="0" name="Glow" id="0:45">
+            <Ellipse originX="0.5" originY="0.5" width="80" height="80" name="GlowEllipse"/>
+            <Fill fillRule="clockwise" name="GlowFill">
+                <SolidColor colorValue="B322D3EE" name="GlowColor"/>
+                <Feather strength="14" offsetY="6" name="GlowFeather"/>
+            </Fill>
+        </Shape>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="ButtonLayer" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:12"/>
+                </EntryState>
+                <AnimationState x="200" animationId="0:60" id="0:12"/>
+            </StateMachineLayer>
+        </StateMachine>
+
+        <LinearAnimation duration="60" loopValue="oneShot" name="CompleteSet" id="0:60">
+            <!-- Disc pops in with an elastic overshoot -->
+            <KeyedObject objectId="0:20">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="0.55" interpolationType="cubic" frame="0"/>
+                    <KeyFrameDouble value="1.14" interpolationType="cubic" frame="14"/>
+                    <KeyFrameDouble value="0.95" interpolationType="cubic" frame="26"/>
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="38"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="0.55" interpolationType="cubic" frame="0"/>
+                    <KeyFrameDouble value="1.14" interpolationType="cubic" frame="14"/>
+                    <KeyFrameDouble value="0.95" interpolationType="cubic" frame="26"/>
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="38"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <!-- Check draws itself -->
+            <KeyedObject objectId="0:36">
+                <KeyedProperty propertyKey="115">
+                    <KeyFrameDouble value="0" interpolationType="hold" frame="0"/>
+                    <KeyFrameDouble value="0" interpolationType="cubic" frame="10"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="30"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:30">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="28"/>
+                    <KeyFrameDouble value="1.15" interpolationType="cubic" frame="36"/>
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="46"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="28"/>
+                    <KeyFrameDouble value="1.15" interpolationType="cubic" frame="36"/>
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="46"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <!-- Glow fades in and stays -->
+            <KeyedObject objectId="0:45">
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="cubic" frame="0"/>
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="16"/>
+                    <KeyFrameDouble value="0.6" interpolationType="cubic" frame="50"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <!-- Shockwave -->
+            <KeyedObject objectId="0:40">
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="12"/>
+                    <KeyFrameDouble value="1.38" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="12"/>
+                    <KeyFrameDouble value="1.38" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="hold" frame="0"/>
+                    <KeyFrameDouble value="0.9" interpolationType="linear" frame="12"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <!-- Sparks: fly from radius 38 to 54 while fading -->
+            <KeyedObject objectId="0:50">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="22" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="6" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:51">
+                <KeyedProperty propertyKey="13">
+                    <KeyFrameDouble value="86.9" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="98.2" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="33.1" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="21.8" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:52">
+                <KeyedProperty propertyKey="13">
+                    <KeyFrameDouble value="98" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="114" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:53">
+                <KeyedProperty propertyKey="13">
+                    <KeyFrameDouble value="86.9" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="98.2" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="86.9" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="98.2" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:54">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="98" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="114" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:55">
+                <KeyedProperty propertyKey="13">
+                    <KeyFrameDouble value="33.1" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="21.8" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="86.9" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="98.2" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:56">
+                <KeyedProperty propertyKey="13">
+                    <KeyFrameDouble value="22" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="6" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:57">
+                <KeyedProperty propertyKey="13">
+                    <KeyFrameDouble value="33.1" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="21.8" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="33.1" interpolationType="cubic" frame="15"/>
+                    <KeyFrameDouble value="21.8" interpolationType="cubic" frame="40"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="15"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="19"/>
+                    <KeyFrameDouble value="0" interpolationType="linear" frame="40"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
+</Rive>

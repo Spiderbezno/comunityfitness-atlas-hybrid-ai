@@ -1,0 +1,3 @@
+version: "7.3"
+name: hammer_curl
+scene: scene.rml

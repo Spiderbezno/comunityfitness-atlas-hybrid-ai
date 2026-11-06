@@ -1,0 +1,9 @@
+name: chin_up
+version: 1.0.0
+
+rive:
+  version: "1"
+
+build:
+  src: "./"
+  out: "./build/chin_up.riv"

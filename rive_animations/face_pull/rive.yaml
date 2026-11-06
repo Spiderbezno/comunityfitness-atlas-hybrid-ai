@@ -1,0 +1,9 @@
+name: face_pull
+version: 1.0.0
+artboard: FacePull
+state_machine: State Machine 1
+animation: FacePull
+width: 640
+height: 360
+fps: 60
+duration: 160

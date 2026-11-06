@@ -1,0 +1,4 @@
+name: preacher_curl
+version: 1.0.0
+rml: scene.rml
+output: build/preacher_curl.riv

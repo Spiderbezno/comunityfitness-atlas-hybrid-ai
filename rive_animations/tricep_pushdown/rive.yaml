@@ -1,0 +1,4 @@
+name: tricep_pushdown
+version: 1.0.0
+rml: scene.rml
+output: build/tricep_pushdown.riv

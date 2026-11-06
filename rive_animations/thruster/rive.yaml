@@ -1,0 +1,12 @@
+version: 1
+id: thruster
+name: Barbell Thruster
+rml: scene.rml
+artboard: thruster
+animation: main
+state_machine: State Machine 1
+fps: 60
+duration_frames: 180
+width: 640
+height: 360
+publish_to: ../../assets/animations/thruster.riv

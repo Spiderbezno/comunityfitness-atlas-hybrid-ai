@@ -1,0 +1,5 @@
+version: "1"
+projects:
+  - name: lat_pulldown
+    rml: scene.rml
+    output: build/lat_pulldown.riv

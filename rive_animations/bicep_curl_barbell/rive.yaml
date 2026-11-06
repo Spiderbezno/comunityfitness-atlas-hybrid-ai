@@ -1,0 +1,4 @@
+name: bicep_curl_barbell
+logs:
+  file: build/rive.log
+  problems: build/problems.log

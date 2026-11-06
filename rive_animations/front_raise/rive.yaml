@@ -1,0 +1,9 @@
+name: front_raise
+version: 1.0.0
+artboard: FrontRaise
+state_machine: State Machine 1
+animation: FrontRaise
+width: 640
+height: 360
+fps: 60
+duration: 160

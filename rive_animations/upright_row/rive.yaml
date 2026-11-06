@@ -1,0 +1,11 @@
+name: upright_row
+version: 1.0.0
+artboard: UprightRow
+animation: UprightRow
+state_machine: State Machine 1
+fps: 60
+duration_frames: 160
+width: 640
+height: 360
+output: ../../assets/animations/upright_row.riv
+thumbnail: ../../assets/animations/thumbnails/upright_row.png

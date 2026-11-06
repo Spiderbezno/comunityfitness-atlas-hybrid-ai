@@ -1,0 +1,4 @@
+name: skull_crusher
+version: 1.0.0
+rml: scene.rml
+output: build/skull_crusher.riv

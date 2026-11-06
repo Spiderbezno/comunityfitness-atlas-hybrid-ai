@@ -1,0 +1,11 @@
+name: squat
+version: 1.0.0
+artboard: BarbellSquat
+animation: BarbellSquat
+state_machine: State Machine 1
+fps: 60
+duration_frames: 176
+width: 640
+height: 360
+output: ../../assets/animations/squat.riv
+thumbnail: ../../assets/animations/thumbnails/squat.png

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer Athletic Hexagonal Shield (strictly inside 66dp safe zone: 24..84) -->
+    <path
+        android:pathData="M54,23 L79,36.5 L79,71.5 L54,85 L29,71.5 L29,36.5 Z"
+        android:strokeWidth="1.6"
+        android:strokeColor="#FF262B35">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="29"
+                android:startY="23"
+                android:endX="79"
+                android:endY="85">
+                <item android:offset="0.0" android:color="#FF232934" />
+                <item android:offset="1.0" android:color="#FF12151C" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sky Steel (#38BDF8) Top-Right Kinetic Precision Arc -->
+    <path
+        android:pathData="M54,25.5 L76.5,37.8 L76.5,54"
+        android:strokeWidth="2.0"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="#FF38BDF8"
+        android:fillColor="#00000000" />
+
+    <!-- Ember Orange (#FF5400) Bottom-Left Power Arc -->
+    <path
+        android:pathData="M31.5,54 L31.5,70.2 L54,82.5"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="#FFFF5400"
+        android:fillColor="#00000000" />
+
+    <!-- Angled Olympic Barbell Shaft (-22 deg dynamic incline) -->
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:rotation="-20">
+
+        <!-- Center Knurled Barbell Bar -->
+        <path
+            android:pathData="M30,52.2 L78,52.2 L78,55.8 L30,55.8 Z"
+            android:fillColor="#FF94A3B8" />
+        <path
+            android:pathData="M30,52.2 L78,52.2 L78,53.6 L30,53.6 Z"
+            android:fillColor="#FFF8FAFC" />
+
+        <!-- Left Outer Collar Sleeve -->
+        <path
+            android:pathData="M26.5,51.3 C26.5,50.6 27.1,50.0 27.8,50.0 L30.2,50.0 C30.9,50.0 31.5,50.6 31.5,51.3 L31.5,56.7 C31.5,57.4 30.9,58.0 30.2,58.0 L27.8,58.0 C27.1,58.0 26.5,57.4 26.5,56.7 Z"
+            android:fillColor="#FFCBD5E1" />
+
+        <!-- Right Outer Collar Sleeve -->
+        <path
+            android:pathData="M76.5,51.3 C76.5,50.6 77.1,50.0 77.8,50.0 L80.2,50.0 C80.9,50.0 81.5,50.6 81.5,51.3 L81.5,56.7 C81.5,57.4 80.9,58.0 80.2,58.0 L77.8,58.0 C77.1,58.0 76.5,57.4 76.5,56.7 Z"
+            android:fillColor="#FFCBD5E1" />
+
+        <!-- Left Outer Plate (Sky Steel / Crisp White Highlight) -->
+        <path
+            android:pathData="M31.5,43.0 C31.5,41.6 32.6,40.5 34.0,40.5 L35.8,40.5 C37.2,40.5 38.3,41.6 38.3,43.0 L38.3,65.0 C38.3,66.4 37.2,67.5 35.8,67.5 L34.0,67.5 C32.6,67.5 31.5,66.4 31.5,65.0 Z"
+            android:fillColor="#FFF8FAFC" />
+
+        <!-- Left Inner Heavy Bumper Plate (Ember Orange #FF5400 -> #D94100) -->
+        <path android:pathData="M38.8,38.0 C38.8,36.3 40.1,35.0 41.8,35.0 L44.2,35.0 C45.9,35.0 47.2,36.3 47.2,38.0 L47.2,70.0 C47.2,71.7 45.9,73.0 44.2,73.0 L41.8,73.0 C40.1,73.0 38.8,71.7 38.8,70.0 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:type="linear"
+                    android:startX="38.8"
+                    android:startY="35.0"
+                    android:endX="47.2"
+                    android:endY="73.0">
+                    <item android:offset="0.0" android:color="#FFFF6A1A" />
+                    <item android:offset="0.5" android:color="#FFFF5400" />
+                    <item android:offset="1.0" android:color="#FFD94100" />
+                </gradient>
+            </aapt:attr>
+        </path>
+
+        <!-- Right Inner Heavy Bumper Plate (Ember Orange #FF5400 -> #D94100) -->
+        <path android:pathData="M60.8,38.0 C60.8,36.3 62.1,35.0 63.8,35.0 L66.2,35.0 C67.9,35.0 69.2,36.3 69.2,38.0 L69.2,70.0 C69.2,71.7 67.9,73.0 66.2,73.0 L63.8,73.0 C62.1,73.0 60.8,71.7 60.8,70.0 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:type="linear"
+                    android:startX="60.8"
+                    android:startY="35.0"
+                    android:endX="69.2"
+                    android:endY="73.0">
+                    <item android:offset="0.0" android:color="#FFFF6A1A" />
+                    <item android:offset="0.5" android:color="#FFFF5400" />
+                    <item android:offset="1.0" android:color="#FFD94100" />
+                </gradient>
+            </aapt:attr>
+        </path>
+
+        <!-- Right Outer Plate (Crisp White Highlight) -->
+        <path
+            android:pathData="M69.7,43.0 C69.7,41.6 70.8,40.5 72.2,40.5 L74.0,40.5 C75.4,40.5 76.5,41.6 76.5,43.0 L76.5,65.0 C76.5,66.4 75.4,67.5 74.0,67.5 L72.2,67.5 C70.8,67.5 69.7,66.4 69.7,65.0 Z"
+            android:fillColor="#FFF8FAFC" />
+    </group>
+
+    <!-- Central Kinetic Lightning Bolt / Biometric Pulse Badge -->
+    <path
+        android:pathData="M56.2,37.0 L47.5,53.2 L53.6,53.2 L51.4,71.0 L60.8,54.2 L54.6,54.2 Z"
+        android:strokeWidth="1.2"
+        android:strokeLineJoin="round"
+        android:strokeColor="#FF0E1015"
+        android:fillColor="#FFF8FAFC" />
+</vector>

@@ -1,0 +1,126 @@
+{
+  "common": {
+    "appName": "COMMUNITY FITNESS",
+    "language": "Langue",
+    "selectLanguage": "Choisir la Langue",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "languages": {
+      "es": "Español",
+      "en": "English",
+      "ca": "Català",
+      "fr": "Français",
+      "pt": "Português"
+    }
+  },
+  "dashboard": {
+    "aiCoachTooltip": "ATLAS • Coach Personnel IA",
+    "dataManagementTooltip": "Gestion des Données",
+    "muscleAnalyticsTooltip": "Analyse Musculaire",
+    "languageTooltip": "Changer de Langue",
+    "readyToTrain": "PRÊT À S'ENTRAÎNER",
+    "workoutsThisWeek": "$count séances cette semaine",
+    "freestyleTraining": "Entraînement Libre",
+    "exercisesPlanned": "$count exercices prévus",
+    "buildOnTheFly": "Créez votre séance à la volée",
+    "totalSets": "SÉRIES TOTALES",
+    "movements": "MOUVEMENTS",
+    "targetIntensity": "INTENSITÉ CIBLE",
+    "startRoutine": "Démarrer la Routine",
+    "startFreestyle": "Entraînement Libre",
+    "exploreAndManage": "EXPLORER ET GÉRER",
+    "routinesTitle": "Routines",
+    "routinesSubtitle": "$count programmes enregistrés",
+    "muscleRecoveryTitle": "Récupération Musculaire",
+    "muscleRecoverySubtitle": "$count muscles prêts",
+    "exerciseCatalogTitle": "Catalogue d'Exercices",
+    "exerciseCatalogSubtitle": "$count mouvements",
+    "dataMigrationTitle": "Migration de Données",
+    "dataMigrationSubtitle": "Hevy / Strong / JSON",
+    "targetMusclesReady": "MUSCLES PRÊTS AUJOURD'HUI",
+    "recentWorkouts": "SÉANCES RÉCENTES",
+    "noWorkoutsYet": "Aucune séance enregistrée. Lancez votre première séance ci-dessus !",
+    "workoutSession": "Séance d'Entraînement",
+    "exercisesCount": "$count exercices"
+  },
+  "aiCoach": {
+    "headerTitle": "COACH PERSONNEL IA",
+    "modelBadge": "ATLAS • Coach Biomécanique IA",
+    "liveActive": "ATLAS Live Actif",
+    "liveVoiceToggle": "ATLAS en Direct",
+    "analyzingMovements": "ATLAS analyse les exercices du catalogue...",
+    "youLabel": "VOUS",
+    "liveCoachBadge": "ATLAS • LIVE",
+    "flashCoachBadge": "ATLAS • COACH IA",
+    "startAiWorkoutNow": "Démarrer Cet Entraînement IA Maintenant",
+    "setsRepsRest": "$sets séries × $reps reps • ${rest}s repos",
+    "form3dBadge": "Forme 3D",
+    "welcomeMessage": "Bonjour ! Je suis ATLAS, votre Coach Personnel IA CommunityFitness. Sélectionnez les muscles à travailler ou demandez une alternative à la maison sans poids pour n'importe quel exercice du catalogue !",
+    "liveBanner": {
+      "listeningMic": "ÉCOUTE DU MICRO — PARLEZ À ATLAS",
+      "connecting": "CONNEXION À ATLAS LIVE...",
+      "listening": "ÉCOUTE • PARLEZ OU APPUYEZ SUR UNE COMMANDE VOCALE",
+      "thinking": "RÉFLEXION • ANALYSE BIOMÉCANIQUE EN TEMPS RÉEL",
+      "speaking": "ATLAS PARLE • EN DIRECT",
+      "disconnected": "DÉCONNECTÉ",
+      "defaultHint": "Demandez à votre Coach Live des conseils vocaux en temps réel ou des variantes d'exercices à domicile.",
+      "endSessionTooltip": "Terminer la Session Vocale Live",
+      "quickChipChestAbs": "Pectoraux et Abdos Maison (Sans Poids)",
+      "quickPromptChestAbs": "Donne-moi un entraînement pectoraux et abdos à la maison sans poids",
+      "quickChipBackBiceps": "Dos et Biceps à la Maison",
+      "quickPromptBackBiceps": "Planifie un entraînement dos et biceps à la maison",
+      "quickChipLegsGlutes": "Jambes et Fessiers Poids du Corps",
+      "quickPromptLegsGlutes": "Crée une routine jambes et fessiers au poids du corps"
+    },
+    "contextCard": {
+      "targetExercise": "EXERCICE CIBLE : $name",
+      "subtitle": "Besoin d'une alternative pour vous entraîner à la maison ou sans matériel ? Choisissez une option :"
+    },
+    "plannerCard": {
+      "title": "QUELS MUSCLES VOULEZ-VOUS ENTRAÎNER AUJOURD'HUI ?",
+      "availableEquipment": "ÉQUIPEMENT DISPONIBLE",
+      "buildPlanButton": "Créer Plan $muscles ($equipment)"
+    },
+    "alternativesSheet": {
+      "title": "Alternatives IA pour $name",
+      "customHint": "Note personnalisée (ex. à la maison avec chaise, douleur poignet)..."
+    },
+    "chatInput": {
+      "listeningHint": "Écoute de votre micro... Appuyez sur le bouton rouge pour envoyer",
+      "liveHint": "Parlez directement ou écrivez à ATLAS...",
+      "defaultHint": "Demandez des alternatives maison ou appuyez sur le micro...",
+      "sendTooltip": "Envoyer le Message",
+      "stopMicTooltip": "Arrêter l'Enregistrement et Envoyer",
+      "startMicTooltip": "Enregistrer la Voix (16kHz PCM)"
+    },
+    "muscles": {
+      "Chest": "Pectoraux",
+      "Back": "Dos",
+      "Shoulders": "Épaules",
+      "Biceps": "Biceps",
+      "Triceps": "Triceps",
+      "Quadriceps": "Quadriceps",
+      "Hamstrings": "Ischio-jambiers",
+      "Glutes": "Fessiers",
+      "Calves": "Mollets",
+      "Abs / Core": "Abdos / Gainage",
+      "Full Body": "Corps Entier"
+    },
+    "equipment": {
+      "All": "Tout",
+      "Home / Bodyweight": "Maison / Poids du Corps",
+      "Dumbbells Only": "Haltères Uniquement"
+    },
+    "constraints": {
+      "At Home / No Weights": "À la Maison / Sans Poids",
+      "Bodyweight Only": "Poids du Corps Uniquement",
+      "Dumbbells Only": "Haltères Uniquement",
+      "Joint Friendly": "Doux pour les Articulations"
+    },
+    "errors": {
+      "loadAlternatives": "Impossible de charger les alternatives pour le moment.",
+      "buildPlan": "Impossible de créer le programme pour le moment.",
+      "coachReply": "Le coach n'a pas pu répondre pour le moment."
+    }
+  }
+}

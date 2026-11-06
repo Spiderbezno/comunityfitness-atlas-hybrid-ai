@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "387922095149",
+    "project_id": "comunityfitness",
+    "storage_bucket": "comunityfitness.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387922095149:android:f77de40983ced7a6c31ca4",
+        "android_client_info": {
+          "package_name": "ad.spiderbezno.comunityfitness"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8AoqCIrEVMMOLx5X_phrUykKjLiw9Lv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,4 @@
+name: set_check_button
+logs:
+  file: build/rive.log
+  problems: build/problems.log

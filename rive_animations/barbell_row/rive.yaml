@@ -1,0 +1,4 @@
+name: barbell_row
+logs:
+  file: build/rive.log
+  problems: build/problems.log

@@ -1,0 +1,126 @@
+{
+  "common": {
+    "appName": "COMMUNITY FITNESS",
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "cancel": "Cancel",
+    "close": "Close",
+    "languages": {
+      "es": "Español",
+      "en": "English",
+      "ca": "Català",
+      "fr": "Français",
+      "pt": "Português"
+    }
+  },
+  "dashboard": {
+    "aiCoachTooltip": "ATLAS • AI Personal Trainer",
+    "dataManagementTooltip": "Data Management",
+    "muscleAnalyticsTooltip": "Muscle Analytics",
+    "languageTooltip": "Change Language",
+    "readyToTrain": "READY TO TRAIN",
+    "workoutsThisWeek": "$count workouts this week",
+    "freestyleTraining": "Freestyle Training",
+    "exercisesPlanned": "$count exercises planned",
+    "buildOnTheFly": "Build your session on the fly",
+    "totalSets": "TOTAL SETS",
+    "movements": "MOVEMENTS",
+    "targetIntensity": "TARGET INTENSITY",
+    "startRoutine": "Start Routine",
+    "startFreestyle": "Start Freestyle",
+    "exploreAndManage": "EXPLORE & MANAGE",
+    "routinesTitle": "Routines",
+    "routinesSubtitle": "$count splits saved",
+    "muscleRecoveryTitle": "Muscle Recovery",
+    "muscleRecoverySubtitle": "$count muscles ready",
+    "exerciseCatalogTitle": "Exercise Catalog",
+    "exerciseCatalogSubtitle": "$count movements",
+    "dataMigrationTitle": "Data Migration",
+    "dataMigrationSubtitle": "Hevy / Strong / JSON",
+    "targetMusclesReady": "TARGET MUSCLES READY",
+    "recentWorkouts": "RECENT WORKOUTS",
+    "noWorkoutsYet": "No workouts logged yet. Start your first session above!",
+    "workoutSession": "Workout Session",
+    "exercisesCount": "$count exercises"
+  },
+  "aiCoach": {
+    "headerTitle": "AI PERSONAL TRAINER",
+    "modelBadge": "ATLAS • Biomechanical AI Coach",
+    "liveActive": "ATLAS Live Active",
+    "liveVoiceToggle": "ATLAS Live",
+    "analyzingMovements": "ATLAS is analyzing catalog movements...",
+    "youLabel": "YOU",
+    "liveCoachBadge": "ATLAS • LIVE",
+    "flashCoachBadge": "ATLAS • AI COACH",
+    "startAiWorkoutNow": "Start This AI Workout Now",
+    "setsRepsRest": "$sets sets × $reps reps • ${rest}s rest",
+    "form3dBadge": "3D Form",
+    "welcomeMessage": "Hi! I am ATLAS, your CommunityFitness AI Personal Trainer. Select the muscles you want to train, or ask for a no-weights home alternative for any exercise in the catalog!",
+    "liveBanner": {
+      "listeningMic": "LISTENING TO YOUR MIC — SPEAK TO ATLAS",
+      "connecting": "CONNECTING TO ATLAS LIVE...",
+      "listening": "LISTENING • SPEAK OR TAP A VOICE COMMAND",
+      "thinking": "THINKING • REAL-TIME BIOMECHANICAL REASONING",
+      "speaking": "ATLAS SPEAKING ALOUD • LIVE",
+      "disconnected": "DISCONNECTED",
+      "defaultHint": "Ask your Live Personal Trainer for real-time voice cues or home exercise swaps.",
+      "endSessionTooltip": "End Live Voice Session",
+      "quickChipChestAbs": "Home Chest & Abs (No Weights)",
+      "quickPromptChestAbs": "Give me a chest and abs workout at home with no weights",
+      "quickChipBackBiceps": "Back & Biceps at Home",
+      "quickPromptBackBiceps": "Plan a back and biceps workout at home",
+      "quickChipLegsGlutes": "Legs & Glutes Bodyweight",
+      "quickPromptLegsGlutes": "Build a legs and glutes bodyweight routine"
+    },
+    "contextCard": {
+      "targetExercise": "TARGET EXERCISE: $name",
+      "subtitle": "Need an alternative because you are training at home or missing equipment? Tap a constraint:"
+    },
+    "plannerCard": {
+      "title": "WHAT MUSCLES DO YOU WANT TO TRAIN TODAY?",
+      "availableEquipment": "AVAILABLE EQUIPMENT",
+      "buildPlanButton": "Build $muscles Plan ($equipment)"
+    },
+    "alternativesSheet": {
+      "title": "AI Alternatives for $name",
+      "customHint": "Custom note (e.g., at home with chair, sore wrists)..."
+    },
+    "chatInput": {
+      "listeningHint": "Listening to your microphone... Tap red button to send",
+      "liveHint": "Speak directly or type to ATLAS...",
+      "defaultHint": "Ask for home alternatives or tap mic to speak...",
+      "sendTooltip": "Send Message",
+      "stopMicTooltip": "Stop Recording & Send Voice Turn",
+      "startMicTooltip": "Record Voice Input (16kHz PCM)"
+    },
+    "muscles": {
+      "Chest": "Chest",
+      "Back": "Back",
+      "Shoulders": "Shoulders",
+      "Biceps": "Biceps",
+      "Triceps": "Triceps",
+      "Quadriceps": "Quadriceps",
+      "Hamstrings": "Hamstrings",
+      "Glutes": "Glutes",
+      "Calves": "Calves",
+      "Abs / Core": "Abs / Core",
+      "Full Body": "Full Body"
+    },
+    "equipment": {
+      "All": "All",
+      "Home / Bodyweight": "Home / Bodyweight",
+      "Dumbbells Only": "Dumbbells Only"
+    },
+    "constraints": {
+      "At Home / No Weights": "At Home / No Weights",
+      "Bodyweight Only": "Bodyweight Only",
+      "Dumbbells Only": "Dumbbells Only",
+      "Joint Friendly": "Joint Friendly"
+    },
+    "errors": {
+      "loadAlternatives": "Unable to load alternatives right now.",
+      "buildPlan": "Unable to build workout plan right now.",
+      "coachReply": "Coach could not respond right now."
+    }
+  }
+}

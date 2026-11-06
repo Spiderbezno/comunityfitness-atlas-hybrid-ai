@@ -1,0 +1,126 @@
+{
+  "common": {
+    "appName": "COMMUNITY FITNESS",
+    "language": "Idioma",
+    "selectLanguage": "Seleccionar Idioma",
+    "cancel": "Cancel·lar",
+    "close": "Tancar",
+    "languages": {
+      "es": "Español",
+      "en": "English",
+      "ca": "Català",
+      "fr": "Français",
+      "pt": "Português"
+    }
+  },
+  "dashboard": {
+    "aiCoachTooltip": "ATLAS • Entrenador Personal IA",
+    "dataManagementTooltip": "Gestió de Dades",
+    "muscleAnalyticsTooltip": "Analítica Muscular",
+    "languageTooltip": "Canviar Idioma",
+    "readyToTrain": "LLEST PER ENTRENAR",
+    "workoutsThisWeek": "$count entrenaments aquesta setmana",
+    "freestyleTraining": "Entrenament Lliure",
+    "exercisesPlanned": "$count exercicis planificats",
+    "buildOnTheFly": "Crea la teva sessió al moment",
+    "totalSets": "SÈRIES TOTALS",
+    "movements": "MOVIMENTS",
+    "targetIntensity": "INTENSITAT OBJECTIU",
+    "startRoutine": "Iniciar Rutina",
+    "startFreestyle": "Entrenament Lliure",
+    "exploreAndManage": "EXPLORAR I GESTIONAR",
+    "routinesTitle": "Rutines",
+    "routinesSubtitle": "$count rutines desades",
+    "muscleRecoveryTitle": "Recuperació Muscular",
+    "muscleRecoverySubtitle": "$count músculs llestos",
+    "exerciseCatalogTitle": "Catàleg d'Exercicis",
+    "exerciseCatalogSubtitle": "$count moviments",
+    "dataMigrationTitle": "Migració de Dades",
+    "dataMigrationSubtitle": "Hevy / Strong / JSON",
+    "targetMusclesReady": "MÚSCULS LLESTOS PER AVUI",
+    "recentWorkouts": "ENTRENAMENTS RECENTS",
+    "noWorkoutsYet": "Encara no hi ha entrenaments registrats. Comença la teva primera sessió a dalt!",
+    "workoutSession": "Sessió d'Entrenament",
+    "exercisesCount": "$count exercicis"
+  },
+  "aiCoach": {
+    "headerTitle": "ENTRENADOR PERSONAL IA",
+    "modelBadge": "ATLAS • Entrenador Biomecànic IA",
+    "liveActive": "ATLAS Live Actiu",
+    "liveVoiceToggle": "ATLAS en Viu",
+    "analyzingMovements": "ATLAS està analitzant moviments del catàleg...",
+    "youLabel": "TU",
+    "liveCoachBadge": "ATLAS • EN VIU",
+    "flashCoachBadge": "ATLAS • COACH IA",
+    "startAiWorkoutNow": "Començar Aquest Entrenament IA Ara",
+    "setsRepsRest": "$sets sèries × $reps reps • ${rest}s descans",
+    "form3dBadge": "Forma 3D",
+    "welcomeMessage": "Hola! Sóc ATLAS, el teu Entrenador Personal IA de CommunityFitness. Selecciona els músculs que vols entrenar o demana alternatives a casa sense peses per a qualsevol exercici del catàleg!",
+    "liveBanner": {
+      "listeningMic": "ESCOLTANT EL TEU MICRÒFON — PARLA AMB ATLAS",
+      "connecting": "CONNECTANT AMB ATLAS EN VIU...",
+      "listening": "ESCOLTANT • PARLA O UTILITZA UN COMANDAMENT DE VEU",
+      "thinking": "PENSANT • RAONAMENT BIOMECÀNIC EN TEMPS REAL",
+      "speaking": "ATLAS ESTÀ PARLANT • EN VIU",
+      "disconnected": "DESCONNECTAT",
+      "defaultHint": "Demana al teu Entrenador Personal en Viu indicacions de veu en temps real o canvis d'exercicis per fer a casa.",
+      "endSessionTooltip": "Finalitzar Sessió de Veu en Viu",
+      "quickChipChestAbs": "Pit i Abdomen a Casa (Sense Peses)",
+      "quickPromptChestAbs": "Dona'm una rutina de pit i abdominals a casa sense peses",
+      "quickChipBackBiceps": "Esquena i Bíceps a Casa",
+      "quickPromptBackBiceps": "Planifica un entrenament d'esquena i bíceps a casa",
+      "quickChipLegsGlutes": "Cames i Glutis Pes Corporal",
+      "quickPromptLegsGlutes": "Crea una rutina de cames i glutis amb pes corporal"
+    },
+    "contextCard": {
+      "targetExercise": "EXERCICI OBJECTIU: $name",
+      "subtitle": "Necessites una alternativa perquè entrenes a casa o et falta material? Toca una opció:"
+    },
+    "plannerCard": {
+      "title": "QUINS MÚSCULS VOLS ENTRENAR AVUI?",
+      "availableEquipment": "EQUIPAMENT DISPONIBLE",
+      "buildPlanButton": "Crear Pla de $muscles ($equipment)"
+    },
+    "alternativesSheet": {
+      "title": "Alternatives IA per a $name",
+      "customHint": "Nota personalitzada (ex. a casa amb cadira, mal de canell)..."
+    },
+    "chatInput": {
+      "listeningHint": "Escoltant el teu micròfon... Toca el botó vermell per enviar",
+      "liveHint": "Parla directament o escriu a ATLAS...",
+      "defaultHint": "Demana alternatives a casa o toca el mic per parlar...",
+      "sendTooltip": "Enviar Missatge",
+      "stopMicTooltip": "Aturar Gravació i Enviar Veu",
+      "startMicTooltip": "Gravar Veu (16kHz PCM)"
+    },
+    "muscles": {
+      "Chest": "Pit",
+      "Back": "Esquena",
+      "Shoulders": "Espatlles",
+      "Biceps": "Bíceps",
+      "Triceps": "Tríceps",
+      "Quadriceps": "Quàdriceps",
+      "Hamstrings": "Isquiotibials",
+      "Glutes": "Glutis",
+      "Calves": "Bessons",
+      "Abs / Core": "Abdomen / Core",
+      "Full Body": "Cos Complet"
+    },
+    "equipment": {
+      "All": "Tot",
+      "Home / Bodyweight": "A Casa / Pes Corporal",
+      "Dumbbells Only": "Només Manuella"
+    },
+    "constraints": {
+      "At Home / No Weights": "A Casa / Sense Peses",
+      "Bodyweight Only": "Només Pes Corporal",
+      "Dumbbells Only": "Només Manuelles",
+      "Joint Friendly": "Cura Articular"
+    },
+    "errors": {
+      "loadAlternatives": "No s'han pogut carregar les alternatives en aquest moment.",
+      "buildPlan": "No s'ha pogut crear el pla d'entrenament en aquest moment.",
+      "coachReply": "L'entrenador no ha pogut respondre en aquest moment."
+    }
+  }
+}

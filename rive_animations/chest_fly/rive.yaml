@@ -1,0 +1,9 @@
+name: chest_fly
+version: 1.0.0
+
+rive:
+  version: "1"
+
+build:
+  src: "./"
+  out: "./build/chest_fly.riv"

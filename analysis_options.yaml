@@ -1,0 +1,148 @@
+# Recommended base configuration for Flutter
+include: package:flutter_lints/flutter.yaml
+
+formatter:
+  page_width: 150
+
+analyzer:
+  language:
+    # Strict mode for production-ready code (from existing config)
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+  errors:
+    # Strict error handling
+    unused_import: error
+    missing_required_param: warning
+    missing_return: warning
+    unused_local_variable: warning
+    
+    # Ignore rules that are either too noisy or handled by builders
+    todo: ignore
+    experimental_member_use: ignore
+    invalid_annotation_target: ignore # Required for Freezed/JSON Serializable
+    deprecated_member_use_from_same_package: ignore
+    depend_on_referenced_packages: ignore
+    public_member_api_docs: ignore
+    sort_constructors_first: ignore
+    lines_longer_than_80_chars: ignore
+    
+    # Overrides for developer experience
+    omit_local_variable_types: ignore
+    always_put_required_named_parameters_first: ignore
+    prefer_foreach: ignore
+
+  exclude:
+    - 'build/**'
+    - '**/*.g.dart'
+    - "**/*.freezed.dart"
+    - "bin/cache/**"
+    - "lib/i18n/messages_*.dart"
+    - "lib/src/http/**"
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+
+linter:
+  rules:
+    # --- Error Prevention & Safety ---
+    - avoid_print
+    - avoid_empty_else
+    - avoid_relative_lib_imports
+    - avoid_types_as_parameter_names
+    - control_flow_in_finally
+    - empty_catches
+    - empty_statements
+    - hash_and_equals
+    - no_duplicate_case_values
+    - unrelated_type_equality_checks
+    - valid_regexps
+    - throw_in_finally
+    - await_only_futures
+    - avoid_void_async
+    - avoid_slow_async_io
+    - avoid_unused_constructor_parameters
+    - cancel_subscriptions
+    - close_sinks
+    - no_logic_in_create_state
+    - use_build_context_synchronously
+
+    # --- Style & Clean Code ---
+    - always_declare_return_types
+    - always_put_control_body_on_new_line
+    - annotate_overrides
+    - avoid_bool_literals_in_conditional_expressions
+    - avoid_field_initializers_in_const_classes
+    - avoid_function_literals_in_foreach_calls
+    - avoid_init_to_null
+    - avoid_renaming_method_parameters
+    - avoid_return_types_on_setters
+    - avoid_returning_null_for_void
+    - avoid_single_cascade_in_expression_statements
+    - camel_case_extensions
+    - camel_case_types
+    - empty_constructor_bodies
+    - file_names
+    - flutter_style_todos
+    - implementation_imports
+    - library_names
+    - library_prefixes
+    - no_adjacent_strings_in_list
+    - non_constant_identifier_names
+    - overridden_fields
+    - package_prefixed_library_names
+    - prefer_adjacent_string_concatenation
+    - prefer_asserts_in_initializer_lists
+    - prefer_collection_literals
+    - prefer_conditional_assignment
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_contains
+    - prefer_final_fields
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_for_elements_to_map_fromIterable
+    - prefer_generic_function_type_aliases
+    - prefer_if_null_operators
+    - prefer_initializing_formals
+    - prefer_inlined_adds
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - prefer_is_not_operator
+    - prefer_iterable_whereType
+    - prefer_single_quotes
+    - prefer_spread_collections
+    - prefer_typing_uninitialized_variables
+    - prefer_void_to_null
+    - recursive_getters
+    - slash_for_doc_comments
+    - sort_child_properties_last
+    - sort_unnamed_constructors_first
+    - test_types_in_equals
+    - type_init_formals
+    - unnecessary_brace_in_string_interps
+    - unnecessary_const
+    - unnecessary_getters_setters
+    - unnecessary_new
+    - unnecessary_null_aware_assignments
+    - unnecessary_null_in_if_null_operators
+    - unnecessary_overrides
+    - unnecessary_parenthesis
+    - unnecessary_statements
+    - unnecessary_string_interpolations
+    - unnecessary_this
+    - use_full_hex_values_for_flutter_colors
+    - use_key_in_widget_constructors
+    - use_rethrow_when_possible
+    - void_checks
+    
+    # --- Project Specific Rules ---
+    - always_use_package_imports
+    - sized_box_for_whitespace
+    - require_trailing_commas

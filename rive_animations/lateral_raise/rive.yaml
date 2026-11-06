@@ -1,0 +1,5 @@
+version: "1"
+projects:
+  - name: lateral_raise
+    rml: scene.rml
+    output: build/lateral_raise.riv
