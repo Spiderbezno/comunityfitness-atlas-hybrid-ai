@@ -9,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // 🌎 Project imports:
+import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/models/exercise.dart';
 import 'package:comunityfitness/pigeon/atlas_hybrid_ai_api.g.dart';
 import 'package:comunityfitness/services/atlas_ai_config_service.dart';
@@ -174,12 +175,12 @@ void main() {
         const HybridAiRequest(
           prompt: 'Cue for deadlift lockout',
           mode: HybridInferenceMode.preferOnDevice,
-          cloudModelName: 'gemini-3.5-flash-lite',
+          cloudModelName: 'gemini-3.8-flash',
         ),
       );
 
       expect(response.inferenceSource, equals(HybridInferenceSource.inCloud));
-      expect(response.modelUsed, equals('gemini-3.5-flash-lite'));
+      expect(response.modelUsed, equals('gemini-3.8-flash'));
       expect(response.usedFallback, isTrue);
       expect(response.text, contains('Cloud Gemini fallback cue'));
     });
@@ -359,6 +360,20 @@ void main() {
       expect(analysis.fatigueAlert, isFalse);
       expect(analysis.nextSetRecommendation, contains('progressive overload'));
     });
+
+    test('localizes deterministic biomechanical recommendations when locale is es', () {
+      LocaleSettings.setLocale(AppLocale.es);
+      addTearDown(() => LocaleSettings.setLocale(AppLocale.en));
+
+      final HybridSetLogAnalysis analysis = AppAtlasHybridAiService.parseSetDeterministically(
+        rawSetText: 'Barbell Back Squat 140kg x 5 @ RPE 9.5',
+        catalog: sampleCatalog,
+      );
+
+      expect(analysis.fatigueAlert, isTrue);
+      expect(analysis.nextSetRecommendation, contains('Alta fatiga del SNC detectada'));
+      expect(analysis.nextSetRecommendation, contains('133.0kg'));
+    });
   });
 
   group('FakeAtlasHybridAiService & Riverpod Provider Override', () {
@@ -388,7 +403,7 @@ void main() {
         prompt: 'Analyze form',
         systemInstruction: 'Be concise',
         mode: PigeonHybridInferenceMode.preferInCloud,
-        cloudModelName: 'gemini-3.5-flash-lite',
+        cloudModelName: 'gemini-3.8-flash',
         imageBytes: bytes,
         imageMimeType: 'image/png',
         responseJsonSchema: '{"type":"object"}',
@@ -454,7 +469,7 @@ void main() {
         ),
       );
       expect(fallbackRes.inferenceSource, equals(HybridInferenceSource.inCloud));
-      expect(fallbackRes.modelUsed, equals('gemini-3.5-flash-lite'));
+      expect(fallbackRes.modelUsed, equals('gemini-3.8-flash'));
       expect(fallbackRes.usedFallback, isTrue);
     });
 
@@ -553,7 +568,7 @@ void main() {
       expect(recordedTemplateId, equals('atlas-set-autoregulation-v1-0-0'));
       expect(recordedInputs?['rawSetText'], equals('Barbell Back Squat 140kg x 5 @ RPE 9.5'));
       expect(templateAnalysis.inferenceSource, equals(HybridInferenceSource.inCloud));
-      expect(templateAnalysis.modelUsed, equals('gemini-3.5-flash-lite · template:atlas-set-autoregulation-v1-0-0'));
+      expect(templateAnalysis.modelUsed, equals('gemini-3.8-flash · template:atlas-set-autoregulation-v1-0-0'));
       expect(templateAnalysis.nextSetRecommendation, contains('Server template prescription'));
 
       shouldFailTemplate = true;
@@ -564,7 +579,7 @@ void main() {
       );
 
       expect(fallbackAnalysis.inferenceSource, equals(HybridInferenceSource.inCloud));
-      expect(fallbackAnalysis.modelUsed, equals('gemini-3.5-flash-lite'));
+      expect(fallbackAnalysis.modelUsed, equals('gemini-3.8-flash'));
       expect(fallbackAnalysis.nextSetRecommendation, contains('Standard cloud fallback prescription'));
     });
   });

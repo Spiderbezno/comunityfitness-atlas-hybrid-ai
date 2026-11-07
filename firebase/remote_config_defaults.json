@@ -2,7 +2,7 @@
   "parameters": {
     "atlas_cloud_model_name": {
       "defaultValue": {
-        "value": "gemini-3.5-flash-lite"
+        "value": "gemini-3.8-flash"
       },
       "description": "Default Firebase AI Logic Cloud fallback model for ATLAS Hybrid AI (InferenceMode.PREFER_ON_DEVICE / PREFER_IN_CLOUD).",
       "valueType": "STRING"

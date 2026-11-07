@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // 🌎 Project imports:
+import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/models/exercise.dart';
 import 'package:comunityfitness/services/atlas_hybrid_ai_service.dart';
 import 'package:comunityfitness/theme/app_theme.dart';
@@ -145,12 +146,12 @@ class _TelemetryStatusHeader extends StatelessWidget {
   final VoidCallback onDownloadModel;
   final VoidCallback onToggleServerTemplates;
 
-  String _npuStatusLabel(OnDeviceModelStatus status) {
+  String _npuStatusLabel(Translations tr, OnDeviceModelStatus status) {
     return switch (status) {
-      OnDeviceModelStatus.available => 'On-Device Ready',
-      OnDeviceModelStatus.downloadable => 'Downloadable',
-      OnDeviceModelStatus.downloading => 'Downloading Model',
-      OnDeviceModelStatus.unavailable => 'Cloud Fallback',
+      OnDeviceModelStatus.available => tr.hybridAi.statusOnDeviceReady,
+      OnDeviceModelStatus.downloadable => tr.hybridAi.statusDownloadable,
+      OnDeviceModelStatus.downloading => tr.hybridAi.statusDownloading,
+      OnDeviceModelStatus.unavailable => tr.hybridAi.statusCloudFallback,
     };
   }
 
@@ -163,28 +164,28 @@ class _TelemetryStatusHeader extends StatelessWidget {
     };
   }
 
-  String _formatOnDeviceBadgeLabel(String? modelUsed) {
+  String _formatOnDeviceBadgeLabel(Translations tr, String? modelUsed) {
     final String normalized = (modelUsed ?? '').toLowerCase();
     if (normalized.contains('apple-foundation-models')) {
-      return 'ON-DEVICE · Apple Intelligence';
+      return tr.hybridAi.sourceOnDeviceApple;
     }
     if (normalized.contains('chrome-prompt-api')) {
-      return 'ON-DEVICE · Chrome Gemini Nano';
+      return tr.hybridAi.sourceOnDeviceChrome;
     }
-    return 'ON-DEVICE · Gemini Nano';
+    return tr.hybridAi.sourceOnDeviceNano;
   }
 
-  String _executionSourceLabel(AtlasHybridAiState current) {
+  String _executionSourceLabel(Translations tr, AtlasHybridAiState current) {
     final HybridInferenceSource? source = current.lastInferenceSource;
     if (source == null) {
       return current.modelStatus == OnDeviceModelStatus.available
-          ? _formatOnDeviceBadgeLabel(current.lastModelUsed)
-          : 'IN-CLOUD · gemini-3.5-flash-lite';
+          ? _formatOnDeviceBadgeLabel(tr, current.lastModelUsed)
+          : tr.hybridAi.sourceInCloud(model: 'gemini-3.8-flash');
     }
     return switch (source) {
-      HybridInferenceSource.onDevice => _formatOnDeviceBadgeLabel(current.lastModelUsed),
-      HybridInferenceSource.inCloud => 'IN-CLOUD · ${current.lastModelUsed ?? 'gemini-3.5-flash-lite'}',
-      HybridInferenceSource.localOfflineFallback => 'OFFLINE ENGINE',
+      HybridInferenceSource.onDevice => _formatOnDeviceBadgeLabel(tr, current.lastModelUsed),
+      HybridInferenceSource.inCloud => tr.hybridAi.sourceInCloud(model: current.lastModelUsed ?? 'gemini-3.8-flash'),
+      HybridInferenceSource.localOfflineFallback => tr.hybridAi.sourceOfflineEngine,
     };
   }
 
@@ -201,6 +202,7 @@ class _TelemetryStatusHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Translations tr = TranslationProvider.of(context).translations;
     final Color statusColor = _npuStatusColor(state.modelStatus);
     final Color sourceColor = _executionSourceColor(state.lastInferenceSource, state.modelStatus);
 
@@ -237,9 +239,9 @@ class _TelemetryStatusHeader extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'ATLAS Hybrid AI Router',
-                      style: TextStyle(
+                    Text(
+                      tr.hybridAi.routerTitle,
+                      style: const TextStyle(
                         fontSize: AppDimensions.fontM,
                         fontWeight: FontWeight.w800,
                         color: AppColors.textPrimary,
@@ -247,7 +249,7 @@ class _TelemetryStatusHeader extends StatelessWidget {
                     ),
                     const SizedBox(height: AppDimensions.paddingXXS),
                     Text(
-                      'AICore NPU: ${_npuStatusLabel(state.modelStatus)}',
+                      tr.hybridAi.npuStatusPrefix(status: _npuStatusLabel(tr, state.modelStatus)),
                       style: TextStyle(
                         fontSize: AppDimensions.fontS,
                         fontWeight: FontWeight.w600,
@@ -313,7 +315,7 @@ class _TelemetryStatusHeader extends StatelessWidget {
                     ),
                     const SizedBox(width: AppDimensions.paddingXS),
                     Text(
-                      _executionSourceLabel(state),
+                      _executionSourceLabel(tr, state),
                       style: TextStyle(
                         fontSize: AppDimensions.fontXS,
                         fontWeight: FontWeight.w800,
@@ -334,9 +336,9 @@ class _TelemetryStatusHeader extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
                     border: Border.all(color: AppColors.border, width: AppDimensions.borderDefault),
                   ),
-                  child: const Text(
-                    'RAM Warmed Up',
-                    style: TextStyle(
+                  child: Text(
+                    tr.hybridAi.ramWarmedUp,
+                    style: const TextStyle(
                       fontSize: AppDimensions.fontXS,
                       fontWeight: FontWeight.w700,
                       color: AppColors.textSecondary,
@@ -352,7 +354,7 @@ class _TelemetryStatusHeader extends StatelessWidget {
                     size: AppDimensions.iconS,
                     color: AppColors.secondary,
                   ),
-                  label: const Text('Download On-Device Model'),
+                  label: Text(tr.hybridAi.downloadModelButton),
                 ),
               FilterChip(
                 key: const Key('hybrid_server_template_toggle'),
@@ -365,8 +367,8 @@ class _TelemetryStatusHeader extends StatelessWidget {
                 ),
                 label: Text(
                   state.useServerPromptTemplates
-                      ? 'Dotprompt · ${state.activeTemplateId}'
-                      : 'Remote Config Only · ${state.activeTemplateId}',
+                      ? tr.hybridAi.dotpromptBadge(templateId: state.activeTemplateId)
+                      : tr.hybridAi.remoteConfigOnlyBadge(templateId: state.activeTemplateId),
                   style: TextStyle(
                     fontSize: AppDimensions.fontXS,
                     fontWeight: FontWeight.w700,
@@ -399,36 +401,37 @@ class _InferenceModeSelectorCard extends StatelessWidget {
   final HybridInferenceMode selectedMode;
   final ValueChanged<HybridInferenceMode> onSelectMode;
 
-  static const List<(HybridInferenceMode, String, String, FaIconData)> _modes =
+  List<(HybridInferenceMode, String, String, FaIconData)> _localizedModes(Translations tr) =>
       <(HybridInferenceMode, String, String, FaIconData)>[
         (
           HybridInferenceMode.preferOnDevice,
           'hybrid_mode_preferOnDevice',
-          'PREFER_ON_DEVICE',
+          tr.hybridAi.modePreferOnDevice,
           FontAwesomeIcons.microchip,
         ),
         (
           HybridInferenceMode.onlyOnDevice,
           'hybrid_mode_onlyOnDevice',
-          'ONLY_ON_DEVICE',
+          tr.hybridAi.modeOnlyOnDevice,
           FontAwesomeIcons.shieldHalved,
         ),
         (
           HybridInferenceMode.preferInCloud,
           'hybrid_mode_preferInCloud',
-          'PREFER_IN_CLOUD',
+          tr.hybridAi.modePreferInCloud,
           FontAwesomeIcons.cloudArrowUp,
         ),
         (
           HybridInferenceMode.onlyInCloud,
           'hybrid_mode_onlyInCloud',
-          'ONLY_IN_CLOUD',
+          tr.hybridAi.modeOnlyInCloud,
           FontAwesomeIcons.cloud,
         ),
       ];
 
   @override
   Widget build(BuildContext context) {
+    final Translations tr = TranslationProvider.of(context).translations;
     return Container(
       padding: const EdgeInsets.all(AppDimensions.paddingM),
       decoration: BoxDecoration(
@@ -439,18 +442,18 @@ class _InferenceModeSelectorCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Execution Policy (Firebase AI Logic InferenceMode)',
-            style: TextStyle(
+          Text(
+            tr.hybridAi.modeSectionTitle,
+            style: const TextStyle(
               fontSize: AppDimensions.fontS,
               fontWeight: FontWeight.w800,
               color: AppColors.textPrimary,
             ),
           ),
           const SizedBox(height: AppDimensions.paddingXS),
-          const Text(
-            'Route requests between local Gemini Nano (AICore) and Cloud Gemini.',
-            style: TextStyle(
+          Text(
+            tr.hybridAi.modeSectionSubtitle,
+            style: const TextStyle(
               fontSize: AppDimensions.fontXS,
               color: AppColors.textSecondary,
             ),
@@ -459,7 +462,7 @@ class _InferenceModeSelectorCard extends StatelessWidget {
           Wrap(
             spacing: AppDimensions.paddingS,
             runSpacing: AppDimensions.paddingS,
-            children: _modes.map(((HybridInferenceMode, String, String, FaIconData) item) {
+            children: _localizedModes(tr).map(((HybridInferenceMode, String, String, FaIconData) item) {
               final (HybridInferenceMode mode, String keyName, String label, FaIconData icon) = item;
               final bool isSelected = selectedMode == mode;
               return ChoiceChip(
@@ -513,6 +516,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Translations tr = TranslationProvider.of(context).translations;
     return Container(
       padding: const EdgeInsets.all(AppDimensions.paddingM),
       decoration: BoxDecoration(
@@ -523,18 +527,18 @@ class _BasementGymLoggerCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Row(
+          Row(
             children: [
-              FaIcon(
+              const FaIcon(
                 FontAwesomeIcons.dumbbell,
                 size: AppDimensions.iconM,
                 color: AppColors.primary,
               ),
-              SizedBox(width: AppDimensions.paddingS),
+              const SizedBox(width: AppDimensions.paddingS),
               Expanded(
                 child: Text(
-                  'Basement Gym Offline-First Set Autoregulator',
-                  style: TextStyle(
+                  tr.hybridAi.loggerTitle,
+                  style: const TextStyle(
                     fontSize: AppDimensions.fontM,
                     fontWeight: FontWeight.w800,
                     color: AppColors.textPrimary,
@@ -544,9 +548,9 @@ class _BasementGymLoggerCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppDimensions.paddingXS),
-          const Text(
-            'Log sets in natural language or scan equipment with zero cloud latency.',
-            style: TextStyle(
+          Text(
+            tr.hybridAi.loggerSubtitle,
+            style: const TextStyle(
               fontSize: AppDimensions.fontXS,
               color: AppColors.textSecondary,
             ),
@@ -564,9 +568,9 @@ class _BasementGymLoggerCard extends StatelessWidget {
                   size: AppDimensions.iconXS,
                   color: AppColors.warning,
                 ),
-                label: const Text(
-                  'Heavy Bench (100kg x 6 @ RPE 9.5)',
-                  style: TextStyle(fontSize: AppDimensions.fontXS),
+                label: Text(
+                  tr.hybridAi.presetHeavyBenchChip,
+                  style: const TextStyle(fontSize: AppDimensions.fontXS),
                 ),
               ),
               ActionChip(
@@ -577,9 +581,9 @@ class _BasementGymLoggerCard extends StatelessWidget {
                   size: AppDimensions.iconXS,
                   color: AppColors.success,
                 ),
-                label: const Text(
-                  'Fast Squat (120kg x 8 @ RPE 7.0)',
-                  style: TextStyle(fontSize: AppDimensions.fontXS),
+                label: Text(
+                  tr.hybridAi.presetFastSquatChip,
+                  style: const TextStyle(fontSize: AppDimensions.fontXS),
                 ),
               ),
             ],
@@ -592,8 +596,8 @@ class _BasementGymLoggerCard extends StatelessWidget {
               fontSize: AppDimensions.fontM,
               color: AppColors.textPrimary,
             ),
-            decoration: const InputDecoration(
-              hintText: 'e.g. Barbell Bench Press 100kg x 6 @ RPE 9.5',
+            decoration: InputDecoration(
+              hintText: tr.hybridAi.inputHint,
               fillColor: AppColors.surface,
             ),
           ),
@@ -609,7 +613,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
                     size: AppDimensions.iconS,
                     color: AppColors.background,
                   ),
-                  label: const Text('Analyze Set'),
+                  label: Text(tr.hybridAi.analyzeSetButton),
                 ),
               ),
               const SizedBox(width: AppDimensions.paddingS),
@@ -622,7 +626,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
                     size: AppDimensions.iconS,
                     color: AppColors.secondary,
                   ),
-                  label: const Text('Scan Equipment'),
+                  label: Text(tr.hybridAi.scanEquipmentButton),
                 ),
               ),
             ],
@@ -638,16 +642,17 @@ class _SetAnalysisResultCard extends StatelessWidget {
 
   final HybridSetLogAnalysis analysis;
 
-  String _sourceBadgeText(HybridInferenceSource source) {
+  String _sourceBadgeText(Translations tr, HybridInferenceSource source) {
     return switch (source) {
-      HybridInferenceSource.onDevice => 'ON-DEVICE',
-      HybridInferenceSource.inCloud => 'IN-CLOUD',
-      HybridInferenceSource.localOfflineFallback => 'OFFLINE ENGINE',
+      HybridInferenceSource.onDevice => tr.hybridAi.sourceOnDeviceShort,
+      HybridInferenceSource.inCloud => tr.hybridAi.sourceInCloudShort,
+      HybridInferenceSource.localOfflineFallback => tr.hybridAi.sourceOfflineEngine,
     };
   }
 
   @override
   Widget build(BuildContext context) {
+    final Translations tr = TranslationProvider.of(context).translations;
     final Color fatigueColor = analysis.fatigueAlert ? AppColors.warning : AppColors.success;
 
     return Container(
@@ -686,7 +691,7 @@ class _SetAnalysisResultCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
                 ),
                 child: Text(
-                  '${_sourceBadgeText(analysis.inferenceSource)} · ${analysis.latencyMs}ms',
+                  '${_sourceBadgeText(tr, analysis.inferenceSource)} · ${analysis.latencyMs}ms',
                   style: const TextStyle(
                     fontSize: AppDimensions.fontXS,
                     fontWeight: FontWeight.w800,
@@ -701,9 +706,9 @@ class _SetAnalysisResultCard extends StatelessWidget {
             spacing: AppDimensions.paddingM,
             runSpacing: AppDimensions.paddingS,
             children: [
-              _MetricPill(label: 'LOAD', value: '${analysis.weightKg} kg'),
-              _MetricPill(label: 'REPS', value: '${analysis.reps}'),
-              _MetricPill(label: 'RPE', value: '${analysis.rpe}'),
+              _MetricPill(label: tr.hybridAi.loadLabel, value: '${analysis.weightKg} kg'),
+              _MetricPill(label: tr.hybridAi.repsLabel, value: '${analysis.reps}'),
+              _MetricPill(label: tr.hybridAi.rpeLabel, value: '${analysis.rpe}'),
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: AppDimensions.paddingS,
@@ -725,7 +730,7 @@ class _SetAnalysisResultCard extends StatelessWidget {
                     ),
                     const SizedBox(width: AppDimensions.paddingXS),
                     Text(
-                      analysis.fatigueAlert ? 'CNS Fatigue Alert' : 'Optimal Velocity',
+                      analysis.fatigueAlert ? tr.hybridAi.fatigueAlertBadge : tr.hybridAi.optimalVelocityBadge,
                       style: TextStyle(
                         fontSize: AppDimensions.fontXS,
                         fontWeight: FontWeight.w800,
@@ -805,6 +810,7 @@ class _VisionScanResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Translations tr = TranslationProvider.of(context).translations;
     return Container(
       key: const Key('hybrid_vision_result_card'),
       padding: const EdgeInsets.all(AppDimensions.paddingM),
@@ -827,10 +833,10 @@ class _VisionScanResultCard extends StatelessWidget {
                 color: AppColors.secondary,
               ),
               const SizedBox(width: AppDimensions.paddingS),
-              const Expanded(
+              Expanded(
                 child: Text(
-                  'Multimodal Equipment Scan (Bitmap + Prompt)',
-                  style: TextStyle(
+                  tr.hybridAi.visionCardTitle,
+                  style: const TextStyle(
                     fontSize: AppDimensions.fontS,
                     fontWeight: FontWeight.w800,
                     color: AppColors.textPrimary,

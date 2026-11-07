@@ -18,7 +18,6 @@ import 'package:comunityfitness/viewmodels/ai_coach_viewmodel.dart';
 import 'package:comunityfitness/viewmodels/exercise_catalog_viewmodel.dart';
 import 'package:comunityfitness/views/active_workout_screen.dart';
 import 'package:comunityfitness/views/exercise_detail_screen.dart';
-import 'package:comunityfitness/views/language_selector_sheet.dart';
 import 'package:comunityfitness/views/widgets/ai_coach_avatar.dart';
 import 'package:comunityfitness/views/widgets/app_back_button.dart';
 import 'package:comunityfitness/views/widgets/atlas_hybrid_ai_panel.dart';
@@ -170,15 +169,6 @@ class _AiCoachViewState extends ConsumerState<AiCoachView> {
           ],
         ),
         actions: [
-          IconButton(
-            key: const Key('ai_coach_language_button'),
-            visualDensity: VisualDensity.compact,
-            icon: const FaIcon(FontAwesomeIcons.globe, size: AppDimensions.iconS, color: AppColors.secondary),
-            tooltip: tr.dashboard.languageTooltip,
-            onPressed: () {
-              LanguageSelectorSheet.show(context, onLocaleChanged: (_) => vm.refreshLocale());
-            },
-          ),
           Padding(
             padding: const EdgeInsets.only(right: AppDimensions.paddingXS),
             child: ActionChip(
@@ -194,16 +184,14 @@ class _AiCoachViewState extends ConsumerState<AiCoachView> {
                 color: _isHybridPanelExpanded ? AppColors.primary : AppColors.secondary,
               ),
               label: Text(
-                'Hybrid NPU',
+                tr.hybridAi.aiCoachToggleChip,
                 style: TextStyle(
                   fontSize: AppDimensions.fontXS,
                   fontWeight: FontWeight.w800,
                   color: _isHybridPanelExpanded ? AppColors.primary : AppColors.textPrimary,
                 ),
               ),
-              backgroundColor: _isHybridPanelExpanded
-                  ? AppColors.primary.withValues(alpha: AppColors.opacityLow)
-                  : AppColors.surfaceElevated,
+              backgroundColor: _isHybridPanelExpanded ? AppColors.primary.withValues(alpha: AppColors.opacityLow) : AppColors.surfaceElevated,
               side: BorderSide(
                 color: _isHybridPanelExpanded ? AppColors.primary : AppColors.border,
                 width: _isHybridPanelExpanded ? AppDimensions.borderThick : AppDimensions.borderDefault,

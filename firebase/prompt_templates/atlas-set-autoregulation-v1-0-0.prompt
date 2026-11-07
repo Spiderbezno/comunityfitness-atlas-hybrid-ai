@@ -1,5 +1,5 @@
 ---
-model: googleai/gemini-3.5-flash-lite
+model: googleai/gemini-3.8-flash
 config:
   temperature: 0.1
   maxOutputTokens: 256

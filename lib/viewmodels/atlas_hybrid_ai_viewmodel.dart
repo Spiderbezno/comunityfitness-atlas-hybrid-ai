@@ -6,6 +6,7 @@ import 'dart:typed_data';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // 🌎 Project imports:
+import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/models/ai_coach_models.dart';
 import 'package:comunityfitness/repositories/exercise_repository.dart';
 import 'package:comunityfitness/services/atlas_ai_config_service.dart';
@@ -182,7 +183,7 @@ class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
     state = state.copyWith(
       selectedMode: mode,
       errorMessage: isUnavailableOnlyOnDevice
-          ? 'ONLY_ON_DEVICE requires Android AICore / Gemini Nano weights on device (current status: ${state.modelStatus.name}).'
+          ? t.hybridAi.errorOnlyOnDeviceUnavailable(status: state.modelStatus.name)
           : null,
       clearError: !isUnavailableOnlyOnDevice,
     );

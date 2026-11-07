@@ -22,7 +22,7 @@ part 'atlas_ai_config_service.g.dart';
 /// and Cloud Gemini + Dotprompt Server Prompt Templates.
 class AtlasAiRemoteConfig {
   const AtlasAiRemoteConfig({
-    this.cloudModelName = 'gemini-3.5-flash-lite',
+    this.cloudModelName = 'gemini-3.8-flash',
     this.chatModelName = 'gemini-3.8-flash',
     this.liveModelName = 'gemini-3.8-live',
     this.defaultHybridMode = HybridInferenceMode.preferOnDevice,
@@ -109,7 +109,7 @@ class AtlasAiRemoteConfig {
     };
 
     return AtlasAiRemoteConfig(
-      cloudModelName: (map['atlas_cloud_model_name'] ?? 'gemini-3.5-flash-lite').toString().trim(),
+      cloudModelName: (map['atlas_cloud_model_name'] ?? 'gemini-3.8-flash').toString().trim(),
       chatModelName: (map['atlas_chat_model_name'] ?? 'gemini-3.8-flash').toString().trim(),
       liveModelName: (map['atlas_live_model_name'] ?? 'gemini-3.8-live').toString().trim(),
       defaultHybridMode: parsedMode,

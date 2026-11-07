@@ -6,6 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 // 🌎 Project imports:
+import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/models/ai_coach_models.dart';
 import 'package:comunityfitness/models/exercise.dart';
 import 'package:comunityfitness/models/routine.dart';
@@ -688,9 +689,9 @@ class ActiveWorkoutViewModel extends _$ActiveWorkoutViewModel {
     }
 
     final String sourceLabel = switch (analysis.inferenceSource) {
-      HybridInferenceSource.onDevice => 'ON-DEVICE',
-      HybridInferenceSource.inCloud => 'IN-CLOUD',
-      HybridInferenceSource.localOfflineFallback => 'OFFLINE',
+      HybridInferenceSource.onDevice => t.hybridAi.sourceOnDeviceShort,
+      HybridInferenceSource.inCloud => t.hybridAi.sourceInCloudShort,
+      HybridInferenceSource.localOfflineFallback => t.hybridAi.sourceOfflineEngine,
     };
 
     final badgeText = '$sourceLabel · ${analysis.latencyMs}ms · $loadLabel · ${analysis.nextSetRecommendation}';

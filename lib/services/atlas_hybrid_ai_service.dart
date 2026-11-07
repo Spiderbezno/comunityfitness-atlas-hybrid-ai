@@ -9,10 +9,12 @@ import 'package:flutter/foundation.dart';
 
 // 📦 Package imports:
 import 'package:firebase_ai/firebase_ai.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // 🌎 Project imports:
+import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/models/ai_coach_models.dart';
 import 'package:comunityfitness/pigeon/atlas_hybrid_ai_api.g.dart';
 import 'package:comunityfitness/services/atlas_ai_config_service.dart';
@@ -68,7 +70,7 @@ class HybridAiRequest {
     required this.prompt,
     this.systemInstruction,
     this.mode = HybridInferenceMode.preferOnDevice,
-    this.cloudModelName = 'gemini-3.5-flash-lite',
+    this.cloudModelName = 'gemini-3.8-flash',
     this.imageBytes,
     this.imageMimeType,
     this.responseJsonSchema,
@@ -259,7 +261,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     AtlasAiConfigService? configService,
     CloudPromptGenerator? cloudGenerator,
     ServerTemplateExecutor? serverTemplateExecutor,
-    this.defaultCloudModelName = 'gemini-3.5-flash-lite',
+    this.defaultCloudModelName = 'gemini-3.8-flash',
   }) : _hostApi = hostApi ?? AtlasHybridAiHostApi(),
        _webBridge = webBridge ?? createWebHybridAiBridge(),
        _configService = configService ?? AppAtlasAiConfigService(),
@@ -719,19 +721,19 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     if (rpe >= 9.5) {
       final double reducedWeight = weightKg > 0 ? double.parse((weightKg * 0.95).toStringAsFixed(1)) : 0.0;
       nextSetRecommendation = reducedWeight > 0
-          ? 'High CNS fatigue detected (RPE $rpe). Reduce load to ${reducedWeight}kg and rest 180s before the next set.'
-          : 'High CNS fatigue detected (RPE $rpe). Reduce load by 5% and rest 180s before the next set.';
+          ? t.hybridAi.recHighFatigueWithWeight(rpe: rpe, weight: reducedWeight)
+          : t.hybridAi.recHighFatigueNoWeight(rpe: rpe);
     } else if (rpe >= 9.0) {
       nextSetRecommendation = weightKg > 0
-          ? 'Near muscular failure (RPE $rpe). Maintain ${weightKg}kg, focus on bar speed, and rest 150-180s.'
-          : 'Near muscular failure (RPE $rpe). Maintain current load and rest 150-180s.';
+          ? t.hybridAi.recNearFailureWithWeight(rpe: rpe, weight: weightKg)
+          : t.hybridAi.recNearFailureNoWeight(rpe: rpe);
     } else if (rpe <= 7.5 && weightKg > 0) {
       final double nextWeight = double.parse((weightKg + 2.5).toStringAsFixed(1));
-      nextSetRecommendation = 'Strong bar velocity (RPE $rpe). Apply progressive overload: increase to ${nextWeight}kg for $reps reps.';
+      nextSetRecommendation = t.hybridAi.recProgressiveOverload(rpe: rpe, weight: nextWeight, reps: reps);
     } else {
       nextSetRecommendation = weightKg > 0
-          ? 'Optimal hypertrophy zone (RPE $rpe). Keep ${weightKg}kg for $reps reps with 90-120s rest.'
-          : 'Optimal training stimulus (RPE $rpe). Maintain load for $reps reps with 90-120s rest.';
+          ? t.hybridAi.recOptimalWithWeight(rpe: rpe, weight: weightKg, reps: reps)
+          : t.hybridAi.recOptimalNoWeight(rpe: rpe, reps: reps);
     }
 
     return HybridSetLogAnalysis(
@@ -784,7 +786,12 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     if (Firebase.apps.isEmpty) {
       throw StateError('Firebase is not initialized for templateGenerativeModel.');
     }
-    final dynamic aiInstance = FirebaseAI.googleAI();
+    if (FirebaseAuth.instance.currentUser == null) {
+      try {
+        await FirebaseAuth.instance.signInAnonymously();
+      } catch (_) {}
+    }
+    final dynamic aiInstance = FirebaseAI.googleAI(app: Firebase.app());
     final dynamic templateModel = aiInstance.templateGenerativeModel();
     final dynamic response = await templateModel.generateContent(templateId, inputs: inputs);
     final String text = (response?.text ?? '').toString().trim();
@@ -808,13 +815,11 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       responseMimeType: request.responseJsonSchema != null ? 'application/json' : null,
     );
 
-    final GenerativeModel model = FirebaseAI.googleAI().generativeModel(
-      model: request.cloudModelName,
-      generationConfig: generationConfig,
-      systemInstruction: (request.systemInstruction != null && request.systemInstruction!.trim().isNotEmpty)
-          ? Content.system(request.systemInstruction!.trim())
-          : null,
-    );
+    if (FirebaseAuth.instance.currentUser == null) {
+      try {
+        await FirebaseAuth.instance.signInAnonymously();
+      } catch (_) {}
+    }
 
     final String effectivePrompt = request.responseJsonSchema != null
         ? '${request.prompt}\n\nRespond strictly with valid JSON matching this schema:\n${request.responseJsonSchema}'
@@ -832,12 +837,33 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       contents = <Content>[Content.text(effectivePrompt)];
     }
 
-    final GenerateContentResponse response = await model.generateContent(contents);
-    final String text = response.text?.trim() ?? '';
-    if (text.isEmpty) {
-      throw StateError('Empty response from FirebaseAI cloud model.');
+    final List<String> candidateModels = <String>[
+      request.cloudModelName,
+      if (request.cloudModelName != 'gemini-3.8-flash') 'gemini-3.8-flash',
+      if (request.cloudModelName != 'gemini-2.0-flash') 'gemini-2.0-flash',
+    ];
+
+    Object? lastError;
+    for (final String candidateModel in candidateModels) {
+      try {
+        final GenerativeModel model = FirebaseAI.googleAI(app: Firebase.app()).generativeModel(
+          model: candidateModel,
+          generationConfig: generationConfig,
+          systemInstruction: (request.systemInstruction != null && request.systemInstruction!.trim().isNotEmpty)
+              ? Content.system(request.systemInstruction!.trim())
+              : null,
+        );
+        final GenerateContentResponse response = await model.generateContent(contents);
+        final String text = response.text?.trim() ?? '';
+        if (text.isNotEmpty) {
+          return text;
+        }
+      } catch (e) {
+        lastError = e;
+        debugPrint('[AtlasHybridAiService Cloud Error] ($candidateModel) $e');
+      }
     }
-    return text;
+    throw StateError('FirebaseAI cloud models failed ($lastError).');
   }
 
   String _buildDeterministicOfflineResponse(HybridAiRequest request) {
@@ -912,7 +938,7 @@ class FakeAtlasHybridAiService implements AtlasHybridAiService {
     this.status = OnDeviceModelStatus.available,
     this.downloadResultStatus = OnDeviceModelStatus.available,
     this.warmUpResult = true,
-    this.defaultCloudModelName = 'gemini-3.5-flash-lite',
+    this.defaultCloudModelName = 'gemini-3.8-flash',
     this.simulatedLatencyMs = 18,
   });
 

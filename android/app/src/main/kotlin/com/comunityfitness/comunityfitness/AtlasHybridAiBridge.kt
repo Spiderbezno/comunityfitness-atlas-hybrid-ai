@@ -34,7 +34,7 @@ import kotlinx.coroutines.launch
 class AtlasHybridAiBridge : AtlasHybridAiHostApi {
     companion object {
         private const val TAG = "AtlasHybridAiBridge"
-        private const val DEFAULT_CLOUD_MODEL = "gemini-3.5-flash-lite"
+        private const val DEFAULT_CLOUD_MODEL = "gemini-3.8-flash"
         private const val ON_DEVICE_MODEL_LABEL = "gemini-nano-on-device"
     }
 

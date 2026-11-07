@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // 🌎 Project imports:
+import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/services/atlas_hybrid_ai_service.dart';
 import 'package:comunityfitness/theme/app_theme.dart';
 import 'package:comunityfitness/viewmodels/atlas_hybrid_ai_viewmodel.dart';
@@ -16,11 +17,13 @@ Widget _buildTestHarness(FakeAtlasHybridAiService fakeService) {
     overrides: [
       atlasHybridAiServiceProvider.overrideWithValue(fakeService),
     ],
-    child: MaterialApp(
-      theme: AppTheme.darkTheme,
-      home: const Scaffold(
-        body: SingleChildScrollView(
-          child: AtlasHybridAiPanel(),
+    child: TranslationProvider(
+      child: MaterialApp(
+        theme: AppTheme.darkTheme,
+        home: const Scaffold(
+          body: SingleChildScrollView(
+            child: AtlasHybridAiPanel(),
+          ),
         ),
       ),
     ),
@@ -207,6 +210,35 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(find.textContaining('Dotprompt · atlas-set-autoregulation-v1-0-0'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      '8. Switching locale to Spanish (AppLocale.es) renders localized labels and zero raw enum names',
+      (WidgetTester tester) async {
+        LocaleSettings.setLocale(AppLocale.es);
+        addTearDown(() => LocaleSettings.setLocale(AppLocale.en));
+
+        final FakeAtlasHybridAiService fakeService = FakeAtlasHybridAiService(
+          status: OnDeviceModelStatus.available,
+        );
+
+        await tester.pumpWidget(_buildTestHarness(fakeService));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Router IA Híbrido ATLAS'), findsOneWidget);
+        expect(find.textContaining('Listo en Dispositivo'), findsOneWidget);
+        expect(find.text('Preferir en Dispositivo'), findsOneWidget);
+        expect(find.text('Solo en Dispositivo'), findsOneWidget);
+        expect(find.text('Preferir en la Nube'), findsOneWidget);
+        expect(find.text('Solo en la Nube'), findsOneWidget);
+        expect(find.text('Analizar Serie'), findsOneWidget);
+        expect(find.text('Escanear Equipo'), findsOneWidget);
+
+        expect(find.text('PREFER_ON_DEVICE'), findsNothing);
+        expect(find.text('ONLY_ON_DEVICE'), findsNothing);
+        expect(find.text('PREFER_IN_CLOUD'), findsNothing);
+        expect(find.text('ONLY_IN_CLOUD'), findsNothing);
       },
     );
   });

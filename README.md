@@ -1,6 +1,6 @@
 # CommunityFitness — ATLAS Hybrid AI (`#BuildHybridAI 2026`)
 
-**CommunityFitness (ATLAS)** is a hybrid on-device + cloud AI strength training coach built with **Firebase AI Logic**, **Flutter**, and **60 FPS 3D Rive anatomical animations**. It solves the real-world "Basement Gym Problem": strength athletes train in concrete basements with dead cellular zones, require instant (<30 ms) between-set load autoregulation at zero token cost, and want private equipment/posture image checks that never leave their device—while seamlessly escalating to **Cloud Gemini (`gemini-3.5-flash-lite`)**, **Dotprompt Server Prompt Templates (`templateGenerativeModel`)**, and **Gemini Live API** when online or on unsupported hardware.
+**CommunityFitness (ATLAS)** is a hybrid on-device + cloud AI strength training coach built with **Firebase AI Logic**, **Flutter**, and **60 FPS 3D Rive anatomical animations**. It solves the real-world "Basement Gym Problem": strength athletes train in concrete basements with dead cellular zones, require instant (<30 ms) between-set load autoregulation at zero token cost, and want private equipment/posture image checks that never leave their device—while seamlessly escalating to **Cloud Gemini (`gemini-3.8-flash`)**, **Dotprompt Server Prompt Templates (`templateGenerativeModel`)**, and **Gemini Live API** when online or on unsupported hardware.
 
 ---
 
@@ -14,7 +14,7 @@
    ```
 2. **Test Live Hybrid Inference, OTA Prompt Governance & Telemetry in the App**:
    - **Inside ATLAS AI Coach**: Tap the 3D Gyro-Core avatar in the header, then tap the **`Hybrid NPU`** chip (`ai_coach_hybrid_mode_button`). Switch live between `Prefer On-Device`, `Only On-Device`, `Prefer Cloud`, and `Only Cloud`, toggle **`Dotprompt · atlas-set-autoregulation-v1-0-0`** (`hybrid_server_template_toggle`), log a set, or run a 1-tap **Private Equipment Scan (1-Image)**.
-   - **Inside Active Workout**: Start any workout and tap **`RPE 7 · +2.5kg`**, **`RPE 8.5 · Keep`**, or **`RPE 9.5 · -5% Load`** on any exercise step card to see instant load/rest autoregulation and the live telemetry banner (`ON-DEVICE · Gemini Nano`, `ON-DEVICE · Apple Intelligence`, `ON-DEVICE · Chrome Gemini Nano`, `IN-CLOUD · gemini-3.5-flash-lite`, or `OFFLINE ENGINE`).
+   - **Inside Active Workout**: Start any workout and tap **`RPE 7 · +2.5kg`**, **`RPE 8.5 · Keep`**, or **`RPE 9.5 · -5% Load`** on any exercise step card to see instant load/rest autoregulation and the live telemetry banner (`ON-DEVICE · Gemini Nano`, `ON-DEVICE · Apple Intelligence`, `ON-DEVICE · Chrome Gemini Nano`, `IN-CLOUD · gemini-3.8-flash`, or `OFFLINE ENGINE`).
 
 ---
 
@@ -45,7 +45,7 @@ flowchart TD
 
     Router -->|"Android (Pigeon Host API)"| AndroidBridge["AtlasHybridAiBridge.kt (firebase-ai:18.1.0 + firebase-ai-ondevice:16.0.0-beta07)"]
     AndroidBridge -->|"PREFER_ON_DEVICE / ONLY_ON_DEVICE"| AICore["Android AICore / ML Kit Prompt API (Gemini Nano)"]
-    AndroidBridge -->|"Cloud Fallback / PREFER_IN_CLOUD"| AndroidCloud["Firebase AI Logic Cloud (gemini-3.5-flash-lite)"]
+    AndroidBridge -->|"Cloud Fallback / PREFER_IN_CLOUD"| AndroidCloud["Firebase AI Logic Cloud (gemini-3.8-flash)"]
 
     Router -->|"iOS (Pigeon Host API)"| IosBridge["AtlasHybridAiIosBridge (AppDelegate.swift)"]
     IosBridge -->|"PREFER_ON_DEVICE (Text-Only)"| AppleIntel["Apple Intelligence FoundationModels (SystemLanguageModel.default)"]

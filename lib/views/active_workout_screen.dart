@@ -137,7 +137,7 @@ class ActiveWorkoutScreen extends ConsumerWidget {
           Column(
             children: [
               if (state.ghostTitle != null) _buildGhostPartnerBanner(state, tr),
-              if (state.lastHybridAnalysis != null) _buildHybridTelemetryBanner(state.lastHybridAnalysis!),
+              if (state.lastHybridAnalysis != null) _buildHybridTelemetryBanner(state.lastHybridAnalysis!, tr),
               Expanded(
                 child: state.steps.isEmpty
                     ? Center(
@@ -473,7 +473,7 @@ class ActiveWorkoutScreen extends ConsumerWidget {
                                     ],
                                   ),
                                   const SizedBox(height: AppDimensions.paddingS),
-                                  _buildHybridAutoregulationRow(vm, index, state.isHybridAnalyzing),
+                                  _buildHybridAutoregulationRow(vm, index, state.isHybridAnalyzing, tr),
                                 ],
                               ),
                             ),
@@ -644,22 +644,22 @@ class ActiveWorkoutScreen extends ConsumerWidget {
     );
   }
 
-  String _formatOnDeviceSourceLabel(String modelUsed) {
+  String _formatOnDeviceSourceLabel(Translations tr, String modelUsed) {
     final String normalized = modelUsed.toLowerCase();
     if (normalized.contains('apple-foundation-models')) {
-      return 'ON-DEVICE · Apple Intelligence';
+      return tr.hybridAi.sourceOnDeviceApple;
     }
     if (normalized.contains('chrome-prompt-api')) {
-      return 'ON-DEVICE · Chrome Gemini Nano';
+      return tr.hybridAi.sourceOnDeviceChrome;
     }
-    return 'ON-DEVICE · Gemini Nano';
+    return tr.hybridAi.sourceOnDeviceNano;
   }
 
-  Widget _buildHybridTelemetryBanner(HybridSetLogAnalysis analysis) {
+  Widget _buildHybridTelemetryBanner(HybridSetLogAnalysis analysis, Translations tr) {
     final (String sourceLabel, Color sourceColor, FaIconData sourceIcon) = switch (analysis.inferenceSource) {
-      HybridInferenceSource.onDevice => (_formatOnDeviceSourceLabel(analysis.modelUsed), AppColors.success, FontAwesomeIcons.microchip),
-      HybridInferenceSource.inCloud => ('IN-CLOUD · ${analysis.modelUsed}', AppColors.secondary, FontAwesomeIcons.cloudBolt),
-      HybridInferenceSource.localOfflineFallback => ('OFFLINE ENGINE', AppColors.warning, FontAwesomeIcons.shieldHalved),
+      HybridInferenceSource.onDevice => (_formatOnDeviceSourceLabel(tr, analysis.modelUsed), AppColors.success, FontAwesomeIcons.microchip),
+      HybridInferenceSource.inCloud => (tr.hybridAi.sourceInCloud(model: analysis.modelUsed), AppColors.secondary, FontAwesomeIcons.cloudBolt),
+      HybridInferenceSource.localOfflineFallback => (tr.hybridAi.sourceOfflineEngine, AppColors.warning, FontAwesomeIcons.shieldHalved),
     };
 
     return Container(
@@ -723,7 +723,7 @@ class ActiveWorkoutScreen extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
                 ),
                 child: Text(
-                  'RPE ${analysis.rpe.toStringAsFixed(1)}',
+                  '${tr.hybridAi.rpeLabel} ${analysis.rpe.toStringAsFixed(1)}',
                   style: const TextStyle(fontSize: AppDimensions.fontXXS, fontWeight: FontWeight.w800, color: AppColors.primary),
                 ),
               ),
@@ -738,14 +738,14 @@ class ActiveWorkoutScreen extends ConsumerWidget {
                       width: AppDimensions.borderThin,
                     ),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      FaIcon(FontAwesomeIcons.triangleExclamation, size: AppDimensions.iconXS, color: AppColors.error),
-                      SizedBox(width: AppDimensions.paddingXS),
+                      const FaIcon(FontAwesomeIcons.triangleExclamation, size: AppDimensions.iconXS, color: AppColors.error),
+                      const SizedBox(width: AppDimensions.paddingXS),
                       Text(
-                        'FATIGUE ALERT',
-                        style: TextStyle(fontSize: AppDimensions.fontXXS, fontWeight: FontWeight.w900, color: AppColors.error),
+                        tr.hybridAi.fatigueAlertBannerBadge,
+                        style: const TextStyle(fontSize: AppDimensions.fontXXS, fontWeight: FontWeight.w900, color: AppColors.error),
                       ),
                     ],
                   ),
@@ -762,7 +762,7 @@ class ActiveWorkoutScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHybridAutoregulationRow(ActiveWorkoutViewModel vm, int index, bool isBusy) {
+  Widget _buildHybridAutoregulationRow(ActiveWorkoutViewModel vm, int index, bool isBusy, Translations tr) {
     return Container(
       key: Key('active_step_hybrid_row_$index'),
       padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXS),
@@ -774,16 +774,16 @@ class ActiveWorkoutScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              FaIcon(FontAwesomeIcons.microchip, size: AppDimensions.iconXS, color: AppColors.secondary),
-              SizedBox(width: AppDimensions.paddingXS),
+              const FaIcon(FontAwesomeIcons.microchip, size: AppDimensions.iconXS, color: AppColors.secondary),
+              const SizedBox(width: AppDimensions.paddingXS),
               Expanded(
                 child: Text(
-                  'HYBRID NPU SET AUTOREGULATION',
+                  tr.hybridAi.activeWorkoutSectionTitle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: AppDimensions.fontXXS,
                     fontWeight: FontWeight.w900,
                     letterSpacing: 0.5,
@@ -800,21 +800,21 @@ class ActiveWorkoutScreen extends ConsumerWidget {
             children: [
               _buildRpeActionChip(
                 key: Key('active_step_hybrid_rpe_7_$index'),
-                label: 'RPE 7 · +2.5kg',
+                label: tr.hybridAi.rpe7Chip,
                 accentColor: AppColors.success,
                 isBusy: isBusy,
                 onTap: () => vm.autoregulateStepWithHybridAi(index, rpe: 7.0),
               ),
               _buildRpeActionChip(
                 key: Key('active_step_hybrid_rpe_85_$index'),
-                label: 'RPE 8.5 · Keep',
+                label: tr.hybridAi.rpe85Chip,
                 accentColor: AppColors.secondary,
                 isBusy: isBusy,
                 onTap: () => vm.autoregulateStepWithHybridAi(index, rpe: 8.5),
               ),
               _buildRpeActionChip(
                 key: Key('active_step_hybrid_rpe_95_$index'),
-                label: 'RPE 9.5 · -5% Load',
+                label: tr.hybridAi.rpe95Chip,
                 accentColor: AppColors.warning,
                 isBusy: isBusy,
                 onTap: () => vm.autoregulateStepWithHybridAi(index, rpe: 9.5),

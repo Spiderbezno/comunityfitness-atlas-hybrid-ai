@@ -163,6 +163,7 @@ abstract class Translations {
   _StringsAiCoach get aiCoach;
   _StringsAnalytics get analytics;
   _StringsWorkout get workout;
+  _StringsHybridAi get hybridAi;
 
   String translateMuscle(String canonicalMuscle) {
     return aiCoach.muscles[canonicalMuscle] ?? canonicalMuscle;
@@ -345,6 +346,59 @@ abstract class _StringsWorkout {
   String get cardCopiedSnackbar;
 }
 
+abstract class _StringsHybridAi {
+  String get aiCoachToggleChip;
+  String get routerTitle;
+  String npuStatusPrefix({required Object status});
+  String get statusOnDeviceReady;
+  String get statusDownloadable;
+  String get statusDownloading;
+  String get statusCloudFallback;
+  String get sourceOnDeviceNano;
+  String get sourceOnDeviceApple;
+  String get sourceOnDeviceChrome;
+  String get sourceOnDeviceShort;
+  String sourceInCloud({required Object model});
+  String get sourceInCloudShort;
+  String get sourceOfflineEngine;
+  String get ramWarmedUp;
+  String get downloadModelButton;
+  String dotpromptBadge({required Object templateId});
+  String remoteConfigOnlyBadge({required Object templateId});
+  String get modeSectionTitle;
+  String get modeSectionSubtitle;
+  String get modePreferOnDevice;
+  String get modeOnlyOnDevice;
+  String get modePreferInCloud;
+  String get modeOnlyInCloud;
+  String get loggerTitle;
+  String get loggerSubtitle;
+  String get presetHeavyBenchChip;
+  String get presetFastSquatChip;
+  String get inputHint;
+  String get analyzeSetButton;
+  String get scanEquipmentButton;
+  String get loadLabel;
+  String get repsLabel;
+  String get rpeLabel;
+  String get fatigueAlertBadge;
+  String get optimalVelocityBadge;
+  String get visionCardTitle;
+  String get activeWorkoutSectionTitle;
+  String get rpe7Chip;
+  String get rpe85Chip;
+  String get rpe95Chip;
+  String get fatigueAlertBannerBadge;
+  String recHighFatigueWithWeight({required Object rpe, required Object weight});
+  String recHighFatigueNoWeight({required Object rpe});
+  String recNearFailureWithWeight({required Object rpe, required Object weight});
+  String recNearFailureNoWeight({required Object rpe});
+  String recProgressiveOverload({required Object rpe, required Object weight, required Object reps});
+  String recOptimalWithWeight({required Object rpe, required Object weight, required Object reps});
+  String recOptimalNoWeight({required Object rpe, required Object reps});
+  String errorOnlyOnDeviceUnavailable({required Object status});
+}
+
 // -----------------------------------------------------------------------------
 // Español (es)
 // -----------------------------------------------------------------------------
@@ -360,6 +414,8 @@ class _TranslationsEs extends Translations {
   final _StringsAnalytics analytics = _StringsAnalyticsEs();
   @override
   final _StringsWorkout workout = _StringsWorkoutEs();
+  @override
+  final _StringsHybridAi hybridAi = _StringsHybridAiEs();
 }
 
 class _StringsCommonEs extends _StringsCommon {
@@ -698,6 +754,117 @@ class _StringsWorkoutEs extends _StringsWorkout {
   String get cardCopiedSnackbar => '¡Tarjeta anatómica copiada al portapapeles!';
 }
 
+class _StringsHybridAiEs extends _StringsHybridAi {
+  @override
+  String get aiCoachToggleChip => 'NPU Híbrido';
+  @override
+  String get routerTitle => 'Router IA Híbrido ATLAS';
+  @override
+  String npuStatusPrefix({required Object status}) => 'NPU AICore: $status';
+  @override
+  String get statusOnDeviceReady => 'Listo en Dispositivo';
+  @override
+  String get statusDownloadable => 'Descargable';
+  @override
+  String get statusDownloading => 'Descargando Modelo';
+  @override
+  String get statusCloudFallback => 'Respaldo en la Nube';
+  @override
+  String get sourceOnDeviceNano => 'EN DISPOSITIVO · Gemini Nano';
+  @override
+  String get sourceOnDeviceApple => 'EN DISPOSITIVO · Apple Intelligence';
+  @override
+  String get sourceOnDeviceChrome => 'EN DISPOSITIVO · Chrome Gemini Nano';
+  @override
+  String get sourceOnDeviceShort => 'EN DISPOSITIVO';
+  @override
+  String sourceInCloud({required Object model}) => 'EN LA NUBE · $model';
+  @override
+  String get sourceInCloudShort => 'EN LA NUBE';
+  @override
+  String get sourceOfflineEngine => 'MOTOR SIN CONEXIÓN';
+  @override
+  String get ramWarmedUp => 'RAM Precalentada';
+  @override
+  String get downloadModelButton => 'Descargar Modelo Local';
+  @override
+  String dotpromptBadge({required Object templateId}) => 'Dotprompt · $templateId';
+  @override
+  String remoteConfigOnlyBadge({required Object templateId}) => 'Solo Remote Config · $templateId';
+  @override
+  String get modeSectionTitle => 'Política de Ejecución (Firebase AI Logic InferenceMode)';
+  @override
+  String get modeSectionSubtitle => 'Enruta peticiones entre Gemini Nano local (AICore) y Cloud Gemini.';
+  @override
+  String get modePreferOnDevice => 'Preferir en Dispositivo';
+  @override
+  String get modeOnlyOnDevice => 'Solo en Dispositivo';
+  @override
+  String get modePreferInCloud => 'Preferir en la Nube';
+  @override
+  String get modeOnlyInCloud => 'Solo en la Nube';
+  @override
+  String get loggerTitle => 'Autorregulador de Series sin Conexión';
+  @override
+  String get loggerSubtitle => 'Registra series en lenguaje natural o escanea equipamiento sin latencia en la nube.';
+  @override
+  String get presetHeavyBenchChip => 'Press Banca Pesado (100kg x 6 @ RPE 9.5)';
+  @override
+  String get presetFastSquatChip => 'Sentadilla Rápida (120kg x 8 @ RPE 7.0)';
+  @override
+  String get inputHint => 'ej. Press de Banca con Barra 100kg x 6 @ RPE 9.5';
+  @override
+  String get analyzeSetButton => 'Analizar Serie';
+  @override
+  String get scanEquipmentButton => 'Escanear Equipo';
+  @override
+  String get loadLabel => 'CARGA';
+  @override
+  String get repsLabel => 'REPS';
+  @override
+  String get rpeLabel => 'RPE';
+  @override
+  String get fatigueAlertBadge => 'Alerta de Fatiga SNC';
+  @override
+  String get optimalVelocityBadge => 'Velocidad Óptima';
+  @override
+  String get visionCardTitle => 'Escaneo Multimodal de Equipamiento (Imagen + Prompt)';
+  @override
+  String get activeWorkoutSectionTitle => 'AUTORREGULACIÓN DE SERIE NPU HÍBRIDO';
+  @override
+  String get rpe7Chip => 'RPE 7 · +2.5kg';
+  @override
+  String get rpe85Chip => 'RPE 8.5 · Mantener';
+  @override
+  String get rpe95Chip => 'RPE 9.5 · -5% Carga';
+  @override
+  String get fatigueAlertBannerBadge => 'ALERTA DE FATIGA';
+  @override
+  String recHighFatigueWithWeight({required Object rpe, required Object weight}) =>
+      'Alta fatiga del SNC detectada (RPE $rpe). Reduce la carga a ${weight}kg y descansa 180s antes de la siguiente serie.';
+  @override
+  String recHighFatigueNoWeight({required Object rpe}) =>
+      'Alta fatiga del SNC detectada (RPE $rpe). Reduce la carga un 5% y descansa 180s antes de la siguiente serie.';
+  @override
+  String recNearFailureWithWeight({required Object rpe, required Object weight}) =>
+      'Cerca del fallo muscular (RPE $rpe). Mantén ${weight}kg, prioriza la velocidad de barra y descansa 150-180s.';
+  @override
+  String recNearFailureNoWeight({required Object rpe}) =>
+      'Cerca del fallo muscular (RPE $rpe). Mantén la carga actual y descansa 150-180s.';
+  @override
+  String recProgressiveOverload({required Object rpe, required Object weight, required Object reps}) =>
+      'Gran velocidad de barra (RPE $rpe). Aplica sobrecarga progresiva: sube a ${weight}kg para $reps repeticiones.';
+  @override
+  String recOptimalWithWeight({required Object rpe, required Object weight, required Object reps}) =>
+      'Zona óptima de hipertrofia (RPE $rpe). Mantén ${weight}kg para $reps repeticiones con 90-120s de descanso.';
+  @override
+  String recOptimalNoWeight({required Object rpe, required Object reps}) =>
+      'Estímulo de entrenamiento óptimo (RPE $rpe). Mantén la carga para $reps repeticiones con 90-120s de descanso.';
+  @override
+  String errorOnlyOnDeviceUnavailable({required Object status}) =>
+      'El modo Solo en Dispositivo requiere pesos NPU locales (estado actual: $status).';
+}
+
 // -----------------------------------------------------------------------------
 // English (en)
 // -----------------------------------------------------------------------------
@@ -713,6 +880,8 @@ class _TranslationsEn extends Translations {
   final _StringsAnalytics analytics = _StringsAnalyticsEn();
   @override
   final _StringsWorkout workout = _StringsWorkoutEn();
+  @override
+  final _StringsHybridAi hybridAi = _StringsHybridAiEn();
 }
 
 class _StringsCommonEn extends _StringsCommon {
@@ -1050,6 +1219,117 @@ class _StringsWorkoutEn extends _StringsWorkout {
   String get cardCopiedSnackbar => 'Anatomical card copied to clipboard!';
 }
 
+class _StringsHybridAiEn extends _StringsHybridAi {
+  @override
+  String get aiCoachToggleChip => 'Hybrid NPU';
+  @override
+  String get routerTitle => 'ATLAS Hybrid AI Router';
+  @override
+  String npuStatusPrefix({required Object status}) => 'AICore NPU: $status';
+  @override
+  String get statusOnDeviceReady => 'On-Device Ready';
+  @override
+  String get statusDownloadable => 'Downloadable';
+  @override
+  String get statusDownloading => 'Downloading Model';
+  @override
+  String get statusCloudFallback => 'Cloud Fallback';
+  @override
+  String get sourceOnDeviceNano => 'ON-DEVICE · Gemini Nano';
+  @override
+  String get sourceOnDeviceApple => 'ON-DEVICE · Apple Intelligence';
+  @override
+  String get sourceOnDeviceChrome => 'ON-DEVICE · Chrome Gemini Nano';
+  @override
+  String get sourceOnDeviceShort => 'ON-DEVICE';
+  @override
+  String sourceInCloud({required Object model}) => 'IN-CLOUD · $model';
+  @override
+  String get sourceInCloudShort => 'IN-CLOUD';
+  @override
+  String get sourceOfflineEngine => 'OFFLINE ENGINE';
+  @override
+  String get ramWarmedUp => 'RAM Warmed Up';
+  @override
+  String get downloadModelButton => 'Download On-Device Model';
+  @override
+  String dotpromptBadge({required Object templateId}) => 'Dotprompt · $templateId';
+  @override
+  String remoteConfigOnlyBadge({required Object templateId}) => 'Remote Config Only · $templateId';
+  @override
+  String get modeSectionTitle => 'Execution Policy (Firebase AI Logic InferenceMode)';
+  @override
+  String get modeSectionSubtitle => 'Route requests between local Gemini Nano (AICore) and Cloud Gemini.';
+  @override
+  String get modePreferOnDevice => 'Prefer On-Device';
+  @override
+  String get modeOnlyOnDevice => 'Only On-Device';
+  @override
+  String get modePreferInCloud => 'Prefer in Cloud';
+  @override
+  String get modeOnlyInCloud => 'Only in Cloud';
+  @override
+  String get loggerTitle => 'Basement Gym Offline-First Set Autoregulator';
+  @override
+  String get loggerSubtitle => 'Log sets in natural language or scan equipment with zero cloud latency.';
+  @override
+  String get presetHeavyBenchChip => 'Heavy Bench (100kg x 6 @ RPE 9.5)';
+  @override
+  String get presetFastSquatChip => 'Fast Squat (120kg x 8 @ RPE 7.0)';
+  @override
+  String get inputHint => 'e.g. Barbell Bench Press 100kg x 6 @ RPE 9.5';
+  @override
+  String get analyzeSetButton => 'Analyze Set';
+  @override
+  String get scanEquipmentButton => 'Scan Equipment';
+  @override
+  String get loadLabel => 'LOAD';
+  @override
+  String get repsLabel => 'REPS';
+  @override
+  String get rpeLabel => 'RPE';
+  @override
+  String get fatigueAlertBadge => 'CNS Fatigue Alert';
+  @override
+  String get optimalVelocityBadge => 'Optimal Velocity';
+  @override
+  String get visionCardTitle => 'Multimodal Equipment Scan (Bitmap + Prompt)';
+  @override
+  String get activeWorkoutSectionTitle => 'HYBRID NPU SET AUTOREGULATION';
+  @override
+  String get rpe7Chip => 'RPE 7 · +2.5kg';
+  @override
+  String get rpe85Chip => 'RPE 8.5 · Keep';
+  @override
+  String get rpe95Chip => 'RPE 9.5 · -5% Load';
+  @override
+  String get fatigueAlertBannerBadge => 'FATIGUE ALERT';
+  @override
+  String recHighFatigueWithWeight({required Object rpe, required Object weight}) =>
+      'High CNS fatigue detected (RPE $rpe). Reduce load to ${weight}kg and rest 180s before the next set.';
+  @override
+  String recHighFatigueNoWeight({required Object rpe}) =>
+      'High CNS fatigue detected (RPE $rpe). Reduce load by 5% and rest 180s before the next set.';
+  @override
+  String recNearFailureWithWeight({required Object rpe, required Object weight}) =>
+      'Near muscular failure (RPE $rpe). Maintain ${weight}kg, focus on bar speed, and rest 150-180s.';
+  @override
+  String recNearFailureNoWeight({required Object rpe}) =>
+      'Near muscular failure (RPE $rpe). Maintain current load and rest 150-180s.';
+  @override
+  String recProgressiveOverload({required Object rpe, required Object weight, required Object reps}) =>
+      'Strong bar velocity (RPE $rpe). Apply progressive overload: increase to ${weight}kg for $reps reps.';
+  @override
+  String recOptimalWithWeight({required Object rpe, required Object weight, required Object reps}) =>
+      'Optimal hypertrophy zone (RPE $rpe). Keep ${weight}kg for $reps reps with 90-120s rest.';
+  @override
+  String recOptimalNoWeight({required Object rpe, required Object reps}) =>
+      'Optimal training stimulus (RPE $rpe). Maintain load for $reps reps with 90-120s rest.';
+  @override
+  String errorOnlyOnDeviceUnavailable({required Object status}) =>
+      'Only On-Device mode requires local NPU weights (current status: $status).';
+}
+
 // -----------------------------------------------------------------------------
 // Català (ca)
 // -----------------------------------------------------------------------------
@@ -1065,6 +1345,8 @@ class _TranslationsCa extends Translations {
   final _StringsAnalytics analytics = _StringsAnalyticsCa();
   @override
   final _StringsWorkout workout = _StringsWorkoutCa();
+  @override
+  final _StringsHybridAi hybridAi = _StringsHybridAiCa();
 }
 
 class _StringsCommonCa extends _StringsCommon {
@@ -1403,6 +1685,117 @@ class _StringsWorkoutCa extends _StringsWorkout {
   String get cardCopiedSnackbar => 'Targeta anatòmica copiada al porta-retalls!';
 }
 
+class _StringsHybridAiCa extends _StringsHybridAi {
+  @override
+  String get aiCoachToggleChip => 'NPU Híbrid';
+  @override
+  String get routerTitle => 'Encaminador IA Híbrid ATLAS';
+  @override
+  String npuStatusPrefix({required Object status}) => 'NPU AICore: $status';
+  @override
+  String get statusOnDeviceReady => 'Llest al Dispositiu';
+  @override
+  String get statusDownloadable => 'Descarregable';
+  @override
+  String get statusDownloading => 'Descarregant Model';
+  @override
+  String get statusCloudFallback => 'Respatller al Núvol';
+  @override
+  String get sourceOnDeviceNano => 'AL DISPOSITIU · Gemini Nano';
+  @override
+  String get sourceOnDeviceApple => 'AL DISPOSITIU · Apple Intelligence';
+  @override
+  String get sourceOnDeviceChrome => 'AL DISPOSITIU · Chrome Gemini Nano';
+  @override
+  String get sourceOnDeviceShort => 'AL DISPOSITIU';
+  @override
+  String sourceInCloud({required Object model}) => 'AL NÚVOL · $model';
+  @override
+  String get sourceInCloudShort => 'AL NÚVOL';
+  @override
+  String get sourceOfflineEngine => 'MOTOR FORA DE LÍNIA';
+  @override
+  String get ramWarmedUp => 'RAM Preescalfada';
+  @override
+  String get downloadModelButton => 'Descarregar Model Local';
+  @override
+  String dotpromptBadge({required Object templateId}) => 'Dotprompt · $templateId';
+  @override
+  String remoteConfigOnlyBadge({required Object templateId}) => 'Només Remote Config · $templateId';
+  @override
+  String get modeSectionTitle => "Política d'Execució (Firebase AI Logic InferenceMode)";
+  @override
+  String get modeSectionSubtitle => 'Encamina peticions entre Gemini Nano local (AICore) i Cloud Gemini.';
+  @override
+  String get modePreferOnDevice => 'Preferir al Dispositiu';
+  @override
+  String get modeOnlyOnDevice => 'Només al Dispositiu';
+  @override
+  String get modePreferInCloud => 'Preferir al Núvol';
+  @override
+  String get modeOnlyInCloud => 'Només al Núvol';
+  @override
+  String get loggerTitle => 'Autoregulador de Sèries sense Connexió';
+  @override
+  String get loggerSubtitle => 'Registra sèries en llenguatge natural o escaneja equipament sense latència al núvol.';
+  @override
+  String get presetHeavyBenchChip => 'Press Banca Pesant (100kg x 6 @ RPE 9.5)';
+  @override
+  String get presetFastSquatChip => 'Esquat Ràpid (120kg x 8 @ RPE 7.0)';
+  @override
+  String get inputHint => 'ex. Press de Banca amb Barra 100kg x 6 @ RPE 9.5';
+  @override
+  String get analyzeSetButton => 'Analitzar Sèrie';
+  @override
+  String get scanEquipmentButton => 'Escanejar Equip';
+  @override
+  String get loadLabel => 'CÀRREGA';
+  @override
+  String get repsLabel => 'REPS';
+  @override
+  String get rpeLabel => 'RPE';
+  @override
+  String get fatigueAlertBadge => 'Alerta de Fatiga SNC';
+  @override
+  String get optimalVelocityBadge => 'Velocitat Òptima';
+  @override
+  String get visionCardTitle => "Escaneig Multimodal d'Equipament (Imatge + Prompt)";
+  @override
+  String get activeWorkoutSectionTitle => 'AUTOREGULACIÓ DE SÈRIE NPU HÍBRID';
+  @override
+  String get rpe7Chip => 'RPE 7 · +2.5kg';
+  @override
+  String get rpe85Chip => 'RPE 8.5 · Mantenir';
+  @override
+  String get rpe95Chip => 'RPE 9.5 · -5% Càrrega';
+  @override
+  String get fatigueAlertBannerBadge => 'ALERTA DE FATIGA';
+  @override
+  String recHighFatigueWithWeight({required Object rpe, required Object weight}) =>
+      'Alta fatiga del SNC detectada (RPE $rpe). Redueix la càrrega a ${weight}kg i descansa 180s abans de la següent sèrie.';
+  @override
+  String recHighFatigueNoWeight({required Object rpe}) =>
+      'Alta fatiga del SNC detectada (RPE $rpe). Redueix la càrrega un 5% i descansa 180s abans de la següent sèrie.';
+  @override
+  String recNearFailureWithWeight({required Object rpe, required Object weight}) =>
+      'A prop de la fallada muscular (RPE $rpe). Mantén ${weight}kg, prioritza la velocitat de barra i descansa 150-180s.';
+  @override
+  String recNearFailureNoWeight({required Object rpe}) =>
+      'A prop de la fallada muscular (RPE $rpe). Mantén la càrrega actual i descansa 150-180s.';
+  @override
+  String recProgressiveOverload({required Object rpe, required Object weight, required Object reps}) =>
+      'Gran velocitat de barra (RPE $rpe). Aplica sobrecàrrega progressiva: puja a ${weight}kg per a $reps repeticions.';
+  @override
+  String recOptimalWithWeight({required Object rpe, required Object weight, required Object reps}) =>
+      "Zona òptima d'hipertròfia (RPE $rpe). Mantén ${weight}kg per a $reps repeticions amb 90-120s de descans.";
+  @override
+  String recOptimalNoWeight({required Object rpe, required Object reps}) =>
+      "Estímul d'entrenament òptim (RPE $rpe). Mantén la càrrega per a $reps repeticions amb 90-120s de descans.";
+  @override
+  String errorOnlyOnDeviceUnavailable({required Object status}) =>
+      'El mode Només al Dispositiu requereix pesos NPU locals (estat actual: $status).';
+}
+
 // -----------------------------------------------------------------------------
 // Français (fr)
 // -----------------------------------------------------------------------------
@@ -1418,6 +1811,8 @@ class _TranslationsFr extends Translations {
   final _StringsAnalytics analytics = _StringsAnalyticsFr();
   @override
   final _StringsWorkout workout = _StringsWorkoutFr();
+  @override
+  final _StringsHybridAi hybridAi = _StringsHybridAiFr();
 }
 
 class _StringsCommonFr extends _StringsCommon {
@@ -1755,6 +2150,117 @@ class _StringsWorkoutFr extends _StringsWorkout {
   String get cardCopiedSnackbar => 'Carte anatomique copiée dans le presse-papiers !';
 }
 
+class _StringsHybridAiFr extends _StringsHybridAi {
+  @override
+  String get aiCoachToggleChip => 'NPU Hybride';
+  @override
+  String get routerTitle => 'Routeur IA Hybride ATLAS';
+  @override
+  String npuStatusPrefix({required Object status}) => 'NPU AICore : $status';
+  @override
+  String get statusOnDeviceReady => "Prêt sur l'Appareil";
+  @override
+  String get statusDownloadable => 'Téléchargeable';
+  @override
+  String get statusDownloading => 'Téléchargement du Modèle';
+  @override
+  String get statusCloudFallback => 'Secours Cloud';
+  @override
+  String get sourceOnDeviceNano => "SUR L'APPAREIL · Gemini Nano";
+  @override
+  String get sourceOnDeviceApple => "SUR L'APPAREIL · Apple Intelligence";
+  @override
+  String get sourceOnDeviceChrome => "SUR L'APPAREIL · Chrome Gemini Nano";
+  @override
+  String get sourceOnDeviceShort => "SUR L'APPAREIL";
+  @override
+  String sourceInCloud({required Object model}) => 'DANS LE CLOUD · $model';
+  @override
+  String get sourceInCloudShort => 'DANS LE CLOUD';
+  @override
+  String get sourceOfflineEngine => 'MOTEUR HORS LIGNE';
+  @override
+  String get ramWarmedUp => 'RAM Préchauffée';
+  @override
+  String get downloadModelButton => 'Télécharger le Modèle Local';
+  @override
+  String dotpromptBadge({required Object templateId}) => 'Dotprompt · $templateId';
+  @override
+  String remoteConfigOnlyBadge({required Object templateId}) => 'Remote Config Seul · $templateId';
+  @override
+  String get modeSectionTitle => "Politique d'Exécution (Firebase AI Logic InferenceMode)";
+  @override
+  String get modeSectionSubtitle => 'Acheminez les requêtes entre Gemini Nano local (AICore) et Cloud Gemini.';
+  @override
+  String get modePreferOnDevice => "Préférer sur l'Appareil";
+  @override
+  String get modeOnlyOnDevice => "Uniquement sur l'Appareil";
+  @override
+  String get modePreferInCloud => 'Préférer dans le Cloud';
+  @override
+  String get modeOnlyInCloud => 'Uniquement dans le Cloud';
+  @override
+  String get loggerTitle => 'Autorégulateur de Séries Hors Ligne';
+  @override
+  String get loggerSubtitle => "Enregistrez vos séries en langage naturel ou scannez l'équipement sans latence cloud.";
+  @override
+  String get presetHeavyBenchChip => 'Développé Couché Lourd (100kg x 6 @ RPE 9.5)';
+  @override
+  String get presetFastSquatChip => 'Squat Rapide (120kg x 8 @ RPE 7.0)';
+  @override
+  String get inputHint => 'ex. Développé Couché Barre 100kg x 6 @ RPE 9.5';
+  @override
+  String get analyzeSetButton => 'Analyser la Série';
+  @override
+  String get scanEquipmentButton => "Scanner l'Équipement";
+  @override
+  String get loadLabel => 'CHARGE';
+  @override
+  String get repsLabel => 'REPS';
+  @override
+  String get rpeLabel => 'RPE';
+  @override
+  String get fatigueAlertBadge => 'Alerte Fatigue SNC';
+  @override
+  String get optimalVelocityBadge => 'Vitesse Optimale';
+  @override
+  String get visionCardTitle => "Scan Multimodal d'Équipement (Image + Prompt)";
+  @override
+  String get activeWorkoutSectionTitle => 'AUTORÉGULATION DE SÉRIE NPU HYBRIDE';
+  @override
+  String get rpe7Chip => 'RPE 7 · +2.5kg';
+  @override
+  String get rpe85Chip => 'RPE 8.5 · Maintenir';
+  @override
+  String get rpe95Chip => 'RPE 9.5 · -5% Charge';
+  @override
+  String get fatigueAlertBannerBadge => 'ALERTE FATIGUE';
+  @override
+  String recHighFatigueWithWeight({required Object rpe, required Object weight}) =>
+      'Forte fatigue du SNC détectée (RPE $rpe). Réduisez la charge à ${weight}kg et reposez-vous 180s avant la prochaine série.';
+  @override
+  String recHighFatigueNoWeight({required Object rpe}) =>
+      'Forte fatigue du SNC détectée (RPE $rpe). Réduisez la charge de 5% et reposez-vous 180s avant la prochaine série.';
+  @override
+  String recNearFailureWithWeight({required Object rpe, required Object weight}) =>
+      "Proche de l'échec musculaire (RPE $rpe). Maintenez ${weight}kg, concentrez-vous sur la vitesse de barre et reposez-vous 150-180s.";
+  @override
+  String recNearFailureNoWeight({required Object rpe}) =>
+      "Proche de l'échec musculaire (RPE $rpe). Maintenez la charge actuelle et reposez-vous 150-180s.";
+  @override
+  String recProgressiveOverload({required Object rpe, required Object weight, required Object reps}) =>
+      'Excellente vitesse de barre (RPE $rpe). Appliquez une surcharge progressive : passez à ${weight}kg pour $reps répétitions.';
+  @override
+  String recOptimalWithWeight({required Object rpe, required Object weight, required Object reps}) =>
+      "Zone d'hypertrophie optimale (RPE $rpe). Gardez ${weight}kg pour $reps répétitions avec 90-120s de repos.";
+  @override
+  String recOptimalNoWeight({required Object rpe, required Object reps}) =>
+      "Stimulus d'entraînement optimal (RPE $rpe). Maintenez la charge pour $reps répétitions avec 90-120s de repos.";
+  @override
+  String errorOnlyOnDeviceUnavailable({required Object status}) =>
+      "Le mode Uniquement sur l'Appareil nécessite les poids NPU locaux (statut actuel : $status).";
+}
+
 // -----------------------------------------------------------------------------
 // Português (pt)
 // -----------------------------------------------------------------------------
@@ -1770,6 +2276,8 @@ class _TranslationsPt extends Translations {
   final _StringsAnalytics analytics = _StringsAnalyticsPt();
   @override
   final _StringsWorkout workout = _StringsWorkoutPt();
+  @override
+  final _StringsHybridAi hybridAi = _StringsHybridAiPt();
 }
 
 class _StringsCommonPt extends _StringsCommon {
@@ -2105,4 +2613,115 @@ class _StringsWorkoutPt extends _StringsWorkout {
   String get doneButton => 'Concluído';
   @override
   String get cardCopiedSnackbar => 'Cartão anatómico copiado para a área de transferência!';
+}
+
+class _StringsHybridAiPt extends _StringsHybridAi {
+  @override
+  String get aiCoachToggleChip => 'NPU Híbrido';
+  @override
+  String get routerTitle => 'Router IA Híbrido ATLAS';
+  @override
+  String npuStatusPrefix({required Object status}) => 'NPU AICore: $status';
+  @override
+  String get statusOnDeviceReady => 'Pronto no Dispositivo';
+  @override
+  String get statusDownloadable => 'Transferível';
+  @override
+  String get statusDownloading => 'A Transferir Modelo';
+  @override
+  String get statusCloudFallback => 'Alternativa na Nuvem';
+  @override
+  String get sourceOnDeviceNano => 'NO DISPOSITIVO · Gemini Nano';
+  @override
+  String get sourceOnDeviceApple => 'NO DISPOSITIVO · Apple Intelligence';
+  @override
+  String get sourceOnDeviceChrome => 'NO DISPOSITIVO · Chrome Gemini Nano';
+  @override
+  String get sourceOnDeviceShort => 'NO DISPOSITIVO';
+  @override
+  String sourceInCloud({required Object model}) => 'NA NUVEM · $model';
+  @override
+  String get sourceInCloudShort => 'NA NUVEM';
+  @override
+  String get sourceOfflineEngine => 'MOTOR OFFLINE';
+  @override
+  String get ramWarmedUp => 'RAM Pré-aquecida';
+  @override
+  String get downloadModelButton => 'Transferir Modelo Local';
+  @override
+  String dotpromptBadge({required Object templateId}) => 'Dotprompt · $templateId';
+  @override
+  String remoteConfigOnlyBadge({required Object templateId}) => 'Apenas Remote Config · $templateId';
+  @override
+  String get modeSectionTitle => 'Política de Execução (Firebase AI Logic InferenceMode)';
+  @override
+  String get modeSectionSubtitle => 'Encaminhe pedidos entre o Gemini Nano local (AICore) e o Cloud Gemini.';
+  @override
+  String get modePreferOnDevice => 'Preferir no Dispositivo';
+  @override
+  String get modeOnlyOnDevice => 'Apenas no Dispositivo';
+  @override
+  String get modePreferInCloud => 'Preferir na Nuvem';
+  @override
+  String get modeOnlyInCloud => 'Apenas na Nuvem';
+  @override
+  String get loggerTitle => 'Autorregulador de Séries Offline';
+  @override
+  String get loggerSubtitle => 'Registe séries em linguagem natural ou digitalize equipamento sem latência na nuvem.';
+  @override
+  String get presetHeavyBenchChip => 'Supino Pesado (100kg x 6 @ RPE 9.5)';
+  @override
+  String get presetFastSquatChip => 'Agachamento Rápido (120kg x 8 @ RPE 7.0)';
+  @override
+  String get inputHint => 'ex. Supino Reto com Barra 100kg x 6 @ RPE 9.5';
+  @override
+  String get analyzeSetButton => 'Analisar Série';
+  @override
+  String get scanEquipmentButton => 'Digitalizar Equipamento';
+  @override
+  String get loadLabel => 'CARGA';
+  @override
+  String get repsLabel => 'REPS';
+  @override
+  String get rpeLabel => 'RPE';
+  @override
+  String get fatigueAlertBadge => 'Alerta de Fadiga SNC';
+  @override
+  String get optimalVelocityBadge => 'Velocidade Ótima';
+  @override
+  String get visionCardTitle => 'Digitalização Multimodal de Equipamento (Imagem + Prompt)';
+  @override
+  String get activeWorkoutSectionTitle => 'AUTORREGULAÇÃO DE SÉRIE NPU HÍBRIDO';
+  @override
+  String get rpe7Chip => 'RPE 7 · +2.5kg';
+  @override
+  String get rpe85Chip => 'RPE 8.5 · Manter';
+  @override
+  String get rpe95Chip => 'RPE 9.5 · -5% Carga';
+  @override
+  String get fatigueAlertBannerBadge => 'ALERTA DE FADIGA';
+  @override
+  String recHighFatigueWithWeight({required Object rpe, required Object weight}) =>
+      'Fadiga elevada do SNC detetada (RPE $rpe). Reduza a carga para ${weight}kg e descanse 180s antes da próxima série.';
+  @override
+  String recHighFatigueNoWeight({required Object rpe}) =>
+      'Fadiga elevada do SNC detetada (RPE $rpe). Reduza a carga em 5% e descanse 180s antes da próxima série.';
+  @override
+  String recNearFailureWithWeight({required Object rpe, required Object weight}) =>
+      'Perto da falha muscular (RPE $rpe). Mantenha ${weight}kg, foque na velocidade da barra e descanse 150-180s.';
+  @override
+  String recNearFailureNoWeight({required Object rpe}) =>
+      'Perto da falha muscular (RPE $rpe). Mantenha a carga atual e descanse 150-180s.';
+  @override
+  String recProgressiveOverload({required Object rpe, required Object weight, required Object reps}) =>
+      'Forte velocidade da barra (RPE $rpe). Aplique sobrecarga progressiva: aumente para ${weight}kg para $reps repetições.';
+  @override
+  String recOptimalWithWeight({required Object rpe, required Object weight, required Object reps}) =>
+      'Zona ótima de hipertrofia (RPE $rpe). Mantenha ${weight}kg para $reps repetições com 90-120s de descanso.';
+  @override
+  String recOptimalNoWeight({required Object rpe, required Object reps}) =>
+      'Estímulo de treino ótimo (RPE $rpe). Mantenha a carga para $reps repetições com 90-120s de descanso.';
+  @override
+  String errorOnlyOnDeviceUnavailable({required Object status}) =>
+      'O modo Apenas no Dispositivo requer pesos NPU locais (estado atual: $status).';
 }

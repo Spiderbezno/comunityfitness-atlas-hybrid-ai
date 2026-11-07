@@ -1,5 +1,6 @@
 // 🌎 Project imports:
 import 'package:comunityfitness/services/atlas_hybrid_ai_service.dart';
+
 import 'package:comunityfitness/services/web_hybrid_ai_bridge_stub.dart'
     if (dart.library.js_interop) 'package:comunityfitness/services/web_hybrid_ai_bridge_web.dart' as impl;
 

@@ -143,8 +143,8 @@ void main() {
     expect(find.text('Demo'), findsWidgets);
   });
 
-  testWidgets('AiCoachView switches language via LanguageSelectorSheet and renders Español UI & Live Voice', (tester) async {
-    LocaleSettings.setLocale(AppLocale.en);
+  testWidgets('AiCoachView omits duplicate language button in AppBar and reflects active Español locale', (tester) async {
+    LocaleSettings.setLocale(AppLocale.es);
     addTearDown(() => LocaleSettings.setLocale(AppLocale.en));
 
     await tester.pumpWidget(
@@ -158,18 +158,7 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    // Open language selector from AiCoachView AppBar
-    final langBtn = find.byKey(const Key('ai_coach_language_button'));
-    expect(langBtn, findsOneWidget);
-    await tester.tap(langBtn);
-    await tester.pumpAndSettle();
-
-    expect(find.byKey(const Key('language_selector_sheet')), findsOneWidget);
-
-    // Select Español (es)
-    await tester.tap(find.byKey(const Key('language_option_es')));
-    await tester.pumpAndSettle();
-
+    expect(find.byKey(const Key('ai_coach_language_button')), findsNothing);
     expect(find.text('ENTRENADOR PERSONAL IA'), findsOneWidget);
     expect(find.text('¿QUÉ MÚSCULOS QUIERES ENTRENAR HOY?'), findsOneWidget);
     expect(find.text('Pecho'), findsWidgets);
