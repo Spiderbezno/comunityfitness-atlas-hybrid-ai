@@ -245,10 +245,7 @@ typedef CloudPromptGenerator = Future<String> Function(HybridAiRequest request);
 
 /// Signature for injectable Firebase AI Logic Server Prompt Template execution
 /// (`FirebaseAI.googleAI().templateGenerativeModel().generateContent(templateId, inputs: ...)`).
-typedef ServerTemplateExecutor = Future<String> Function(
-  String templateId,
-  Map<String, Object?> inputs,
-);
+typedef ServerTemplateExecutor = Future<String> Function(String templateId, Map<String, Object?> inputs);
 
 /// Production implementation of [AtlasHybridAiService] bridging Android AICore
 /// (`com.google.firebase:firebase-ai-ondevice`), `package:firebase_ai` cloud models,
@@ -390,9 +387,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       );
     } catch (hostError) {
       if (request.mode == HybridInferenceMode.onlyOnDevice) {
-        throw StateError(
-          'ONLY_ON_DEVICE inference failed because Gemini Nano / AICore is unavailable: $hostError',
-        );
+        throw StateError('ONLY_ON_DEVICE inference failed because Gemini Nano / AICore is unavailable: $hostError');
       }
 
       // Attempt Server Prompt Template + Dart-side Cloud Gemini fallback if allowed by the inference mode.
@@ -413,9 +408,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
         );
       } catch (cloudError) {
         if (request.mode == HybridInferenceMode.onlyInCloud) {
-          throw StateError(
-            'ONLY_IN_CLOUD inference failed while offline or unreachable: $cloudError',
-          );
+          throw StateError('ONLY_IN_CLOUD inference failed while offline or unreachable: $cloudError');
         }
 
         stopwatch.stop();
@@ -432,11 +425,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     }
   }
 
-  Future<HybridAiResponse> _generateWebHybridContent(
-    HybridAiRequest request,
-    String effectiveCloudModel,
-    Stopwatch stopwatch,
-  ) async {
+  Future<HybridAiResponse> _generateWebHybridContent(HybridAiRequest request, String effectiveCloudModel, Stopwatch stopwatch) async {
     final bool hasImage = request.imageBytes != null && request.imageBytes!.isNotEmpty;
 
     if (request.mode == HybridInferenceMode.preferOnDevice || request.mode == HybridInferenceMode.onlyOnDevice) {
@@ -460,9 +449,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
         );
       } catch (webError) {
         if (request.mode == HybridInferenceMode.onlyOnDevice) {
-          throw StateError(
-            'ONLY_ON_DEVICE inference failed on Web Chrome Prompt API: $webError',
-          );
+          throw StateError('ONLY_ON_DEVICE inference failed on Web Chrome Prompt API: $webError');
         }
         try {
           final ({String text, String modelLabel}) cloudResult = await _executeCloudWithTemplateFallback(
@@ -507,9 +494,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       );
     } catch (cloudError) {
       if (request.mode == HybridInferenceMode.onlyInCloud) {
-        throw StateError(
-          'ONLY_IN_CLOUD inference failed while offline or unreachable: $cloudError',
-        );
+        throw StateError('ONLY_IN_CLOUD inference failed while offline or unreachable: $cloudError');
       }
       if (!hasImage) {
         try {
@@ -557,10 +542,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       activeExercise: activeExercise,
     );
 
-    final String catalogSummary = catalog
-        .take(25)
-        .map((ExerciseModel e) => '${e.id}:${e.name} (${e.primaryMuscleGroup})')
-        .join(', ');
+    final String catalogSummary = catalog.take(25).map((ExerciseModel e) => '${e.id}:${e.name} (${e.primaryMuscleGroup})').join(', ');
 
     final AtlasAiRemoteConfig otaConfig = _configService.currentConfig;
     final String prompt = otaConfig.renderHybridSetPrompt(
@@ -570,12 +552,24 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       activeExerciseId: activeExercise?.id,
     );
 
+    final String langCode = LocaleSettings.currentLocale.languageCode;
+    final String languageName = switch (LocaleSettings.currentLocale) {
+      AppLocale.es => 'Spanish (Español)',
+      AppLocale.ca => 'Catalan (Català)',
+      AppLocale.fr => 'French (Français)',
+      AppLocale.pt => 'Portuguese (Português)',
+      AppLocale.en => 'English',
+    };
+    final String localizedPrompt =
+        '$prompt\n'
+        'IMPORTANT: Write exerciseName and nextSetRecommendation strictly in $languageName (locale: $langCode).';
     final HybridAiResponse response = await generateHybridContent(
       HybridAiRequest(
-        prompt: prompt,
+        prompt: localizedPrompt,
         systemInstruction:
             '${otaConfig.coachSystemPrompt} '
-            'Parse the set log into JSON and prescribe the next set load/rest based on RPE and fatigue.',
+            'Parse the set log into JSON and prescribe the next set load/rest based on RPE and fatigue. '
+            'Always write exerciseName and nextSetRecommendation in $languageName ($langCode).',
         mode: mode,
         cloudModelName: otaConfig.cloudModelName.isNotEmpty ? otaConfig.cloudModelName : defaultCloudModelName,
         imageBytes: imageBytes,
@@ -614,9 +608,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
           reps: parsed.reps > 0 ? parsed.reps : deterministicBaseline.reps,
           rpe: parsed.rpe,
           fatigueAlert: parsed.fatigueAlert,
-          nextSetRecommendation: parsed.nextSetRecommendation.isEmpty
-              ? deterministicBaseline.nextSetRecommendation
-              : parsed.nextSetRecommendation,
+          nextSetRecommendation: parsed.nextSetRecommendation.isEmpty ? deterministicBaseline.nextSetRecommendation : parsed.nextSetRecommendation,
           inferenceSource: response.inferenceSource,
           modelUsed: response.modelUsed,
           latencyMs: response.latencyMs,
@@ -751,10 +743,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     );
   }
 
-  Future<({String text, String modelLabel})> _executeCloudWithTemplateFallback(
-    HybridAiRequest request,
-    String effectiveCloudModel,
-  ) async {
+  Future<({String text, String modelLabel})> _executeCloudWithTemplateFallback(HybridAiRequest request, String effectiveCloudModel) async {
     final AtlasAiRemoteConfig otaConfig = _configService.currentConfig;
     final String? templateId = request.templateId?.trim();
     if (otaConfig.useServerPromptTemplates && templateId != null && templateId.isNotEmpty) {
@@ -763,10 +752,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
           templateId,
           request.templateInputs ?? <String, Object?>{'prompt': request.prompt},
         );
-        return (
-          text: templateText,
-          modelLabel: '$effectiveCloudModel · template:$templateId',
-        );
+        return (text: templateText, modelLabel: '$effectiveCloudModel · template:$templateId');
       } catch (_) {
         // Transparent fallback to standard cloud prompt when server template is not yet provisioned.
       }
@@ -776,10 +762,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     return (text: cloudText, modelLabel: effectiveCloudModel);
   }
 
-  Future<String> _executeServerPromptTemplate(
-    String templateId,
-    Map<String, Object?> inputs,
-  ) async {
+  Future<String> _executeServerPromptTemplate(String templateId, Map<String, Object?> inputs) async {
     if (_serverTemplateExecutor != null) {
       return _serverTemplateExecutor(templateId, inputs);
     }
@@ -828,10 +811,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     final List<Content> contents;
     if (request.imageBytes != null && request.imageBytes!.isNotEmpty) {
       contents = <Content>[
-        Content.multi(<Part>[
-          InlineDataPart(request.imageMimeType ?? 'image/jpeg', request.imageBytes!),
-          TextPart(effectivePrompt),
-        ]),
+        Content.multi(<Part>[InlineDataPart(request.imageMimeType ?? 'image/jpeg', request.imageBytes!), TextPart(effectivePrompt)]),
       ];
     } else {
       contents = <Content>[Content.text(effectivePrompt)];
@@ -1014,8 +994,8 @@ class FakeAtlasHybridAiService implements AtlasHybridAiService {
     if (mode == HybridInferenceMode.onlyOnDevice && status != OnDeviceModelStatus.available) {
       throw StateError('FakeAtlasHybridAiService: On-device Gemini Nano is not available ($status).');
     }
-    final bool runOnDevice = mode == HybridInferenceMode.onlyOnDevice ||
-        (mode == HybridInferenceMode.preferOnDevice && status == OnDeviceModelStatus.available);
+    final bool runOnDevice =
+        mode == HybridInferenceMode.onlyOnDevice || (mode == HybridInferenceMode.preferOnDevice && status == OnDeviceModelStatus.available);
     return AppAtlasHybridAiService.parseSetDeterministically(
       rawSetText: rawSetText,
       catalog: catalog,

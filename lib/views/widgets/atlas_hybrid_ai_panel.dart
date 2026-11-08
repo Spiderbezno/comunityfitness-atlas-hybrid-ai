@@ -24,15 +24,33 @@ class AtlasHybridAiPanel extends ConsumerStatefulWidget {
 }
 
 class _AtlasHybridAiPanelState extends ConsumerState<AtlasHybridAiPanel> {
-  static const String _heavyBenchPreset = 'Barbell Bench Press 100kg x 6 @ RPE 9.5';
-  static const String _fastSquatPreset = 'Barbell Back Squat 120kg x 8 @ RPE 7.0';
+  String _localizedHeavyBenchPreset() {
+    return switch (LocaleSettings.currentLocale) {
+      AppLocale.es => 'Press de Banca con Barra 100kg x 6 @ RPE 9.5',
+      AppLocale.ca => 'Press de Banca amb Barra 100kg x 6 @ RPE 9.5',
+      AppLocale.fr => 'Développé Couché Barre 100kg x 6 @ RPE 9.5',
+      AppLocale.pt => 'Supino Reto com Barra 100kg x 6 @ RPE 9.5',
+      AppLocale.en => 'Barbell Bench Press 100kg x 6 @ RPE 9.5',
+    };
+  }
+
+  String _localizedFastSquatPreset() {
+    return switch (LocaleSettings.currentLocale) {
+      AppLocale.es => 'Sentadilla con Barra 120kg x 8 @ RPE 7.0',
+      AppLocale.ca => 'Esquat amb Barra 120kg x 8 @ RPE 7.0',
+      AppLocale.fr => 'Squat Barre 120kg x 8 @ RPE 7.0',
+      AppLocale.pt => 'Agachamento Livre com Barra 120kg x 8 @ RPE 7.0',
+      AppLocale.en => 'Barbell Back Squat 120kg x 8 @ RPE 7.0',
+    };
+  }
 
   late final TextEditingController _setController;
+  final GlobalKey _resultAnchorKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
-    _setController = TextEditingController(text: _heavyBenchPreset);
+    _setController = TextEditingController(text: _localizedHeavyBenchPreset());
   }
 
   @override
@@ -47,10 +65,30 @@ class _AtlasHybridAiPanelState extends ConsumerState<AtlasHybridAiPanel> {
     vm.analyzeSetLog(presetText, activeExercise: widget.activeExercise);
   }
 
+  void _scrollToResultsIfAvailable() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) {
+        return;
+      }
+      final BuildContext? targetContext = _resultAnchorKey.currentContext;
+      if (targetContext != null) {
+        Scrollable.ensureVisible(targetContext, duration: const Duration(milliseconds: 300), curve: Curves.easeOutCubic);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final AtlasHybridAiState state = ref.watch(atlasHybridAiViewModelProvider);
     final AtlasHybridAiViewModel vm = ref.read(atlasHybridAiViewModelProvider.notifier);
+
+    ref.listen<AtlasHybridAiState>(atlasHybridAiViewModelProvider, (AtlasHybridAiState? previous, AtlasHybridAiState next) {
+      final bool hasNewSetResult = next.lastSetAnalysis != null && next.lastSetAnalysis != previous?.lastSetAnalysis;
+      final bool hasNewVisionResult = next.lastVisionResponse != null && next.lastVisionResponse != previous?.lastVisionResponse;
+      if (hasNewSetResult || hasNewVisionResult) {
+        _scrollToResultsIfAvailable();
+      }
+    });
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -92,23 +130,30 @@ class _AtlasHybridAiPanelState extends ConsumerState<AtlasHybridAiPanel> {
         _BasementGymLoggerCard(
           controller: _setController,
           isLoading: state.isLoading,
-          onSelectHeavyBench: () => _applyPreset(_heavyBenchPreset, vm),
-          onSelectFastSquat: () => _applyPreset(_fastSquatPreset, vm),
+          onSelectHeavyBench: () => _applyPreset(_localizedHeavyBenchPreset(), vm),
+          onSelectFastSquat: () => _applyPreset(_localizedFastSquatPreset(), vm),
           onAnalyzeSet: () {
             vm.analyzeSetLog(_setController.text, activeExercise: widget.activeExercise);
           },
           onScanEquipment: () {
-            vm.scanEquipmentSample(customPrompt: _setController.text.trim().isNotEmpty ? _setController.text.trim() : null);
+            vm.scanEquipmentSample(openCamera: true, customPrompt: _setController.text.trim().isNotEmpty ? _setController.text.trim() : null);
           },
         ),
-        if (state.lastSetAnalysis != null) ...[
-          const SizedBox(height: AppDimensions.paddingM),
-          _SetAnalysisResultCard(analysis: state.lastSetAnalysis!),
-        ],
-        if (state.lastVisionResponse != null) ...[
-          const SizedBox(height: AppDimensions.paddingM),
-          _VisionScanResultCard(response: state.lastVisionResponse!),
-        ],
+        if (state.lastSetAnalysis != null || state.lastVisionResponse != null)
+          Column(
+            key: _resultAnchorKey,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (state.lastSetAnalysis != null) ...[
+                const SizedBox(height: AppDimensions.paddingM),
+                _SetAnalysisResultCard(analysis: state.lastSetAnalysis!),
+              ],
+              if (state.lastVisionResponse != null) ...[
+                const SizedBox(height: AppDimensions.paddingM),
+                _VisionScanResultCard(response: state.lastVisionResponse!),
+              ],
+            ],
+          ),
       ],
     );
   }
@@ -485,7 +530,13 @@ class _BasementGymLoggerCard extends StatelessWidget {
                 child: ElevatedButton.icon(
                   key: const Key('hybrid_analyze_set_button'),
                   onPressed: isLoading ? null : onAnalyzeSet,
-                  icon: const FaIcon(FontAwesomeIcons.wandMagicSparkles, size: AppDimensions.iconS, color: AppColors.background),
+                  icon: isLoading
+                      ? const SizedBox(
+                          width: AppDimensions.iconS,
+                          height: AppDimensions.iconS,
+                          child: CircularProgressIndicator(strokeWidth: AppDimensions.borderThick, color: AppColors.primary),
+                        )
+                      : const FaIcon(FontAwesomeIcons.wandMagicSparkles, size: AppDimensions.iconS, color: AppColors.background),
                   label: Text(tr.hybridAi.analyzeSetButton),
                 ),
               ),
@@ -500,6 +551,13 @@ class _BasementGymLoggerCard extends StatelessWidget {
               ),
             ],
           ),
+          if (isLoading) ...[
+            const SizedBox(height: AppDimensions.paddingS),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
+              child: const LinearProgressIndicator(color: AppColors.primary, backgroundColor: AppColors.surface),
+            ),
+          ],
         ],
       ),
     );
@@ -592,10 +650,7 @@ class _SetAnalysisResultCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppDimensions.paddingS),
-          Text(
-            analysis.nextSetRecommendation,
-            style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w600, color: AppColors.textPrimary),
-          ),
+          _AtlasMarkdownBody(text: analysis.nextSetRecommendation),
         ],
       ),
     );
@@ -639,6 +694,14 @@ class _VisionScanResultCard extends StatelessWidget {
 
   final HybridAiResponse response;
 
+  String _sourceBadgeText(Translations tr, HybridInferenceSource source) {
+    return switch (source) {
+      HybridInferenceSource.onDevice => tr.hybridAi.sourceOnDeviceShort,
+      HybridInferenceSource.inCloud => tr.hybridAi.sourceInCloudShort,
+      HybridInferenceSource.localOfflineFallback => tr.hybridAi.sourceOfflineEngine,
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     final Translations tr = TranslationProvider.of(context).translations;
@@ -667,18 +730,137 @@ class _VisionScanResultCard extends StatelessWidget {
                 ),
               ),
               Text(
-                '${response.modelUsed} · ${response.latencyMs}ms',
+                '${_sourceBadgeText(tr, response.inferenceSource)} · ${response.latencyMs}ms',
                 style: const TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w700, color: AppColors.secondary),
               ),
             ],
           ),
           const SizedBox(height: AppDimensions.paddingS),
-          Text(
-            response.text,
-            style: const TextStyle(fontSize: AppDimensions.fontS, color: AppColors.textPrimary),
-          ),
+          _AtlasMarkdownBody(text: response.text),
         ],
       ),
     );
+  }
+}
+
+class _AtlasMarkdownBody extends StatelessWidget {
+  const _AtlasMarkdownBody({required this.text});
+
+  final String text;
+
+  static final RegExp _inlinePattern = RegExp(r'(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(`([^`]+)`)');
+  static final RegExp _headingPattern = RegExp(r'^(#{1,4})\s+(.*)$');
+  static final RegExp _bulletPattern = RegExp(r'^(\s*[-*•]|\s*\d+\.)\s+(.*)$');
+
+  List<InlineSpan> _parseInlineSpans(String line, TextStyle baseStyle) {
+    final List<InlineSpan> spans = <InlineSpan>[];
+    int cursor = 0;
+
+    for (final RegExpMatch match in _inlinePattern.allMatches(line)) {
+      if (match.start > cursor) {
+        spans.add(TextSpan(text: line.substring(cursor, match.start), style: baseStyle));
+      }
+      final String? boldText = match.group(2);
+      final String? italicText = match.group(4);
+      final String? codeText = match.group(6);
+
+      if (boldText != null) {
+        spans.add(
+          TextSpan(
+            text: boldText,
+            style: baseStyle.copyWith(fontWeight: FontWeight.w800, color: AppColors.textPrimary),
+          ),
+        );
+      } else if (italicText != null) {
+        spans.add(
+          TextSpan(
+            text: italicText,
+            style: baseStyle.copyWith(fontStyle: FontStyle.italic),
+          ),
+        );
+      } else if (codeText != null) {
+        spans.add(
+          TextSpan(
+            text: codeText,
+            style: baseStyle.copyWith(fontWeight: FontWeight.w700, color: AppColors.secondary),
+          ),
+        );
+      }
+      cursor = match.end;
+    }
+
+    if (cursor < line.length) {
+      spans.add(TextSpan(text: line.substring(cursor), style: baseStyle));
+    }
+    if (spans.isEmpty) {
+      spans.add(TextSpan(text: line, style: baseStyle));
+    }
+    return spans;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> lines = text.split('\n');
+    final List<Widget> blocks = <Widget>[];
+    const TextStyle bodyStyle = TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w600, color: AppColors.textPrimary, height: 1.4);
+    const TextStyle headingStyle = TextStyle(fontSize: AppDimensions.fontM, fontWeight: FontWeight.w900, color: AppColors.secondary, height: 1.35);
+
+    for (final String rawLine in lines) {
+      final String trimmed = rawLine.trim();
+      if (trimmed.isEmpty) {
+        if (blocks.isNotEmpty) {
+          blocks.add(const SizedBox(height: AppDimensions.paddingXS));
+        }
+        continue;
+      }
+
+      final RegExpMatch? headingMatch = _headingPattern.firstMatch(trimmed);
+      if (headingMatch != null) {
+        final String headingContent = headingMatch.group(2)?.trim() ?? '';
+        blocks.add(
+          Padding(
+            padding: const EdgeInsets.only(top: AppDimensions.paddingXS, bottom: AppDimensions.paddingXXS),
+            child: Text.rich(TextSpan(children: _parseInlineSpans(headingContent, headingStyle))),
+          ),
+        );
+        continue;
+      }
+
+      final RegExpMatch? bulletMatch = _bulletPattern.firstMatch(trimmed);
+      if (bulletMatch != null) {
+        final String rawMarker = bulletMatch.group(1)?.trim() ?? '•';
+        final String displayMarker = (rawMarker == '-' || rawMarker == '*') ? '•' : rawMarker;
+        final String bulletContent = bulletMatch.group(2)?.trim() ?? '';
+        blocks.add(
+          Padding(
+            padding: const EdgeInsets.only(bottom: AppDimensions.paddingXXS),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$displayMarker ',
+                  style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w900, color: AppColors.primary, height: 1.4),
+                ),
+                Expanded(child: Text.rich(TextSpan(children: _parseInlineSpans(bulletContent, bodyStyle)))),
+              ],
+            ),
+          ),
+        );
+        continue;
+      }
+
+      blocks.add(
+        Padding(
+          padding: const EdgeInsets.only(bottom: AppDimensions.paddingXXS),
+          child: Text.rich(TextSpan(children: _parseInlineSpans(trimmed, bodyStyle))),
+        ),
+      );
+    }
+
+    if (blocks.isEmpty) {
+      return Text(text, style: bodyStyle);
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: blocks);
   }
 }

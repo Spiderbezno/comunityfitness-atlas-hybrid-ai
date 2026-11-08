@@ -1,8 +1,10 @@
 package com.comunityfitness.comunityfitness
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioRecord
@@ -13,6 +15,7 @@ import android.media.audiofx.NoiseSuppressor
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.MediaStore
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -22,6 +25,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
+import java.io.ByteArrayOutputStream
 import java.util.Locale
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.TimeUnit
@@ -31,6 +36,9 @@ import java.util.concurrent.atomic.AtomicInteger
 class MainActivity : FlutterActivity(), LiveCoachAudioHostApi, TextToSpeech.OnInitListener {
     companion object {
         private const val REQUEST_RECORD_AUDIO = 3801
+        private const val REQUEST_CAMERA_PERMISSION = 3802
+        private const val REQUEST_IMAGE_CAPTURE = 3803
+        private const val CAMERA_CHANNEL = "com.comunityfitness.hybrid_ai/camera"
         private const val OUTPUT_SAMPLE_RATE = 24000
         private const val INPUT_SAMPLE_RATE = 16000
 
@@ -47,6 +55,7 @@ class MainActivity : FlutterActivity(), LiveCoachAudioHostApi, TextToSpeech.OnIn
 
     private var flutterApi: LiveCoachAudioFlutterApi? = null
     private var atlasHybridAiBridge: AtlasHybridAiBridge? = null
+    private var pendingCameraResult: MethodChannel.Result? = null
     private var tts: TextToSpeech? = null
     private var isTtsReady = false
     private var currentLocaleIdentifier: String =
@@ -81,6 +90,47 @@ class MainActivity : FlutterActivity(), LiveCoachAudioHostApi, TextToSpeech.OnIn
         val hybridBridge = AtlasHybridAiBridge()
         atlasHybridAiBridge = hybridBridge
         AtlasHybridAiHostApi.setUp(messenger, hybridBridge)
+
+        MethodChannel(messenger, CAMERA_CHANNEL).setMethodCallHandler { call, result ->
+            if (call.method == "captureEquipmentPhoto") {
+                requestEquipmentCameraCapture(result)
+            } else {
+                result.notImplemented()
+            }
+        }
+    }
+
+    private fun requestEquipmentCameraCapture(result: MethodChannel.Result) {
+        pendingCameraResult?.success(ByteArray(0))
+        pendingCameraResult = result
+
+        val hasCameraPermission = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
+
+        if (!hasCameraPermission) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA),
+                REQUEST_CAMERA_PERMISSION
+            )
+            return
+        }
+
+        launchCameraCaptureIntent()
+    }
+
+    @Suppress("DEPRECATION")
+    private fun launchCameraCaptureIntent() {
+        try {
+            val captureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(captureIntent, REQUEST_IMAGE_CAPTURE)
+        } catch (t: Throwable) {
+            val pending = pendingCameraResult
+            pendingCameraResult = null
+            pending?.error("CAMERA_UNAVAILABLE", t.message, null)
+        }
     }
 
     override fun onInit(status: Int) {
@@ -271,6 +321,33 @@ class MainActivity : FlutterActivity(), LiveCoachAudioHostApi, TextToSpeech.OnIn
             grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
             startAudioRecordLoop()
+        } else if (requestCode == REQUEST_CAMERA_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                launchCameraCaptureIntent()
+            } else {
+                val pending = pendingCameraResult
+                pendingCameraResult = null
+                pending?.success(ByteArray(0))
+            }
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            val pending = pendingCameraResult
+            pendingCameraResult = null
+            if (resultCode == Activity.RESULT_OK) {
+                val bitmap = data?.extras?.get("data") as? Bitmap
+                if (bitmap != null) {
+                    val stream = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                    pending?.success(stream.toByteArray())
+                    return
+                }
+            }
+            pending?.success(ByteArray(0))
         }
     }
 

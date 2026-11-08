@@ -1,6 +1,8 @@
 // 🎯 Dart imports:
 import 'dart:async';
-import 'dart:typed_data';
+
+// 🐦 Flutter imports:
+import 'package:flutter/services.dart';
 
 // 📦 Package imports:
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -86,6 +88,8 @@ class AtlasHybridAiState {
 
 @riverpod
 class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
+  static const MethodChannel _cameraChannel = MethodChannel('com.comunityfitness.hybrid_ai/camera');
+
   /// Valid 1x1 PNG sample image bytes for 1-tap multimodal (`Bitmap + prompt`) verification
   /// on emulators or physical devices.
   static final Uint8List defaultSampleEquipmentPng = Uint8List.fromList(const <int>[
@@ -222,20 +226,62 @@ class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
   }
 
   /// Executes a single-image + text multimodal request through the hybrid pipeline.
-  Future<void> scanEquipmentSample({String? customPrompt, Uint8List? imageBytes}) async {
-    final String effectivePrompt = (customPrompt != null && customPrompt.trim().isNotEmpty)
-        ? customPrompt.trim()
-        : 'Identify the gym equipment in this frame, list primary muscles worked, and prescribe 3 hypertrophy sets.';
-    final Uint8List effectiveImage = (imageBytes != null && imageBytes.isNotEmpty) ? imageBytes : defaultSampleEquipmentPng;
-
+  Future<void> scanEquipmentSample({String? customPrompt, Uint8List? imageBytes, bool openCamera = false}) async {
     state = state.copyWith(isLoading: true, clearError: true);
 
+    Uint8List? resolvedBytes = imageBytes;
+    if (openCamera && (resolvedBytes == null || resolvedBytes.isEmpty) && _service is! FakeAtlasHybridAiService) {
+      try {
+        final Uint8List? captured = await _cameraChannel.invokeMethod<Uint8List>('captureEquipmentPhoto');
+        if (!ref.mounted) {
+          return;
+        }
+        if (captured != null) {
+          if (captured.isEmpty) {
+            state = state.copyWith(isLoading: false);
+            return;
+          }
+          resolvedBytes = captured;
+        }
+      } on MissingPluginException {
+        resolvedBytes = defaultSampleEquipmentPng;
+      } on PlatformException {
+        resolvedBytes = defaultSampleEquipmentPng;
+      }
+    }
+
+    final String langCode = LocaleSettings.currentLocale.languageCode;
+    final String languageName = switch (LocaleSettings.currentLocale) {
+      AppLocale.es => 'Spanish (Español)',
+      AppLocale.ca => 'Catalan (Català)',
+      AppLocale.fr => 'French (Français)',
+      AppLocale.pt => 'Portuguese (Português)',
+      AppLocale.en => 'English',
+    };
+    final String basePrompt = (customPrompt != null && customPrompt.trim().isNotEmpty)
+        ? customPrompt.trim()
+        : 'Identify the gym equipment in this frame, list primary muscles worked, and prescribe 3 hypertrophy sets.';
+    final String effectivePrompt =
+        '$basePrompt\n'
+        'IMPORTANT: Respond strictly in $languageName (locale: $langCode).';
+    final Uint8List effectiveImage = (resolvedBytes != null && resolvedBytes.isNotEmpty) ? resolvedBytes : defaultSampleEquipmentPng;
+
     try {
+      if (state.modelStatus == OnDeviceModelStatus.downloading || state.modelStatus == OnDeviceModelStatus.downloadable) {
+        final OnDeviceModelStatus refreshedStatus = await _service.checkOnDeviceStatus();
+        if (!ref.mounted) {
+          return;
+        }
+        if (refreshedStatus != state.modelStatus) {
+          state = state.copyWith(modelStatus: refreshedStatus);
+        }
+      }
       final HybridAiResponse response = await _service.generateHybridContent(
         HybridAiRequest(
           prompt: effectivePrompt,
           systemInstruction:
-              'You are ATLAS, an elite strength & biomechanics coach. Provide a concise, actionable 3-set prescription for the pictured equipment.',
+              'You are ATLAS, an elite strength & biomechanics coach. '
+              'Provide a concise, actionable 3-set prescription for the pictured equipment in $languageName ($langCode).',
           mode: state.selectedMode,
           cloudModelName: _service.defaultCloudModelName,
           imageBytes: effectiveImage,

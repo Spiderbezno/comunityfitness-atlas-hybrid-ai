@@ -215,7 +215,7 @@ class AtlasHybridAiBridge : AtlasHybridAiHostApi {
             maxOutputTokens = request.maxOutputTokens?.toInt()
         )
         val systemInstructionContent = request.systemInstruction
-            ?.takeIf { it.isNotBlank() }
+            ?.takeIf { it.isNotBlank() && request.mode == PigeonHybridInferenceMode.ONLY_IN_CLOUD }
             ?.let { instruction -> content { text(instruction) } }
 
         val model = Firebase.ai(backend = GenerativeBackend.googleAI())
@@ -237,7 +237,21 @@ class AtlasHybridAiBridge : AtlasHybridAiHostApi {
             throw IllegalStateException("Empty response from hybrid generativeModel")
         }
 
-        val isOnDevice = rawResponse.inferenceSource?.toString()?.contains("ON_DEVICE", ignoreCase = true) == true
+        val sourceRaw = rawResponse.inferenceSource?.toString().orEmpty()
+        Log.i(TAG, "Hybrid response inferenceSource=$sourceRaw mode=${request.mode}")
+        val isExplicitCloud = sourceRaw.contains("IN_CLOUD", ignoreCase = true) ||
+            sourceRaw.contains("InCloud", ignoreCase = true) ||
+            sourceRaw.contains("CLOUD", ignoreCase = true)
+        val isOnDevice = when (request.mode) {
+            PigeonHybridInferenceMode.ONLY_ON_DEVICE -> true
+            PigeonHybridInferenceMode.ONLY_IN_CLOUD -> false
+            PigeonHybridInferenceMode.PREFER_ON_DEVICE -> !isExplicitCloud ||
+                sourceRaw.contains("ON_DEVICE", ignoreCase = true) ||
+                sourceRaw.contains("OnDevice", ignoreCase = true)
+            PigeonHybridInferenceMode.PREFER_IN_CLOUD ->
+                sourceRaw.contains("ON_DEVICE", ignoreCase = true) ||
+                sourceRaw.contains("OnDevice", ignoreCase = true)
+        }
         val source = if (isOnDevice) {
             PigeonInferenceSource.ON_DEVICE
         } else {
