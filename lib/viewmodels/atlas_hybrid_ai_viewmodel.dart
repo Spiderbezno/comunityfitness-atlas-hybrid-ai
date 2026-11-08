@@ -145,19 +145,12 @@ class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
         return;
       }
     }
-    state = state.copyWith(
-      modelStatus: status,
-      isWarmedUp: warmed,
-    );
+    state = state.copyWith(modelStatus: status, isWarmedUp: warmed);
   }
 
   /// Triggers an on-device Gemini Nano download via AICore and warms up the model once available.
   Future<void> triggerModelDownload() async {
-    state = state.copyWith(
-      isLoading: true,
-      modelStatus: OnDeviceModelStatus.downloading,
-      clearError: true,
-    );
+    state = state.copyWith(isLoading: true, modelStatus: OnDeviceModelStatus.downloading, clearError: true);
     final OnDeviceModelStatus updatedStatus = await _service.downloadOnDeviceModel();
     if (!ref.mounted) {
       return;
@@ -169,32 +162,21 @@ class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
         return;
       }
     }
-    state = state.copyWith(
-      isLoading: false,
-      modelStatus: updatedStatus,
-      isWarmedUp: warmed,
-    );
+    state = state.copyWith(isLoading: false, modelStatus: updatedStatus, isWarmedUp: warmed);
   }
 
   /// Switches the active [HybridInferenceMode] (`PREFER_ON_DEVICE`, `ONLY_ON_DEVICE`, `PREFER_IN_CLOUD`, `ONLY_IN_CLOUD`).
   void setInferenceMode(HybridInferenceMode mode) {
-    final bool isUnavailableOnlyOnDevice =
-        mode == HybridInferenceMode.onlyOnDevice && state.modelStatus != OnDeviceModelStatus.available;
+    final bool isUnavailableOnlyOnDevice = mode == HybridInferenceMode.onlyOnDevice && state.modelStatus != OnDeviceModelStatus.available;
     state = state.copyWith(
       selectedMode: mode,
-      errorMessage: isUnavailableOnlyOnDevice
-          ? t.hybridAi.errorOnlyOnDeviceUnavailable(status: state.modelStatus.name)
-          : null,
+      errorMessage: isUnavailableOnlyOnDevice ? t.hybridAi.errorOnlyOnDeviceUnavailable(status: state.modelStatus.name) : null,
       clearError: !isUnavailableOnlyOnDevice,
     );
   }
 
   /// Parses a natural-language workout set log and prescribes the next set load/rest.
-  Future<void> analyzeSetLog(
-    String rawSetText, {
-    List<ExerciseModel> catalog = const <ExerciseModel>[],
-    ExerciseModel? activeExercise,
-  }) async {
+  Future<void> analyzeSetLog(String rawSetText, {List<ExerciseModel> catalog = const <ExerciseModel>[], ExerciseModel? activeExercise}) async {
     final String trimmed = rawSetText.trim();
     if (trimmed.isEmpty) {
       return;
@@ -204,6 +186,15 @@ class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
     state = state.copyWith(isLoading: true, clearError: true);
 
     try {
+      if (state.modelStatus == OnDeviceModelStatus.downloading || state.modelStatus == OnDeviceModelStatus.downloadable) {
+        final OnDeviceModelStatus refreshedStatus = await _service.checkOnDeviceStatus();
+        if (!ref.mounted) {
+          return;
+        }
+        if (refreshedStatus != state.modelStatus) {
+          state = state.copyWith(modelStatus: refreshedStatus);
+        }
+      }
       final HybridSetLogAnalysis analysis = await _service.analyzeSetOfflineFirst(
         rawSetText: trimmed,
         catalog: resolvedCatalog,
@@ -226,24 +217,16 @@ class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
       if (!ref.mounted) {
         return;
       }
-      state = state.copyWith(
-        isLoading: false,
-        errorMessage: error.toString(),
-      );
+      state = state.copyWith(isLoading: false, errorMessage: error.toString());
     }
   }
 
   /// Executes a single-image + text multimodal request through the hybrid pipeline.
-  Future<void> scanEquipmentSample({
-    String? customPrompt,
-    Uint8List? imageBytes,
-  }) async {
+  Future<void> scanEquipmentSample({String? customPrompt, Uint8List? imageBytes}) async {
     final String effectivePrompt = (customPrompt != null && customPrompt.trim().isNotEmpty)
         ? customPrompt.trim()
         : 'Identify the gym equipment in this frame, list primary muscles worked, and prescribe 3 hypertrophy sets.';
-    final Uint8List effectiveImage = (imageBytes != null && imageBytes.isNotEmpty)
-        ? imageBytes
-        : defaultSampleEquipmentPng;
+    final Uint8List effectiveImage = (imageBytes != null && imageBytes.isNotEmpty) ? imageBytes : defaultSampleEquipmentPng;
 
     state = state.copyWith(isLoading: true, clearError: true);
 
@@ -277,10 +260,7 @@ class AtlasHybridAiViewModel extends _$AtlasHybridAiViewModel {
       if (!ref.mounted) {
         return;
       }
-      state = state.copyWith(
-        isLoading: false,
-        errorMessage: error.toString(),
-      );
+      state = state.copyWith(isLoading: false, errorMessage: error.toString());
     }
   }
 

@@ -40,6 +40,8 @@ class AtlasHybridAiBridge : AtlasHybridAiHostApi {
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val mainHandler = Handler(Looper.getMainLooper())
+    @Volatile
+    private var isDownloadCollectorActive = false
 
     override fun checkOnDeviceStatus(callback: (Result<PigeonOnDeviceModelStatus>) -> Unit) {
         scope.launch {
@@ -57,34 +59,17 @@ class AtlasHybridAiBridge : AtlasHybridAiHostApi {
 
     override fun downloadOnDeviceModel(callback: (Result<PigeonOnDeviceModelStatus>) -> Unit) {
         scope.launch {
-            val finalStatus = try {
-                val initial = FirebaseAIOnDevice.checkStatus()
-                when (initial) {
+            val initialStatus = try {
+                when (FirebaseAIOnDevice.checkStatus()) {
                     OnDeviceModelStatus.AVAILABLE -> PigeonOnDeviceModelStatus.AVAILABLE
                     OnDeviceModelStatus.UNAVAILABLE -> PigeonOnDeviceModelStatus.UNAVAILABLE
-                    OnDeviceModelStatus.DOWNLOADING -> PigeonOnDeviceModelStatus.DOWNLOADING
+                    OnDeviceModelStatus.DOWNLOADING -> {
+                        ensureBackgroundDownloadCollector()
+                        PigeonOnDeviceModelStatus.DOWNLOADING
+                    }
                     OnDeviceModelStatus.DOWNLOADABLE -> {
-                        var resultStatus = PigeonOnDeviceModelStatus.DOWNLOADING
-                        FirebaseAIOnDevice.download().collect { downloadStatus ->
-                            when (downloadStatus) {
-                                is DownloadStatus.DownloadStarted -> {
-                                    Log.i(TAG, "Gemini Nano download started (${downloadStatus.bytesToDownload} bytes)")
-                                    resultStatus = PigeonOnDeviceModelStatus.DOWNLOADING
-                                }
-                                is DownloadStatus.DownloadInProgress -> {
-                                    resultStatus = PigeonOnDeviceModelStatus.DOWNLOADING
-                                }
-                                is DownloadStatus.DownloadCompleted -> {
-                                    Log.i(TAG, "Gemini Nano on-device download completed")
-                                    resultStatus = PigeonOnDeviceModelStatus.AVAILABLE
-                                }
-                                is DownloadStatus.DownloadFailed -> {
-                                    Log.w(TAG, "Gemini Nano on-device download failed: $downloadStatus")
-                                    resultStatus = PigeonOnDeviceModelStatus.UNAVAILABLE
-                                }
-                            }
-                        }
-                        resultStatus
+                        ensureBackgroundDownloadCollector()
+                        PigeonOnDeviceModelStatus.DOWNLOADING
                     }
                     else -> PigeonOnDeviceModelStatus.UNAVAILABLE
                 }
@@ -93,7 +78,38 @@ class AtlasHybridAiBridge : AtlasHybridAiHostApi {
                 PigeonOnDeviceModelStatus.UNAVAILABLE
             }
             mainHandler.post {
-                callback(Result.success(finalStatus))
+                callback(Result.success(initialStatus))
+            }
+        }
+    }
+
+    private fun ensureBackgroundDownloadCollector() {
+        if (isDownloadCollectorActive) {
+            return
+        }
+        isDownloadCollectorActive = true
+        scope.launch {
+            try {
+                FirebaseAIOnDevice.download().collect { downloadStatus ->
+                    when (downloadStatus) {
+                        is DownloadStatus.DownloadStarted -> {
+                            Log.i(TAG, "Gemini Nano download started (${downloadStatus.bytesToDownload} bytes)")
+                        }
+                        is DownloadStatus.DownloadInProgress -> {
+                            Log.d(TAG, "Gemini Nano download in progress: $downloadStatus")
+                        }
+                        is DownloadStatus.DownloadCompleted -> {
+                            Log.i(TAG, "Gemini Nano on-device download completed")
+                        }
+                        is DownloadStatus.DownloadFailed -> {
+                            Log.w(TAG, "Gemini Nano on-device download failed: $downloadStatus")
+                        }
+                    }
+                }
+            } catch (t: Throwable) {
+                Log.w(TAG, "Background Gemini Nano download flow terminated: ${t.message}")
+            } finally {
+                isDownloadCollectorActive = false
             }
         }
     }

@@ -15,10 +15,7 @@ import 'package:comunityfitness/viewmodels/atlas_hybrid_ai_viewmodel.dart';
 /// Interactive panel for ATLAS Hybrid AI (On-Device Gemini Nano via Android AICore +
 /// Cloud Gemini fallback + deterministic basement-gym biomechanical engine).
 class AtlasHybridAiPanel extends ConsumerStatefulWidget {
-  const AtlasHybridAiPanel({
-    super.key,
-    this.activeExercise,
-  });
+  const AtlasHybridAiPanel({super.key, this.activeExercise});
 
   final Exercise? activeExercise;
 
@@ -61,13 +58,11 @@ class _AtlasHybridAiPanelState extends ConsumerState<AtlasHybridAiPanel> {
         _TelemetryStatusHeader(
           state: state,
           onDownloadModel: vm.triggerModelDownload,
+          onRefreshStatus: vm.initialize,
           onToggleServerTemplates: vm.toggleServerPromptTemplates,
         ),
         const SizedBox(height: AppDimensions.paddingM),
-        _InferenceModeSelectorCard(
-          selectedMode: state.selectedMode,
-          onSelectMode: vm.setInferenceMode,
-        ),
+        _InferenceModeSelectorCard(selectedMode: state.selectedMode, onSelectMode: vm.setInferenceMode),
         const SizedBox(height: AppDimensions.paddingM),
         if (state.errorMessage != null) ...[
           Container(
@@ -76,28 +71,17 @@ class _AtlasHybridAiPanelState extends ConsumerState<AtlasHybridAiPanel> {
             decoration: BoxDecoration(
               color: AppColors.error.withValues(alpha: AppColors.opacityLow),
               borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
-              border: Border.all(
-                color: AppColors.error,
-                width: AppDimensions.borderDefault,
-              ),
+              border: Border.all(color: AppColors.error, width: AppDimensions.borderDefault),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const FaIcon(
-                  FontAwesomeIcons.triangleExclamation,
-                  size: AppDimensions.iconM,
-                  color: AppColors.error,
-                ),
+                const FaIcon(FontAwesomeIcons.triangleExclamation, size: AppDimensions.iconM, color: AppColors.error),
                 const SizedBox(width: AppDimensions.paddingS),
                 Expanded(
                   child: Text(
                     state.errorMessage!,
-                    style: const TextStyle(
-                      fontSize: AppDimensions.fontS,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textPrimary,
-                    ),
+                    style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w600, color: AppColors.textPrimary),
                   ),
                 ),
               ],
@@ -111,15 +95,10 @@ class _AtlasHybridAiPanelState extends ConsumerState<AtlasHybridAiPanel> {
           onSelectHeavyBench: () => _applyPreset(_heavyBenchPreset, vm),
           onSelectFastSquat: () => _applyPreset(_fastSquatPreset, vm),
           onAnalyzeSet: () {
-            vm.analyzeSetLog(
-              _setController.text,
-              activeExercise: widget.activeExercise,
-            );
+            vm.analyzeSetLog(_setController.text, activeExercise: widget.activeExercise);
           },
           onScanEquipment: () {
-            vm.scanEquipmentSample(
-              customPrompt: _setController.text.trim().isNotEmpty ? _setController.text.trim() : null,
-            );
+            vm.scanEquipmentSample(customPrompt: _setController.text.trim().isNotEmpty ? _setController.text.trim() : null);
           },
         ),
         if (state.lastSetAnalysis != null) ...[
@@ -139,11 +118,13 @@ class _TelemetryStatusHeader extends StatelessWidget {
   const _TelemetryStatusHeader({
     required this.state,
     required this.onDownloadModel,
+    required this.onRefreshStatus,
     required this.onToggleServerTemplates,
   });
 
   final AtlasHybridAiState state;
   final VoidCallback onDownloadModel;
+  final VoidCallback onRefreshStatus;
   final VoidCallback onToggleServerTemplates;
 
   String _npuStatusLabel(Translations tr, OnDeviceModelStatus status) {
@@ -228,11 +209,7 @@ class _TelemetryStatusHeader extends StatelessWidget {
                   color: statusColor.withValues(alpha: AppColors.opacityLow),
                   borderRadius: BorderRadius.circular(AppDimensions.radiusS),
                 ),
-                child: FaIcon(
-                  FontAwesomeIcons.microchip,
-                  size: AppDimensions.iconM,
-                  color: statusColor,
-                ),
+                child: FaIcon(FontAwesomeIcons.microchip, size: AppDimensions.iconM, color: statusColor),
               ),
               const SizedBox(width: AppDimensions.paddingS),
               Expanded(
@@ -241,45 +218,33 @@ class _TelemetryStatusHeader extends StatelessWidget {
                   children: [
                     Text(
                       tr.hybridAi.routerTitle,
-                      style: const TextStyle(
-                        fontSize: AppDimensions.fontM,
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.textPrimary,
-                      ),
+                      style: const TextStyle(fontSize: AppDimensions.fontM, fontWeight: FontWeight.w800, color: AppColors.textPrimary),
                     ),
                     const SizedBox(height: AppDimensions.paddingXXS),
                     Text(
                       tr.hybridAi.npuStatusPrefix(status: _npuStatusLabel(tr, state.modelStatus)),
-                      style: TextStyle(
-                        fontSize: AppDimensions.fontS,
-                        fontWeight: FontWeight.w600,
-                        color: statusColor,
-                      ),
+                      style: TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w600, color: statusColor),
                     ),
                   ],
                 ),
               ),
+              if (state.modelStatus == OnDeviceModelStatus.downloading)
+                IconButton(
+                  key: const Key('hybrid_refresh_status_button'),
+                  onPressed: onRefreshStatus,
+                  icon: const FaIcon(FontAwesomeIcons.arrowsRotate, size: AppDimensions.iconS, color: AppColors.warning),
+                ),
               if (state.lastLatencyMs != null)
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.paddingS,
-                    vertical: AppDimensions.paddingXS,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXS),
                   decoration: BoxDecoration(
                     color: AppColors.surface,
                     borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
-                    border: Border.all(
-                      color: AppColors.border,
-                      width: AppDimensions.borderDefault,
-                    ),
+                    border: Border.all(color: AppColors.border, width: AppDimensions.borderDefault),
                   ),
                   child: Text(
                     '${state.lastLatencyMs} ms',
-                    style: const TextStyle(
-                      fontSize: AppDimensions.fontXS,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.textPrimary,
-                    ),
+                    style: const TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
                   ),
                 ),
             ],
@@ -291,10 +256,7 @@ class _TelemetryStatusHeader extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingS,
-                  vertical: AppDimensions.paddingXS,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXS),
                 decoration: BoxDecoration(
                   color: sourceColor.withValues(alpha: AppColors.opacityLow),
                   borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
@@ -307,30 +269,21 @@ class _TelemetryStatusHeader extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     FaIcon(
-                      state.lastInferenceSource == HybridInferenceSource.inCloud
-                          ? FontAwesomeIcons.cloudBolt
-                          : FontAwesomeIcons.bolt,
+                      state.lastInferenceSource == HybridInferenceSource.inCloud ? FontAwesomeIcons.cloudBolt : FontAwesomeIcons.bolt,
                       size: AppDimensions.iconXS,
                       color: sourceColor,
                     ),
                     const SizedBox(width: AppDimensions.paddingXS),
                     Text(
                       _executionSourceLabel(tr, state),
-                      style: TextStyle(
-                        fontSize: AppDimensions.fontXS,
-                        fontWeight: FontWeight.w800,
-                        color: sourceColor,
-                      ),
+                      style: TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w800, color: sourceColor),
                     ),
                   ],
                 ),
               ),
               if (state.isWarmedUp)
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.paddingS,
-                    vertical: AppDimensions.paddingXS,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXS),
                   decoration: BoxDecoration(
                     color: AppColors.surface,
                     borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
@@ -338,22 +291,14 @@ class _TelemetryStatusHeader extends StatelessWidget {
                   ),
                   child: Text(
                     tr.hybridAi.ramWarmedUp,
-                    style: const TextStyle(
-                      fontSize: AppDimensions.fontXS,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.textSecondary,
-                    ),
+                    style: const TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w700, color: AppColors.textSecondary),
                   ),
                 ),
               if (state.modelStatus == OnDeviceModelStatus.downloadable)
                 OutlinedButton.icon(
                   key: const Key('hybrid_download_model_button'),
                   onPressed: state.isLoading ? null : onDownloadModel,
-                  icon: const FaIcon(
-                    FontAwesomeIcons.download,
-                    size: AppDimensions.iconS,
-                    color: AppColors.secondary,
-                  ),
+                  icon: const FaIcon(FontAwesomeIcons.download, size: AppDimensions.iconS, color: AppColors.secondary),
                   label: Text(tr.hybridAi.downloadModelButton),
                 ),
               FilterChip(
@@ -378,9 +323,7 @@ class _TelemetryStatusHeader extends StatelessWidget {
                 selectedColor: AppColors.secondary.withValues(alpha: AppColors.opacityLow),
                 backgroundColor: AppColors.surface,
                 side: BorderSide(
-                  color: state.useServerPromptTemplates
-                      ? AppColors.secondary.withValues(alpha: AppColors.opacityMedium)
-                      : AppColors.border,
+                  color: state.useServerPromptTemplates ? AppColors.secondary.withValues(alpha: AppColors.opacityMedium) : AppColors.border,
                   width: AppDimensions.borderDefault,
                 ),
               ),
@@ -393,41 +336,17 @@ class _TelemetryStatusHeader extends StatelessWidget {
 }
 
 class _InferenceModeSelectorCard extends StatelessWidget {
-  const _InferenceModeSelectorCard({
-    required this.selectedMode,
-    required this.onSelectMode,
-  });
+  const _InferenceModeSelectorCard({required this.selectedMode, required this.onSelectMode});
 
   final HybridInferenceMode selectedMode;
   final ValueChanged<HybridInferenceMode> onSelectMode;
 
-  List<(HybridInferenceMode, String, String, FaIconData)> _localizedModes(Translations tr) =>
-      <(HybridInferenceMode, String, String, FaIconData)>[
-        (
-          HybridInferenceMode.preferOnDevice,
-          'hybrid_mode_preferOnDevice',
-          tr.hybridAi.modePreferOnDevice,
-          FontAwesomeIcons.microchip,
-        ),
-        (
-          HybridInferenceMode.onlyOnDevice,
-          'hybrid_mode_onlyOnDevice',
-          tr.hybridAi.modeOnlyOnDevice,
-          FontAwesomeIcons.shieldHalved,
-        ),
-        (
-          HybridInferenceMode.preferInCloud,
-          'hybrid_mode_preferInCloud',
-          tr.hybridAi.modePreferInCloud,
-          FontAwesomeIcons.cloudArrowUp,
-        ),
-        (
-          HybridInferenceMode.onlyInCloud,
-          'hybrid_mode_onlyInCloud',
-          tr.hybridAi.modeOnlyInCloud,
-          FontAwesomeIcons.cloud,
-        ),
-      ];
+  List<(HybridInferenceMode, String, String, FaIconData)> _localizedModes(Translations tr) => <(HybridInferenceMode, String, String, FaIconData)>[
+    (HybridInferenceMode.preferOnDevice, 'hybrid_mode_preferOnDevice', tr.hybridAi.modePreferOnDevice, FontAwesomeIcons.microchip),
+    (HybridInferenceMode.onlyOnDevice, 'hybrid_mode_onlyOnDevice', tr.hybridAi.modeOnlyOnDevice, FontAwesomeIcons.shieldHalved),
+    (HybridInferenceMode.preferInCloud, 'hybrid_mode_preferInCloud', tr.hybridAi.modePreferInCloud, FontAwesomeIcons.cloudArrowUp),
+    (HybridInferenceMode.onlyInCloud, 'hybrid_mode_onlyInCloud', tr.hybridAi.modeOnlyInCloud, FontAwesomeIcons.cloud),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -444,19 +363,12 @@ class _InferenceModeSelectorCard extends StatelessWidget {
         children: [
           Text(
             tr.hybridAi.modeSectionTitle,
-            style: const TextStyle(
-              fontSize: AppDimensions.fontS,
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w800, color: AppColors.textPrimary),
           ),
           const SizedBox(height: AppDimensions.paddingXS),
           Text(
             tr.hybridAi.modeSectionSubtitle,
-            style: const TextStyle(
-              fontSize: AppDimensions.fontXS,
-              color: AppColors.textSecondary,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontXS, color: AppColors.textSecondary),
           ),
           const SizedBox(height: AppDimensions.paddingS),
           Wrap(
@@ -469,11 +381,7 @@ class _InferenceModeSelectorCard extends StatelessWidget {
                 key: Key(keyName),
                 selected: isSelected,
                 onSelected: (_) => onSelectMode(mode),
-                avatar: FaIcon(
-                  icon,
-                  size: AppDimensions.iconXS,
-                  color: isSelected ? AppColors.primary : AppColors.textSecondary,
-                ),
+                avatar: FaIcon(icon, size: AppDimensions.iconXS, color: isSelected ? AppColors.primary : AppColors.textSecondary),
                 label: Text(
                   label,
                   style: TextStyle(
@@ -529,20 +437,12 @@ class _BasementGymLoggerCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const FaIcon(
-                FontAwesomeIcons.dumbbell,
-                size: AppDimensions.iconM,
-                color: AppColors.primary,
-              ),
+              const FaIcon(FontAwesomeIcons.dumbbell, size: AppDimensions.iconM, color: AppColors.primary),
               const SizedBox(width: AppDimensions.paddingS),
               Expanded(
                 child: Text(
                   tr.hybridAi.loggerTitle,
-                  style: const TextStyle(
-                    fontSize: AppDimensions.fontM,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.textPrimary,
-                  ),
+                  style: const TextStyle(fontSize: AppDimensions.fontM, fontWeight: FontWeight.w800, color: AppColors.textPrimary),
                 ),
               ),
             ],
@@ -550,10 +450,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
           const SizedBox(height: AppDimensions.paddingXS),
           Text(
             tr.hybridAi.loggerSubtitle,
-            style: const TextStyle(
-              fontSize: AppDimensions.fontXS,
-              color: AppColors.textSecondary,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontXS, color: AppColors.textSecondary),
           ),
           const SizedBox(height: AppDimensions.paddingS),
           Wrap(
@@ -563,28 +460,14 @@ class _BasementGymLoggerCard extends StatelessWidget {
               ActionChip(
                 key: const Key('hybrid_preset_heavy_bench'),
                 onPressed: isLoading ? null : onSelectHeavyBench,
-                avatar: const FaIcon(
-                  FontAwesomeIcons.fireFlameCurved,
-                  size: AppDimensions.iconXS,
-                  color: AppColors.warning,
-                ),
-                label: Text(
-                  tr.hybridAi.presetHeavyBenchChip,
-                  style: const TextStyle(fontSize: AppDimensions.fontXS),
-                ),
+                avatar: const FaIcon(FontAwesomeIcons.fireFlameCurved, size: AppDimensions.iconXS, color: AppColors.warning),
+                label: Text(tr.hybridAi.presetHeavyBenchChip, style: const TextStyle(fontSize: AppDimensions.fontXS)),
               ),
               ActionChip(
                 key: const Key('hybrid_preset_fast_squat'),
                 onPressed: isLoading ? null : onSelectFastSquat,
-                avatar: const FaIcon(
-                  FontAwesomeIcons.bolt,
-                  size: AppDimensions.iconXS,
-                  color: AppColors.success,
-                ),
-                label: Text(
-                  tr.hybridAi.presetFastSquatChip,
-                  style: const TextStyle(fontSize: AppDimensions.fontXS),
-                ),
+                avatar: const FaIcon(FontAwesomeIcons.bolt, size: AppDimensions.iconXS, color: AppColors.success),
+                label: Text(tr.hybridAi.presetFastSquatChip, style: const TextStyle(fontSize: AppDimensions.fontXS)),
               ),
             ],
           ),
@@ -592,14 +475,8 @@ class _BasementGymLoggerCard extends StatelessWidget {
           TextField(
             key: const Key('hybrid_set_input_field'),
             controller: controller,
-            style: const TextStyle(
-              fontSize: AppDimensions.fontM,
-              color: AppColors.textPrimary,
-            ),
-            decoration: InputDecoration(
-              hintText: tr.hybridAi.inputHint,
-              fillColor: AppColors.surface,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontM, color: AppColors.textPrimary),
+            decoration: InputDecoration(hintText: tr.hybridAi.inputHint, fillColor: AppColors.surface),
           ),
           const SizedBox(height: AppDimensions.paddingM),
           Row(
@@ -608,11 +485,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
                 child: ElevatedButton.icon(
                   key: const Key('hybrid_analyze_set_button'),
                   onPressed: isLoading ? null : onAnalyzeSet,
-                  icon: const FaIcon(
-                    FontAwesomeIcons.wandMagicSparkles,
-                    size: AppDimensions.iconS,
-                    color: AppColors.background,
-                  ),
+                  icon: const FaIcon(FontAwesomeIcons.wandMagicSparkles, size: AppDimensions.iconS, color: AppColors.background),
                   label: Text(tr.hybridAi.analyzeSetButton),
                 ),
               ),
@@ -621,11 +494,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
                 child: OutlinedButton.icon(
                   key: const Key('hybrid_scan_image_button'),
                   onPressed: isLoading ? null : onScanEquipment,
-                  icon: const FaIcon(
-                    FontAwesomeIcons.camera,
-                    size: AppDimensions.iconS,
-                    color: AppColors.secondary,
-                  ),
+                  icon: const FaIcon(FontAwesomeIcons.camera, size: AppDimensions.iconS, color: AppColors.secondary),
                   label: Text(tr.hybridAi.scanEquipmentButton),
                 ),
               ),
@@ -674,29 +543,18 @@ class _SetAnalysisResultCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   analysis.exerciseName,
-                  style: const TextStyle(
-                    fontSize: AppDimensions.fontL,
-                    fontWeight: FontWeight.w900,
-                    color: AppColors.textPrimary,
-                  ),
+                  style: const TextStyle(fontSize: AppDimensions.fontL, fontWeight: FontWeight.w900, color: AppColors.textPrimary),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingS,
-                  vertical: AppDimensions.paddingXS,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXS),
                 decoration: BoxDecoration(
                   color: AppColors.secondary.withValues(alpha: AppColors.opacityLow),
                   borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
                 ),
                 child: Text(
                   '${_sourceBadgeText(tr, analysis.inferenceSource)} · ${analysis.latencyMs}ms',
-                  style: const TextStyle(
-                    fontSize: AppDimensions.fontXS,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.secondary,
-                  ),
+                  style: const TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w800, color: AppColors.secondary),
                 ),
               ),
             ],
@@ -710,10 +568,7 @@ class _SetAnalysisResultCard extends StatelessWidget {
               _MetricPill(label: tr.hybridAi.repsLabel, value: '${analysis.reps}'),
               _MetricPill(label: tr.hybridAi.rpeLabel, value: '${analysis.rpe}'),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingS,
-                  vertical: AppDimensions.paddingXS,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXS),
                 decoration: BoxDecoration(
                   color: fatigueColor.withValues(alpha: AppColors.opacityLow),
                   borderRadius: BorderRadius.circular(AppDimensions.radiusS),
@@ -722,20 +577,14 @@ class _SetAnalysisResultCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     FaIcon(
-                      analysis.fatigueAlert
-                          ? FontAwesomeIcons.triangleExclamation
-                          : FontAwesomeIcons.circleCheck,
+                      analysis.fatigueAlert ? FontAwesomeIcons.triangleExclamation : FontAwesomeIcons.circleCheck,
                       size: AppDimensions.iconXS,
                       color: fatigueColor,
                     ),
                     const SizedBox(width: AppDimensions.paddingXS),
                     Text(
                       analysis.fatigueAlert ? tr.hybridAi.fatigueAlertBadge : tr.hybridAi.optimalVelocityBadge,
-                      style: TextStyle(
-                        fontSize: AppDimensions.fontXS,
-                        fontWeight: FontWeight.w800,
-                        color: fatigueColor,
-                      ),
+                      style: TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w800, color: fatigueColor),
                     ),
                   ],
                 ),
@@ -745,11 +594,7 @@ class _SetAnalysisResultCard extends StatelessWidget {
           const SizedBox(height: AppDimensions.paddingS),
           Text(
             analysis.nextSetRecommendation,
-            style: const TextStyle(
-              fontSize: AppDimensions.fontS,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w600, color: AppColors.textPrimary),
           ),
         ],
       ),
@@ -758,10 +603,7 @@ class _SetAnalysisResultCard extends StatelessWidget {
 }
 
 class _MetricPill extends StatelessWidget {
-  const _MetricPill({
-    required this.label,
-    required this.value,
-  });
+  const _MetricPill({required this.label, required this.value});
 
   final String label;
   final String value;
@@ -769,10 +611,7 @@ class _MetricPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppDimensions.paddingS,
-        vertical: AppDimensions.paddingXS,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXS),
       decoration: BoxDecoration(
         color: AppColors.surfaceElevated,
         borderRadius: BorderRadius.circular(AppDimensions.radiusS),
@@ -783,19 +622,11 @@ class _MetricPill extends StatelessWidget {
         children: [
           Text(
             '$label: ',
-            style: const TextStyle(
-              fontSize: AppDimensions.fontXS,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textSecondary,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w700, color: AppColors.textSecondary),
           ),
           Text(
             value,
-            style: const TextStyle(
-              fontSize: AppDimensions.fontS,
-              fontWeight: FontWeight.w900,
-              color: AppColors.textPrimary,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w900, color: AppColors.textPrimary),
           ),
         ],
       ),
@@ -827,39 +658,24 @@ class _VisionScanResultCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const FaIcon(
-                FontAwesomeIcons.eye,
-                size: AppDimensions.iconS,
-                color: AppColors.secondary,
-              ),
+              const FaIcon(FontAwesomeIcons.eye, size: AppDimensions.iconS, color: AppColors.secondary),
               const SizedBox(width: AppDimensions.paddingS),
               Expanded(
                 child: Text(
                   tr.hybridAi.visionCardTitle,
-                  style: const TextStyle(
-                    fontSize: AppDimensions.fontS,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.textPrimary,
-                  ),
+                  style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.w800, color: AppColors.textPrimary),
                 ),
               ),
               Text(
                 '${response.modelUsed} · ${response.latencyMs}ms',
-                style: const TextStyle(
-                  fontSize: AppDimensions.fontXS,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.secondary,
-                ),
+                style: const TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w700, color: AppColors.secondary),
               ),
             ],
           ),
           const SizedBox(height: AppDimensions.paddingS),
           Text(
             response.text,
-            style: const TextStyle(
-              fontSize: AppDimensions.fontS,
-              color: AppColors.textPrimary,
-            ),
+            style: const TextStyle(fontSize: AppDimensions.fontS, color: AppColors.textPrimary),
           ),
         ],
       ),
