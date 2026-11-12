@@ -113,6 +113,7 @@ class AppDimensions {
   static const double aiCardRadius = 16.0;
   static const double aiMessageBubbleRadius = 18.0;
   static const double catalogCacheExtent = 1200.0;
+  static const double webMobileFrameMaxWidth = 480.0;
   static const double strokeWidthThin = 2.0;
   static const double cardElevation = 2.0;
 

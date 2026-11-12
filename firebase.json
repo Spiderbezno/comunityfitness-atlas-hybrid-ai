@@ -5,6 +5,7 @@
     }
   },
   "hosting": {
+    "site": "comunityfitness-atlas",
     "public": "build/web",
     "ignore": [
       "firebase.json",

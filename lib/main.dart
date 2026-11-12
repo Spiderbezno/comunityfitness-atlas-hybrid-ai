@@ -98,14 +98,32 @@ class MyApp extends StatelessWidget {
     final localeData = TranslationProvider.of(context);
     return ProviderScope(
       overrides: [if (hiveService != null) hiveServiceProvider.overrideWithValue(hiveService!)],
-      child: MaterialApp(
-        title: 'CommunityFitness',
-        debugShowCheckedModeBanner: false,
-        locale: localeData.flutterLocale,
-        supportedLocales: AppLocaleUtils.supportedLocales,
-        localizationsDelegates: GlobalMaterialLocalizations.delegates,
-        theme: AppTheme.darkTheme,
-        home: const DashboardScreen(),
+      child: ColoredBox(
+        color: AppColors.background,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: AppDimensions.webMobileFrameMaxWidth),
+            child: DecoratedBox(
+              decoration: const BoxDecoration(
+                border: Border.symmetric(
+                  vertical: BorderSide(color: AppColors.border, width: AppDimensions.borderDefault),
+                ),
+              ),
+              position: DecorationPosition.foreground,
+              child: ClipRect(
+                child: MaterialApp(
+                  title: 'CommunityFitness',
+                  debugShowCheckedModeBanner: false,
+                  locale: localeData.flutterLocale,
+                  supportedLocales: AppLocaleUtils.supportedLocales,
+                  localizationsDelegates: GlobalMaterialLocalizations.delegates,
+                  theme: AppTheme.darkTheme,
+                  home: const DashboardScreen(),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
