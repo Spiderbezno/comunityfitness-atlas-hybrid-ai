@@ -6,6 +6,17 @@
 
 ---
 
+## Live Demo, Video & Judge Links
+
+- 🎬 **Official 2-Minute Demo Video (YouTube)**: [https://youtu.be/pNE-V6DyaOg](https://youtu.be/pNE-V6DyaOg)
+- 🌐 **Live Hosted Web App (Chrome + App Check Debug Token)**: [https://comunityfitness-atlas.web.app](https://comunityfitness-atlas.web.app)
+- 📱 **Android Release APK (`arm64-v8a` + App Check Debug Token)**: [GitHub Releases](https://github.com/Spiderbezno/comunityfitness-atlas-hybrid-ai/releases)
+- 🏆 **Devpost Submission Page**: [https://devpost.com/software/communityfitness-atlas-hybrid-ai](https://devpost.com/software/communityfitness-atlas-hybrid-ai)
+
+[![Watch the CommunityFitness ATLAS Hybrid AI Demo Video](https://img.youtube.com/vi/pNE-V6DyaOg/maxresdefault.jpg)](https://youtu.be/pNE-V6DyaOg)
+
+---
+
 ## Quick Verification Path (For Judges)
 
 1. **Run the Hybrid AI Test Suite (Unit & Widget Tests)**:
