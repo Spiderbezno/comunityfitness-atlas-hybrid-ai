@@ -58,12 +58,17 @@ void main() async {
     'FIREBASE_APP_CHECK_ANDROID_DEBUG_TOKEN',
     defaultValue: String.fromEnvironment('ANDROID_APP_CHECK_DEBUG_TOKEN'),
   );
+  const webDebugToken = String.fromEnvironment(
+    'FIREBASE_APP_CHECK_WEB_DEBUG_TOKEN',
+    defaultValue: String.fromEnvironment('WEB_APP_CHECK_DEBUG_TOKEN', defaultValue: String.fromEnvironment('FIREBASE_APP_CHECK_ANDROID_DEBUG_TOKEN')),
+  );
   try {
     await FirebaseAppCheck.instance.activate(
-      providerApple: kDebugMode
+      providerWeb: (kDebugMode || webDebugToken.isNotEmpty) ? WebDebugProvider(debugToken: webDebugToken.isEmpty ? null : webDebugToken) : null,
+      providerApple: (kDebugMode || appleDebugToken.isNotEmpty)
           ? AppleDebugProvider(debugToken: appleDebugToken.isEmpty ? null : appleDebugToken)
           : const AppleAppAttestWithDeviceCheckFallbackProvider(),
-      providerAndroid: kDebugMode
+      providerAndroid: (kDebugMode || androidDebugToken.isNotEmpty)
           ? AndroidDebugProvider(debugToken: androidDebugToken.isEmpty ? null : androidDebugToken)
           : const AndroidPlayIntegrityProvider(),
     );
