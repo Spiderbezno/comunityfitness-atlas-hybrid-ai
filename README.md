@@ -1,6 +1,8 @@
 # CommunityFitness — ATLAS Hybrid AI (`#BuildHybridAI 2026`)
 
-**CommunityFitness (ATLAS)** is a hybrid on-device + cloud AI strength training coach built with **Firebase AI Logic**, **Flutter**, and **60 FPS 3D Rive anatomical animations**. It solves the real-world "Basement Gym Problem": strength athletes train in concrete basements with dead cellular zones, require instant (<30 ms) between-set load autoregulation at zero token cost, and want private equipment/posture image checks that never leave their device—while seamlessly escalating to **Cloud Gemini (`gemini-3.8-flash`)**, **Dotprompt Server Prompt Templates (`templateGenerativeModel`)**, and **Gemini Live API** when online or on unsupported hardware.
+> **License**: [Apache License 2.0](LICENSE) · **Platforms**: Android (Gemini Nano 4 / AICore) · iOS (Apple Foundation Models) · Web (Chrome Built-in AI) · **IDE & Agent Tooling**: Built with **Google Antigravity IDE** + **Firebase Agent Skills** & **Flutter Agent Skills**
+
+**CommunityFitness (ATLAS)** is a multi-platform hybrid on-device + cloud AI strength training coach built with **Firebase AI Logic**, **Flutter**, and **60 FPS 3D Rive anatomical animations**. It solves the real-world "Basement Gym Problem": strength athletes train in concrete basements with dead cellular zones, require instant between-set load autoregulation at zero token cost, and want private equipment/posture image checks that never leave their device—while seamlessly escalating to **Cloud Gemini (`gemini-3.8-flash`)**, **Dotprompt Server Prompt Templates (`templateGenerativeModel`)**, and **Gemini Live API** when online or on unsupported hardware.
 
 ---
 
@@ -12,9 +14,33 @@
                 test/views/atlas_hybrid_ai_panel_test.dart \
                 test/views/active_workout_hybrid_test.dart
    ```
-2. **Test Live Hybrid Inference, OTA Prompt Governance & Telemetry in the App**:
+2. **Run With Firebase App Check Debug Token (Accepted Per Official Rules)**:
+   ```bash
+   cp .env.debug.example.json .env.debug.json
+   flutter run --dart-define-from-file=.env.debug.json
+   ```
+3. **Test Live Hybrid Inference, OTA Prompt Governance & Telemetry in the App**:
    - **Inside ATLAS AI Coach**: Tap the 3D Gyro-Core avatar in the header, then tap the **`Hybrid NPU`** chip (`ai_coach_hybrid_mode_button`). Switch live between `Prefer On-Device`, `Only On-Device`, `Prefer Cloud`, and `Only Cloud`, toggle **`Dotprompt · atlas-set-autoregulation-v1-0-0`** (`hybrid_server_template_toggle`), log a set, or run a 1-tap **Private Equipment Scan (1-Image)**.
    - **Inside Active Workout**: Start any workout and tap **`RPE 7 · +2.5kg`**, **`RPE 8.5 · Keep`**, or **`RPE 9.5 · -5% Load`** on any exercise step card to see instant load/rest autoregulation and the live telemetry banner (`ON-DEVICE · Gemini Nano`, `ON-DEVICE · Apple Intelligence`, `ON-DEVICE · Chrome Gemini Nano`, `IN-CLOUD · gemini-3.8-flash`, or `OFFLINE ENGINE`).
+
+---
+
+## What We Built During the `#BuildHybridAI 2026` Submission Period
+
+Per Section 6 (*For existing apps*) of the Official Rules, below is the exact breakdown between the pre-existing domain base and everything architected and built specifically for `#BuildHybridAI 2026`:
+
+| Scope | Components | Role & Value in the Submission |
+| :--- | :--- | :--- |
+| **Core Value of Existing Base (`0e2f3a9`)** | Offline Hive workout & routine storage, 1,357-movement exercise catalog, 60 FPS 3D Rive anatomical body map (`MEV`/`MAV`/`MRV` volume landmarks), Firebase Auth/Firestore/App Check bootstrap, and 5-locale (`EN`, `ES`, `CA`, `FR`, `PT`) `slang` localization. | Gives the Hybrid AI engine real biomechanical domain context (1,357 exercises, active workout sets, muscle recovery state) so on-device and cloud inference power a complete product experience rather than a standalone chat prototype. |
+| **Built During `#BuildHybridAI 2026` (`caf258c` → `HEAD`)** | **1. Multi-Platform Firebase AI Logic Hybrid Bridges**: Android Kotlin `AtlasHybridAiBridge.kt` (`com.google.firebase:firebase-ai:18.1.0` + `firebase-ai-ondevice:16.0.0-beta07` over Google AICore), iOS Swift `AtlasHybridAiIosBridge` (Apple `FoundationModels` `SystemLanguageModel.default`), and Web `WebHybridAiBridge` (Chrome `LanguageModel` Prompt API via `dart:js_interop`).<br>**2. Strongly-Typed Pigeon Contract (`pigeons/atlas_hybrid_ai_api.dart`)**: 4-mode `HybridInferenceMode` (`PREFER_ON_DEVICE`, `ONLY_ON_DEVICE`, `PREFER_IN_CLOUD`, `ONLY_IN_CLOUD`), non-blocking AICore model download, NPU RAM `warmUp()`, multimodal image bytes, and verified `InferenceSource` telemetry.<br>**3. Dual OTA Prompt Governance (`AtlasAiConfigService`)**: Firebase Remote Config OTA caching (`firebase/remote_config_defaults.json`) paired with versioned Dotprompt Server Prompt Templates (`firebase/prompt_templates/*.prompt` executed via `templateGenerativeModel()`).<br>**4. Interactive Hybrid UX (`AtlasHybridAiPanel` & `ActiveWorkoutScreen`)**: Live NPU/Cloud telemetry header, 1-tap RPE set autoregulation chips, native Android camera equipment scanner, custom `_AtlasMarkdownBody` renderer, 5-locale AI output localization, and 33 unit/widget tests validated on physical **Pixel 9 Pro (Tensor G4 NPU)** hardware in Airplane Mode. | Delivers end-to-end hybrid on-device + cloud inference across Android, iOS, and Web exclusively through **Firebase AI Logic** and native foundation model bridges. |
+
+---
+
+## Built With Google Antigravity IDE & Firebase Agent Skills
+
+This project was developed in **Google Antigravity IDE** leveraging built-in **Firebase Agent Skills** (`firebase-ai-logic-basics`, `firebase-remote-config-basics`, `firebase-auth-basics`, `firebase-basics`), **Flutter Agent Skills** (`flutter-sdk-contracts`, `flutter-apply-architecture-best-practices`, `flutter-add-widget-test`), and **Android CLI / Device Hub Skills** to:
+- Wrap all Firebase AI Logic and platform NPU APIs behind clean, zero-leak application contracts (`AtlasHybridAiService` & `AtlasAiConfigService`).
+- Validate real-time Google AICore Gemini Nano downloads, NPU RAM pre-warming, and Airplane Mode inference directly on a physical **Pixel 9 Pro (`Tensor G4 NPU`)**.
 
 ---
 
