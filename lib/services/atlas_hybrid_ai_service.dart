@@ -18,6 +18,7 @@ import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/models/ai_coach_models.dart';
 import 'package:comunityfitness/pigeon/atlas_hybrid_ai_api.g.dart';
 import 'package:comunityfitness/services/atlas_ai_config_service.dart';
+import 'package:comunityfitness/services/coach_decisions_gateway.dart';
 import 'package:comunityfitness/services/web_hybrid_ai_bridge.dart';
 
 part 'atlas_hybrid_ai_service.g.dart';
@@ -256,18 +257,21 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     AtlasHybridAiHostApi? hostApi,
     WebHybridAiBridge? webBridge,
     AtlasAiConfigService? configService,
+    CoachDecisionsGateway? decisionsGateway,
     CloudPromptGenerator? cloudGenerator,
     ServerTemplateExecutor? serverTemplateExecutor,
     this.defaultCloudModelName = 'gemini-3.8-flash',
   }) : _hostApi = hostApi ?? AtlasHybridAiHostApi(),
        _webBridge = webBridge ?? createWebHybridAiBridge(),
        _configService = configService ?? AppAtlasAiConfigService(),
+       _decisionsGateway = decisionsGateway ?? LocalFallbackCoachDecisionsGateway(),
        _cloudGenerator = cloudGenerator,
        _serverTemplateExecutor = serverTemplateExecutor;
 
   final AtlasHybridAiHostApi _hostApi;
   final WebHybridAiBridge _webBridge;
   final AtlasAiConfigService _configService;
+  final CoachDecisionsGateway _decisionsGateway;
   final CloudPromptGenerator? _cloudGenerator;
   final ServerTemplateExecutor? _serverTemplateExecutor;
 
@@ -327,15 +331,86 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     }
   }
 
+  HybridAiResponse _sanitizeHybridResponse(HybridAiResponse response, String language) {
+    return HybridAiResponse(
+      text: _decisionsGateway.sanitizeOutput(response.text, language: language),
+      inferenceSource: response.inferenceSource,
+      modelUsed: response.modelUsed,
+      latencyMs: response.latencyMs,
+      usedFallback: response.usedFallback,
+      fallbackReason: response.fallbackReason,
+    );
+  }
+
   @override
-  Future<HybridAiResponse> generateHybridContent(HybridAiRequest request) async {
+  Future<HybridAiResponse> generateHybridContent(HybridAiRequest request) {
+    return _generateHybridContentInternal(request, skipPromptGate: false);
+  }
+
+  Future<HybridAiResponse> _generateHybridContentInternal(
+    HybridAiRequest request, {
+    required bool skipPromptGate,
+  }) async {
     final Stopwatch stopwatch = Stopwatch()..start();
+    final String langCode = LocaleSettings.currentLocale.languageCode;
+    final String? mediaRefusal = CoachSecuritySanitizer.validateEquipmentImage(
+      imageBytes: request.imageBytes,
+      imageMimeType: request.imageMimeType,
+      language: langCode,
+    );
+    if (mediaRefusal != null) {
+      stopwatch.stop();
+      return HybridAiResponse(
+        text: mediaRefusal,
+        inferenceSource: HybridInferenceSource.localOfflineFallback,
+        modelUsed: 'atlas-security-gatekeeper',
+        latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
+        usedFallback: true,
+        fallbackReason: 'Rejected media payload',
+      );
+    }
+
+    if (!skipPromptGate) {
+      try {
+        final CoachDecisionResult decision = await _decisionsGateway.evaluatePrompt(
+          request.prompt,
+          language: langCode,
+          maxLength: CoachSecuritySanitizer.maxHybridPromptLength,
+        );
+        if (!decision.allowed) {
+          stopwatch.stop();
+          final String safeRefusal = _decisionsGateway.sanitizeOutput(
+            decision.refusalText ?? CoachSecuritySanitizer.constantRefusal(langCode),
+            language: langCode,
+          );
+          return HybridAiResponse(
+            text: safeRefusal,
+            inferenceSource: HybridInferenceSource.localOfflineFallback,
+            modelUsed: 'atlas-security-gatekeeper',
+            latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
+            usedFallback: true,
+            fallbackReason: decision.medicalRedFlag ? 'Medical red flag' : 'Blocked by security gatekeeper',
+          );
+        }
+      } catch (error) {
+        stopwatch.stop();
+        return HybridAiResponse(
+          text: _decisionsGateway.sanitizeError(error, language: langCode),
+          inferenceSource: HybridInferenceSource.localOfflineFallback,
+          modelUsed: 'atlas-security-gatekeeper',
+          latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
+          usedFallback: true,
+          fallbackReason: 'Security gatekeeper rejected',
+        );
+      }
+    }
+
     final AtlasAiRemoteConfig otaConfig = _configService.currentConfig;
     final String configuredCloud = otaConfig.cloudModelName.trim().isNotEmpty ? otaConfig.cloudModelName.trim() : defaultCloudModelName;
     final String effectiveCloudModel = request.cloudModelName.trim().isEmpty ? configuredCloud : request.cloudModelName.trim();
 
     if (_webBridge.isWebPlatform) {
-      return _generateWebHybridContent(request, effectiveCloudModel, stopwatch);
+      return _sanitizeHybridResponse(await _generateWebHybridContent(request, effectiveCloudModel, stopwatch), langCode);
     }
 
     final String? requestedTemplateId = request.templateId?.trim();
@@ -350,12 +425,15 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
           request.templateInputs ?? <String, Object?>{'prompt': request.prompt},
         );
         stopwatch.stop();
-        return HybridAiResponse(
-          text: templateText,
-          inferenceSource: HybridInferenceSource.inCloud,
-          modelUsed: '$effectiveCloudModel · template:$requestedTemplateId',
-          latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
-          usedFallback: false,
+        return _sanitizeHybridResponse(
+          HybridAiResponse(
+            text: templateText,
+            inferenceSource: HybridInferenceSource.inCloud,
+            modelUsed: '$effectiveCloudModel · template:$requestedTemplateId',
+            latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
+            usedFallback: false,
+          ),
+          langCode,
         );
       } catch (_) {
         // Transparent fallback to standard host/cloud route when server template is unprovisioned.
@@ -377,13 +455,16 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
         ),
       );
       stopwatch.stop();
-      return HybridAiResponse(
-        text: hostResponse.text,
-        inferenceSource: _mapFromPigeonSource(hostResponse.inferenceSource),
-        modelUsed: hostResponse.modelUsed,
-        latencyMs: hostResponse.latencyMs > 0 ? hostResponse.latencyMs : stopwatch.elapsedMilliseconds,
-        usedFallback: hostResponse.usedFallback,
-        fallbackReason: hostResponse.fallbackReason,
+      return _sanitizeHybridResponse(
+        HybridAiResponse(
+          text: hostResponse.text,
+          inferenceSource: _mapFromPigeonSource(hostResponse.inferenceSource),
+          modelUsed: hostResponse.modelUsed,
+          latencyMs: hostResponse.latencyMs > 0 ? hostResponse.latencyMs : stopwatch.elapsedMilliseconds,
+          usedFallback: hostResponse.usedFallback,
+          fallbackReason: hostResponse.fallbackReason,
+        ),
+        langCode,
       );
     } catch (hostError) {
       if (request.mode == HybridInferenceMode.onlyOnDevice) {
@@ -398,13 +479,16 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
         );
         stopwatch.stop();
         final bool isFallbackFromOnDevice = request.mode == HybridInferenceMode.preferOnDevice;
-        return HybridAiResponse(
-          text: cloudResult.text,
-          inferenceSource: HybridInferenceSource.inCloud,
-          modelUsed: cloudResult.modelLabel,
-          latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
-          usedFallback: isFallbackFromOnDevice,
-          fallbackReason: isFallbackFromOnDevice ? hostError.toString() : null,
+        return _sanitizeHybridResponse(
+          HybridAiResponse(
+            text: cloudResult.text,
+            inferenceSource: HybridInferenceSource.inCloud,
+            modelUsed: cloudResult.modelLabel,
+            latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
+            usedFallback: isFallbackFromOnDevice,
+            fallbackReason: isFallbackFromOnDevice ? hostError.toString() : null,
+          ),
+          langCode,
         );
       } catch (cloudError) {
         if (request.mode == HybridInferenceMode.onlyInCloud) {
@@ -413,13 +497,16 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
 
         stopwatch.stop();
         final String offlineText = _buildDeterministicOfflineResponse(request);
-        return HybridAiResponse(
-          text: offlineText,
-          inferenceSource: HybridInferenceSource.localOfflineFallback,
-          modelUsed: 'atlas-biomechanical-offline-engine',
-          latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
-          usedFallback: true,
-          fallbackReason: 'Host & Cloud unavailable ($hostError | $cloudError)',
+        return _sanitizeHybridResponse(
+          HybridAiResponse(
+            text: offlineText,
+            inferenceSource: HybridInferenceSource.localOfflineFallback,
+            modelUsed: 'atlas-biomechanical-offline-engine',
+            latencyMs: stopwatch.elapsedMilliseconds.clamp(1, 600000),
+            usedFallback: true,
+            fallbackReason: 'Host & Cloud unavailable ($hostError | $cloudError)',
+          ),
+          langCode,
         );
       }
     }
@@ -542,6 +629,67 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       activeExercise: activeExercise,
     );
 
+    final String langCode = LocaleSettings.currentLocale.languageCode;
+    final String? imageRefusal = CoachSecuritySanitizer.validateEquipmentImage(
+      imageBytes: imageBytes,
+      imageMimeType: imageMimeType,
+      language: langCode,
+    );
+    if (imageRefusal != null) {
+      return HybridSetLogAnalysis(
+        exerciseName: deterministicBaseline.exerciseName,
+        matchedExerciseId: deterministicBaseline.matchedExerciseId,
+        weightKg: 0,
+        reps: 0,
+        rpe: deterministicBaseline.rpe,
+        fatigueAlert: false,
+        nextSetRecommendation: imageRefusal,
+        inferenceSource: HybridInferenceSource.localOfflineFallback,
+        modelUsed: 'atlas-security-gatekeeper',
+        latencyMs: 1,
+        usedFallback: true,
+      );
+    }
+
+    if (rawSetText.trim().isNotEmpty) {
+      try {
+        final CoachDecisionResult decision = await _decisionsGateway.evaluatePrompt(rawSetText, language: langCode);
+        if (!decision.allowed) {
+          final String safeRefusal = _decisionsGateway.sanitizeOutput(
+            decision.refusalText ?? CoachSecuritySanitizer.constantRefusal(langCode),
+            language: langCode,
+          );
+          return HybridSetLogAnalysis(
+            exerciseName: decision.medicalRedFlag ? 'ATLAS Safety Alert' : deterministicBaseline.exerciseName,
+            matchedExerciseId: deterministicBaseline.matchedExerciseId,
+            weightKg: 0,
+            reps: 0,
+            rpe: deterministicBaseline.rpe,
+            fatigueAlert: decision.medicalRedFlag,
+            nextSetRecommendation: safeRefusal,
+            inferenceSource: HybridInferenceSource.localOfflineFallback,
+            modelUsed: 'atlas-security-gatekeeper',
+            latencyMs: 1,
+            usedFallback: true,
+          );
+        }
+      } catch (error) {
+        return HybridSetLogAnalysis(
+          exerciseName: deterministicBaseline.exerciseName,
+          matchedExerciseId: deterministicBaseline.matchedExerciseId,
+          weightKg: 0,
+          reps: 0,
+          rpe: deterministicBaseline.rpe,
+          fatigueAlert: false,
+          nextSetRecommendation: _decisionsGateway.sanitizeError(error, language: langCode),
+          inferenceSource: HybridInferenceSource.localOfflineFallback,
+          modelUsed: 'atlas-security-gatekeeper',
+          latencyMs: 1,
+          usedFallback: true,
+        );
+      }
+    }
+
     final String catalogSummary = catalog.take(25).map((ExerciseModel e) => '${e.id}:${e.name} (${e.primaryMuscleGroup})').join(', ');
 
     final AtlasAiRemoteConfig otaConfig = _configService.currentConfig;
@@ -552,7 +700,6 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       activeExerciseId: activeExercise?.id,
     );
 
-    final String langCode = LocaleSettings.currentLocale.languageCode;
     final String languageName = switch (LocaleSettings.currentLocale) {
       AppLocale.es => 'Spanish (Español)',
       AppLocale.ca => 'Catalan (Català)',
@@ -563,7 +710,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     final String localizedPrompt =
         '$prompt\n'
         'IMPORTANT: Write exerciseName and nextSetRecommendation strictly in $languageName (locale: $langCode).';
-    final HybridAiResponse response = await generateHybridContent(
+    final HybridAiResponse response = await _generateHybridContentInternal(
       HybridAiRequest(
         prompt: localizedPrompt,
         systemInstruction:
@@ -585,6 +732,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
           'catalogContext': catalogSummary,
         },
       ),
+      skipPromptGate: true,
     );
 
     if (response.inferenceSource != HybridInferenceSource.localOfflineFallback) {
@@ -597,10 +745,14 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
           latencyMs: response.latencyMs,
           usedFallback: response.usedFallback,
         );
+        final String resolvedRecommendation = _decisionsGateway.sanitizeOutput(
+          parsed.nextSetRecommendation.isEmpty ? deterministicBaseline.nextSetRecommendation : parsed.nextSetRecommendation,
+          language: langCode,
+        );
         return HybridSetLogAnalysis(
           exerciseName: parsed.exerciseName.isEmpty || parsed.exerciseName == 'Unknown Exercise'
               ? deterministicBaseline.exerciseName
-              : parsed.exerciseName,
+              : _decisionsGateway.sanitizeOutput(parsed.exerciseName, language: langCode),
           matchedExerciseId: (parsed.matchedExerciseId == null || parsed.matchedExerciseId!.isEmpty)
               ? deterministicBaseline.matchedExerciseId
               : parsed.matchedExerciseId,
@@ -608,7 +760,7 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
           reps: parsed.reps > 0 ? parsed.reps : deterministicBaseline.reps,
           rpe: parsed.rpe,
           fatigueAlert: parsed.fatigueAlert,
-          nextSetRecommendation: parsed.nextSetRecommendation.isEmpty ? deterministicBaseline.nextSetRecommendation : parsed.nextSetRecommendation,
+          nextSetRecommendation: resolvedRecommendation,
           inferenceSource: response.inferenceSource,
           modelUsed: response.modelUsed,
           latencyMs: response.latencyMs,
@@ -624,7 +776,10 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
       reps: deterministicBaseline.reps,
       rpe: deterministicBaseline.rpe,
       fatigueAlert: deterministicBaseline.fatigueAlert,
-      nextSetRecommendation: deterministicBaseline.nextSetRecommendation,
+      nextSetRecommendation: _decisionsGateway.sanitizeOutput(
+        deterministicBaseline.nextSetRecommendation,
+        language: langCode,
+      ),
       inferenceSource: response.inferenceSource,
       modelUsed: response.modelUsed,
       latencyMs: response.latencyMs,
@@ -785,8 +940,10 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
   }
 
   Future<String> _executeDartCloudGeneration(HybridAiRequest request) async {
+    final String untrustedPrompt =
+        CoachSecuritySanitizer.wrapUntrustedPrompt(request.prompt);
     if (_cloudGenerator != null) {
-      return _cloudGenerator(request);
+      return _cloudGenerator(request.copyWith(prompt: untrustedPrompt));
     }
     if (Firebase.apps.isEmpty) {
       throw StateError('Firebase is not initialized for cloud inference.');
@@ -805,8 +962,8 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     }
 
     final String effectivePrompt = request.responseJsonSchema != null
-        ? '${request.prompt}\n\nRespond strictly with valid JSON matching this schema:\n${request.responseJsonSchema}'
-        : request.prompt;
+        ? '$untrustedPrompt\n\nRespond strictly with valid JSON matching this schema:\n${request.responseJsonSchema}'
+        : untrustedPrompt;
 
     final List<Content> contents;
     if (request.imageBytes != null && request.imageBytes!.isNotEmpty) {
@@ -820,7 +977,6 @@ class AppAtlasHybridAiService implements AtlasHybridAiService {
     final List<String> candidateModels = <String>[
       request.cloudModelName,
       if (request.cloudModelName != 'gemini-3.8-flash') 'gemini-3.8-flash',
-      if (request.cloudModelName != 'gemini-2.0-flash') 'gemini-2.0-flash',
     ];
 
     Object? lastError;

@@ -16,6 +16,7 @@ import 'package:comunityfitness/i18n/strings.g.dart';
 import 'package:comunityfitness/pigeon/live_coach_audio_api.g.dart';
 import 'package:comunityfitness/repositories/exercise_repository.dart';
 import 'package:comunityfitness/repositories/user_repository.dart';
+import 'package:comunityfitness/services/app_check_security_config.dart';
 import 'package:comunityfitness/services/hive_service.dart';
 import 'package:comunityfitness/theme/app_theme.dart';
 import 'package:comunityfitness/views/dashboard_screen.dart';
@@ -62,15 +63,22 @@ void main() async {
     'FIREBASE_APP_CHECK_WEB_DEBUG_TOKEN',
     defaultValue: String.fromEnvironment('WEB_APP_CHECK_DEBUG_TOKEN', defaultValue: String.fromEnvironment('FIREBASE_APP_CHECK_ANDROID_DEBUG_TOKEN')),
   );
+  const recaptchaSiteKey = String.fromEnvironment('FIREBASE_APP_CHECK_RECAPTCHA_SITE_KEY');
   try {
     await FirebaseAppCheck.instance.activate(
-      providerWeb: (kDebugMode || webDebugToken.isNotEmpty) ? WebDebugProvider(debugToken: webDebugToken.isEmpty ? null : webDebugToken) : null,
-      providerApple: (kDebugMode || appleDebugToken.isNotEmpty)
-          ? AppleDebugProvider(debugToken: appleDebugToken.isEmpty ? null : appleDebugToken)
-          : const AppleAppAttestWithDeviceCheckFallbackProvider(),
-      providerAndroid: (kDebugMode || androidDebugToken.isNotEmpty)
-          ? AndroidDebugProvider(debugToken: androidDebugToken.isEmpty ? null : androidDebugToken)
-          : const AndroidPlayIntegrityProvider(),
+      providerWeb: AppCheckSecurityConfig.resolveWebProvider(
+        isDebugMode: kDebugMode,
+        webDebugToken: webDebugToken,
+        recaptchaSiteKey: recaptchaSiteKey,
+      ),
+      providerApple: AppCheckSecurityConfig.resolveAppleProvider(
+        isDebugMode: kDebugMode,
+        appleDebugToken: appleDebugToken,
+      ),
+      providerAndroid: AppCheckSecurityConfig.resolveAndroidProvider(
+        isDebugMode: kDebugMode,
+        androidDebugToken: androidDebugToken,
+      ),
     );
   } catch (e) {
     debugPrint('Firebase App Check activation skipped: $e');

@@ -23,6 +23,7 @@ import 'package:comunityfitness/models/ai_coach_models.dart';
 import 'package:comunityfitness/models/exercise.dart';
 import 'package:comunityfitness/pigeon/live_coach_audio_api.g.dart';
 import 'package:comunityfitness/services/atlas_ai_config_service.dart';
+import 'package:comunityfitness/services/coach_decisions_gateway.dart';
 
 part 'ai_coach_service.g.dart';
 
@@ -652,7 +653,7 @@ class FirebaseAiGoogleClient {
           ]),
         ];
 
-        const sdkLiveModels = <String>['gemini-3.1-flash-live-preview', 'gemini-2.5-flash-native-audio-preview-12-2025'];
+        final sdkLiveModels = <String>[model];
         for (final liveModelName in sdkLiveModels) {
           try {
             final liveModel = fbAi.liveGenerativeModel(
@@ -684,8 +685,6 @@ class FirebaseAiGoogleClient {
         if (liveOverride != null)
           (uri: liveOverride, modelResource: 'projects/$projectId/models/$model', nonBlockingTools: true)
         else ...[
-          (uri: googleAiLiveUri, modelResource: 'projects/$projectId/models/gemini-3.1-flash-live-preview', nonBlockingTools: false),
-          (uri: googleAiLiveUri, modelResource: 'projects/$projectId/models/gemini-2.5-flash-native-audio-preview-12-2025', nonBlockingTools: false),
           (uri: googleAiLiveUri, modelResource: 'projects/$projectId/models/$model', nonBlockingTools: true),
         ],
       ];
@@ -854,6 +853,7 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
   static const Uuid _uuid = Uuid();
 
   final FirebaseAiGoogleClient _googleAiClient;
+  final CoachDecisionsGateway _decisionsGateway;
   final LiveCoachAudioHostApi _audioHostApi;
   final AtlasAiConfigService _configService;
   final bool _enablePlatformCues;
@@ -882,15 +882,17 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
 
   FirebaseAiCoachService({
     FirebaseAiGoogleClient? googleAiClient,
+    CoachDecisionsGateway? decisionsGateway,
     LiveCoachAudioHostApi? audioHostApi,
     AtlasAiConfigService? configService,
     this._enablePlatformCues = true,
     this._onPlayPcm24k,
     this._onStopAudio,
   }) : _googleAiClient = googleAiClient ?? const FirebaseAiGoogleClient(),
+       _decisionsGateway = decisionsGateway ?? LocalFallbackCoachDecisionsGateway(),
        _audioHostApi = audioHostApi ?? LiveCoachAudioHostApi(),
        _configService = configService ?? AppAtlasAiConfigService() {
-    if (_enablePlatformCues) {
+    if (_enablePlatformCues && !kIsWeb) {
       try {
         LiveCoachAudioFlutterApi.setUp(this);
       } catch (_) {
@@ -991,6 +993,55 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
     required List<ExerciseModel> catalog,
   }) async {
     final normalizedMuscles = targetMuscles.isEmpty ? const <String>['Full Body'] : targetMuscles;
+    final langCode = LocaleSettings.currentLocale.languageCode;
+    var selectedModel = chatModelName;
+
+    if (userPrompt.trim().isNotEmpty) {
+      try {
+        final decision = await _decisionsGateway.evaluatePrompt(userPrompt, language: langCode);
+        if (!decision.allowed) {
+          final safeRefusal = _decisionsGateway.sanitizeOutput(
+            decision.refusalText ?? CoachSecuritySanitizer.constantRefusal(langCode),
+            language: langCode,
+          );
+          return AiWorkoutPlan(
+            title: decision.medicalRedFlag ? 'ATLAS Safety Alert' : 'ATLAS Coach',
+            targetMuscles: normalizedMuscles,
+            coachSummary: safeRefusal,
+            exercises: const <AiExerciseRecommendation>[],
+          );
+        }
+        if (decision.recommendedModel.isNotEmpty) {
+          selectedModel = decision.recommendedModel;
+        }
+      } catch (error) {
+        return AiWorkoutPlan(
+          title: 'ATLAS Coach',
+          targetMuscles: normalizedMuscles,
+          coachSummary: _decisionsGateway.sanitizeError(error, language: langCode),
+          exercises: const <AiExerciseRecommendation>[],
+        );
+      }
+    }
+
+    return _planWorkoutByMusclesUnchecked(
+      targetMuscles: normalizedMuscles,
+      equipmentConstraint: equipmentConstraint,
+      userPrompt: userPrompt,
+      catalog: catalog,
+      modelName: selectedModel,
+    );
+  }
+
+  Future<AiWorkoutPlan> _planWorkoutByMusclesUnchecked({
+    required List<String> targetMuscles,
+    required String equipmentConstraint,
+    required String userPrompt,
+    required List<ExerciseModel> catalog,
+    required String modelName,
+  }) async {
+    final langCode = LocaleSettings.currentLocale.languageCode;
+    final normalizedMuscles = targetMuscles.isEmpty ? const <String>['Full Body'] : targetMuscles;
     final matchingPool = filterCatalogByMusclesAndEquipment(
       targetMuscles: normalizedMuscles,
       equipmentConstraint: equipmentConstraint,
@@ -1020,21 +1071,22 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
         'User goal/note: "$userPrompt". '
         'Available catalog exercises: [$catalogDigest]';
 
-    final remoteJson = await _googleAiClient.generateStructuredText(model: chatModelName, systemInstruction: systemInstruction, prompt: prompt);
+    final remoteJson = await _googleAiClient.generateStructuredText(model: modelName, systemInstruction: systemInstruction, prompt: prompt);
 
     if (remoteJson != null) {
       final parsed = _tryParseWorkoutPlan(remoteJson, catalog);
       if (parsed != null && parsed.exercises.isNotEmpty) {
-        return parsed;
+        return parsed.copyWith(coachSummary: _decisionsGateway.sanitizeOutput(parsed.coachSummary, language: langCode));
       }
     }
 
-    return buildCatalogWorkoutPlan(
+    final fallbackPlan = buildCatalogWorkoutPlan(
       targetMuscles: normalizedMuscles,
       equipmentConstraint: equipmentConstraint,
       userPrompt: userPrompt,
       catalog: catalog,
     );
+    return fallbackPlan.copyWith(coachSummary: _decisionsGateway.sanitizeOutput(fallbackPlan.coachSummary, language: langCode));
   }
 
   @override
@@ -1046,6 +1098,33 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
   }) async {
     final trimmed = message.trim();
     final lower = trimmed.toLowerCase();
+    final langCode = LocaleSettings.currentLocale.languageCode;
+    var selectedModel = chatModelName;
+
+    try {
+      final decision = await _decisionsGateway.evaluatePrompt(trimmed, language: langCode);
+      if (!decision.allowed) {
+        return AiChatMessage(
+          id: _uuid.v4(),
+          role: AiChatRole.coach,
+          text: _decisionsGateway.sanitizeOutput(
+            decision.refusalText ?? CoachSecuritySanitizer.constantRefusal(langCode),
+            language: langCode,
+          ),
+          timestamp: DateTime.now(),
+        );
+      }
+      if (decision.recommendedModel.isNotEmpty) {
+        selectedModel = decision.recommendedModel;
+      }
+    } catch (error) {
+      return AiChatMessage(
+        id: _uuid.v4(),
+        role: AiChatRole.coach,
+        text: _decisionsGateway.sanitizeError(error, language: langCode),
+        timestamp: DateTime.now(),
+      );
+    }
 
     // Detect if user is asking for an alternative to a specific exercise (ES, EN, CA, FR, PT)
     final matchedExercise = contextExercise ?? findReferencedExercise(trimmed, catalog);
@@ -1092,7 +1171,7 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
       final alternatives = await suggestAlternatives(exercise: matchedExercise, constraint: constraint, catalog: catalog);
       final topNames = alternatives.map((a) => a.exerciseName).join(', ');
       final coachReply = await _googleAiClient.generateStructuredText(
-        model: chatModelName,
+        model: selectedModel,
         responseMimeType: 'text/plain',
         systemInstruction:
             'Your name is ATLAS, the CommunityFitness Specialist Personal Trainer. Never refer to yourself as Gemini or mention model version numbers. '
@@ -1103,7 +1182,10 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
       return AiChatMessage(
         id: _uuid.v4(),
         role: AiChatRole.coach,
-        text: coachReply ?? _localizedAlternativesChatFallback(matchedExercise.name, constraint, topNames),
+        text: _decisionsGateway.sanitizeOutput(
+          coachReply ?? _localizedAlternativesChatFallback(matchedExercise.name, constraint, topNames),
+          language: langCode,
+        ),
         timestamp: DateTime.now(),
         alternatives: alternatives,
       );
@@ -1133,13 +1215,20 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
 
     if (asksForPlan || (detectedMuscles.isNotEmpty && matchedExercise == null)) {
       final musclesToPlan = detectedMuscles.isNotEmpty ? detectedMuscles : const ['Chest', 'Back', 'Legs'];
-      final plan = await planWorkoutByMuscles(
+      final plan = await _planWorkoutByMusclesUnchecked(
         targetMuscles: musclesToPlan,
         equipmentConstraint: equipmentConstraint,
         userPrompt: trimmed,
         catalog: catalog,
+        modelName: selectedModel,
       );
-      return AiChatMessage(id: _uuid.v4(), role: AiChatRole.coach, text: plan.coachSummary, timestamp: DateTime.now(), workoutPlan: plan);
+      return AiChatMessage(
+        id: _uuid.v4(),
+        role: AiChatRole.coach,
+        text: _decisionsGateway.sanitizeOutput(plan.coachSummary, language: langCode),
+        timestamp: DateTime.now(),
+        workoutPlan: plan,
+      );
     }
 
     // Interactive Specialist Personal Trainer Q&A (form doubts, exercise tracking, tempo, sets/reps, injuries)
@@ -1149,7 +1238,7 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
         : 'No single exercise locked; full CommunityFitness catalog (${catalog.length} exercises) available.';
 
     final specialistReply = await _googleAiClient.generateStructuredText(
-      model: chatModelName,
+      model: selectedModel,
       responseMimeType: 'text/plain',
       systemInstruction: _buildCoachSystemInstruction(
         'Your name is ATLAS, the CommunityFitness Interactive Personal Trainer & Biomechanics Specialist. Never refer to yourself as Gemini or mention model version numbers. '
@@ -1162,7 +1251,12 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
     );
 
     if (specialistReply != null && specialistReply.isNotEmpty) {
-      return AiChatMessage(id: _uuid.v4(), role: AiChatRole.coach, text: specialistReply, timestamp: DateTime.now());
+      return AiChatMessage(
+        id: _uuid.v4(),
+        role: AiChatRole.coach,
+        text: _decisionsGateway.sanitizeOutput(specialistReply, language: langCode),
+        timestamp: DateTime.now(),
+      );
     }
 
     // If offline and asking about a specific exercise's form/tracking
@@ -1312,8 +1406,35 @@ class FirebaseAiCoachService implements AiCoachService, LiveCoachAudioFlutterApi
 
     await _triggerFeedbackCue();
 
-    // If connected to the real BidiGenerateContent WebSocket, send turn
+    // If connected to the real BidiGenerateContent WebSocket, gatekeep and send turn
     if (_liveSocket != null) {
+      final langCode = LocaleSettings.currentLocale.languageCode;
+      try {
+        final decision = await _decisionsGateway.evaluatePrompt(userUtterance, language: langCode);
+        if (!decision.allowed) {
+          final safeRefusal = _decisionsGateway.sanitizeOutput(
+            decision.refusalText ?? CoachSecuritySanitizer.constantRefusal(langCode),
+            language: langCode,
+          );
+          _emitLiveEvent(
+            state: AiLiveCoachState.listening,
+            interactionStatus: 'IDLE',
+            transcript: safeRefusal,
+            spokenCue: safeRefusal,
+          );
+          return;
+        }
+      } catch (error) {
+        final safeErr = _decisionsGateway.sanitizeError(error, language: langCode);
+        _emitLiveEvent(
+          state: AiLiveCoachState.listening,
+          interactionStatus: 'IDLE',
+          transcript: safeErr,
+          spokenCue: safeErr,
+        );
+        return;
+      }
+
       if (_isCloudLiveSocket(_liveSocket)) {
         _liveSocket!.sendJson({
           'client_content': {
