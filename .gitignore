@@ -46,3 +46,6 @@ app.*.map.json
 .atl/
 .env*
 !.env.debug.example.json
+.firebase/
+/android/build/
+/android/.gradle/
