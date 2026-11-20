@@ -17,7 +17,7 @@ class AppColors {
   // High-Contrast Editorial Typography
   static const Color textPrimary = Color(0xFFF8FAFC);
   static const Color textSecondary = Color(0xFF94A3B8);
-  static const Color textMuted = Color(0xFF64748B);
+  static const Color textMuted = Color(0xFF8294AC);
 
   // Crisp Structural Borders
   static const Color border = Color(0xFF262B35);
@@ -59,13 +59,13 @@ class AppDimensions {
   static const double radiusBottomSheet = 20.0;
   static const double radiusPill = 999.0;
 
-  // Font Sizes (Editorial & Massive Numeric Legibility)
-  static const double fontBadge = 7.0;
-  static const double fontXXS = 11.0;
-  static const double fontXS = 10.0;
-  static const double fontS = 12.0;
-  static const double fontM = 14.0;
-  static const double fontL = 16.0;
+  // Font Sizes (Accessible Material 3 / HIG Scale)
+  static const double fontBadge = 10.0;
+  static const double fontXXS = 12.0;
+  static const double fontXS = 12.5;
+  static const double fontS = 14.0;
+  static const double fontM = 15.0;
+  static const double fontL = 17.0;
   static const double fontXL = 20.0;
   static const double fontXXL = 24.0;
   static const double fontDisplay = 32.0;
@@ -113,6 +113,7 @@ class AppDimensions {
   static const double aiCardRadius = 16.0;
   static const double aiMessageBubbleRadius = 18.0;
   static const double catalogCacheExtent = 1200.0;
+  static const double featureTileMinHeight = 140.0;
   static const double webMobileFrameMaxWidth = 480.0;
   static const double strokeWidthThin = 2.0;
   static const double cardElevation = 2.0;

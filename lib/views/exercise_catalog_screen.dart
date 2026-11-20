@@ -255,14 +255,11 @@ class ExerciseCatalogScreen extends ConsumerWidget {
                 const SizedBox(height: AppDimensions.paddingXS),
 
                 // Muscle Group Chips Row
-                SizedBox(
-                  height: AppDimensions.filterRowHeight,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
-                    itemCount: muscleGroups.length,
-                    itemBuilder: (context, index) {
-                      final muscle = muscleGroups[index];
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
+                  child: Row(
+                    children: muscleGroups.map((muscle) {
                       final isSelected = state.selectedMuscleGroup?.toLowerCase() == muscle.toLowerCase();
                       return Padding(
                         padding: const EdgeInsets.only(right: AppDimensions.paddingS),
@@ -289,7 +286,7 @@ class ExerciseCatalogScreen extends ConsumerWidget {
                           ),
                         ),
                       );
-                    },
+                    }).toList(),
                   ),
                 ),
                 const SizedBox(height: AppDimensions.paddingM),
@@ -305,14 +302,11 @@ class ExerciseCatalogScreen extends ConsumerWidget {
                 const SizedBox(height: AppDimensions.paddingXS),
 
                 // Equipment Chips Row
-                SizedBox(
-                  height: AppDimensions.filterRowHeight,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
-                    itemCount: equipments.length,
-                    itemBuilder: (context, index) {
-                      final equipment = equipments[index];
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
+                  child: Row(
+                    children: equipments.map((equipment) {
                       final isSelected = state.selectedEquipment?.toLowerCase() == equipment.toLowerCase();
                       return Padding(
                         padding: const EdgeInsets.only(right: AppDimensions.paddingS),
@@ -339,7 +333,7 @@ class ExerciseCatalogScreen extends ConsumerWidget {
                           ),
                         ),
                       );
-                    },
+                    }).toList(),
                   ),
                 ),
                 const SizedBox(height: AppDimensions.paddingM),
@@ -365,8 +359,7 @@ class ExerciseCatalogScreen extends ConsumerWidget {
           else
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingM),
-              sliver: SliverFixedExtentList(
-                itemExtent: AppDimensions.exerciseCardHeight,
+              sliver: SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
                   final exercise = state.exercises[index];
                   return Cue.onMount(
@@ -405,6 +398,8 @@ class ExerciseCatalogScreen extends ConsumerWidget {
                                   padding: const EdgeInsets.symmetric(horizontal: AppDimensions.paddingS, vertical: AppDimensions.paddingXXS),
                                   child: Text(
                                     exercise.primaryMuscleGroup,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(fontSize: AppDimensions.fontXXS, color: AppColors.primary, fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -424,9 +419,17 @@ class ExerciseCatalogScreen extends ConsumerWidget {
                                       children: [
                                         FaIcon(FontAwesomeIcons.bolt, size: AppDimensions.iconXS, color: AppColors.secondary),
                                         SizedBox(width: AppDimensions.paddingXS),
-                                        Text(
-                                          'HD 60FPS',
-                                          style: TextStyle(fontSize: AppDimensions.fontXXS, color: AppColors.secondary, fontWeight: FontWeight.w900),
+                                        Flexible(
+                                          child: Text(
+                                            'HD 60FPS',
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: AppDimensions.fontXXS,
+                                              color: AppColors.secondary,
+                                              fontWeight: FontWeight.w900,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),

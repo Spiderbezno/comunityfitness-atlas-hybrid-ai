@@ -426,13 +426,10 @@ class _AiExerciseAlternativeSheetState extends ConsumerState<AiExerciseAlternati
             ],
           ),
           const SizedBox(height: AppDimensions.paddingM),
-          SizedBox(
-            height: AppDimensions.aiChipRowHeight,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: AiCoachState.alternativeQuickConstraints.length,
-              itemBuilder: (context, index) {
-                final constraint = AiCoachState.alternativeQuickConstraints[index];
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: AiCoachState.alternativeQuickConstraints.map((constraint) {
                 final isSelected = state.selectedAlternativeConstraint == constraint;
                 return Padding(
                   padding: const EdgeInsets.only(right: AppDimensions.paddingS),
@@ -460,7 +457,7 @@ class _AiExerciseAlternativeSheetState extends ConsumerState<AiExerciseAlternati
                     ),
                   ),
                 );
-              },
+              }).toList(),
             ),
           ),
           const SizedBox(height: AppDimensions.paddingM),

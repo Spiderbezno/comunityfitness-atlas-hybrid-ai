@@ -190,51 +190,67 @@ class _InteractiveBodyMapState extends State<InteractiveBodyMap> {
           const SizedBox(height: AppDimensions.paddingM),
 
           // Anatomical Canvas + Interactive Muscle Nodes
-          SizedBox(
-            height: AppDimensions.animationPlayerHeight,
-            child: Row(
-              children: [
-                // Left column of muscle selectors (first 3)
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: activeMuscles.take(3).map((m) => _buildMuscleNodeButton(m, tr)).toList(),
-                  ),
-                ),
-                const SizedBox(width: AppDimensions.paddingS),
-                // Center 2.5D Anatomical Silhouette Canvas
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.background,
-                      borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-                      border: Border.all(color: AppColors.borderSubtle, width: AppDimensions.borderDefault),
-                    ),
-                    child: CustomPaint(
-                      painter: _AnatomicalBodyPainter(
-                        isPosterior: _isPosterior,
-                        selectedMuscle: widget.selectedMuscle,
-                        muscleColors: {
-                          for (final m in MuscleAnalyticsViewModel.standardMuscles)
-                            m: InteractiveBodyMap.resolveRecoveryStatusColor(_resolveInfo(m).status),
-                        },
+          Builder(
+            builder: (context) {
+              final leftMuscles = activeMuscles.take(3).toList();
+              final rightMuscles = activeMuscles.skip(3).take(3).toList();
+              return IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Left column of muscle selectors (first 3)
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (int i = 0; i < leftMuscles.length; i++) ...[
+                            if (i > 0) const SizedBox(height: AppDimensions.paddingXS),
+                            _buildMuscleNodeButton(leftMuscles[i], tr),
+                          ],
+                        ],
                       ),
-                      child: const SizedBox.expand(),
                     ),
-                  ),
+                    const SizedBox(width: AppDimensions.paddingS),
+                    // Center 2.5D Anatomical Silhouette Canvas
+                    Expanded(
+                      child: Container(
+                        constraints: const BoxConstraints(minHeight: AppDimensions.animationPlayerHeight),
+                        decoration: BoxDecoration(
+                          color: AppColors.background,
+                          borderRadius: BorderRadius.circular(AppDimensions.radiusM),
+                          border: Border.all(color: AppColors.borderSubtle, width: AppDimensions.borderDefault),
+                        ),
+                        child: CustomPaint(
+                          painter: _AnatomicalBodyPainter(
+                            isPosterior: _isPosterior,
+                            selectedMuscle: widget.selectedMuscle,
+                            muscleColors: {
+                              for (final m in MuscleAnalyticsViewModel.standardMuscles)
+                                m: InteractiveBodyMap.resolveRecoveryStatusColor(_resolveInfo(m).status),
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: AppDimensions.paddingS),
+                    // Right column of muscle selectors (last 3)
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (int i = 0; i < rightMuscles.length; i++) ...[
+                            if (i > 0) const SizedBox(height: AppDimensions.paddingXS),
+                            _buildMuscleNodeButton(rightMuscles[i], tr),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: AppDimensions.paddingS),
-                // Right column of muscle selectors (last 3)
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: activeMuscles.skip(3).take(3).map((m) => _buildMuscleNodeButton(m, tr)).toList(),
-                  ),
-                ),
-              ],
-            ),
+              );
+            },
           ),
           const SizedBox(height: AppDimensions.paddingM),
 

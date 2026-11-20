@@ -322,50 +322,66 @@ class DashboardScreen extends ConsumerWidget {
             ),
             const SizedBox(height: AppDimensions.paddingS),
 
-            GridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: AppDimensions.paddingM,
-              mainAxisSpacing: AppDimensions.paddingM,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                _FeatureGridTile(
-                  title: tr.dashboard.routinesTitle,
-                  subtitle: tr.dashboard.routinesSubtitle(count: state.allRoutines.length),
-                  icon: FontAwesomeIcons.clipboardList,
-                  iconColor: AppColors.primary,
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const RoutineListScreen()));
-                  },
-                ),
-                _FeatureGridTile(
-                  title: tr.dashboard.muscleRecoveryTitle,
-                  subtitle: tr.dashboard.muscleRecoverySubtitle(count: state.readyMuscles.length),
-                  icon: FontAwesomeIcons.heartPulse,
-                  iconColor: AppColors.secondary,
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const MuscleAnalyticsScreen()));
-                  },
-                ),
-                _FeatureGridTile(
-                  title: tr.dashboard.exerciseCatalogTitle,
-                  subtitle: tr.dashboard.exerciseCatalogSubtitle(count: catalogState.allExercises.length),
-                  icon: FontAwesomeIcons.bookBookmark,
-                  iconColor: AppColors.warning,
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const ExerciseCatalogScreen()));
-                  },
-                ),
-                _FeatureGridTile(
-                  title: tr.dashboard.dataMigrationTitle,
-                  subtitle: tr.dashboard.dataMigrationSubtitle,
-                  icon: FontAwesomeIcons.arrowsRotate,
-                  iconColor: AppColors.primary,
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const DataManagementScreen()));
-                  },
-                ),
-              ],
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: _FeatureGridTile(
+                      title: tr.dashboard.routinesTitle,
+                      subtitle: tr.dashboard.routinesSubtitle(count: state.allRoutines.length),
+                      icon: FontAwesomeIcons.clipboardList,
+                      iconColor: AppColors.primary,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const RoutineListScreen()));
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: AppDimensions.paddingM),
+                  Expanded(
+                    child: _FeatureGridTile(
+                      title: tr.dashboard.muscleRecoveryTitle,
+                      subtitle: tr.dashboard.muscleRecoverySubtitle(count: state.readyMuscles.length),
+                      icon: FontAwesomeIcons.heartPulse,
+                      iconColor: AppColors.secondary,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const MuscleAnalyticsScreen()));
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: AppDimensions.paddingM),
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: _FeatureGridTile(
+                      title: tr.dashboard.exerciseCatalogTitle,
+                      subtitle: tr.dashboard.exerciseCatalogSubtitle(count: catalogState.allExercises.length),
+                      icon: FontAwesomeIcons.bookBookmark,
+                      iconColor: AppColors.warning,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const ExerciseCatalogScreen()));
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: AppDimensions.paddingM),
+                  Expanded(
+                    child: _FeatureGridTile(
+                      title: tr.dashboard.dataMigrationTitle,
+                      subtitle: tr.dashboard.dataMigrationSubtitle,
+                      icon: FontAwesomeIcons.arrowsRotate,
+                      iconColor: AppColors.primary,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const DataManagementScreen()));
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: AppDimensions.paddingL),
 
@@ -396,9 +412,13 @@ class DashboardScreen extends ConsumerWidget {
                           decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.secondary),
                         ),
                         const SizedBox(width: AppDimensions.paddingS),
-                        Text(
-                          tr.translateMuscle(muscle),
-                          style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+                        Flexible(
+                          child: Text(
+                            tr.translateMuscle(muscle),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: AppDimensions.fontS, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+                          ),
                         ),
                       ],
                     ),
@@ -568,6 +588,7 @@ class _FeatureGridTile extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(AppDimensions.radiusCard),
       child: Container(
+        constraints: const BoxConstraints(minHeight: AppDimensions.featureTileMinHeight),
         padding: const EdgeInsets.all(AppDimensions.paddingM),
         decoration: BoxDecoration(
           color: AppColors.surfaceElevated,
@@ -587,12 +608,13 @@ class _FeatureGridTile extends StatelessWidget {
               ),
               child: FaIcon(icon, size: AppDimensions.iconM, color: iconColor),
             ),
+            const SizedBox(height: AppDimensions.paddingM),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(fontSize: AppDimensions.fontM, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                 ),

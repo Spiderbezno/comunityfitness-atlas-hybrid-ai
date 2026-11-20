@@ -319,9 +319,13 @@ class _TelemetryStatusHeader extends StatelessWidget {
                       color: sourceColor,
                     ),
                     const SizedBox(width: AppDimensions.paddingXS),
-                    Text(
-                      _executionSourceLabel(tr, state),
-                      style: TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w800, color: sourceColor),
+                    Flexible(
+                      child: Text(
+                        _executionSourceLabel(tr, state),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w800, color: sourceColor),
+                      ),
                     ),
                   ],
                 ),
@@ -359,6 +363,8 @@ class _TelemetryStatusHeader extends StatelessWidget {
                   state.useServerPromptTemplates
                       ? tr.hybridAi.dotpromptBadge(templateId: state.activeTemplateId)
                       : tr.hybridAi.remoteConfigOnlyBadge(templateId: state.activeTemplateId),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: AppDimensions.fontXS,
                     fontWeight: FontWeight.w700,
@@ -537,7 +543,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
                           child: CircularProgressIndicator(strokeWidth: AppDimensions.borderThick, color: AppColors.primary),
                         )
                       : const FaIcon(FontAwesomeIcons.wandMagicSparkles, size: AppDimensions.iconS, color: AppColors.background),
-                  label: Text(tr.hybridAi.analyzeSetButton),
+                  label: Text(tr.hybridAi.analyzeSetButton, maxLines: 1, overflow: TextOverflow.ellipsis),
                 ),
               ),
               const SizedBox(width: AppDimensions.paddingS),
@@ -546,7 +552,7 @@ class _BasementGymLoggerCard extends StatelessWidget {
                   key: const Key('hybrid_scan_image_button'),
                   onPressed: isLoading ? null : onScanEquipment,
                   icon: const FaIcon(FontAwesomeIcons.camera, size: AppDimensions.iconS, color: AppColors.secondary),
-                  label: Text(tr.hybridAi.scanEquipmentButton),
+                  label: Text(tr.hybridAi.scanEquipmentButton, maxLines: 1, overflow: TextOverflow.ellipsis),
                 ),
               ),
             ],
@@ -640,9 +646,13 @@ class _SetAnalysisResultCard extends StatelessWidget {
                       color: fatigueColor,
                     ),
                     const SizedBox(width: AppDimensions.paddingXS),
-                    Text(
-                      analysis.fatigueAlert ? tr.hybridAi.fatigueAlertBadge : tr.hybridAi.optimalVelocityBadge,
-                      style: TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w800, color: fatigueColor),
+                    Flexible(
+                      child: Text(
+                        analysis.fatigueAlert ? tr.hybridAi.fatigueAlertBadge : tr.hybridAi.optimalVelocityBadge,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: AppDimensions.fontXS, fontWeight: FontWeight.w800, color: fatigueColor),
+                      ),
                     ),
                   ],
                 ),
